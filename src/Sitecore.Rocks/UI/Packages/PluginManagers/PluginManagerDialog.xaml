@@ -1,0 +1,48 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Packages.PluginManagers.PluginManagerDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Plugin Manager" Height="650" Width="900"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TreeView x:Name="Feeds" SelectedItemChanged="SetFeed" BorderThickness="0" Padding="4" />
+
+            <GridSplitter Grid.Column="1" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" Width="4" HorizontalAlignment="Stretch" />
+
+            <Border x:Name="Feed" Grid.Column="2" />
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,8,8,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Feeds" Width="75" Height="23" Margin="8,0,0,0" Click="EditFeeds" />
+                <Button Content="Folders" Width="75" Height="23" Margin="8,0,0,0" Click="EditFolders" />
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
+                <Button Content="Close" IsDefault="True" IsCancel="True" Width="75" Height="23" Margin="8,0,0,0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

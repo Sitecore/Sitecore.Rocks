@@ -1,0 +1,33 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Management.ManagementItems.PipelineViewers.Dialogs.TypeAndAssemblyDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Pipeline Include File" Height="150" Width="350"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FocusManager.FocusedElement="{Binding ElementName=ClassName}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Class:" Grid.Row="0" Target="{Binding ClassName}" />
+        <TextBox x:Name="ClassName" Grid.Row="0" Grid.Column="1" TextChanged="TextChanged" VerticalAlignment="Center" />
+
+        <Label Content="Assembly:" Grid.Row="1" Margin="0,8,0,0" Target="{Binding AssemblyName}" />
+        <TextBox x:Name="AssemblyName" Grid.Row="1" Grid.Column="1" Margin="0,8,0,0" TextChanged="TextChanged" VerticalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="2" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <Button x:Name="Test" Content="Test" Margin="0,0,32,0" Click="TestClick" />
+            <Button x:Name="OK" Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Click="CancelClick" />
+        </StackPanel>
+    </Grid>
+</Window>

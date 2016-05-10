@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Management.ManagementItems.History.HistoryViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:Sitecore.Rocks.Controls" xmlns:c="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid ContextMenuOpening="OpenContextMenu">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <c:KeyboardHandler />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Date Range:" />
+
+                <t:DateTimePicker x:Name="FromDateTimeBox" ValueChanged="ValueChanged" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto"
+                    Width="200" Height="20" />
+
+                <Label Content=" to " />
+
+                <t:DateTimePicker x:Name="ToDateTimeBox" ValueChanged="ValueChanged" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto" Width="200"
+                    Height="20" />
+            </StackPanel>
+
+            <c:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterChanged" Watermark="Filter" VerticalAlignment="Center" HorizontalAlignment="Right" Width="150"
+                Margin="8,0,0,0" Grid.Column="1" />
+        </Grid>
+
+        <controls:Loading x:Name="Loading" Grid.Row="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" />
+        <ListView x:Name="History" Grid.Row="1" SelectionMode="Extended" Visibility="Collapsed" GridViewColumnHeader.Click="HeaderClick" Margin="0,8,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="ActionColumn" Header="Action" DisplayMemberBinding="{Binding Action}" Width="Auto" />
+                    <GridViewColumn x:Name="CategoryColumn" Header="Category" DisplayMemberBinding="{Binding Category}" Width="Auto" />
+                    <GridViewColumn x:Name="CreatedColumn" Header="Date Time" DisplayMemberBinding="{Binding FormattedCreated}" Width="Auto" />
+                    <GridViewColumn x:Name="ItemIdColumn" Header="Item ID" DisplayMemberBinding="{Binding ItemId}" Width="Auto" />
+                    <GridViewColumn x:Name="LanguageColumn" Header="Language" DisplayMemberBinding="{Binding Language}" Width="Auto" />
+                    <GridViewColumn x:Name="VersionColumn" Header="Version" DisplayMemberBinding="{Binding Version}" Width="Auto" />
+                    <GridViewColumn x:Name="UserNameColumn" Header="User Name" DisplayMemberBinding="{Binding UserName}" Width="Auto" />
+                    <GridViewColumn x:Name="TaskColumn" Header="Task" DisplayMemberBinding="{Binding Task}" Width="Auto" />
+                    <GridViewColumn x:Name="PathColumn" Header="Path" DisplayMemberBinding="{Binding Path}" Width="Auto" />
+                    <GridViewColumn x:Name="AdditionalInfoColumn" Header="Additional Info" DisplayMemberBinding="{Binding AdditionalInfo}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

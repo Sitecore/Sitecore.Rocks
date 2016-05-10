@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.LayoutDesigners.LayoutListViews.LayoutListViewTab" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:lv="clr-namespace:Sitecore.Rocks.Controls.ListViews"
+    xmlns:items="clr-namespace:Sitecore.Rocks.UI.LayoutDesigners.Items" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" x:Name="Control" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="RenderingHeader">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance items:RenderingItem }">
+                <Image Source="{Binding IconSource}" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <TextBlock Text="{Binding Name}" Margin="4,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid FocusManager.IsFocusScope="True" KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle"
+        KeyboardNavigation.DirectionalNavigation="Cycle">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler />
+        <ListView Grid.Row="0" x:Name="HiddenListView" Visibility="Collapsed">
+            <ListView.Items>
+                <ListViewItem x:Name="HiddenListViewItem" />
+            </ListView.Items>
+        </ListView>
+
+        <TextBlock Grid.Row="0" Text="Layout:" VerticalAlignment="Center" Margin="0,4,0,0" />
+
+        <Grid Grid.Row="1" Margin="0,2,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="LayoutSelector" TextChanged="LayoutSelectorTextChanged" VerticalAlignment="Center" MinHeight="21" VerticalContentAlignment="Center" />
+            <Image x:Name="LayoutSelectorImage" Grid.Column="0" Source="/Sitecore.Rocks;component/Resources/16x16/forbidden.png" Width="16" Height="16" Margin="-8,-8,0,0"
+                Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="The layout does not point to a valid item." />
+            <Button Grid.Column="1" Width="75" Height="21" Margin="4,0,0,0" Content="Browse" Click="Browse" />
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,16,0,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Renderings and Placeholders:" VerticalAlignment="Bottom" />
+            <controls:WatermarkedTextBox Grid.Column="1" x:Name="Filter" Width="200" HorizontalAlignment="Right" VerticalAlignment="Center" Watermark="Filter"
+                DeferredTextChanged="FilterTextChanged" />
+        </Grid>
+
+        <Border x:Name="NoItemsPanel" Grid.Row="3">
+            <Border x:Name="NoItems" AllowDrop="True" BorderThickness="1" ContextMenuOpening="OpenNoItemsContextMenu"
+                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" Text="Drag and drop renderings from the Sitecore Explorer or click the Add Rendering button."
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                </StackPanel>
+            </Border>
+        </Border>
+
+        <Border x:Name="ListContextMenu" Grid.Row="3" Visibility="Collapsed">
+            <lv:MultSelectListView x:Name="List" AllowDrop="true" KeyDown="HandleKeyDown" SelectionChanged="ListSelectionChanged" ContextMenuOpening="OpenContextMenu"
+                SelectionMode="Extended" MouseDoubleClick="EditRendering" d:DataContext="{d:DesignInstance items:RenderingItem}">
+                <lv:MultSelectListView.View>
+                    <GridView AllowsColumnReorder="True">
+                        <GridViewColumn />
+                    </GridView>
+                </lv:MultSelectListView.View>
+            </lv:MultSelectListView>
+        </Border>
+
+    </Grid>
+</UserControl>

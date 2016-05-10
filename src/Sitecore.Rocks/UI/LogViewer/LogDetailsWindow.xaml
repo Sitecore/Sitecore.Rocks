@@ -1,0 +1,24 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.LogViewer.LogDetailsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Log Details" Height="400" Width="600" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="LogTitle" Grid.Row="0" />
+        <TextBlock x:Name="DateTime" Grid.Row="1" Margin="0,4,0,0" />
+        <TextBlock x:Name="Category" Grid.Row="2" Margin="0,4,0,0" />
+
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="3" Margin="0,4,0,0">
+            <WebBrowser x:Name="Frame" />
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="Close" IsCancel="True" IsDefault="True" Margin="0,0,8,0" Width="75" Height="23" Click="OkClick" />
+        </StackPanel>
+    </Grid>
+</Window>

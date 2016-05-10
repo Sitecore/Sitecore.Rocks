@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Skins.Wide.WideSkin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:va="clr-namespace:Sitecore.Rocks.ContentEditors.Validators"
+    xmlns:i="clr-namespace:Sitecore.Rocks.ContentEditors.InfoPanes" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300" KeyboardNavigation.TabNavigation="Local">
+    <UserControl.Resources>
+        <Style x:Key="ViewTabControl" TargetType="TabControl">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <TabPanel Grid.Row="0" IsItemsHost="true" Margin="6,4,0,0" />
+                            <Border BorderThickness="0,0,1,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="1" Height="1" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Padding="4" BorderThickness="1">
+        <Border BorderThickness="1">
+            <DockPanel x:Name="OuterDock">
+                <i:InfoPane x:Name="InfoPane" DockPanel.Dock="Top" />
+
+                <TabControl x:Name="Tabs" DockPanel.Dock="Top" Style="{StaticResource ViewTabControl}" SelectionChanged="TabSelectionChanged" />
+
+                <va:ValidatorBar x:Name="ValidateBar" DockPanel.Dock="Right" />
+
+                <Grid x:Name="TabPanels">
+                    <DockPanel x:Name="InnerDock">
+                        <ScrollViewer Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" HorizontalScrollBarVisibility="Hidden">
+                            <Grid>
+                                <Border x:Name="Panels" Visibility="Collapsed" />
+                                <StackPanel x:Name="Editor" VerticalAlignment="Top" />
+                            </Grid>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Grid>
+            </DockPanel>
+        </Border>
+    </Border>
+</UserControl>

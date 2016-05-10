@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.RuleEditors.ActionListBoxItem" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="Run">
+            <Setter Property="BaselineAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="16,1,1,1">
+        <TextBlock x:Name="Text" />
+    </Grid>
+</UserControl>

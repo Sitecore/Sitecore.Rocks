@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Validations.ValidationViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="ContextMenuHolder">
+        <Grid ContextMenuOpening="OpenContextMenu">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <controls:KeyboardHandler />
+
+            <ToolBarTray Grid.Row="0" IsLocked="True" HorizontalAlignment="Stretch" KeyboardNavigation.IsTabStop="False">
+                <ToolBar HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" KeyboardNavigation.TabNavigation="Continue" KeyboardNavigation.IsTabStop="False">
+                    <Button Click="Rerun">
+                        <c:ToolBarButton Icon="Resources/16x16/play.png" Text="Validate" />
+                    </Button>
+
+                    <TextBlock Text="Profile:" VerticalAlignment="Center" Margin="4,0,0,0" />
+                    <ComboBox x:Name="ProfileComboBox" Width="100" Margin="2,0,0,0" SelectionChanged="UpdateProfile" />
+                    <Button Content="Edit" Click="EditProfiles" Margin="2,0,0,0" />
+
+                    <Button Click="EditCustomValidations">
+                        <c:ToolBarButton Icon="Resources/16x16/pencil.png" Text="Edit Custom Validations" />
+                    </Button>
+
+                    <Button Click="SelectDatabaseAndLanguages">
+                        <c:ToolBarButton Icon="Resources/16x16/data.png" Text="Select Databases and Languages" />
+                    </Button>
+
+                    <Button x:Name="IncludeInBuildButton" Click="IncludeInBuild">
+                        <c:ToolBarButton Icon="Resources/16x16/data.png" Text="Add Build Task" />
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+
+            <c:Loading x:Name="Loading" Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,4,0,0" />
+
+            <DockPanel x:Name="ItemsHolder" Visibility="Collapsed" Grid.Row="1" Margin="0,4,0,0">
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="LastUpdate" Margin="4,4,0,8" />
+                    <controls:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterChanged" Watermark="Filter" Grid.Column="1" HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Width="200" Margin="0,0,0,2" />
+                </Grid>
+
+                <Border x:Name="Viewer" />
+            </DockPanel>
+
+            <Border x:Name="Generating" Visibility="Collapsed" Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,4,0,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="The site is being validated..." VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                    <TextBlock x:Name="Retrying" Margin="0,8,0,0" HorizontalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="NotGenerated" Visibility="Collapsed" Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,4,0,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="The site has not yet been validated." HorizontalAlignment="Center"
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                    <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center">
+                        <Hyperlink Click="Rerun">Run assessment</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <Border x:Name="NoItems" Visibility="Collapsed" Grid.Row="1" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,4,0,0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="There are no messages to show in this view." VerticalAlignment="Center" HorizontalAlignment="Center"
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                    <TextBlock Margin="0,8,0,0" HorizontalAlignment="Center">
+                        <Hyperlink Click="Rerun">Run assessment</Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

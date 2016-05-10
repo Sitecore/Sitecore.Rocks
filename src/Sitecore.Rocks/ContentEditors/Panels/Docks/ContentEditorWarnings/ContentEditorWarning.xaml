@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Panels.Docks.ContentEditorWarnings.ContentEditorWarning" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Border BorderBrush="#999999" BorderThickness="0,1,0,1">
+        <Grid Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="Icon" Width="16" Height="16" Margin="8,4,0,0" VerticalAlignment="Top" />
+
+            <StackPanel Grid.Column="1" Margin="8,4,8,4">
+                <TextBlock x:Name="Title" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" FontWeight="Bold" />
+                <TextBlock x:Name="Text" Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Margin="0,4,0,0" />
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</UserControl>

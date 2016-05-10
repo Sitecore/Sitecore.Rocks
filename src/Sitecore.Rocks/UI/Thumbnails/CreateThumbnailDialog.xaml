@@ -1,0 +1,133 @@
+<Window x:Class="Sitecore.Rocks.UI.Thumbnails.CreateThumbnailDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Thumbnail" Height="600" Width="800" x:Name="Control"
+    FocusManager.FocusedElement="{Binding ElementName=MacroList}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid x:Name="ItemSourcePanel" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Source:" />
+                    <TextBox x:Name="ItemPath" Grid.Column="1" VerticalAlignment="Center" TextChanged="EnableButtons" />
+                    <Button Content="Browse" Grid.Column="2" Width="75" Height="21" Click="Browse" Margin="4,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Either an item path or an external Url, e.g. 'www.google.com'"
+                        Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                </Grid>
+            </Grid>
+
+            <Button x:Name="TakeScreenshotButton" Width="96" Height="23" VerticalAlignment="Top" Grid.Row="1" Content="Take Screenshot" Margin="0,8,0,0"
+                Click="TakeScreenshot" HorizontalAlignment="Left" />
+
+            <Grid Grid.Row="2" Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border Background="#dedede" BorderBrush="#666666" BorderThickness="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <ScrollViewer x:Name="PreviewScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Image x:Name="Preview" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <Border x:Name="RubberBand" Width="128" Height="128" BorderThickness="1" BorderBrush="#84acdd" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                MouseDown="HandleMouseDown" MouseMove="HandleMouseMove" MouseUp="HandleMouseUp" IsHitTestVisible="True" Visibility="Collapsed"
+                                Cursor="SizeAll">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#99f2f8ff" Offset="0.0" />
+                                        <GradientStop Color="#99d0e5ff" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+
+                <StackPanel HorizontalAlignment="Center" Grid.Column="1" Margin="8,0,0,0">
+                    <Border Background="White" BorderBrush="#666666" BorderThickness="1" HorizontalAlignment="Center">
+                        <Border Width="128" Height="128" ClipToBounds="True">
+                            <Image x:Name="Preview128x128" RenderOptions.BitmapScalingMode="Linear" Stretch="None" />
+                        </Border>
+                    </Border>
+                    <TextBlock Text="128x128" Margin="0,2,0,0" HorizontalAlignment="Center" />
+
+                    <Border Background="White" BorderBrush="#666666" BorderThickness="1" Margin="0,16,0,0" HorizontalAlignment="Center">
+                        <Border Width="48" Height="48" ClipToBounds="True">
+                            <Image x:Name="Preview48x48" RenderOptions.BitmapScalingMode="Linear" Stretch="None" />
+                        </Border>
+                    </Border>
+                    <TextBlock Text="48x48" Margin="0,2,0,0" HorizontalAlignment="Center" />
+
+                    <Border Background="White" BorderBrush="#666666" BorderThickness="1" Margin="0,16,0,0" HorizontalAlignment="Center">
+                        <Border Width="32" Height="32" ClipToBounds="True">
+                            <Image x:Name="Preview32x32" RenderOptions.BitmapScalingMode="Linear" Stretch="None" />
+                        </Border>
+                    </Border>
+                    <TextBlock Text="32x32" Margin="0,2,0,0" HorizontalAlignment="Center" />
+
+                    <Border Background="White" BorderBrush="#666666" BorderThickness="1" Margin="0,16,0,0" HorizontalAlignment="Center">
+                        <Border Width="24" Height="24" ClipToBounds="True">
+                            <Image x:Name="Preview24x24" RenderOptions.BitmapScalingMode="Linear" Stretch="None" />
+                        </Border>
+                    </Border>
+                    <TextBlock Text="24x24" Margin="0,2,0,0" HorizontalAlignment="Center" />
+
+                    <Border Background="White" BorderBrush="#666666" BorderThickness="1" Margin="0,16,0,0" HorizontalAlignment="Center">
+                        <Border Width="16" Height="16" ClipToBounds="True">
+                            <Image x:Name="Preview16x16" RenderOptions.BitmapScalingMode="Linear" Stretch="None" />
+                        </Border>
+                    </Border>
+                    <TextBlock Text="16x16" Margin="0,2,0,0" HorizontalAlignment="Center" />
+                </StackPanel>
+                <!--
+        <Slider Grid.Row="1" Width="150" x:Name="Zoom" Minimum="10" Maximum="1000" Value="100" SmallChange="10" LargeChange="50" HorizontalAlignment="Left" Margin="0,4,0,0" ValueChanged="SetZoom" />
+        -->
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="DownloadButton" Content="Download Screenshot" Width="128" Height="23" Click="Download" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                <Button x:Name="OkButton" Content="OK" IsDefault="True" Margin="0,0,8,0" Width="75" Height="23" Click="OkClick" />
+                <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<startpage>
+  <tab name="GetStarted" header="Get Started" priority="1000">
+    <page name="Welcome" header="Welcome" priority="1000">
+      <group name="Training" header="Training" text="Select the Training Tab to begin" priority="0">
+        <command href="http://www.sitecore.net" priority="1000">Start Now</command>
+      </group>
+    </page>
+  </tab>
+  <tab name="Training" header="Training" priority="9000">
+    <page name="Chapter1" header="Chapter 1" priority="1000">
+      <group name="Installation" header="Installation" text="Learn how to install Sitecore" priority="1000">
+        <command href="http://www.sitecore.net" priority="1000">Install Sitecore</command>
+        <command href="http://www.sitecore.net" priority="1000">Create a Visual Studio project</command>
+      </group>
+    </page>
+    <page name="Chapter2" header="Chapter 2" priority="2000">
+      <group name="Presentation" header="Configuration" text="Change web.config and system items" priority="1000">
+        <command href="http://www.sitecore.net" priority="1000">Open web.config</command>
+      </group>
+    </page>
+  </tab>
+</startpage>

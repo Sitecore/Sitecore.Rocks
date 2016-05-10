@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<features>
+    <set name="Scopes">
+        <command type="Sitecore.Rocks.ContentTrees.Commands.Navigating.ScopeToThis" />
+    </set>
+</features>

@@ -1,0 +1,46 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Libraries.Dialogs.SearchDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls;assembly=Sitecore.Rocks"
+    xmlns:d="clr-namespace:Sitecore.Rocks.UI.Libraries.Dialogs" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" Title="Search Library" Height="600" Width="800"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label x:Name="FolderNameLabel" Content="Library Name:" />
+            <TextBox x:Name="FolderNameTextBox" VerticalAlignment="Center" TextChanged="EnableButtons2" Grid.Column="1" />
+
+            <Label Content="Database:" Grid.Row="1" />
+            <controls:DatabaseSelector x:Name="DatabaseSelector" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" />
+        </Grid>
+
+        <d:SearchBuilder x:Name="SearchBuilder" Grid.Row="2" Margin="0,8,0,0" TextChanged="EnableButtons3" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="3">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" Width="75" Height="23" />
+            <Button Content="Cancel" IsCancel="True" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

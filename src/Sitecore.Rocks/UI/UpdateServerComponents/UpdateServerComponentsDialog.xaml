@@ -1,0 +1,59 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.UpdateServerComponents.UpdateServerComponentsDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Sitecore.Rocks.Controls" Title="Update Server Components" Height="400" Width="600"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+            <Setter Property="Height" Value="23" />
+        </Style>
+
+        <DataTemplate x:Key="InstallCheckBox">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" Click="CheckedChanged" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Target="{Binding ElementName=Server}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Server Components on '" />
+                <TextBlock x:Name="ServerName" />
+                <TextBlock Text="':" />
+            </StackPanel>
+        </Label>
+
+        <Grid Grid.Row="1">
+            <ListView x:Name="Server" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single" Margin="0,2,0,0" Visibility="Collapsed">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn CellTemplate="{StaticResource InstallCheckBox}" Width="Auto" />
+                        <GridViewColumn Header="Component" DisplayMemberBinding="{Binding Name}" Width="Auto" />
+                        <GridViewColumn Header="Local" DisplayMemberBinding="{Binding LocalVersion}" Width="Auto" />
+                        <GridViewColumn Header="Server" DisplayMemberBinding="{Binding ServerVersion}" Width="Auto" />
+                        <GridViewColumn Header=".NET Runtime" DisplayMemberBinding="{Binding RuntimeVersion}" Width="Auto" />
+                        <GridViewColumn Header="Action" DisplayMemberBinding="{Binding Action}" Width="Auto" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <CheckBox x:Name="CheckAll" Margin="11,6,0,0" Click="ToggleChecks" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+            <controls:Loading x:Name="Loading" />
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,8,0,0" Grid.Row="2">
+            <Button Content="Update All" x:Name="InstallAll" Click="InstallAllClick" />
+            <Button Content="Update" x:Name="Install" Click="InstallClick" Margin="24,0,0,0" />
+            <Button Content="Close" x:Name="CloseButton" Margin="24,0,0,0" IsDefault="True" IsCancel="True" Click="CloseClick"
+                AutomationProperties.AutomationId="Button.Close" />
+        </StackPanel>
+    </Grid>
+</Window>

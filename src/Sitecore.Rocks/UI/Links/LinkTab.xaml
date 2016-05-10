@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Links.LinkTab" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler />
+
+        <ToolBarTray IsLocked="True">
+            <ToolBar x:Name="ToolBar" HorizontalAlignment="Stretch" Loaded="ToolBarLoaded">
+
+                <Label Content="Group By:" Target="{Binding ElementName=GroupBy}" />
+                <ComboBox x:Name="GroupBy" Width="150" SelectionChanged="GroupByChanged" VerticalAlignment="Center">
+                    <ComboBoxItem Content="Type" Tag="k" IsSelected="True" />
+                    <ComboBoxItem Content="Type and Category" Tag="kc" />
+                    <ComboBoxItem Content="Type and Template" Tag="kt" />
+                    <ComboBoxItem Content="Path" Tag="" />
+                </ComboBox>
+
+                <Separator />
+
+                <Label Content="Filter:" Target="{Binding ElementName=Filter}" />
+                <controls:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterNodesChanged" Watermark="Filter" VerticalAlignment="Center" Width="150" />
+
+                <Separator />
+
+                <Button ToolTip="Refresh" Click="RefreshClick">
+                    <controls:ButtonIcon Icon="Resources/16x16/refresh.png" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <TreeView x:Name="TreeView" Grid.Row="1" MouseDoubleClick="HandleDoubleClick" ContextMenuOpening="OpenContextMenu" PreviewMouseRightButtonDown="PreselectItem"
+            PreviewMouseLeftButtonDown="HandleMouseLeftButtonDown" MouseMove="HandleMouseMove" />
+    </Grid>
+
+</UserControl>

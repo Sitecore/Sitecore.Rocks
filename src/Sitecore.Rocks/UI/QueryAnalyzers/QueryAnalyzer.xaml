@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.QueryAnalyzers.QueryAnalyzer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:nb="clr-namespace:Sitecore.Rocks.Controls.NotificationBar"
+    xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" xmlns:s="clr-namespace:Sitecore.Rocks.Controls.SyntaxEditors"
+    mc:Ignorable="d" x:Name="Control" d:DesignHeight="300" d:DesignWidth="300" PreviewKeyDown="HandleKeyDown">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=Control}" />
+
+        <ToolBarTray Grid.Row="0" IsLocked="True" HorizontalAlignment="Stretch">
+            <ToolBar HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" Band="1">
+                <Button x:Name="Menu" ToolTip="Menu" Click="OpenMenu" KeyboardNavigation.TabIndex="0">
+                    <controls:ButtonIcon Icon="Resources/16x16/menu.png" Style="{StaticResource ToolButtonImage}" KeyboardNavigation.IsTabStop="False" />
+                </Button>
+                <Button Click="OpenScript" ToolTip="Open script.">
+                    <controls:ButtonIcon Icon="Resources/16x16/open.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+                <Button Click="SaveScript" ToolTip="Save script.">
+                    <controls:ButtonIcon Icon="Resources/16x16/save.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+                <Separator />
+                <Button x:Name="ExecuteButton" ToolTip="Execute Query (Ctrl+E)." Click="Execute">
+                    <c:ToolBarButton Icon="Resources/16x16/play.png" Text="Execute" />
+                </Button>
+                <Separator />
+                <Button Content="Insert Path" Click="InsertPath" ToolTip="Insert item path." />
+                <Button Click="InsertFields" Content="Insert Fields" ToolTip="Insert fields." />
+                <Separator />
+                <Button Click="OpenXpathBuilder" Content="XPath Builder" ToolTip="Open XPath Builder." />
+                <Separator />
+                <Button Click="OpenSamples" Content="Query Samples" ToolTip="Open the Query Samples website." />
+            </ToolBar>
+        </ToolBarTray>
+
+        <Border Grid.Row="0" x:Name="ScriptMacroHelp" Visibility="Hidden">
+            <nb:NotificationBar OptionsKeyName="HideScriptMacroHelp">
+                <TextBlock TextWrapping="Wrap">
+                    Use the context menu to save the script as a Script Macro. The Script Macro will then become available in
+                    the Macros submenu in various context menus.
+                </TextBlock>
+            </nb:NotificationBar>
+        </Border>
+
+        <Border x:Name="ContextMenuPane" Grid.Row="2">
+            <Grid ContextMenuOpening="OpenContextMenu">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+
+                <Border x:Name="Editor" Grid.Row="0" Padding="4,0,4,0">
+                    <s:SyntaxEditor x:Name="SyntaxEditor" EditorKeyDown="HandleKeyDown" Syntax="Query" />
+                </Border>
+
+                <GridSplitter ResizeDirection="Rows" Grid.Row="1" Height="5" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
+
+                <Border x:Name="Tabs" Grid.Row="2" Margin="4,0,4,4">
+                    <TabControl>
+                        <TabItem Header="Result" x:Name="ResultTab">
+                            <Grid x:Name="Grids" />
+                        </TabItem>
+
+                        <TabItem Header="Messages" x:Name="MessageTab">
+                            <TextBox x:Name="Messages" VerticalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
+                                Margin="4,4,4,0" FontFamily="Consolas" FontSize="12" IsReadOnly="true" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </TabItem>
+                    </TabControl>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

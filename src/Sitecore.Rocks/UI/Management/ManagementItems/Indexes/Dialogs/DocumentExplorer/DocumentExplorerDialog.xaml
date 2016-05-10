@@ -1,0 +1,34 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Indexes.Dialogs.DocumentExplorer.DocumentExplorerDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    xmlns:d="clr-namespace:Sitecore.Rocks.UI.Management.ManagementItems.Indexes.Dialogs" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" Title="Explore Documents"
+    Height="600" Width="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FocusManager.FocusedElement="{Binding ElementName=ClassName}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler />
+
+        <DockPanel Margin="0,0,0,2">
+            <Label x:Name="IndexNameLabel" />
+        </DockPanel>
+
+        <c:Loading x:Name="Loading" Grid.Row="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" />
+        <d:DocumentList x:Name="DocumentList" Grid.Row="1" Visibility="Collapsed" PageChanged="PageChanged" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="2" VerticalAlignment="Bottom">
+            <Button Content="Close" IsDefault="True" IsCancel="True" Margin="0,0,8,0" Click="CloseClick" />
+        </StackPanel>
+    </Grid>
+</Window>

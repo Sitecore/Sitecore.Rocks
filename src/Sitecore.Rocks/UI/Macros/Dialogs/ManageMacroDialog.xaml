@@ -1,0 +1,24 @@
+<Window x:Class="Sitecore.Rocks.UI.Macros.Dialogs.ManageMacroDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.UI.Macros.Dialogs" Title="Macros" Height="500" Width="400" x:Name="Control"
+    FocusManager.FocusedElement="{Binding ElementName=MacroList}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:MacroEditor />
+
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Margin="0,8,0,0">
+            <Button Content="Close" IsDefault="True" IsCancel="True" Click="OkClick" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

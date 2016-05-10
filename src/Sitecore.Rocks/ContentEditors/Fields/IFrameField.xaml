@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Fields.IframeField" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Resizer="clr-namespace:Sitecore.Rocks.Controls.Resizer" mc:Ignorable="d" d:DesignHeight="300"
+    d:DesignWidth="300">
+    <Grid x:Name="ResizePanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Grid.Row="0">
+            <WebBrowser x:Name="Browser" />
+        </Border>
+
+        <Resizer:FieldControlResizer x:Name="Resizer" Target="{Binding ElementName=ResizePanel}" Grid.Row="1" DefaultHeight="100" />
+    </Grid>
+</UserControl>

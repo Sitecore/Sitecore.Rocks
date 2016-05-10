@@ -1,0 +1,2359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CanNotCreateWindow" xml:space="preserve">
+    <value>Can not create tool window.</value>
+  </data>
+  <data name="ToolWindowTitle" xml:space="preserve">
+    <value>Sitecore Content Tree</value>
+  </data>
+  <data name="SitecoreExplorer" xml:space="preserve">
+    <value>Sitecore Explorer</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="AddVersion" xml:space="preserve">
+    <value>Add Version</value>
+  </data>
+  <data name="Failed_to_add_a_new_version" xml:space="preserve">
+    <value>Failed to add a new version</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Base_Templates" xml:space="preserve">
+    <value>Base Templates</value>
+  </data>
+  <data name="Change_Template" xml:space="preserve">
+    <value>Change Template...</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Design_Layout" xml:space="preserve">
+    <value>Design Layout</value>
+  </data>
+  <data name="Design_Template" xml:space="preserve">
+    <value>Design Template</value>
+  </data>
+  <data name="Edit_Externally" xml:space="preserve">
+    <value>Edit Externally...</value>
+  </data>
+  <data name="Field_Display_Titles" xml:space="preserve">
+    <value>Field Display Titles</value>
+  </data>
+  <data name="Field_Information" xml:space="preserve">
+    <value>Field Information</value>
+  </data>
+  <data name="Follow_Link" xml:space="preserve">
+    <value>Follow Link</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="Locate_in_Sitecore_Explorer" xml:space="preserve">
+    <value>Locate in Sitecore Explorer</value>
+  </data>
+  <data name="Add_Lorem_Ipsum" xml:space="preserve">
+    <value>Add 'Lorem Ipsum...'</value>
+  </data>
+  <data name="Navigate_To" xml:space="preserve">
+    <value>Navigate</value>
+  </data>
+  <data name="Standard_Values" xml:space="preserve">
+    <value>Standard Values</value>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="Navigate_to_Template_Field_Item" xml:space="preserve">
+    <value>Template Field Item</value>
+  </data>
+  <data name="Quick_Information" xml:space="preserve">
+    <value>Quick Information</value>
+  </data>
+  <data name="Raw_Values" xml:space="preserve">
+    <value>Raw Values</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="Remove_Version" xml:space="preserve">
+    <value>Remove Version</value>
+  </data>
+  <data name="Reset_to_Standard_Value_on_Save" xml:space="preserve">
+    <value>Reset to Standard Value on Save</value>
+  </data>
+  <data name="Standard_Fields" xml:space="preserve">
+    <value>Standard Fields</value>
+  </data>
+  <data name="Versions" xml:space="preserve">
+    <value>Versions</value>
+  </data>
+  <data name="Views" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Label_Update_shared" xml:space="preserve">
+    <value>shared</value>
+  </data>
+  <data name="Label_Update_unversioned" xml:space="preserve">
+    <value>unversioned</value>
+  </data>
+  <data name="Label_Update_standard_value" xml:space="preserve">
+    <value>standard value</value>
+  </data>
+  <data name="TabbedSkin_RenderFields_Fields" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="TabbedSkin_RenderNoFields_Fields" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="SkinHelper_GetHeader__items" xml:space="preserve">
+    <value> items</value>
+  </data>
+  <data name="ExtensibilityInitializationAttribute_Invoke_Method_name___0___not_found_in___1__" xml:space="preserve">
+    <value>Method name '{0}' not found in '{1}'</value>
+  </data>
+  <data name="ValidatorBar_RenderStatus_No_errors_or_warnings_" xml:space="preserve">
+    <value>No errors or warnings.</value>
+  </data>
+  <data name="ValidatorBar_RenderStatus__warning_s__" xml:space="preserve">
+    <value> warning(s).</value>
+  </data>
+  <data name="ValidatorBar_RenderStatus__error_s__" xml:space="preserve">
+    <value> error(s).</value>
+  </data>
+  <data name="ValidatorBar_RenderStatus__0__error_s__and__1__warnings_" xml:space="preserve">
+    <value>{0} error(s) and {1} warnings.</value>
+  </data>
+  <data name="ValidatorBar_RenderValidating_Validating___" xml:space="preserve">
+    <value>Validating...</value>
+  </data>
+  <data name="You_are_already_loading_items" xml:space="preserve">
+    <value>Wait... What... Dude, you are already loading items...</value>
+  </data>
+  <data name="ContentEditorLoadItemsLoading_in_Progress" xml:space="preserve">
+    <value>Loading in Progress</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Media_Library" xml:space="preserve">
+    <value>Media Library</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Renderings" xml:space="preserve">
+    <value>Renderings</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Layouts" xml:space="preserve">
+    <value>Layouts</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Sublayouts" xml:space="preserve">
+    <value>Sublayouts</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="ContentEditor_LoadHomes_Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="ContentEditor_LoadItemPath__items" xml:space="preserve">
+    <value> items</value>
+  </data>
+  <data name="ContentEditor_TemplateSaved_" xml:space="preserve">
+    <value>The template '{0}' has changed.
+
+Do you want to reload the item(s) in the Item Editor?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ContentEditor_UpdateCaption__items" xml:space="preserve">
+    <value> items</value>
+  </data>
+  <data name="ContentModel_FirstItem_Content_Model_is_empty" xml:space="preserve">
+    <value>Content Model is empty</value>
+  </data>
+  <data name="QuickInfo_RenderEmpty_No_Item" xml:space="preserve">
+    <value>No Item</value>
+  </data>
+  <data name="N_A" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="SearchHit_Update__in__0__" xml:space="preserve">
+    <value>(in {0})</value>
+  </data>
+  <data name="Add_Add_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddFromTemplate_AddFromTemplate_New_Item___" xml:space="preserve">
+    <value>New Item...</value>
+  </data>
+  <data name="CollapseAll_CollapseAll_Collapse_All" xml:space="preserve">
+    <value>Collapse All</value>
+  </data>
+  <data name="CopyItemXml_CopyItemXml_Copy_Item_Xml___" xml:space="preserve">
+    <value>Copy...</value>
+  </data>
+  <data name="CreateStandardValues_CreateStandardValues_Create_Standard_Values" xml:space="preserve">
+    <value>Create Standard Values</value>
+  </data>
+  <data name="Delete_Delete_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete_Delete_Ctrl_Del" xml:space="preserve">
+    <value>Ctrl+Del</value>
+  </data>
+  <data name="Delete_Execute_Are_you_sure_you_want_to_delete___0___" xml:space="preserve">
+    <value>Are you sure you want to delete '{0}'?</value>
+  </data>
+  <data name="Delete_Execute_Are_you_sure_you_want_to_delete_these__0__items_" xml:space="preserve">
+    <value>Are you sure you want to delete these {0} items?</value>
+  </data>
+  <data name="Delete_Execute_" xml:space="preserve">
+    <value>One or more items have files in the current Visual Studio project.
+
+Do you want to delete these files as well?</value>
+  </data>
+  <data name="DesignTemplate_DesignTemplate_Design_Template" xml:space="preserve">
+    <value>Design Template</value>
+  </data>
+  <data name="DisconnectSite_DisconnectSite_Delete" xml:space="preserve">
+    <value xml:space="preserve">Disconnect...</value>
+  </data>
+  <data name="DisconnectSite_Execute_Are_you_sure_you_want_to_disconnect___0___" xml:space="preserve">
+    <value>Are you sure you want to disconnect '{0}'?</value>
+  </data>
+  <data name="DisconnectSite_Execute_Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="Duplicate_Duplicate_Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="EditFile_EditFile_Edit_File" xml:space="preserve">
+    <value>Edit File</value>
+  </data>
+  <data name="EditItems_EditItems_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditItemsNewTab_EditItemsNewTab_Edit_in_New_Tab" xml:space="preserve">
+    <value>Edit in New Tab</value>
+  </data>
+  <data name="EditSite_EditSite_Modify_Connection___" xml:space="preserve">
+    <value>Modify Connection...</value>
+  </data>
+  <data name="GuttersSubmenu_GuttersSubmenu_GutterSettings" xml:space="preserve">
+    <value>Gutters</value>
+  </data>
+  <data name="GuttersSubmenu_LoadGutters__none_" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="IncrementalPublish_IncrementalPublish_Incremental_Publish" xml:space="preserve">
+    <value xml:space="preserve">Incremental Publish Database</value>
+  </data>
+  <data name="IncrementalPublish_IncrementalPublish_Publishing_Incremental___" xml:space="preserve">
+    <value>Publishing Incremental...</value>
+  </data>
+  <data name="InsertOptions_InsertOptions_Insert_Options" xml:space="preserve">
+    <value>Insert Options</value>
+  </data>
+  <data name="InsertOptions_CreateItem_New__0_" xml:space="preserve">
+    <value>New {0}</value>
+  </data>
+  <data name="InsertOptions_LoadInsertOptions_none" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="LocateFile_LocateFile_Locate_File_in_Solution_Explorer" xml:space="preserve">
+    <value>Locate File in Solution Explorer</value>
+  </data>
+  <data name="LocateInContentTree_LocateInContentTree_Locate_in_Sitecore_Explorer" xml:space="preserve">
+    <value>Locate in Sitecore Explorer</value>
+  </data>
+  <data name="MoveDown_MoveDown_Move_Down" xml:space="preserve">
+    <value>Move Down</value>
+  </data>
+  <data name="MoveFirst_MoveFirst_Move_First" xml:space="preserve">
+    <value>Move First</value>
+  </data>
+  <data name="MoveLast_MoveLast_Move_Last" xml:space="preserve">
+    <value>Move Last</value>
+  </data>
+  <data name="MoveUp_MoveUp_Move_Up" xml:space="preserve">
+    <value>Move Up</value>
+  </data>
+  <data name="NavigateStandardValues_NavigateStandardValues_Standard_Values" xml:space="preserve">
+    <value>Standard Values</value>
+  </data>
+  <data name="NavigateSubmenu_NavigateSubmenu_Navigate_To" xml:space="preserve">
+    <value xml:space="preserve">Navigate</value>
+  </data>
+  <data name="NavigateTemplate_NavigateTemplate_Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="NewDerivedTemplate_NewDerivedTemplate_New_Derived_Template___" xml:space="preserve">
+    <value>New Derived Template...</value>
+  </data>
+  <data name="NewDerivedTemplate_Execute_New__0_" xml:space="preserve">
+    <value>New {0}</value>
+  </data>
+  <data name="NewFolder_NewFolder_New_Folder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="NewFolder_Execute_New_Folder" xml:space="preserve">
+    <value>New Folder</value>
+  </data>
+  <data name="NewTemplate_NewTemplate_New_Template___" xml:space="preserve">
+    <value>New Template...</value>
+  </data>
+  <data name="NewTemplate_Execute_" xml:space="preserve">
+    <value>There is no active content tree.
+
+Please open a Sitecore Explorer and try again.</value>
+  </data>
+  <data name="NewTemplate_Execute_Create_New_Template" xml:space="preserve">
+    <value>Create New Template</value>
+  </data>
+  <data name="NewTemplate_Execute_There_is_no_active_item_" xml:space="preserve">
+    <value>There is no active item.</value>
+  </data>
+  <data name="NewTemplate_Execute_New_Template" xml:space="preserve">
+    <value>New Template</value>
+  </data>
+  <data name="NewTemplate_Execute_Failed_to_create_the_template_" xml:space="preserve">
+    <value>Failed to create the template.</value>
+  </data>
+  <data name="PasteItemXml_PasteItemXml_Paste_Item_Xml___" xml:space="preserve">
+    <value>Paste Item Xml...</value>
+  </data>
+  <data name="PublishCommand_Execute_Publishing" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="PublishItem_PublishItem_Publish_Item" xml:space="preserve">
+    <value>Publish Item</value>
+  </data>
+  <data name="PublishItem_PublishItem_Publishing_Item___" xml:space="preserve">
+    <value>Publishing Item...</value>
+  </data>
+  <data name="PublishItemCommand_Execute_Publishing" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="PublishSubItems_PublishSubItems_Publishing_Item_and_Subitems___" xml:space="preserve">
+    <value>Publishing Item and Subitems...</value>
+  </data>
+  <data name="PublishSubItems_PublishSubItems_Publish_Item_and_Subitems" xml:space="preserve">
+    <value>Publish Item and Subitems</value>
+  </data>
+  <data name="RebuildLinkDatabase_RebuildLinkDatabase_Rebuild_Link_Database" xml:space="preserve">
+    <value>Rebuild Link Database</value>
+  </data>
+  <data name="RebuildLinkDatabase_Execute_Rebuild_Link_Database_started___" xml:space="preserve">
+    <value>Rebuild Link Database started...</value>
+  </data>
+  <data name="RebuildLinkDatabase_Execute_Rebuild_Link_Database" xml:space="preserve">
+    <value>Rebuild Link Database</value>
+  </data>
+  <data name="RebuildPublishingDatabase_RebuildPublishingDatabase_Rebuild_Publishing_Database" xml:space="preserve">
+    <value xml:space="preserve">Rebuild Publishing Target Database</value>
+  </data>
+  <data name="RebuildPublishingDatabase_RebuildPublishingDatabase_Rebuilding_Publishing_Database___" xml:space="preserve">
+    <value>Rebuilding Publishing Database...</value>
+  </data>
+  <data name="RebuildSearchIndex_RebuildSearchIndex_Rebuild_Search_Index" xml:space="preserve">
+    <value>Rebuild Search Index</value>
+  </data>
+  <data name="RebuildSearchIndex_Execute_Rebuild_Search_Index_started___" xml:space="preserve">
+    <value>Rebuild Search Index started...</value>
+  </data>
+  <data name="RebuildSearchIndex_Execute_Rebuild_Search_Index" xml:space="preserve">
+    <value>Rebuild Search Index</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Rename_Rename_Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Rename_Rename_F2" xml:space="preserve">
+    <value>F2</value>
+  </data>
+  <data name="Republish_Republish_Republish" xml:space="preserve">
+    <value xml:space="preserve">Republish Database</value>
+  </data>
+  <data name="Republish_Republish_Republishing___" xml:space="preserve">
+    <value>Republishing...</value>
+  </data>
+  <data name="ResetSortOrder_ResetSortOrder_Reset_Sort_Order" xml:space="preserve">
+    <value>Reset Sort Order</value>
+  </data>
+  <data name="SmartPublish_SmartPublish_Smart_Publish" xml:space="preserve">
+    <value xml:space="preserve">Smart Publish Database</value>
+  </data>
+  <data name="SmartPublish_SmartPublish_Smart_Publishing___" xml:space="preserve">
+    <value>Smart Publishing...</value>
+  </data>
+  <data name="SortingSubmenu_SortingSubmenu_Sorting" xml:space="preserve">
+    <value>Sorting</value>
+  </data>
+  <data name="SubitemSorting_SubitemSorting_Subitem_Sorting" xml:space="preserve">
+    <value>Subitem Sorting</value>
+  </data>
+  <data name="SubitemSorting_LoadSubitemSortings__none_" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="UpdateServerComponents_UpdateServerComponents_Update_Server_Components___" xml:space="preserve">
+    <value>Update Server Components...</value>
+  </data>
+  <data name="CopyItemXmlDialog_SaveClick_Save_Item_Xml_to_File" xml:space="preserve">
+    <value>Save Item Xml to File</value>
+  </data>
+  <data name="PasteItemXmlDialog_LoadClick_Load_Item_Xml_from_File" xml:space="preserve">
+    <value>Load Item Xml from File</value>
+  </data>
+  <data name="ItemTreeViewItem_CreateItem_New__0_" xml:space="preserve">
+    <value>New {0}</value>
+  </data>
+  <data name="ItemTreeViewItem_CreateItem_Failed_to_create_new_item_" xml:space="preserve">
+    <value>Failed to create new item.</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy___0___before___1___" xml:space="preserve">
+    <value>Are you sure you want to copy "{0}" before "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy___0___after___1___" xml:space="preserve">
+    <value>Are you sure you want to copy "{0}" after "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy___0___to___1___" xml:space="preserve">
+    <value>Are you sure you want to copy "{0}" to "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy_these___0___items_before___1___" xml:space="preserve">
+    <value>Are you sure you want to copy these "{0}" items before "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy_these___0___items_after___1___" xml:space="preserve">
+    <value>Are you sure you want to copy these "{0}" items after "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_copy_these___0___items_to___1___" xml:space="preserve">
+    <value>Are you sure you want to copy these "{0}" items to "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move___0___before___1___" xml:space="preserve">
+    <value>Are you sure you want to move "{0}" before "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move___0___after___1___" xml:space="preserve">
+    <value>Are you sure you want to move "{0}" after "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move___0___to___1___" xml:space="preserve">
+    <value>Are you sure you want to move "{0}" to "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move_these___0___items_before___1___" xml:space="preserve">
+    <value>Are you sure you want to move these {0} items before "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move_these___0___items_after___1___" xml:space="preserve">
+    <value>Are you sure you want to move these {0} items after "{1}"?</value>
+  </data>
+  <data name="Confirmation_Process_Are_you_sure_you_want_to_move_these___0___items_to___1___" xml:space="preserve">
+    <value>Are you sure you want to move these {0} items to "{1}"?</value>
+  </data>
+  <data name="CopyItems_CopyInto_Copy_of__0_" xml:space="preserve">
+    <value>Copy of {0}</value>
+  </data>
+  <data name="CopyItems_CopyInto_Failed_to_copy___0_" xml:space="preserve">
+    <value>Failed to copy: {0}</value>
+  </data>
+  <data name="CopyItems_CopyNextTo_Parent_is_not_an_item" xml:space="preserve">
+    <value>Parent is not an item</value>
+  </data>
+  <data name="CopyItems_CopyNextTo_Copy_of__0_" xml:space="preserve">
+    <value>Copy of {0}</value>
+  </data>
+  <data name="CopyItems_CopyNextTo_Failed_to_copy___0_" xml:space="preserve">
+    <value>Failed to copy: {0}</value>
+  </data>
+  <data name="MoveItems_MoveInto_Failed_to_move___0_" xml:space="preserve">
+    <value>Failed to move: {0}</value>
+  </data>
+  <data name="MoveItems_MoveNextTo_Parent_is_not_an_item" xml:space="preserve">
+    <value>Parent is not an item</value>
+  </data>
+  <data name="MoveItems_MoveNextTo_Failed_to_move___0_" xml:space="preserve">
+    <value>Failed to move: {0}</value>
+  </data>
+  <data name="SetName_Process_Copy_of__0_" xml:space="preserve">
+    <value>{0} - Copy</value>
+  </data>
+  <data name="ActiveContext_ContentModel_Active_Content_Editor_is_null_" xml:space="preserve">
+    <value>Active Content Editor is null.</value>
+  </data>
+  <data name="ActiveContext_SelectedItems_Active_Content_Tree_is_null_" xml:space="preserve">
+    <value>Active Content Tree is null.</value>
+  </data>
+  <data name="TemplateSelector_LoadRecent_Recently_Used_Templates" xml:space="preserve">
+    <value>Recently Used Templates</value>
+  </data>
+  <data name="Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="FieldTypeSelector_LoadRecent_Recently_Used_Field_Types" xml:space="preserve">
+    <value>Recently Used Field Types</value>
+  </data>
+  <data name="LoginWindow_ControlLoaded_Connecting_to___0______" xml:space="preserve">
+    <value>Connecting to '{0}' ...</value>
+  </data>
+  <data name="LoginWindow_ShowInvalidUserNameOrPassword_Invalid_user_name_or_password_" xml:space="preserve">
+    <value>Invalid user name or password.</value>
+  </data>
+  <data name="GetItem_Call__Unknown_" xml:space="preserve">
+    <value>[Unknown]</value>
+  </data>
+  <data name="UrlString_Add_Blank_values_are_not_allowed" xml:space="preserve">
+    <value>Blank values are not allowed</value>
+  </data>
+  <data name="UrlString_Protocol_Protocol_must_not_contain________only_the_protocol_name_should_be_used__ex__http__" xml:space="preserve">
+    <value>Protocol must not contain '://', only the protocol name should be used (ex. http).</value>
+  </data>
+  <data name="EmptyDataService_TestConnection_The_Empty_Data_Service_cannot_connect_to_anything_" xml:space="preserve">
+    <value>The Empty Data Service cannot connect to anything.</value>
+  </data>
+  <data name="Test_Connection" xml:space="preserve">
+    <value>Test Connection</value>
+  </data>
+  <data name="HardRockWebService_TestConnection_Invalid_user_name_or_password_" xml:space="preserve">
+    <value>Invalid user name or password.</value>
+  </data>
+  <data name="HardRockWebService_CheckVersion_" xml:space="preserve">
+    <value>The Hard Rock Web Service has an unexpected version.
+
+Hard Rock Web Service: {0}
+Expected version: {1}
+
+Do you want to install the expected version?</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="OldWebService_InstallHardRockWebService_" xml:space="preserve">
+    <value>This operation is not supported by the Good Old Web Service.
+
+Do you want to install the Hard Rock Web Service on the web site?
+
+Installing requires physical access to the website.</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="OldWebService_TestConnection_" xml:space="preserve">
+    <value>The server returned an empty response.
+
+The user name or password may be invalid.</value>
+  </data>
+  <data name="WebDataService_BeginCommunication_Communicating_with_the_Sitecore_server___" xml:space="preserve">
+    <value>Communicating with the Sitecore server...</value>
+  </data>
+  <data name="WebDataService_CheckCredentials_" xml:space="preserve">
+    <value>There are no credentials specified for this site.
+
+Credentials are needed to communicate with the web site.</value>
+  </data>
+  <data name="WebDataService_ProcessStatus_Unspecified_error_" xml:space="preserve">
+    <value>Unspecified error.</value>
+  </data>
+  <data name="WebDataService_ShowException_" xml:space="preserve">
+    <value>Communication with the server failed:
+
+</value>
+  </data>
+  <data name="PluginManager_Install_The_plugin_will_be_installed_next_time__you_start_Visual_Studio_" xml:space="preserve">
+    <value>The plugin will be installed next time, you start Visual Studio.</value>
+  </data>
+  <data name="PluginManager_Install_Install_Plugin" xml:space="preserve">
+    <value>Install Plugin</value>
+  </data>
+  <data name="PluginManager_Install_The_plugin_has_been_installed_" xml:space="preserve">
+    <value>The plugin has been installed.</value>
+  </data>
+  <data name="PluginManager_Install_" xml:space="preserve">
+    <value>The installed plugin contains server components.
+
+You should update server components on each site.
+
+To update, right-click a site in the Sitecore Explorer and select 'Update Server Components...' in the context menu.</value>
+  </data>
+  <data name="PluginManager_Install_Installation" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="PluginManager_InstallDeferred_Exception" xml:space="preserve">
+    <value>An exception occured while installing the plugin '{0}':
+
+{1}</value>
+  </data>
+  <data name="KeyEventArgsExtentions_GetGestureString_Ctrl_" xml:space="preserve">
+    <value>Ctrl+</value>
+  </data>
+  <data name="KeyEventArgsExtentions_GetGestureString_Shift_" xml:space="preserve">
+    <value>Shift+</value>
+  </data>
+  <data name="KeyEventArgsExtentions_GetGestureString_Alt_" xml:space="preserve">
+    <value>Alt+</value>
+  </data>
+  <data name="EndpointNotFound_Process_" xml:space="preserve">
+    <value>The web site does not respond.
+
+It looks like the server address is a local web site. If the web site is running on ASP.NET Development Server, the server may not have been started yet.
+
+Do you want to retry?</value>
+  </data>
+  <data name="ShowMessage_Process_" xml:space="preserve">
+    <value>The data service failed with an unknown error.
+
+Do you want to retry?</value>
+  </data>
+  <data name="ShowMessage_Process_Do_you_want_to_retry_" xml:space="preserve">
+    <value>Do you want to retry?</value>
+  </data>
+  <data name="PipelineManager_GetPipeline_Pipeline__0__not_found" xml:space="preserve">
+    <value>Pipeline {0} not found</value>
+  </data>
+  <data name="Add_Add_Add_to_Sitecore" xml:space="preserve">
+    <value>Add...</value>
+  </data>
+  <data name="CheckOut_CheckOut_Check_Out" xml:space="preserve">
+    <value>Check Out</value>
+  </data>
+  <data name="Commit_Commit_Commit___" xml:space="preserve">
+    <value>Commit...</value>
+  </data>
+  <data name="CreateFileItem_CreateFileItem_Create_Item_From_File" xml:space="preserve">
+    <value>Create Item From File</value>
+  </data>
+  <data name="EditProject_EditProject_Edit_Sitecore_Settings" xml:space="preserve">
+    <value>Edit Sitecore Settings</value>
+  </data>
+  <data name="Exclude_Exclude_Exclude" xml:space="preserve">
+    <value>Exclude</value>
+  </data>
+  <data name="RemoveProject_RemoveProject_Remove_Sitecore_Project" xml:space="preserve">
+    <value>Remove Sitecore Project</value>
+  </data>
+  <data name="RemoveProject_Execute_Are_you_sure_you_want_to_disconnect_from_Sitecore_" xml:space="preserve">
+    <value>Are you sure you want to disconnect from Sitecore?</value>
+  </data>
+  <data name="RemoveProject_Execute_Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="Revert_Revert_Revert___" xml:space="preserve">
+    <value>Revert...</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="AddWindow_Add_added" xml:space="preserve">
+    <value>added</value>
+  </data>
+  <data name="CheckOutDialog_ControlLoaded_Web_Site" xml:space="preserve">
+    <value>Web Site</value>
+  </data>
+  <data name="CommitItem_CommitItem_conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="CommitItem_CommitItem_resolved_using_local_version" xml:space="preserve">
+    <value>resolved using local version</value>
+  </data>
+  <data name="CommitItem_CommitItem_resolved_using_server_version" xml:space="preserve">
+    <value>resolved using server version</value>
+  </data>
+  <data name="CommitItem_CommitItem_added" xml:space="preserve">
+    <value>added</value>
+  </data>
+  <data name="CommitItem_CommitItem_modified" xml:space="preserve">
+    <value>modified</value>
+  </data>
+  <data name="CommitItem_CommitItem_missing" xml:space="preserve">
+    <value>missing</value>
+  </data>
+  <data name="CommitItem_CommitItem_unchanged" xml:space="preserve">
+    <value>unchanged</value>
+  </data>
+  <data name="CreateItem_CreateItem_create" xml:space="preserve">
+    <value>create</value>
+  </data>
+  <data name="CreateItem_CreateItem_add_and_create" xml:space="preserve">
+    <value>add and create</value>
+  </data>
+  <data name="ExcludeWindow_Exclude_excluded" xml:space="preserve">
+    <value>excluded</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ProjectSettingsDialog_CheckUserName_" xml:space="preserve">
+    <value>The user name does not contain a '\' which indicates that no domain has been specified.
+
+The user name must be qualified with a domain.
+
+Do you want to use the 'sitecore' domain?</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="ProjectSettingsDialog_TestClick_The_data_service_does_not_support_projects_" xml:space="preserve">
+    <value>The data service does not support projects.</value>
+  </data>
+  <data name="ProjectSettingsDialog_TestClick_Yes__it_works_" xml:space="preserve">
+    <value>Yes, it works!</value>
+  </data>
+  <data name="PathBasedFileItemHandler_Create_failed" xml:space="preserve">
+    <value>failed</value>
+  </data>
+  <data name="PathBasedFileItemHandler_Create_Path_was_not_created" xml:space="preserve">
+    <value>Path was not created</value>
+  </data>
+  <data name="PathBasedFileItemHandler_Create_created" xml:space="preserve">
+    <value>created</value>
+  </data>
+  <data name="HtmlToolboxItemHandler_AddHtml_Sitecore" xml:space="preserve">
+    <value>Sitecore</value>
+  </data>
+  <data name="FieldRendererToolboxItemHandler_AddToToolbox_FieldRenderer" xml:space="preserve">
+    <value>FieldRenderer</value>
+  </data>
+  <data name="PlaceholderToolboxItemHandler_AddToToolbox_Placeholder" xml:space="preserve">
+    <value>Placeholder</value>
+  </data>
+  <data name="ProjectFileItem_Commit_deleted" xml:space="preserve">
+    <value>deleted</value>
+  </data>
+  <data name="ProjectFileItem_Commit_skipped" xml:space="preserve">
+    <value>skipped</value>
+  </data>
+  <data name="ProjectFileItem_Commit_Conflict_not_resolved_" xml:space="preserve">
+    <value>Conflict not resolved.</value>
+  </data>
+  <data name="ProjectFileItem_Commit_Use_Update_command_to_overwrite_local_version_with_server_version" xml:space="preserve">
+    <value>Use Update command to overwrite local version with server version</value>
+  </data>
+  <data name="ProjectFileItem_Commit__overwrite" xml:space="preserve">
+    <value> overwrite</value>
+  </data>
+  <data name="ProjectFileItem_Commit__delete" xml:space="preserve">
+    <value> delete</value>
+  </data>
+  <data name="ProjectFileItem_Commit_added" xml:space="preserve">
+    <value>added</value>
+  </data>
+  <data name="ProjectFileItem_Commit_committed" xml:space="preserve">
+    <value>committed</value>
+  </data>
+  <data name="ProjectFileItem_Commit_conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="ProjectFileItem_Revert_reverted" xml:space="preserve">
+    <value>reverted</value>
+  </data>
+  <data name="ProjectFileItem_Revert_deleted" xml:space="preserve">
+    <value>deleted</value>
+  </data>
+  <data name="ProjectFileItem_Revert_conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="ProjectFileItem_Update_skipped" xml:space="preserve">
+    <value>skipped</value>
+  </data>
+  <data name="ProjectFileItem_Update_Conflict_not_resolved" xml:space="preserve">
+    <value>Conflict not resolved</value>
+  </data>
+  <data name="ProjectFileItem_Update_Use_Commit_command_to_overwrite_server_version_with_local_version" xml:space="preserve">
+    <value>Use Commit command to overwrite server version with local version</value>
+  </data>
+  <data name="ProjectFileItem_Update__revert" xml:space="preserve">
+    <value> revert</value>
+  </data>
+  <data name="ProjectFileItem_Update_revert" xml:space="preserve">
+    <value>revert</value>
+  </data>
+  <data name="ProjectFileItem_Update_conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="ProjectFileItem_Update_Local_file_has_been_modified" xml:space="preserve">
+    <value>Local file has been modified</value>
+  </data>
+  <data name="ProjectFileItem_Update_updated" xml:space="preserve">
+    <value>updated</value>
+  </data>
+  <data name="ProjectFileItem_Update_deleted" xml:space="preserve">
+    <value>deleted</value>
+  </data>
+  <data name="ProjectFileItem_DeleteFile_conflict" xml:space="preserve">
+    <value>conflict</value>
+  </data>
+  <data name="ProjectFileItem_DeleteFile_Local_file_has_been_modified" xml:space="preserve">
+    <value>Local file has been modified</value>
+  </data>
+  <data name="ProjectFileItem_DeleteFile_failed" xml:space="preserve">
+    <value>failed</value>
+  </data>
+  <data name="ProjectFileItem_WriteFile_failed" xml:space="preserve">
+    <value>failed</value>
+  </data>
+  <data name="SchemaManager_InstallSchema_Do_you_want_to_install_the_schema___0___" xml:space="preserve">
+    <value>Do you want to install the schema '{0}'?</value>
+  </data>
+  <data name="SchemaManager_InstallSchema_Install_Schema" xml:space="preserve">
+    <value>Install Schema</value>
+  </data>
+  <data name="About_About_About___" xml:space="preserve">
+    <value>About...</value>
+    <comment>.</comment>
+  </data>
+  <data name="InstalledPlugins_InstalledPlugins_Plugins___" xml:space="preserve">
+    <value>Plugins...</value>
+  </data>
+  <data name="InstallPlugin_InstallPlugin_Install_Plugin___" xml:space="preserve">
+    <value>Install Plugin...</value>
+  </data>
+  <data name="InstallPlugin_Execute_Install_Plugin" xml:space="preserve">
+    <value>Install Plugin</value>
+  </data>
+  <data name="NewConnection_NewConnection_New_Connection" xml:space="preserve">
+    <value xml:space="preserve">New Connection...</value>
+  </data>
+  <data name="NewConnection_Execute_New_Site" xml:space="preserve">
+    <value>New Site</value>
+  </data>
+  <data name="OpenJobViewer_OpenJobViewer_Open_Job_Viewer" xml:space="preserve">
+    <value>Open Job Viewer</value>
+  </data>
+  <data name="OpenJobViewer_Execute_Can_not_create_tool_window_" xml:space="preserve">
+    <value>Can not create tool window.</value>
+  </data>
+  <data name="OpenLogViewer_OpenLogViewer_Open_Log_Viewer" xml:space="preserve">
+    <value>Open Log Viewer</value>
+  </data>
+  <data name="OpenLogViewer_Execute_Can_not_create_tool_window_" xml:space="preserve">
+    <value>Can not create tool window.</value>
+  </data>
+  <data name="OpenSitecoreExplorer_OpenSitecoreExplorer_Sitecore_Explorer" xml:space="preserve">
+    <value>Sitecore Explorer</value>
+  </data>
+  <data name="OpenSitecoreExplorer_Execute_Can_not_create_tool_window_" xml:space="preserve">
+    <value>Can not create tool window.</value>
+  </data>
+  <data name="PluginRepository_PluginRepository_Plugin_Repository___" xml:space="preserve">
+    <value>Plugin Repository...</value>
+  </data>
+  <data name="Sorter_InsertAfter_Anchor_is_not_a_part_of_elements" xml:space="preserve">
+    <value>Anchor is not a part of elements</value>
+  </data>
+  <data name="Sorter_InsertBefore_Anchor_is_not_a_part_of_elements" xml:space="preserve">
+    <value>Anchor is not a part of elements</value>
+  </data>
+  <data name="SitecorePackage_HandleException_" xml:space="preserve">
+    <value>Oh no, this is embarassing...
+
+Save us from further embarassment, and post this information on Sitecore SDN.
+
+Do you want to copy the information to the clipboard and open Sitecore SDN?
+_______________________________________________________________________
+
+{0}</value>
+  </data>
+  <data name="SitecorePackage_HandleException_Sitecore_Unhandled_Exception" xml:space="preserve">
+    <value>Sitecore Unhandled Exception</value>
+  </data>
+  <data name="JobItem_Progress__0_____1__of__2__" xml:space="preserve">
+    <value>{0}% ({1} of {2})</value>
+  </data>
+  <data name="JobViewerPane_JobViewerPane_Job_Viewer" xml:space="preserve">
+    <value>Job Viewer</value>
+  </data>
+  <data name="LayoutDesigner_Initialize____Layout" xml:space="preserve">
+    <value> - Layout</value>
+  </data>
+  <data name="LayoutDesigner_Initialize__0____Layout" xml:space="preserve">
+    <value>{0}.layout</value>
+  </data>
+  <data name="LayoutDesignerTab_PlaceholderDropDown_Loading___" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="PlaceholderTreeViewItem_PlaceholderTreeViewItem_Placeholder" xml:space="preserve">
+    <value>Placeholder</value>
+  </data>
+  <data name="LogViewerPane_LogViewerPane_Log_Viewer" xml:space="preserve">
+    <value>Log Viewer</value>
+  </data>
+  <data name="PluginListBoxItem_DownloadSource_Download_Source" xml:space="preserve">
+    <value>Download Source</value>
+  </data>
+  <data name="PluginListBoxItem_Install_Are_you_sure_you_want_to_install_the___0___plugin_" xml:space="preserve">
+    <value>Are you sure you want to install the '{0}' plugin?</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="Installed" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="PluginRepositoryWindow_ParsePlugins_Uncategorized" xml:space="preserve">
+    <value>Uncategorized</value>
+  </data>
+  <data name="Prompt" xml:space="preserve">
+    <value>Prompt</value>
+  </data>
+  <data name="AddField_AddField_Add_Field" xml:space="preserve">
+    <value>Add Field</value>
+  </data>
+  <data name="AddSection_AddSection_Add_Section" xml:space="preserve">
+    <value>Add Section</value>
+  </data>
+  <data name="DeleteField_DeleteField_Delete_Field" xml:space="preserve">
+    <value>Delete Field</value>
+  </data>
+  <data name="DeleteSection_DeleteSection_Delete_Section" xml:space="preserve">
+    <value>Delete Section</value>
+  </data>
+  <data name="Save_Save_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TemplateDesigner_LoadTemplate__0____Template" xml:space="preserve">
+    <value>{0}.template</value>
+  </data>
+  <data name="ToolWindowPaneHost_Show_Can_not_create_tool_window_" xml:space="preserve">
+    <value>Can not create tool window.</value>
+  </data>
+  <data name="RecycleWarning_Process_Update_Server_Components" xml:space="preserve">
+    <value>Update Server Components</value>
+  </data>
+  <data name="RecycleWarning_Process_" xml:space="preserve">
+    <value>Updating server components copies assemblies to the /bin folder of the web site which causes the ASP.NET process to recycle.
+
+The web site may take some time to respond to the next request.</value>
+  </data>
+  <data name="GetRoot_Process_Select_the_root_folder_of_the_web_site_to_update_" xml:space="preserve">
+    <value>Select the root folder of the web site to update.</value>
+  </data>
+  <data name="CopyFiles_CopyFile_" xml:space="preserve">
+    <value>Failed to copy the file '{0}'.
+
+Please review the error message below:
+
+{1}</value>
+  </data>
+  <data name="SwitchDataService_Process_" xml:space="preserve">
+    <value>The web site is currently using the Good Old Web Service, and the Hard Rock Web Service has just been installed.
+
+Do you want to switch to the Hard Rock Web Service?</value>
+  </data>
+  <data name="SwitchDataService_Process_Switch_Data_Service" xml:space="preserve">
+    <value>Switch Data Service</value>
+  </data>
+  <data name="UpdateServerComponentsDialog_Initialize_Install_and_Close" xml:space="preserve">
+    <value>Install and Close</value>
+  </data>
+  <data name="UpdateServerComponentsDialog_GetComponentStatus_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="UpdateServerComponentsDialog_GetComponentStatus_Copy_to_Server" xml:space="preserve">
+    <value>Copy to Server</value>
+  </data>
+  <data name="UpdateServerComponentsDialog_GetComponentStatus_None___Newer_Version_on_Server" xml:space="preserve">
+    <value>None - Newer Version on Server</value>
+  </data>
+  <data name="UploadPluginWindow_FileBrowse_Open_File" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_Do_Not_Abuse" xml:space="preserve">
+    <value>Do Not Abuse</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_The_file_in_the_File_field_does_not_exist_" xml:space="preserve">
+    <value>The file in the File field does not exist.</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_The_file_in_the_Source_field_does_not_exist_" xml:space="preserve">
+    <value>The file in the Source field does not exist.</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_The_file_in_the_Preview_field_does_not_exist_" xml:space="preserve">
+    <value>The file in the Preview field does not exist.</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_" xml:space="preserve">
+    <value>The plugin '{0}' already exists.
+
+Are you sure you want to overwrite it?</value>
+  </data>
+  <data name="UploadPluginWindow_OkClick_AlreadyExists" xml:space="preserve">
+    <value>The plugin '{0}' already exists.
+
+Are you sure you want to overwrite it?</value>
+  </data>
+  <data name="UploadPluginWindow_PreviewBrowse_Open_Preview" xml:space="preserve">
+    <value>Open Preview</value>
+  </data>
+  <data name="UploadPluginWindow_SourceBrowse_Open_Source" xml:space="preserve">
+    <value>Open Source</value>
+  </data>
+  <data name="QuickInfo_RenderItem_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="QuickInfo_RenderMultipleItems__0__items" xml:space="preserve">
+    <value>{0} items</value>
+  </data>
+  <data name="LogItem_ToString_Category___0___PublishDate___1_" xml:space="preserve">
+    <value>Category: {0}, PublishDate: {1}</value>
+  </data>
+  <data name="Save_Execute_Failed_to_save_the_template" xml:space="preserve">
+    <value>Failed to save the template.</value>
+  </data>
+  <data name="SetName_Process_Enter_the_Name_of_the_New_Item_" xml:space="preserve">
+    <value>Enter the Name of the New Item:</value>
+  </data>
+  <data name="SetName_Process_Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="NewDerivedTemplate_Execute_Enter_the_Name_of_the_Derived_Template_" xml:space="preserve">
+    <value>Enter the Name of the Derived Template:</value>
+  </data>
+  <data name="NewDerivedTemplate_Execute_Derived_Template" xml:space="preserve">
+    <value>Derived Template</value>
+  </data>
+  <data name="CopyAndChangeTemplate_CopyAndChangeTemplate_Copy_and_Change_Template___" xml:space="preserve">
+    <value>Copy and Change Template...</value>
+  </data>
+  <data name="CopyAndChangeTemplate_Execute_Enter_the_Name_of_the_New_Template_" xml:space="preserve">
+    <value>Enter the Name of the New Template:</value>
+  </data>
+  <data name="CopyAndChangeTemplate_Execute_Copy_and_Change_Template" xml:space="preserve">
+    <value>Copy and Change Template</value>
+  </data>
+  <data name="SitecorePackage_HandleException_TypeLoadError" xml:space="preserve">
+    <value>Oh oh, something bad happend!
+
+This may be caused by out-of-date plugins.
+
+Do you want to view your plugins now?</value>
+  </data>
+  <data name="DataService_HandleExecute_MissingFile" xml:space="preserve">
+    <value>Sitecore cannot find a file on the server.
+
+This may be caused by missing server components.
+
+Do you want to update server components now?</value>
+  </data>
+  <data name="Sitecore" xml:space="preserve">
+    <value>Sitecore</value>
+  </data>
+  <data name="ValidationIssues_ValidationIssues_Validation_Issues" xml:space="preserve">
+    <value>Validation Issues</value>
+  </data>
+  <data name="TreeViewItemHeader_LeafCount__1_issue_" xml:space="preserve">
+    <value>(1 issue)</value>
+  </data>
+  <data name="TreeViewItemHeader_LeafCount___0__issues_" xml:space="preserve">
+    <value>({0} issues)</value>
+  </data>
+  <data name="XML" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="OpenWebConfig_OpenWebConfig_Open_web_config" xml:space="preserve">
+    <value>Open web.config</value>
+  </data>
+  <data name="OpenItemXml_OpenItemXml_Open_Item_Xml" xml:space="preserve">
+    <value>Open Item Xml</value>
+  </data>
+  <data name="PublishingSubmenu_PublishingSubmenu_Publishing" xml:space="preserve">
+    <value>Publishing</value>
+  </data>
+  <data name="Search_HandleKeyDown_Please_select_a_database_first_" xml:space="preserve">
+    <value>Please select a database first.</value>
+  </data>
+  <data name="Search_HandleKeyDown_Select_Database" xml:space="preserve">
+    <value>Select Database</value>
+  </data>
+  <data name="SearchHeader_ItemCount__0__items" xml:space="preserve">
+    <value>({0} items)</value>
+  </data>
+  <data name="SearchHeader_ItemCount__1_item" xml:space="preserve">
+    <value>(1 item)</value>
+  </data>
+  <data name="Search_LoadFilters__all_" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="SearchPane_SearchPane_Search_in_Sitecore" xml:space="preserve">
+    <value>Search in Sitecore</value>
+  </data>
+  <data name="SearchForFieldValue_SearchForFieldValue_Search_for_Field_Value" xml:space="preserve">
+    <value>Items with Same Field Value</value>
+  </data>
+  <data name="SearchForAuthor_SearchForAuthor_Author" xml:space="preserve">
+    <value>Items with Same Author</value>
+  </data>
+  <data name="SearchForCreator_SearchForCreator_Creator" xml:space="preserve">
+    <value>Items with Same Creator</value>
+  </data>
+  <data name="SearchForWorkflow_SearchForWorkflow_Workflow" xml:space="preserve">
+    <value>Workflow</value>
+  </data>
+  <data name="SearchForTemplate_SearchForTemplate_Items_with_Same_Template" xml:space="preserve">
+    <value>Items with Same Template</value>
+  </data>
+  <data name="SearchForWorkflow_SearchForWorkflow_Items_in_Same_Workflow" xml:space="preserve">
+    <value>Items in Same Workflow</value>
+  </data>
+  <data name="SearchForWorkflowState_SearchForWorkflowState_Items_in_Same_Workflow_State" xml:space="preserve">
+    <value>Items in Same Workflow State</value>
+  </data>
+  <data name="SearchForOwner_SearchForOwner_Items_with_Same_Owner" xml:space="preserve">
+    <value>Items with Same Owner</value>
+  </data>
+  <data name="SearchForFieldValue_SearchForFieldValue_Search_for_Field_Value_in_this_Field" xml:space="preserve">
+    <value>Items with Same Field Value in Same Field</value>
+  </data>
+  <data name="LinkPane_LinkPane_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="NavigateLinks_NavigateLinks_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="LinkTab_LoadItems_References" xml:space="preserve">
+    <value>References</value>
+  </data>
+  <data name="LinkTab_LoadItems_Referrers" xml:space="preserve">
+    <value>Referrers</value>
+  </data>
+  <data name="Next100_Next100_Next_250" xml:space="preserve">
+    <value>Next 250 Items</value>
+  </data>
+  <data name="SearchRootTreeViewItem_SearchRootTreeViewItem_Searches" xml:space="preserve">
+    <value>Searches</value>
+  </data>
+  <data name="Save_Save_Save_Search" xml:space="preserve">
+    <value>Save Search...</value>
+  </data>
+  <data name="Save_Execute_Enter_a_name_that_identifies_the_search_" xml:space="preserve">
+    <value>Enter a name that identifies the search:</value>
+  </data>
+  <data name="Save_Execute_Save_Search" xml:space="preserve">
+    <value>Save Search</value>
+  </data>
+  <data name="MediaPane_MediaPane_Media" xml:space="preserve">
+    <value>Media Library</value>
+  </data>
+  <data name="MediaManager_Upload_The_file___0___is_too_big__more_than__1___and_cannot_be_uploaded_" xml:space="preserve">
+    <value>The file "{0}" is too big (more than {1}) and cannot be uploaded.</value>
+  </data>
+  <data name="MediaManager_Upload_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Attachment_HandleDrop_You_can_only_drop_a_single_image_here_" xml:space="preserve">
+    <value>You can only drop a single image here.</value>
+  </data>
+  <data name="MediaManager_DownloadAttachment_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="DownloadAttachment_DownloadAttachment_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="All_files" xml:space="preserve">
+    <value>All files</value>
+  </data>
+  <data name="DownloadAttachment_Execute_files" xml:space="preserve">
+    <value>files</value>
+  </data>
+  <data name="CopyItemXmlDialog_SaveClick_Xml_documents" xml:space="preserve">
+    <value>Xml documents</value>
+  </data>
+  <data name="TrackingField_DrawEvents_Events" xml:space="preserve">
+    <value>Goals/Events</value>
+  </data>
+  <data name="TrackingField_DrawProfiles_Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="SearchSubmenu_SearchSubmenu_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchLastYear_SearchLastYear_Items_Changed_Last_Year" xml:space="preserve">
+    <value>Items Updated Last Year</value>
+  </data>
+  <data name="SearchLastMonth_SearchLastMonth_Items_Changed_Last_Month" xml:space="preserve">
+    <value>Items Updated Last Month</value>
+  </data>
+  <data name="SearchLastWeek_SearchLastWeek_Items_Changed_Last_Week" xml:space="preserve">
+    <value>Items Updated Last Week</value>
+  </data>
+  <data name="NavigateImageLinks_NavigateImageLinks_Image_Links" xml:space="preserve">
+    <value>Image Links</value>
+  </data>
+  <data name="NavigateToImage_NavigateToImage_Image" xml:space="preserve">
+    <value>Image Item</value>
+  </data>
+  <data name="LayoutField_GetAttributeValue_Default" xml:space="preserve">
+    <value>n/a</value>
+  </data>
+  <data name="LinkViewer_CreateTab_Loading___" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="NavigateToTarget_NavigateToTarget_Target" xml:space="preserve">
+    <value>Target</value>
+  </data>
+  <data name="SearchForMedia_SearchForMedia_Search_for_Recently_Updated_Media" xml:space="preserve">
+    <value>Search for Recently Updated Media</value>
+  </data>
+  <data name="NavigateLinkLinks_NavigateLinkLinks_Target_Links" xml:space="preserve">
+    <value>Target Links</value>
+  </data>
+  <data name="SearchForItems_SearchForItems_Search_for_Recently_Updated_Items" xml:space="preserve">
+    <value>Search for Recently Updated Items</value>
+  </data>
+  <data name="SearchMyItems_SearchMyItems_My_Items" xml:space="preserve">
+    <value>My Items</value>
+  </data>
+  <data name="RecentMedia_RecentMedia_Recent" xml:space="preserve">
+    <value>Recent Items</value>
+  </data>
+  <data name="RecentItems_RecentItems_Recent" xml:space="preserve">
+    <value>Recent</value>
+  </data>
+  <data name="DebugTracesPane_DebugTracesPane_Debug_and_Trace" xml:space="preserve">
+    <value>Debug and Trace</value>
+  </data>
+  <data name="OpenDebugTraceViewer_OpenDebugTraceViewer_Debug_and_Trace" xml:space="preserve">
+    <value>Debug and Trace</value>
+  </data>
+  <data name="DebugTraceViewer_DeleteClick_Are_you_sure_you_want_to_delete_all_debug_and_trace_files_on_this_site_" xml:space="preserve">
+    <value>Are you sure you want to delete all debug and trace files on this site?</value>
+  </data>
+  <data name="DebugTraceViewer_DeleteClick_Delete_Debug_and_Trace_Files" xml:space="preserve">
+    <value>Delete Debug and Trace Files</value>
+  </data>
+  <data name="Save_Save_Save_to_File" xml:space="preserve">
+    <value>Save to File</value>
+  </data>
+  <data name="LayoutField_SetField_No_layout_has_been_specified" xml:space="preserve">
+    <value>No layout has been specified.</value>
+  </data>
+  <data name="SetIcon_SetIcon_Set_Icon" xml:space="preserve">
+    <value>Set Icon...</value>
+  </data>
+  <data name="TasksSubmenu_TasksSubmenu_Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="ArchivePane_ArchivePane_Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="OpenArchiveViewer_OpenArchiveViewer_Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="OpenRecycleBin_OpenRecycleBin_Recycle_Bin" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="RecycleBinPane_RecycleBinPane_Recycle_Bin" xml:space="preserve">
+    <value>Recycle Bin</value>
+  </data>
+  <data name="Empty_Execute_Are_you_sure_you_want_to_permanently_delete_all_items_from_the_archive_" xml:space="preserve">
+    <value>Are you sure you want to permanently delete all items from the archive?</value>
+  </data>
+  <data name="Empty_Execute_Empty" xml:space="preserve">
+    <value>Empty Archive</value>
+  </data>
+  <data name="Filters_Filters_Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="Restore_Restore_Restore" xml:space="preserve">
+    <value>Restore Items</value>
+  </data>
+  <data name="LayoutField_SetField_ParseErrorText" xml:space="preserve">
+    <value>An unfortunate error occured while parsing the layout field data.</value>
+  </data>
+  <data name="SecurityField_DrawAccounts_Accounts" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="SecurityField_DrawAccounts_Permissions" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="SecurityField_SetField_ParseErrorText" xml:space="preserve">
+    <value>An unfortunate error occured while parsing the security field.</value>
+  </data>
+  <data name="SecurityField_DrawAccounts_NoAccessRights" xml:space="preserve">
+    <value>No access rights specified.</value>
+  </data>
+  <data name="TrackingField_SetValue_ParseErrorText" xml:space="preserve">
+    <value>An unfortunate error occured while parsing the tracking field.</value>
+  </data>
+  <data name="CommandManager_SetInputGestureText_Alt" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="CommandManager_SetInputGestureText_Shift" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="CommandManager_SetInputGestureText_Ctrl" xml:space="preserve">
+    <value>Ctrl</value>
+  </data>
+  <data name="DebugPage_DebugPage_Debug_and_Trace" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="DebugTraceViewer_GoClick_Select_a_site_first_" xml:space="preserve">
+    <value>Select a site first.</value>
+  </data>
+  <data name="JobViewer_JobViewer_Job_Viewer" xml:space="preserve">
+    <value>Job Viewer</value>
+  </data>
+  <data name="LogViewer_LogViewer_Log_Viewer" xml:space="preserve">
+    <value>Log Viewer</value>
+  </data>
+  <data name="Search_Search_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Media_Media_Media_Library" xml:space="preserve">
+    <value>Media Library</value>
+  </data>
+  <data name="Debug_Debug_Debug_and_Trace" xml:space="preserve">
+    <value>Debug and Trace</value>
+  </data>
+  <data name="DesignStandardValuesLayout_DesignStandardValuesLayout_Design_Layout_on_Standard_Values" xml:space="preserve">
+    <value>Design Layout on Standard Values</value>
+  </data>
+  <data name="BrowseSubmenu_BrowseSubmenu_Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="ContentEditor_ContentEditor_Content_Editor" xml:space="preserve">
+    <value>Content Editor</value>
+  </data>
+  <data name="DebugTrace_DebugTrace_Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Desktop_Desktop_Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="PageEditor_PageEditor_Page_Editor" xml:space="preserve">
+    <value>Page Editor</value>
+  </data>
+  <data name="Preview_Preview_Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="WebSite_WebSite_Web_Site" xml:space="preserve">
+    <value>Web Site</value>
+  </data>
+  <data name="SearchViewer_RebuildSearchIndex_Rebuild_Search_Index_started___" xml:space="preserve">
+    <value>Rebuild Search Index started...</value>
+  </data>
+  <data name="SearchViewer_RebuildSearchIndex_Rebuild_Search_Index" xml:space="preserve">
+    <value>Rebuild Search Index</value>
+  </data>
+  <data name="ResetFilters_ResetFilters_Reset_Filters" xml:space="preserve">
+    <value>Reset Filters</value>
+  </data>
+  <data name="OpenTemplateDesigner_OpenTemplateDesigner_Open_Template_Designer" xml:space="preserve">
+    <value>Open Template Designer</value>
+  </data>
+  <data name="ResetLayout_ResetLayout_Reset_to_Standard_Layout_on_Save" xml:space="preserve">
+    <value>Reset to Standard Layout on Save</value>
+  </data>
+  <data name="LayoutsSubmenu_LayoutsSubmenu_Layouts" xml:space="preserve">
+    <value>Layouts</value>
+  </data>
+  <data name="TemplatesSubmenu_TemplatesSubmenu_Templates" xml:space="preserve">
+    <value>Templates</value>
+  </data>
+  <data name="ContentEditor_LoadItems_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ContentEditor_LoadItems_Save_changes_" xml:space="preserve">
+    <value>Save changes?</value>
+  </data>
+  <data name="GroupedDroplist_SetField_ParseError" xml:space="preserve">
+    <value>An unfortunate error occured while parsing the lookup table for this field.</value>
+  </data>
+  <data name="SetInsertOptions_Execute_Insert_Options" xml:space="preserve">
+    <value>Insert Options</value>
+  </data>
+  <data name="SetBaseTemplates_SetBaseTemplates_Set_Base_Templates" xml:space="preserve">
+    <value>Set Base Templates...</value>
+  </data>
+  <data name="SetInsertOptions_SetInsertOptions_Set_Insert_Options" xml:space="preserve">
+    <value>Set Insert Options...</value>
+  </data>
+  <data name="SetBaseTemplates_Execute_Base_Templates" xml:space="preserve">
+    <value>Base Templates</value>
+  </data>
+  <data name="LayoutSelector_LoadRecent_Recently_Used_Layouts" xml:space="preserve">
+    <value>Recently Used Layouts</value>
+  </data>
+  <data name="CopyToClipboard_CopyToClipboard_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="PasteFromClipboard_PasteFromClipboard_Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="CutToClipboard_CutToClipboard_Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="DebugTraceViewer_OpenClick_Open_Debug_and_Trace" xml:space="preserve">
+    <value>Open Debug and Trace</value>
+  </data>
+  <data name="MaxItems100_MaxItems100__100_Items" xml:space="preserve">
+    <value>100 Items</value>
+  </data>
+  <data name="MaxItems50_MaxItems50__50_Items" xml:space="preserve">
+    <value>50 Items</value>
+  </data>
+  <data name="MaxItems25_MaxItems25__25_Items" xml:space="preserve">
+    <value>25 Items</value>
+  </data>
+  <data name="UpdateSpeed10_UpdateSpeed10_Every_10_seconds" xml:space="preserve">
+    <value>Every 10 seconds</value>
+  </data>
+  <data name="UpdateSpeedSubmenu_UpdateSpeedSubmenu_Update_Speed" xml:space="preserve">
+    <value>Update Speed</value>
+  </data>
+  <data name="Field_SetValue_FieldOutOfDate" xml:space="preserve">
+    <value>This field is out of date, save &amp; reload the content editor tab to see it updated.</value>
+  </data>
+  <data name="Details_Details_View_Details" xml:space="preserve">
+    <value>View Details</value>
+  </data>
+  <data name="JobViewer_LoadJobs_Loading___" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="FindSimilar_FindSimilar_Find_Items_with_Same_Title" xml:space="preserve">
+    <value>Find Items with Same Title</value>
+  </data>
+  <data name="QuickInfo_RenderInstances__1_instance" xml:space="preserve">
+    <value>1 instance</value>
+  </data>
+  <data name="QuickInfo_RenderInstances__0__instances" xml:space="preserve">
+    <value>{0} instances</value>
+  </data>
+  <data name="SetValidators_Execute_Validators" xml:space="preserve">
+    <value>Validators</value>
+  </data>
+  <data name="SetValidators_SetValidators_Set_Validation" xml:space="preserve">
+    <value>Set Validation...</value>
+  </data>
+  <data name="QuickInfo_RenderPath_Navigate_to_item" xml:space="preserve">
+    <value>Navigate to item</value>
+  </data>
+  <data name="QuickInfo_RenderVersions_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="SiteEditor_Browse_Select_the_root_of_the_web_site_" xml:space="preserve">
+    <value>Select the root of the web site:</value>
+  </data>
+  <data name="ItemNotFound_Process_" xml:space="preserve">
+    <value>The item could not be found.
+
+It may have been deleted by another user.</value>
+  </data>
+  <data name="CodeGenerationConfigurator_Load_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="MultiTraceViewer_Initialize_Trace_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MultiTraceViewer_Initialize_Trace_Elapsed" xml:space="preserve">
+    <value>Elapsed</value>
+  </data>
+  <data name="MultiTraceViewer_Initialize_Trace_Since_Start" xml:space="preserve">
+    <value>Since Start</value>
+  </data>
+  <data name="CopySubmenu_CopySubmenu_Copy_to_Other_Device" xml:space="preserve">
+    <value>Copy to Other Device</value>
+  </data>
+  <data name="NavigateToLayout_NavigateToLayout_Navigate_to_Layout" xml:space="preserve">
+    <value>Locate Layout in Sitecore Explorer</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Percent" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Own" xml:space="preserve">
+    <value>Own</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Items_Read" xml:space="preserve">
+    <value>Items Read</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Data_Cache_Misses" xml:space="preserve">
+    <value>Data Cache Misses</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Data_Cache_Hits" xml:space="preserve">
+    <value>Data Cache Hits</value>
+  </data>
+  <data name="MultiProfileViewer_InitProfile_Column_Physical_Reads" xml:space="preserve">
+    <value>Physical Reads</value>
+  </data>
+  <data name="ContentTree_FindItem_The_text_was_not_found_" xml:space="preserve">
+    <value>The text was not found.</value>
+  </data>
+  <data name="ContentTree_FindItem_NoOpenDatabase" xml:space="preserve">
+    <value>To find an item, a database must be active.
+
+Please select a database or an item first.</value>
+  </data>
+  <data name="CopyFromStandardValues_CopyFromStandardValues_Copy_Layout_from_Standard_Values" xml:space="preserve">
+    <value>Copy Layout from Standard Values</value>
+  </data>
+  <data name="Compare_Compare_Compare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="SettingsSubmenu_SettingsSubmenu_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MaxItemsSubmenu_MaxItemsSubmenu_Max_Items" xml:space="preserve">
+    <value>Max Items</value>
+  </data>
+  <data name="CategorySubmenu_CategorySubmenu_Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="PluginManager_UninstallDeferred_" xml:space="preserve">
+    <value>An exception occured while uninstalling the plugin '{0}':
+
+{1}</value>
+  </data>
+  <data name="InstalledPluginsWindow_ListCompleted_New_version_available_in_the_Plugin_Repository" xml:space="preserve">
+    <value>New version available in the Plugin Repository</value>
+  </data>
+  <data name="InstalledPluginsWindow_UninstallClick_Are_you_sure_you_want_to_uninstall___0___" xml:space="preserve">
+    <value>Are you sure you want to uninstall '{0}'?</value>
+  </data>
+  <data name="DebugTraces_Trace_SinceStart" xml:space="preserve">
+    <value>Since start</value>
+  </data>
+  <data name="DebugTraces_Trace_Elapsed" xml:space="preserve">
+    <value>Elapsed</value>
+  </data>
+  <data name="DebugTraces_Trace_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="DebugTraces_Profile_Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="DebugTraces_Profile_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="DebugTraces_Profile_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="DebugTraces_Profile_Own" xml:space="preserve">
+    <value>Own</value>
+  </data>
+  <data name="DebugTraces_Profile_ItemsRead" xml:space="preserve">
+    <value>Items read</value>
+  </data>
+  <data name="DebugTraces_Profile_DataCacheMisses" xml:space="preserve">
+    <value>Date cache misses</value>
+  </data>
+  <data name="DebugTraces_Profile_DataCacheHits" xml:space="preserve">
+    <value>Date cache hits</value>
+  </data>
+  <data name="DebugTraces_Profile_PhysicalReads" xml:space="preserve">
+    <value>Physical reads</value>
+  </data>
+  <data name="Command_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Command_Compare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="DebugTraceListViewer_RenderSelectedSessions_Comparing" xml:space="preserve">
+    <value>Comparing</value>
+  </data>
+  <data name="RuleFieldValueParser_ParseRuleSet_Default_Rule_Text" xml:space="preserve">
+    <value>Rule </value>
+  </data>
+  <data name="Rule_NoConditionsText" xml:space="preserve">
+    <value>This rule has no conditions.</value>
+  </data>
+  <data name="SaveScriptAs_SaveScriptAs_Save_Script_As" xml:space="preserve">
+    <value>Save Script As...</value>
+  </data>
+  <data name="PunyReportViewer_PunyReportViewer_Puny_Reports" xml:space="preserve">
+    <value>Puny Reports</value>
+  </data>
+  <data name="Update_Update_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Select_Select_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="ScriptSubmenu_ScriptSubmenu_Scripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="Publish_Publish_Publish" xml:space="preserve">
+    <value>Publish</value>
+  </data>
+  <data name="ScriptDelete_Delete_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="OpenScript_Execute_Open_Script" xml:space="preserve">
+    <value>Open Script</value>
+  </data>
+  <data name="OpenScript_OpenScript_Open_Script___" xml:space="preserve">
+    <value>Open Script...</value>
+  </data>
+  <data name="InsertScript_Insert_Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="MacroOrganizer_DeleteClick_Are_you_sure_you_want_to_delete__0__" xml:space="preserve">
+    <value xml:space="preserve">Are you sure you want to delete "{0}"?</value>
+  </data>
+  <data name="MacroOrganizer_AddClick_New_Macro" xml:space="preserve">
+    <value>New Macro</value>
+  </data>
+  <data name="CreateScriptMacro_CreateScriptMacro_Create_Script_Macro" xml:space="preserve">
+    <value>Create Script Macro</value>
+  </data>
+  <data name="Condition_Text_except" xml:space="preserve">
+    <value>except</value>
+  </data>
+  <data name="OpenInWebBrowser_OpenInWebBrowser_Open_in_Web_Browser___" xml:space="preserve">
+    <value>Open in Web Browser...</value>
+  </data>
+  <data name="Export_Execute_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="SaveAsScriptMacro_SaveAsScriptMacro_Save_as_Script_Macro___" xml:space="preserve">
+    <value>Save as Script Macro...</value>
+  </data>
+  <data name="SearchAndReplacePanel_ReplaceClick__0_rows_affected" xml:space="preserve">
+    <value>0 rows affected</value>
+  </data>
+  <data name="SearchAndReplacePanel_ReplaceClick_Search_And_Replace" xml:space="preserve">
+    <value>Search And Replace</value>
+  </data>
+  <data name="SiteRootTreeViewItem_Sites" xml:space="preserve">
+    <value>Sites</value>
+  </data>
+  <data name="FieldOutdatedNotification_Text" xml:space="preserve">
+    <value>This field is outdated. Please save and reload the content editor to update.</value>
+  </data>
+  <data name="ImageField_HandleFileDrop_" xml:space="preserve">
+    <value>Images can only be uploaded using the Hard Rock Web Service.
+
+This site uses the {0}.</value>
+  </data>
+  <data name="MediaSkinListBox_HandleDropFiles_" xml:space="preserve">
+    <value>Media can only be uploaded using the Hard Rock Web Service.
+
+This site uses the {0}.</value>
+  </data>
+  <data name="SwitchDatabase_SwitchDatabase_Switch_Database___" xml:space="preserve">
+    <value>Switch Database...</value>
+  </data>
+  <data name="SwitchSite_SwitchSite_Switch_Site___" xml:space="preserve">
+    <value>Switch Site...</value>
+  </data>
+  <data name="QueryAnalyzer_QueryAnalyzer_Query_Analyzer" xml:space="preserve">
+    <value>Query Analyzer</value>
+  </data>
+  <data name="SaveScript_SaveScript_Save_Script" xml:space="preserve">
+    <value>Save Script</value>
+  </data>
+  <data name="Export_Export_Export_as_XML___" xml:space="preserve">
+    <value>Export as XML...</value>
+  </data>
+  <data name="ExportAsCsv_ExportAsCsv_Export_as_Csv___" xml:space="preserve">
+    <value>Export as CSV...</value>
+  </data>
+  <data name="RuleField_EditButton_Text" xml:space="preserve">
+    <value>Edit rules</value>
+  </data>
+  <data name="RuleEditor_CancelButton_Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="RuleEditor_OKButton_Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MacrosSubmenu_MacrosSubmenu_Macros" xml:space="preserve">
+    <value>Macros</value>
+  </data>
+  <data name="ExpandSections_ExpandSections_Expand_All_Sections" xml:space="preserve">
+    <value>Expand All Sections</value>
+  </data>
+  <data name="CollapseSections_CollapseSections_Collapse_All_Sections" xml:space="preserve">
+    <value>Collapse All Sections</value>
+  </data>
+  <data name="DefaultSkin_InitializeCustomizations_Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Customize_Customize_Customize___" xml:space="preserve">
+    <value>Customize...</value>
+  </data>
+  <data name="AppearanceDialog_RenderSkins__Default_Skin_" xml:space="preserve">
+    <value>&lt;Default Skin&gt;</value>
+  </data>
+  <data name="ShowInNonStandardFieldsView_ShowInNonStandardFieldsView_Show_in_Non_Standard_Fields_View" xml:space="preserve">
+    <value xml:space="preserve">Always Show this Field</value>
+  </data>
+  <data name="HideInNonStandardFieldsView_HideInNonStandardFieldsView_Hide_in_Non_Standard_Fields_View" xml:space="preserve">
+    <value>Hide in Non Standard Fields View</value>
+  </data>
+  <data name="SetHelp_SetHelp_Set_Help" xml:space="preserve">
+    <value>Set Help...</value>
+  </data>
+  <data name="RecentlySavedTreeViewItem_RecentlySavedTreeViewItem_Saved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="HistoryTreeViewItem_HistoryTreeViewItem_History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="MyItemsTreeViewItem_MyItemsTreeViewItem_My_Items" xml:space="preserve">
+    <value>my items</value>
+  </data>
+  <data name="OwnedItemTreeViewItem_OwnedItemTreeViewItem_Owned" xml:space="preserve">
+    <value>Owned</value>
+  </data>
+  <data name="UploadedTreeViewItem_UploadedTreeViewItem_Uploaded" xml:space="preserve">
+    <value>Uploaded</value>
+  </data>
+  <data name="LockedItemTreeViewItem_LockedItemTreeViewItem_Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="RefreshMyItems_RefreshMyItems_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RecentItemsTreeViewItem_RecentItemsTreeViewItem_Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="FieldDataNotSpecifiedNotification_Text" xml:space="preserve">
+    <value>There is no field data to display.</value>
+  </data>
+  <data name="FieldParseErrorNotification_Text" xml:space="preserve">
+    <value>An unfortunate [error] occured while parsing the field.</value>
+  </data>
+  <data name="Create_Create_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="TemplateFieldSorter_Initialize_Template_Field_Sorter" xml:space="preserve">
+    <value>Template Field Sorter [{0}/{1}]</value>
+  </data>
+  <data name="TemplateFieldSorter_Refresh__0____Template_Field_Sorter" xml:space="preserve">
+    <value>Template Field Sorter [{0}]</value>
+  </data>
+  <data name="RenumberSubitems_RenumberSubitems_Renumber_SubItems" xml:space="preserve">
+    <value>Renumber SubItems</value>
+  </data>
+  <data name="ShowHiddenItems_ShowHiddenItems_Show_Hidden_Items">
+		<value xml:space="preserve">Show Hidden Items</value>
+	</data>
+	<data name="ConfigureCheckers_ConfigureCheckers_Configure_Sanity_Checkers___">
+		<value xml:space="preserve">Filter Validations...</value>
+	</data>
+	<data name="Rerun_Rerun_Rerun_Sanity_Checks">
+		<value xml:space="preserve">Re-run Assessment</value>
+	</data>
+	<data name="Unlock_Unlock_Unlock_Item">
+		<value xml:space="preserve">Unlock Item</value>
+	</data>
+	<data name="Security">
+		<value xml:space="preserve">Security</value>
+	</data>
+	<data name="Lock_Lock_Lock">
+		<value xml:space="preserve">Lock</value>
+	</data>
+	<data name="TakeOwnership_TakeOwnership_Take_Ownership">
+		<value xml:space="preserve">Take Ownership</value>
+	</data>
+	<data name="PublishItemReferences_PublishItemReferences_Publish_Item_and_References___">
+		<value xml:space="preserve">Publish Item and Dependencies...</value>
+	</data>
+	<data name="ExportToBrowser_ExportToBrowser_Export_to_Html">
+		<value xml:space="preserve">Export as HTML</value>
+	</data>
+	<data name="DeleteFiles_DeleteFiles_Delete_Files___">
+		<value xml:space="preserve">Delete Files...</value>
+	</data>
+	<data name="ClearCaches_ClearCaches_Clear___">
+		<value xml:space="preserve">Clear...</value>
+	</data>
+	<data name="ScavengeCaches_ScavengeCaches_Scavenge___">
+		<value xml:space="preserve">Scavenge...</value>
+	</data>
+	<data name="ClearAllCaches_ClearAllCaches_Clear_All___">
+		<value xml:space="preserve">Clear All...</value>
+	</data>
+	<data name="ManageSite_ManageSite_Manage">
+		<value xml:space="preserve">Manage</value>
+	</data>
+	<data name="DeleteFilesYear_DeleteFilesYear_Delete_Files_Older_Than_One_Year___">
+		<value xml:space="preserve">Delete Files Older Than One Year...</value>
+	</data>
+	<data name="DeleteFilesMonth_DeleteFilesMonth_Delete_Files_Older_Than_One_Month___">
+		<value xml:space="preserve">Delete Files Older Than One Month...</value>
+	</data>
+	<data name="DeleteFilesWeek_DeleteFilesWeek_Delete_Files_Older_Than_One_Week___">
+		<value xml:space="preserve">Delete Files Older Than One Week...</value>
+	</data>
+	<data name="DeleteAllFiles_DeleteAllFiles_Delete_All_Files___">
+		<value xml:space="preserve">Delete All Files...</value>
+	</data>
+	<data name="AddNewLanguage_AddNewLanguage_Add_New_Language___">
+		<value xml:space="preserve">Add New Language...</value>
+	</data>
+	<data name="CreateIncludeFile_CreateIncludeFile_Create_Include_File___">
+		<value xml:space="preserve">Create Pipeline Processor...</value>
+	</data>
+	<data name="SelectDatabasesAndLanguages_SelectDatabasesAndLanguages_Selected_Databases_and_Languages___">
+		<value xml:space="preserve">Selected Databases and Languages...</value>
+	</data>
+	<data name="ExtensionSubmenu_ExtensionSubmenu_Sitecore_Rocks_Extensions">
+		<value xml:space="preserve">Sitecore Rocks Extensions</value>
+	</data>
+	<data name="CreateNewSite_CreateNewSite_Create_New_Site___">
+		<value xml:space="preserve">Create New Site...</value>
+	</data>
+	<data name="ToolsSubmenu_ToolsSubmenu_Tools">
+		<value xml:space="preserve">Tools</value>
+	</data>
+	<data name="Undo_Undo_Undo">
+		<value xml:space="preserve">Undo</value>
+	</data>
+	<data name="Arrange_Arrange_Arrange">
+		<value xml:space="preserve">Arrange</value>
+	</data>
+	<data name="ViewsSubmenu_ViewsSubmenu_View">
+		<value xml:space="preserve">View</value>
+	</data>
+	<data name="PublishingQueue_PublishingQueue_Publishing_Queue">
+		<value xml:space="preserve">Publishing Queue</value>
+	</data>
+	<data name="ConnectionsSubmenu_ConnectionsSubmenu_Connections">
+		<value xml:space="preserve">Connections</value>
+	</data>
+	<data name="RemoveServerComponents_RemoveServerComponents_Remove_Server_Components___">
+		<value xml:space="preserve">Remove Server Components...</value>
+	</data>
+	<data name="KeyboardCheatSheet_KeyboardCheatSheet_Keyboard_Cheat_Sheet">
+		<value xml:space="preserve">Keyboard Cheat Sheet</value>
+	</data>
+	<data name="KeyboardCheatSheet_KeyboardCheatSheet_Command_Cheat_Sheet">
+		<value xml:space="preserve">Command Cheat Sheet</value>
+	</data>
+	<data name="NavigateTemplateHierarchy_NavigateTemplateHierarchy_Template_Hierarchy">
+		<value xml:space="preserve">Template Hierarchy</value>
+	</data>
+  <data name="UpdateSpeed120_UpdateSpeed120_Every_120_seconds">
+    <value xml:space="preserve">Every 120 seconds</value>
+  </data>
+  <data name="RefreshGutter_RefreshGutter_Refresh_Gutter">
+    <value xml:space="preserve">Refresh Gutter</value>
+  </data>
+  <data name="Unlock_Unlock_Unlock">
+    <value xml:space="preserve">Unlock</value>
+  </data>
+  <data name="WebDataService_GetChildrenAsync_The_item_was_not_found__It_may_have_been_deleted_">
+    <value xml:space="preserve">The item was not found. It may have been deleted.</value>
+  </data>
+  <data name="NavigateOtherDatabase_NavigateOtherDatabase_Same_Item_in_Other_Database">
+    <value xml:space="preserve">Same Item in Other Database</value>
+  </data>
+  <data name="SiteHelper_BrowseWebRootPath_">
+    <value xml:space="preserve">The selected folder does not contain a /bin and a /sitecore folder.
+
+It is probably not a Sitecore web root folder.
+
+Do you want to use this folder anyway?</value>
+  </data>
+  <data name="SiteHelper_BrowseWebRootPath_Information">
+    <value xml:space="preserve">Information</value>
+  </data>
+  <data name="SiteEditor_ConnectionsChanged_Copy_of_">
+    <value xml:space="preserve">Copy of </value>
+  </data>
+  <data name="None">
+    <value xml:space="preserve">&lt;none&gt;</value>
+  </data>
+  <data name="SiteEditor_TestClick_OK__it_does_not_work_">
+    <value xml:space="preserve">OK, it does not work:</value>
+  </data>
+  <data name="GetRoot_Process_Select_the_root_folder_of_the_web_site_to_remove_server_components_from_">
+    <value xml:space="preserve">Select the root folder of the web site to remove server components from.</value>
+  </data>
+  <data name="SitePicker_Select_Select_Site">
+    <value xml:space="preserve">Select Site</value>
+  </data>
+  <data name="XpathBuilderCommand_XpathBuilderCommand_XPath_Builder">
+    <value xml:space="preserve">XPath Builder</value>
+  </data>
+  <data name="XpathBuilder_RenderItems_The_query_did_not_return_any_results_">
+    <value xml:space="preserve">The query did not return any results.</value>
+  </data>
+  <data name="XpathBuilder_RenderItems_Found__0__result_s__in__1_ms">
+    <value xml:space="preserve">Found {0} result(s) in {1}ms</value>
+  </data>
+  <data name="SaveAndSerializeItem_SaveAndSerializeItem_Save___Serialize">
+    <value xml:space="preserve">Save &amp; Serialize</value>
+  </data>
+  <data name="OpenInWindowsExplorer_OpenInWindowsExplorer_Open_in_Windows_Explorer">
+    <value xml:space="preserve">Open in Windows Explorer</value>
+  </data>
+  <data name="RevertDatabase_RevertDatabase_Revert_Database">
+    <value xml:space="preserve">Revert Database</value>
+  </data>
+  <data name="RevertDatabase_RevertDatabase_Reverting_Database___">
+    <value xml:space="preserve">Reverting Database...</value>
+  </data>
+  <data name="RevertItem_RevertItem_Revert_Item">
+    <value xml:space="preserve">Revert Item</value>
+  </data>
+  <data name="RevertItem_RevertItem_Reverting_Item___">
+    <value xml:space="preserve">Reverting Item...</value>
+  </data>
+  <data name="RevertTree_RevertTree_Revert_Tree">
+    <value xml:space="preserve">Revert Tree</value>
+  </data>
+  <data name="RevertTree_RevertTree_Reverting_Tree___">
+    <value xml:space="preserve">Reverting Tree...</value>
+  </data>
+  <data name="SerializationSubmenu_SerializationSubmenu_Serialization">
+    <value xml:space="preserve">Serialization</value>
+  </data>
+  <data name="SerializeDatabase_SerializeDatabase_Serialize_Database">
+    <value xml:space="preserve">Serialize Database</value>
+  </data>
+  <data name="SerializeDatabase_SerializeDatabase_Serializing_Database___">
+    <value xml:space="preserve">Serializing Database...</value>
+  </data>
+  <data name="SerializeItem_SerializeItem_Serialize_Item">
+    <value xml:space="preserve">Serialize Item</value>
+  </data>
+  <data name="SerializeItem_SerializeItem_Serializing_Item___">
+    <value xml:space="preserve">Serializing Item...</value>
+  </data>
+  <data name="SerializeTree_SerializeTree_Serialize_Tree">
+    <value xml:space="preserve">Serialize Tree</value>
+  </data>
+  <data name="SerializeTree_SerializeTree_Serializing_Tree___">
+    <value xml:space="preserve">Serializing Tree...</value>
+  </data>
+  <data name="UpdateDatabase_UpdateDatabase_Update_Database">
+    <value xml:space="preserve">Update Database</value>
+  </data>
+  <data name="UpdateDatabase_UpdateDatabase_Updating_Database___">
+    <value xml:space="preserve">Updating Database...</value>
+  </data>
+  <data name="OpenInWindowsExplorer_Execute_There_is_no_file_associated_with_this_item_">
+    <value xml:space="preserve">There is no file associated with this item.</value>
+  </data>
+  <data name="UpdateItem_UpdateItem_Update_Item">
+    <value xml:space="preserve">Update Item</value>
+  </data>
+  <data name="UpdateItem_UpdateItem_Updating_Item___">
+    <value xml:space="preserve">Updating Item...</value>
+  </data>
+  <data name="UpdateTree_UpdateTree_Update_Tree">
+    <value xml:space="preserve">Update Tree</value>
+  </data>
+  <data name="UpdateTree_UpdateTree_Updating_Tree___">
+    <value xml:space="preserve">Updating Tree...</value>
+  </data>
+  <data name="SetWorkflowState_SetWorkflowState_Set_Workflow_State___">
+    <value xml:space="preserve">Set Workflow State...</value>
+  </data>
+  <data name="SetWorkflowState_Execute_Select_Workflow_State">
+    <value xml:space="preserve">Select Workflow State</value>
+  </data>
+  <data name="SetWorkflowState_Execute_">
+    <value xml:space="preserve">The selected item is not a workflow state.
+
+Do you want to select another item?</value>
+  </data>
+  <data name="Workflow_Workflow_Workflow">
+    <value xml:space="preserve">Workflow</value>
+  </data>
+  <data name="Workflow_ExecuteWorkflowCommand_Comment_for___0___">
+    <value xml:space="preserve">Comment for '{0}':</value>
+  </data>
+  <data name="Workflow_LoadWorkflowCommands__none_">
+    <value xml:space="preserve">(none)</value>
+  </data>
+  <data name="CreatePackage_CreatePackage_Create_Package___">
+    <value xml:space="preserve">Create Package</value>
+  </data>
+  <data name="PublishItemAndDependencies_PublishItemAndDependencies_Publishing_Item_and_Dependencies___">
+    <value xml:space="preserve">Publishing Item and Dependencies...</value>
+  </data>
+  <data name="CommandManager_GetKeyText_Win">
+    <value xml:space="preserve">Win</value>
+  </data>
+  <data name="Rule_Execute_The_action___0___cannot_execute_in_the_current_context___1___">
+    <value xml:space="preserve">The action "{0}" cannot execute in the current context ({1}).</value>
+  </data>
+  <data name="StartPowerShell_StartPowerShell_Start_PowerShell___">
+    <value xml:space="preserve">Start PowerShell...</value>
+  </data>
+  <data name="StartPowerShell_InstallPowerShell_">
+    <value xml:space="preserve">PowerShell for Sitecore has not yet been installed.
+
+Do you want to install it now?</value>
+  </data>
+  <data name="ClearOwnership_ClearOwnership_Remove_Ownership">
+    <value xml:space="preserve">Remove Ownership</value>
+  </data>
+  <data name="SaveWithPostMacro_SaveWithPostMacro_Save__with_Post_Macro_">
+    <value xml:space="preserve">Save (with Post Macro)</value>
+  </data>
+  <data name="SearchAndReplace_SearchAndReplace_Search_and_Replace">
+    <value xml:space="preserve">Search and Replace</value>
+  </data>
+  <data name="SearchAndReplace">
+    <value xml:space="preserve">Search and Replace</value>
+  </data>
+  <data name="SetPublishingRestrictions_SetPublishingRestrictions_Set_Publishing_Restrictions">
+    <value>Set Publishing Restrictions...</value>
+  </data>
+  <data name="DashboardViewer_Initialize_Dashboard">
+    <value xml:space="preserve">Dashboard</value>
+  </data>
+  <data name="EditXsltRendering_EditXsltRendering_Edit_Xslt_File">
+    <value xml:space="preserve">Edit Xslt File</value>
+  </data>
+  <data name="SetDisplayNames_SetDisplayNames_Set_Display_Names">
+    <value>Set Display Names...</value>
+  </data>
+  <data name="QueryAnalyzer_InsertPath_Insert_Path">
+    <value xml:space="preserve">Insert Path</value>
+  </data>
+  <data name="AddRule_AddRule_Add_New_Rule">
+    <value xml:space="preserve">Add New Rule</value>
+  </data>
+  <data name="OpenAdvancedPublish_OpenAdvancedPublish_Advanced_Publishing___">
+    <value xml:space="preserve">Advanced Publishing...</value>
+  </data>
+  <data name="TestRuleDialog_Browse_Item">
+    <value xml:space="preserve">Item</value>
+  </data>
+  <data name="ActionListBoxItem_Refresh_Unknown_action_">
+    <value xml:space="preserve">Unknown action:</value>
+  </data>
+  <data name="ActionListBoxItem_RenderText_and_">
+    <value xml:space="preserve">and </value>
+  </data>
+  <data name="TestRule_TestRule_Test_Rules___">
+    <value xml:space="preserve">Test Rules...</value>
+  </data>
+  <data name="RuleListBoxItem_Refresh_Rule">
+    <value xml:space="preserve">Rule</value>
+  </data>
+  <data name="TextMacro_Edit_Enter_a_new_value_">
+    <value xml:space="preserve">Enter a new value:</value>
+  </data>
+  <data name="TextMacro_Edit_Value">
+    <value xml:space="preserve">Value</value>
+  </data>
+  <data name="DateTimeMacro_GetDisplayValue__Not_set_">
+    <value xml:space="preserve">[Not set]</value>
+  </data>
+  <data name="TreeMacro_Edit_Select_Item">
+    <value xml:space="preserve">Select Item</value>
+  </data>
+  <data name="ConditionListBoxItem_Refresh_Unknown_condition_">
+    <value xml:space="preserve">Unknown condition:</value>
+  </data>
+  <data name="ConditionListBoxItem_AddWhere_except_where">
+    <value xml:space="preserve">except where</value>
+  </data>
+  <data name="ConditionListBoxItem_AddWhere_where">
+    <value xml:space="preserve">where</value>
+  </data>
+  <data name="OpenWebConfig_OpenWebConfig_Open_Expanded_web_config">
+    <value xml:space="preserve">Open Expanded web.config</value>
+  </data>
+  <data name="ConnectionFolderTreeViewItem_ConnectionFolderTreeViewItem__Unknown_">
+    <value xml:space="preserve">[Unknown]</value>
+  </data>
+  <data name="SearchForUsages_SearchForUsages_Search_for_Usages">
+    <value xml:space="preserve">Search for Usages</value>
+  </data>
+  <data name="SiteHelper_BrowseWebRootPath_Select_the_root_of_the_web_site___0___">
+    <value xml:space="preserve">Select the root of the web site '{0}':</value>
+  </data>
+  <data name="PackageBuilder_HandleDrop_Information">
+    <value xml:space="preserve">Information</value>
+  </data>
+  <data name="PackageBuilder_Load_File_is_not_a_valid_Package_file_">
+    <value xml:space="preserve">File is not a valid Package file.</value>
+  </data>
+  <data name="PackageBuilder_HandleItemDrop_">
+    <value xml:space="preserve">All items must be from the site:
+
+{0}</value>
+  </data>
+  <data name="UploadViewer_Upload_The_package_has_been_uploaded_">
+    <value>The package has been uploaded.
+
+      Do you want to install it?</value>
+  </data>
+  <data name="UploadViewer_Browse_Upload_Package_File">
+    <value xml:space="preserve">Upload Package File</value>
+  </data>
+  <data name="UploadViewer_UploadViewer_Select_a_package_file_to_upload_to___0___">
+    <value xml:space="preserve">Select a package file to upload to '{0}':</value>
+  </data>
+  <data name="AddDescendants_AddDescendants_Add_Subitems">
+    <value xml:space="preserve">Add Subitems</value>
+  </data>
+  <data name="AddDependencies_AddDependencies_Add_Dependencies___">
+    <value xml:space="preserve">Add Dependencies...</value>
+  </data>
+  <data name="AddHistory_AddHistory_Add_Items_from_History___">
+    <value xml:space="preserve">Add Items from History...</value>
+  </data>
+  <data name="ManagePackages_ManagePackages_Manage_Packages___">
+    <value xml:space="preserve">Manage Packages...</value>
+  </data>
+  <data name="PackageRepositoryDialog_Browse_Select_a_location_">
+    <value xml:space="preserve">Select a location:</value>
+  </data>
+  <data name="PackageManagerDialog_EditRepositories_Package_Repositories">
+    <value xml:space="preserve">Package Repositories</value>
+  </data>
+  <data name="TaskViewer_EditRepositories_Task_Repositories">
+    <value xml:space="preserve">Task Repositories</value>
+  </data>
+  <data name="TaskViewer_Open_Information">
+    <value xml:space="preserve">Information</value>
+  </data>
+  <data name="TaskViewer_CreateNewProject_Enter_the_name_of_the_new_project_">
+    <value xml:space="preserve">Enter the name of the new project:</value>
+  </data>
+  <data name="TaskViewer_CreateNewProject_New_Task_Project">
+    <value xml:space="preserve">New Task Project</value>
+  </data>
+  <data name="TaskViewer_CreateNewProject_">
+    <value xml:space="preserve">The project '{0}' already exists.
+
+Do you want to overwrite it?</value>
+  </data>
+  <data name="TaskViewer_ShowResult_Oh_no__something_didn_t_behaved_properly_">
+    <value xml:space="preserve">Oh no, something didn't behaved properly.</value>
+  </data>
+  <data name="TaskViewer_ShowResult_The_tasks_have_completed_">
+    <value xml:space="preserve">The tasks have completed.</value>
+  </data>
+  <data name="TaskViewer_LoadProjects__New_Project_">
+    <value xml:space="preserve">&lt;New Project&gt;</value>
+  </data>
+  <data name="XmlTask_ParseFileName__Failed_to_load_">
+    <value xml:space="preserve">[Failed to load]</value>
+  </data>
+  <data name="TaskViewer_Cancel_">
+    <value xml:space="preserve">Are you sure you want to cancel?
+
+Execution will end after the current task finishes.</value>
+  </data>
+  <data name="EditScript_EditScript_Edit_Script">
+    <value xml:space="preserve">Edit Script</value>
+  </data>
+  <data name="EditFile_EditTaskFile_Edit_File">
+    <value xml:space="preserve">Edit File</value>
+  </data>
+  <data name="SetStatusPending_SetStatusPending_Set_Status_as_Pending">
+    <value xml:space="preserve">Set Status to Pending</value>
+  </data>
+  <data name="SetStatusCompleted_SetStatusCompleted_Set_Status_as_Completed">
+    <value xml:space="preserve">Set Status to Completed</value>
+  </data>
+  <data name="SetTaskItemStatusFailed_SetTaskItemStatusFailed_Set_Status_to_Failed">
+    <value xml:space="preserve">Set Status to Failed</value>
+  </data>
+  <data name="InstallationFolders_IsValid_Enter_a_Project_Name_">
+    <value xml:space="preserve">Enter a Project Name.</value>
+  </data>
+  <data name="InstallationFolders_IsValid_Enter_a_Project_Folder_">
+    <value xml:space="preserve">Enter a Project Folder.</value>
+  </data>
+  <data name="InstallationFolders_IsValid_Enter_a_Web_Site_Folder_">
+    <value xml:space="preserve">Enter a Web Site Folder.</value>
+  </data>
+  <data name="InstallationFolders_IsValid_Enter_a_Database_Folder_">
+    <value xml:space="preserve">Enter a Database Folder.</value>
+  </data>
+  <data name="InstallationFolders_IsValid_Enter_a_Data_Folder_">
+    <value xml:space="preserve">Enter a Data Folder.</value>
+  </data>
+  <data name="StartPageCommandExtensions_GetDatabaseUri_Select_a_database_in_the_right_column_">
+    <value xml:space="preserve">Select a database in the right column.</value>
+  </data>
+  <data name="ImportTaskDialog_Browse_Import_Task">
+    <value xml:space="preserve">Import Task</value>
+  </data>
+  <data name="IsValid__0__must_have_a_value_">
+    <value xml:space="preserve">{0} must have a value.</value>
+  </data>
+  <data name="ProjectEditor_Add_Enter_the_name_of_the_new_project_">
+    <value xml:space="preserve">Enter the name of the new project:</value>
+  </data>
+  <data name="ProjectEditor_Add_New_Task_Project">
+    <value xml:space="preserve">New Task Project</value>
+  </data>
+  <data name="TaskViewer_LoadProjects__Manage_Projects_">
+    <value xml:space="preserve">&lt;Manage Projects&gt;</value>
+  </data>
+  <data name="PackageBuilder_Load_Unknown_package">
+    <value xml:space="preserve">Unknown package</value>
+  </data>
+  <data name="SwitchLanguage_SwitchLanguage_Switch_Language">
+    <value xml:space="preserve">Switch Language</value>
+  </data>
+  <data name="GroupedDroplist_SetField_Not_Found" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="GroupedDroplist_SetField_Item_not_found___0_" xml:space="preserve">
+    <value>Item not found: {0}</value>
+  </data>
+  <data name="UpdateServerComponentsManager_CopyFiles_Sorry__you_cannot_update_the_server_components__because_you_do_not_have_access_" xml:space="preserve">
+    <value>Sorry, you cannot update the server components, because you do not have access.</value>
+  </data>
+  <data name="UpdateServerComponentsManager_AutomaticUpdate_" xml:space="preserve">
+    <value>The "bin" folder in "{0}" of the web site does not exists.
+
+The web site location is probably incorrect.
+
+The Server Components has not been updated.</value>
+  </data>
+  <data name="UpdateServerComponentsManager_AutomaticUpdate_1" xml:space="preserve">
+    <value>The "sitecore" folder in "{0}" of the web site does not exists.
+
+The web site location is probably incorrect.
+
+The Server Components has not been updated.</value>
+  </data>
+  <data name="UpdateServerComponentsManager_AutomaticUpdate_2" xml:space="preserve">
+    <value>An error occured while automatically updating server components.
+
+Some functionality may not be working properly.
+
+Detailed information:
+{0}</value>
+  </data>
+  <data name="WebServiceUpdater_Update_" xml:space="preserve">
+    <value>You do not have write access to:
+
+{0}</value>
+  </data>
+  <data name="BaseTreeViewItemHeader_InitializeComponent_loading" xml:space="preserve">
+    <value>loading</value>
+  </data>
+</root>

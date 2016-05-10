@@ -1,0 +1,60 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Caches.Dialogs.CacheExplorer.CacheExplorerDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" Title="Explore Cache" Height="600" Width="800"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" FocusManager.FocusedElement="{Binding ElementName=CacheKeyList}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+                <ResourceDictionary>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="75" />
+                    </Style>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler />
+
+        <DockPanel Margin="0,0,0,2">
+            <Label x:Name="CacheNameLabel" />
+            <controls:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterChanged" Watermark="Filter" VerticalAlignment="Center" HorizontalAlignment="Right"
+                Width="150" Margin="8,0,0,0" DockPanel.Dock="Right" />
+        </DockPanel>
+
+        <c:Loading x:Name="Loading" Grid.Row="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" />
+        <Border x:Name="ContextMenuPanel" Grid.Row="1" Visibility="Collapsed">
+            <ListView x:Name="CacheKeyList" SelectionMode="Extended" GridViewColumnHeader.Click="HeaderClick" ContextMenuOpening="OpenContextMenu">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="KeyColumn" Header="Key" DisplayMemberBinding="{Binding Key}" Width="Auto" />
+                        <GridViewColumn x:Name="SizeColumn" Header="Size" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FormattedSize}" TextAlignment="Right" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="LastAccessedColumn" Header="Last Accessed" DisplayMemberBinding="{Binding FormattedLastAccessed}" Width="Auto" />
+                        <GridViewColumn x:Name="DataColumn" Header="Data" DisplayMemberBinding="{Binding Data}" Width="Auto" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="2" VerticalAlignment="Bottom">
+            <Button Content="Close" IsDefault="True" IsCancel="True" Margin="0,0,8,0" Click="CloseClick" Width="75" Height="21" />
+        </StackPanel>
+    </Grid>
+</Window>

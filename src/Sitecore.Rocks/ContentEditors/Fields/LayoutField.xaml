@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Fields.LayoutField" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Resizer="clr-namespace:Sitecore.Rocks.Controls.Resizer"
+    xmlns:Notifications="clr-namespace:Sitecore.Rocks.ContentEditors.Fields.Notifications" mc:Ignorable="d" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ctlLayoutHeader" TargetType="{x:Type Label}">
+            <TextBlock Foreground="#666666" Margin="5,0,0,0" FontWeight="Bold" Text="{TemplateBinding Content}" />
+        </ControlTemplate>
+        <ControlTemplate x:Key="ctlDeviceHeader" TargetType="{x:Type Label}">
+            <TextBlock Name="lblDevice" Margin="0" TextAlignment="Center" Text="{TemplateBinding Content}" />
+        </ControlTemplate>
+        <ControlTemplate x:Key="ctlRenderHeader" TargetType="{x:Type Label}">
+            <TextBlock Name="lblRender" Margin="8,2,0,2" Text="{TemplateBinding Content}" />
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="lblRender" Property="TextDecorations" Value="Underline" />
+                    <Setter TargetName="lblRender" Property="Cursor" Value="Hand" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!-- StackPanels can't have ControlTemplates. And neither do borders. -->
+        <Style x:Key="stlDeviceStack" TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style x:Key="stlDeviceStackItemBorder" TargetType="{x:Type Border}">
+            <Setter Property="Padding" Value="4,4,16,8" />
+        </Style>
+        <Style x:Key="stlLayoutStack" TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="8,0,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+        </Style>
+        <Style x:Key="stlLayoutStackHeaderBorder" TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="#999999" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="0,0,0,2" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+            <Setter Property="Width" Value="Auto" />
+        </Style>
+        <Style x:Key="stlRenderStack" TargetType="{x:Type StackPanel}">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="ResizePanel" Height="Auto" MinHeight="70">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="MainBorder" Style="{DynamicResource FieldControlBorder}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+            BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" BorderThickness="1">
+            <ScrollViewer Padding="4">
+                <StackPanel x:Name="Devices" />
+            </ScrollViewer>
+        </Border>
+
+        <Notifications:FieldDataNotSpecifiedNotification x:Name="DataNotSpecifiedNotification" />
+        <Notifications:FieldParseErrorNotification x:Name="ParseErrorNotification" />
+        <Notifications:FieldOutdatedNotification x:Name="OutdatedNotification" />
+
+        <Resizer:FieldControlResizer x:Name="Resizer" Target="{Binding ElementName=ResizePanel}" Grid.Row="1" DefaultHeight="100" />
+    </Grid>
+</UserControl>

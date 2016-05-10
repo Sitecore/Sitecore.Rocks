@@ -1,0 +1,1285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    Copyright © 2001 World Wide Web Consortium, (Massachusetts Institute of 
+    Technology, European Research Consortium for Informatics and Mathematics,
+    Keio University). All Rights Reserved. This work is distributed under
+    the W3C® Software License [1] .  
+    
+    [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+        
+    Portions © 2004-2005 Microsoft Corporation.  All rights reserved.  
+    This file was derived from http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd.  
+-->
+<xs:schema elementFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:group name="special.pre">
+        <xs:choice>
+            <xs:element ref="br" />
+            <xs:element ref="span" />
+            <xs:element ref="bdo" />
+            <xs:element ref="map" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="special">
+        <xs:choice>
+            <xs:group ref="special.pre" />
+            <xs:element ref="object" />
+            <xs:element ref="img" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="fontstyle">
+        <xs:choice>
+            <xs:element ref="tt" />
+            <xs:element ref="i" />
+            <xs:element ref="b" />
+            <xs:element ref="big" />
+            <xs:element ref="small" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="phrase">
+        <xs:choice>
+            <xs:element ref="em" />
+            <xs:element ref="strong" />
+            <xs:element ref="dfn" />
+            <xs:element ref="code" />
+            <xs:element ref="q" />
+            <xs:element ref="samp" />
+            <xs:element ref="kbd" />
+            <xs:element ref="var" />
+            <xs:element ref="cite" />
+            <xs:element ref="abbr" />
+            <xs:element ref="acronym" />
+            <xs:element ref="sub" />
+            <xs:element ref="sup" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="inline.forms">
+        <xs:choice>
+            <xs:element ref="input" />
+            <xs:element ref="select" />
+            <xs:element ref="textarea" />
+            <xs:element ref="label" />
+            <xs:element ref="button" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="inline">
+        <xs:choice>
+            <xs:element ref="a" />
+            <xs:group ref="special" />
+            <xs:group ref="fontstyle" />
+            <xs:group ref="phrase" />
+            <xs:group ref="inline.forms" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="misc.inline">
+        <xs:choice>
+            <xs:element ref="ins" />
+            <xs:element ref="del" />
+            <xs:element ref="script" />
+        </xs:choice>
+    </xs:group>
+    <xs:attributeGroup name="coreattrs">
+        <xs:attribute name="id" type="xs:ID" />
+        <xs:attribute name="style" type="xs:string" />
+        <xs:attribute name="title" type="xs:string" />
+        <xs:attribute name="class" type="xs:string" />
+    </xs:attributeGroup>
+    <xs:attributeGroup name="i18n">
+        <xs:attribute ref="xml:lang" />
+        <xs:attribute name="dir">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="ltr" />
+                    <xs:enumeration value="rtl" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="lang" type="xs:NMTOKEN" />
+    </xs:attributeGroup>
+    <xs:attributeGroup name="events">
+        <xs:attribute name="onmouseover" type="xs:string" />
+        <xs:attribute name="onmouseout" type="xs:string" />
+        <xs:attribute name="onkeydown" type="xs:string" />
+        <xs:attribute name="onkeyup" type="xs:string" />
+        <xs:attribute name="onmousemove" type="xs:string" />
+        <xs:attribute name="onmouseup" type="xs:string" />
+        <xs:attribute name="onkeypress" type="xs:string" />
+        <xs:attribute name="onclick" type="xs:string" />
+        <xs:attribute name="ondblclick" type="xs:string" />
+        <xs:attribute name="onmousedown" type="xs:string" />
+    </xs:attributeGroup>
+    <xs:attributeGroup name="attrs">
+        <xs:attributeGroup ref="coreattrs" />
+        <xs:attributeGroup ref="i18n" />
+        <xs:attributeGroup ref="events" />
+    </xs:attributeGroup>
+    <xs:element name="dfn">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="cellhalign">
+        <xs:attribute name="char" type="xs:string" />
+        <xs:attribute name="charoff" type="xs:string" />
+        <xs:attribute name="align">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="left" />
+                    <xs:enumeration value="center" />
+                    <xs:enumeration value="right" />
+                    <xs:enumeration value="justify" />
+                    <xs:enumeration value="char" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="cellvalign">
+        <xs:attribute name="valign">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="top" />
+                    <xs:enumeration value="middle" />
+                    <xs:enumeration value="bottom" />
+                    <xs:enumeration value="baseline" />
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="tfoot">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="tr" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="code">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sup">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="var">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="script">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="defer">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="defer" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="id" type="xs:ID" />
+                    <xs:attribute ref="xml:space" />
+                    <xs:attribute name="src" type="xs:string" />
+                    <xs:attribute name="charset" type="xs:string" />
+                    <xs:attribute name="type" type="xs:string" use="required" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="i">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="col">
+        <xs:complexType>
+            <xs:attribute default="1" name="span" type="xs:string" />
+            <xs:attribute name="width" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="img">
+        <xs:complexType>
+            <xs:attribute name="width" type="xs:string" />
+            <xs:attribute name="alt" type="xs:string" use="required" />
+            <xs:attribute name="ismap">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="ismap" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="src" type="xs:string" use="required" />
+            <xs:attribute name="height" type="xs:string" />
+            <xs:attribute name="usemap" type="xs:string" />
+            <xs:attribute name="longdesc" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="heading">
+        <xs:choice>
+            <xs:element ref="h1" />
+            <xs:element ref="h2" />
+            <xs:element ref="h3" />
+            <xs:element ref="h4" />
+            <xs:element ref="h5" />
+            <xs:element ref="h6" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="lists">
+        <xs:choice>
+            <xs:element ref="ul" />
+            <xs:element ref="ol" />
+            <xs:element ref="dl" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="blocktext">
+        <xs:choice>
+            <xs:element ref="pre" />
+            <xs:element ref="hr" />
+            <xs:element ref="blockquote" />
+            <xs:element ref="address" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="block">
+        <xs:choice>
+            <xs:element ref="p" />
+            <xs:group ref="heading" />
+            <xs:element ref="div" />
+            <xs:group ref="lists" />
+            <xs:group ref="blocktext" />
+            <xs:element ref="fieldset" />
+            <xs:element ref="table" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="misc">
+        <xs:choice>
+            <xs:element ref="noscript" />
+            <xs:group ref="misc.inline" />
+        </xs:choice>
+    </xs:group>
+    <xs:element name="del">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="cite" type="xs:string" />
+            <xs:attribute name="datetime" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ins">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="cite" type="xs:string" />
+            <xs:attribute name="datetime" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="html">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="head" minOccurs="0" />
+                <xs:element ref="body" />
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" />
+            <xs:attributeGroup ref="i18n" />
+        </xs:complexType>
+    </xs:element>
+    <xs:attributeGroup name="focus">
+        <xs:attribute name="tabindex" type="xs:string" />
+        <xs:attribute name="accesskey" type="xs:string" />
+        <xs:attribute name="onblur" type="xs:string" />
+        <xs:attribute name="onfocus" type="xs:string" />
+    </xs:attributeGroup>
+    <xs:element name="a">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="special" />
+                <xs:group ref="fontstyle" />
+                <xs:group ref="phrase" />
+                <xs:group ref="inline.forms" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attribute name="type" type="xs:string" />
+            <xs:attribute name="href" type="xs:string" />
+            <xs:attribute name="hreflang" type="xs:NMTOKEN" />
+            <xs:attribute name="charset" type="xs:string" />
+            <xs:attribute name="name" type="xs:NMTOKEN" />
+            <xs:attribute name="rel" type="xs:string" />
+            <xs:attribute default="rect" name="shape">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="rect" />
+                        <xs:enumeration value="circle" />
+                        <xs:enumeration value="poly" />
+                        <xs:enumeration value="default" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="rev" type="xs:string" />
+            <xs:attribute name="coords" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="focus" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="style">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="id" type="xs:ID" />
+                    <xs:attribute ref="xml:space" />
+                    <xs:attribute name="title" type="xs:string" />
+                    <xs:attribute name="type" type="xs:string" use="required" />
+                    <xs:attribute name="media" type="xs:string" />
+                    <xs:attributeGroup ref="i18n" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="map">
+        <xs:complexType>
+            <xs:choice>
+                <xs:group minOccurs="0" maxOccurs="unbounded" ref="block" />
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="form" />
+                <xs:group minOccurs="0" maxOccurs="unbounded" ref="misc" />
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="area" />
+            </xs:choice>
+            <xs:attribute name="id" type="xs:ID" use="required" />
+            <xs:attribute name="style" type="xs:string" />
+            <xs:attribute name="title" type="xs:string" />
+            <xs:attribute name="name" type="xs:NMTOKEN" />
+            <xs:attribute name="class" type="xs:string" />
+            <xs:attributeGroup ref="i18n" />
+            <xs:attributeGroup ref="events" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="select">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="optgroup" />
+                <xs:element ref="option" />
+            </xs:choice>
+            <xs:attribute name="tabindex" type="xs:string" />
+            <xs:attribute name="size" type="xs:string" />
+            <xs:attribute name="multiple">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="multiple" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="onfocus" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="onblur" type="xs:string" />
+            <xs:attribute name="disabled">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="disabled" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="onchange" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sub">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ol">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="li" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="link">
+        <xs:complexType>
+            <xs:attribute name="href" type="xs:string" />
+            <xs:attribute name="rel" type="xs:string" />
+            <xs:attribute name="type" type="xs:string" />
+            <xs:attribute name="hreflang" type="xs:NMTOKEN" />
+            <xs:attribute name="charset" type="xs:string" />
+            <xs:attribute name="rev" type="xs:string" />
+            <xs:attribute name="media" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="param">
+        <xs:complexType>
+            <xs:attribute name="id" type="xs:ID" />
+            <xs:attribute name="value" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="type" type="xs:string" />
+            <xs:attribute default="data" name="valuetype">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="data" />
+                        <xs:enumeration value="ref" />
+                        <xs:enumeration value="object" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acronym">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tr">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="th" />
+                <xs:element ref="td" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="samp">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bdo">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attribute ref="xml:lang" />
+            <xs:attribute name="dir" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="ltr" />
+                        <xs:enumeration value="rtl" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="lang" type="xs:NMTOKEN" />
+            <xs:attributeGroup ref="coreattrs" />
+            <xs:attributeGroup ref="events" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h3">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h1">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="title">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="id" type="xs:ID" />
+                    <xs:attributeGroup ref="i18n" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h2">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h4">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h5">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="head.misc">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="script" />
+                <xs:element ref="style" />
+                <xs:element ref="meta" />
+                <xs:element ref="link" />
+                <xs:element ref="object" />
+            </xs:choice>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="head">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:group ref="head.misc" />
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="title" />
+                        <xs:group ref="head.misc" />
+                        <xs:sequence minOccurs="0" maxOccurs="1">
+                            <xs:element ref="base" />
+                            <xs:group ref="head.misc" />
+                        </xs:sequence>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="base" />
+                        <xs:group ref="head.misc" />
+                        <xs:sequence>
+                            <xs:element ref="title" />
+                            <xs:group ref="head.misc" />
+                        </xs:sequence>
+                    </xs:sequence>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" />
+            <xs:attribute name="profile" type="xs:string" />
+            <xs:attributeGroup ref="i18n" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="colgroup">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="col" />
+            </xs:sequence>
+            <xs:attribute default="1" name="span" type="xs:string" />
+            <xs:attribute name="width" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tbody">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="tr" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ul">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="li" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="big">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="kbd">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="legend">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attribute name="accesskey" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="h6">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="li">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="input">
+        <xs:complexType>
+            <xs:attribute default="text" name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="text" />
+                        <xs:enumeration value="password" />
+                        <xs:enumeration value="checkbox" />
+                        <xs:enumeration value="radio" />
+                        <xs:enumeration value="submit" />
+                        <xs:enumeration value="reset" />
+                        <xs:enumeration value="file" />
+                        <xs:enumeration value="hidden" />
+                        <xs:enumeration value="image" />
+                        <xs:enumeration value="button" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="size" type="xs:string" />
+            <xs:attribute name="onselect" type="xs:string" />
+            <xs:attribute name="readonly">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="readonly" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="accept" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="maxlength" type="xs:string" />
+            <xs:attribute name="alt" type="xs:string" />
+            <xs:attribute name="usemap" type="xs:string" />
+            <xs:attribute name="disabled">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="disabled" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:string" />
+            <xs:attribute name="checked">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="checked" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="src" type="xs:string" />
+            <xs:attribute name="onchange" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="focus" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="thead">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="tr" />
+            </xs:sequence>
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="em">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="object">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="param" />
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="classid" type="xs:string" />
+            <xs:attribute name="tabindex" type="xs:string" />
+            <xs:attribute name="codebase" type="xs:string" />
+            <xs:attribute name="data" type="xs:string" />
+            <xs:attribute name="width" type="xs:string" />
+            <xs:attribute name="name" type="xs:NMTOKEN" />
+            <xs:attribute name="codetype" type="xs:string" />
+            <xs:attribute name="standby" type="xs:string" />
+            <xs:attribute name="usemap" type="xs:string" />
+            <xs:attribute name="height" type="xs:string" />
+            <xs:attribute name="type" type="xs:string" />
+            <xs:attribute name="declare">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="declare" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="archive" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="base">
+        <xs:complexType>
+            <xs:attribute name="href" type="xs:string" use="required" />
+            <xs:attribute name="id" type="xs:ID" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="caption">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dt">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="br">
+        <xs:complexType>
+            <xs:attributeGroup ref="coreattrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="abbr">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dl">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="dt" />
+                <xs:element ref="dd" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="small">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="strong">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="pre">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="a" />
+                <xs:group ref="fontstyle" />
+                <xs:group ref="phrase" />
+                <xs:group ref="special.pre" />
+                <xs:group ref="misc.inline" />
+                <xs:group ref="inline.forms" />
+            </xs:choice>
+            <xs:attribute ref="xml:space" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="textarea">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="cols" type="xs:string" use="required" />
+                    <xs:attribute name="rows" type="xs:string" use="required" />
+                    <xs:attribute name="disabled">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="disabled" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="readonly">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="readonly" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="name" type="xs:string" />
+                    <xs:attribute name="onchange" type="xs:string" />
+                    <xs:attribute name="onselect" type="xs:string" />
+                    <xs:attributeGroup ref="attrs" />
+                    <xs:attributeGroup ref="focus" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dd">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="address">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="b">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="noscript">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="td">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute default="1" name="rowspan" type="xs:string" />
+            <xs:attribute name="axis" type="xs:string" />
+            <xs:attribute name="scope">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="row" />
+                        <xs:enumeration value="col" />
+                        <xs:enumeration value="rowgroup" />
+                        <xs:enumeration value="colgroup" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="headers" type="xs:IDREFS" />
+            <xs:attribute default="1" name="colspan" type="xs:string" />
+            <xs:attribute name="abbr" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="label">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attribute name="for" type="xs:IDREF" />
+            <xs:attribute name="accesskey" type="xs:string" />
+            <xs:attribute name="onblur" type="xs:string" />
+            <xs:attribute name="onfocus" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="blockquote">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="cite" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="option">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="value" type="xs:string" />
+                    <xs:attribute name="disabled">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="disabled" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="selected">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="selected" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="label" type="xs:string" />
+                    <xs:attributeGroup ref="attrs" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="div">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="body">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="onunload" type="xs:string" />
+            <xs:attribute name="onload" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="span">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="meta">
+        <xs:complexType>
+            <xs:attribute name="scheme" type="xs:string" />
+            <xs:attribute name="content" type="xs:string" use="required" />
+            <xs:attribute name="id" type="xs:ID" />
+            <xs:attribute name="http-equiv" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attributeGroup ref="i18n" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fieldset">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="legend" />
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hr">
+        <xs:complexType>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="optgroup">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="option" />
+            </xs:sequence>
+            <xs:attribute name="disabled">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="disabled" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="label" type="xs:string" use="required" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cite">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="th">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:element ref="form" />
+                <xs:group ref="inline" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute default="1" name="rowspan" type="xs:string" />
+            <xs:attribute name="axis" type="xs:string" />
+            <xs:attribute name="scope">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="row" />
+                        <xs:enumeration value="col" />
+                        <xs:enumeration value="rowgroup" />
+                        <xs:enumeration value="colgroup" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="headers" type="xs:IDREFS" />
+            <xs:attribute default="1" name="colspan" type="xs:string" />
+            <xs:attribute name="abbr" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="cellhalign" />
+            <xs:attributeGroup ref="cellvalign" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="form">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="block" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute name="accept" type="xs:string" />
+            <xs:attribute name="onsubmit" type="xs:string" />
+            <xs:attribute default="application/x-www-form-urlencoded" name="enctype" type="xs:string" />
+            <xs:attribute default="get" name="method">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="get" />
+                        <xs:enumeration value="post" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="onreset" type="xs:string" />
+            <xs:attribute name="action" type="xs:string" use="required" />
+            <xs:attribute name="accept-charset" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="tt">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="area">
+        <xs:complexType>
+            <xs:attribute name="href" type="xs:string" />
+            <xs:attribute name="alt" type="xs:string" use="required" />
+            <xs:attribute default="rect" name="shape">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="rect" />
+                        <xs:enumeration value="circle" />
+                        <xs:enumeration value="poly" />
+                        <xs:enumeration value="default" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="coords" type="xs:string" />
+            <xs:attribute name="nohref">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="nohref" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="focus" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="table">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="caption" />
+                <xs:element ref="col" />
+                <xs:element ref="colgroup" />
+                <xs:element ref="thead" />
+                <xs:element ref="tfoot" />
+                <xs:element ref="tbody" />
+                <xs:element ref="tr" />
+            </xs:choice>
+            <xs:attribute name="border" type="xs:string" />
+            <xs:attribute name="cellspacing" type="xs:string" />
+            <xs:attribute name="width" type="xs:string" />
+            <xs:attribute name="summary" type="xs:string" />
+            <xs:attribute name="rules">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="none" />
+                        <xs:enumeration value="groups" />
+                        <xs:enumeration value="rows" />
+                        <xs:enumeration value="cols" />
+                        <xs:enumeration value="all" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="cellpadding" type="xs:string" />
+            <xs:attribute name="frame">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="void" />
+                        <xs:enumeration value="above" />
+                        <xs:enumeration value="below" />
+                        <xs:enumeration value="hsides" />
+                        <xs:enumeration value="lhs" />
+                        <xs:enumeration value="rhs" />
+                        <xs:enumeration value="vsides" />
+                        <xs:enumeration value="box" />
+                        <xs:enumeration value="border" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="button">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="p" />
+                <xs:group ref="heading" />
+                <xs:element ref="div" />
+                <xs:group ref="lists" />
+                <xs:group ref="blocktext" />
+                <xs:element ref="table" />
+                <xs:group ref="special" />
+                <xs:group ref="fontstyle" />
+                <xs:group ref="phrase" />
+                <xs:group ref="misc" />
+            </xs:choice>
+            <xs:attribute default="submit" name="type">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="button" />
+                        <xs:enumeration value="submit" />
+                        <xs:enumeration value="reset" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="disabled">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="disabled" />
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+            <xs:attributeGroup ref="focus" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="p">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="q">
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:group ref="inline" />
+                <xs:group ref="misc.inline" />
+            </xs:choice>
+            <xs:attribute name="cite" type="xs:string" />
+            <xs:attributeGroup ref="attrs" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Packages.PackageManagers.PackageListBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:Sitecore.Rocks.Controls"
+    xmlns:sources="clr-namespace:Sitecore.Rocks.UI.Packages.PackageManagers.Sources" xmlns:controls1="clr-namespace:Sitecore.Rocks.UI.Controls" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="PackagesPane" Margin="4,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                <Button x:Name="ActionButton" MinWidth="75" Height="23" Visibility="Collapsed" />
+            </StackPanel>
+            <controls1:WatermarkedTextBox x:Name="Filter" HorizontalAlignment="Right" Margin="0,4,8,0" Watermark="Filter" Width="200" DeferredTextChanged="FilterPackages"
+                Grid.Column="1" />
+        </Grid>
+
+        <Grid x:Name="PackageListPane" Grid.Row="1" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controls:Loading x:Name="Loading" Visibility="Collapsed" Grid.ColumnSpan="3" />
+
+            <Border x:Name="NoPackages" Visibility="Collapsed" Grid.ColumnSpan="3" Grid.Column="0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="There are no packages to show." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" HorizontalAlignment="Center" />
+                    <TextBlock Text="Add files to this repository or select another repository." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                        HorizontalAlignment="Center" Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+
+            <ListBox Grid.Column="0" x:Name="PackageList" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectionChanged="SetPackage"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+
+            <GridSplitter x:Name="GridSplitter" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" Width="5" VerticalAlignment="Stretch" Grid.Column="1" />
+
+            <Border x:Name="InfoPanel" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,0,0,0" Grid.Column="2" BorderThickness="0">
+                <sources:PackageInformationPanel x:Name="PackageInformationPanel" Margin="8" />
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

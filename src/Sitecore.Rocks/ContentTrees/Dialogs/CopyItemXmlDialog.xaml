@@ -1,0 +1,33 @@
+﻿<Window x:Class="Sitecore.Rocks.ContentTrees.Dialogs.CopyItemXmlDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Get Item Xml" Height="400" Width="600"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="The XML string of the item:" Margin="0,0,0,0" />
+
+        <TextBox x:Name="Xml" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Visibility="Collapsed" AcceptsReturn="true"
+            FontFamily="Consolas" FontSize="12" />
+        <TextBlock Name="Loading" Text="Loading..." Padding="8,8,0,0" Grid.Row="1" HorizontalAlignment="Stretch"
+            Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+
+        <CheckBox x:Name="IncludeSubItems" Content="Include Subitems" IsChecked="true" Grid.Row="2" Margin="0,4,0,0" Checked="IncludeSubItemsChecked"
+            Unchecked="IncludeSubItemsChecked" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Grid.Row="3">
+            <Button x:Name="Copy" Content="Copy to Clipboard" Margin="0,0,8,0" Click="CopyClick" Width="120" />
+            <Button x:Name="Save" Content="Save to File" Margin="0,0,16,0" Click="SaveClick" Width="120" />
+            <Button x:Name="OK" Content="Close" IsDefault="True" Margin="0,0,8,0" Click="OkClick" />
+        </StackPanel>
+    </Grid>
+</Window>

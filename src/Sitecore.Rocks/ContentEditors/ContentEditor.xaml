@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.ContentEditor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:ce="clr-namespace:Sitecore.Rocks.ContentEditors"
+    xmlns:nb="clr-namespace:Sitecore.Rocks.Controls.NotificationBar" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:r="clr-namespace:Sitecore.Rocks.Controls.Ribbons" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto" x:Name="Control" mc:Ignorable="d"
+    d:DesignHeight="800" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ce:AppCommands.GoBack" Executed="GoBack" CanExecute="CanGoBack" />
+        <CommandBinding Command="ce:AppCommands.GoForward" Executed="GoForward" CanExecute="CanGoForward" />
+    </UserControl.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=Control}" />
+
+        <r:Ribbon x:Name="Ribbon" Grid.Row="0" />
+
+        <Border Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+            <Grid Margin="5,2,4,2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" MinWidth="50" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition x:Name="FilterWidth" Width="150" MinWidth="50" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="Menu" ToolTip="Menu" Click="OpenMenu" KeyboardNavigation.TabIndex="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    <c:ToolBarButton Icon="Resources/16x16/menu.png" />
+                </Button>
+
+                <Separator Grid.Column="1" />
+
+                <Button x:Name="BackButton" Command="ce:AppCommands.GoBack" ToolTip="Back" KeyboardNavigation.TabIndex="1" Grid.Column="2"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    <c:ToolBarButton Icon="Resources/16x16/Back.png" Text="Back" />
+                </Button>
+
+                <Button x:Name="ForwardButton" Command="ce:AppCommands.GoForward" ToolTip="Forward" KeyboardNavigation.TabIndex="2" Grid.Column="3"
+                    Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    <controls:ButtonIcon Icon="Resources/16x16/forward.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+
+                <Border Grid.Column="5" Margin="8,0,0,0">
+                    <ce:ItemBreadcrumb x:Name="ItemBreadcrumb" KeyboardNavigation.TabIndex="4" />
+                </Border>
+
+                <GridSplitter x:Name="Splitter" Grid.Column="6" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" BorderThickness="0" PreviewMouseLeftButtonUp="SaveSplitterPosition" />
+
+                <ce:FieldsFilter FilterChanged="FieldsFilterChanged" KeyboardNavigation.TabIndex="5" Grid.Column="7" />
+            </Grid>
+        </Border>
+
+        <nb:NotificationBar Grid.Row="2" OptionsKeyName="HideContentEditorHelp">
+            <StackPanel>
+                <TextBlock Margin="0,4,0,0" FontWeight="Bold" TextWrapping="Wrap">
+                    More annoying information.
+                </TextBlock>
+                <TextBlock Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}"
+                    Text="Right-click in the content editor to display a context-menu with additional options." TextWrapping="Wrap" Margin="16,4,0,0" />
+                <TextBlock Foreground="{DynamicResource {x:Static SystemColors.InfoTextBrushKey}}" Text="Right-click field labels to show a field context-menu."
+                    Margin="16,8,0,0" TextWrapping="Wrap" />
+            </StackPanel>
+        </nb:NotificationBar>
+
+        <Grid x:Name="Editor" Grid.Row="3" ContextMenuOpening="OpenContextMenu" FocusManager.IsFocusScope="True" KeyboardNavigation.TabIndex="0"
+            KeyboardNavigation.TabNavigation="Cycle" KeyboardNavigation.ControlTabNavigation="Cycle" KeyboardNavigation.DirectionalNavigation="Cycle" />
+    </Grid>
+</UserControl>

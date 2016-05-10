@@ -1,0 +1,72 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.LayoutDesigners.Dialogs.ParametersDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" Title="Rendering Parameters" Height="500" Width="400"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type c:FocusedTextBox}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <Style x:Key="DataGrid" TargetType="DataGrid">
+            <Setter Property="Margin" Value="0,2,0,2" />
+            <Setter Property="BorderBrush" Value="#DDDDDD" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#DDDDDD" />
+            <Setter Property="VerticalGridLinesBrush" Value="#DDDDDD" />
+
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="#84acdd" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#f2f8ff" Offset="0.0" />
+                                            <GradientStop Color="#d0e5ff" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </Style.Triggers>
+
+                        <Setter Property="Padding" Value="4,2,4,2" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Parameters:" />
+
+        <DataGrid x:Name="ParametersGrid" Grid.Row="1" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="True" Style="{StaticResource DataGrid}"
+            RowHeaderWidth="0" VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" CanUserReorder="false" CanUserSort="False" />
+                <DataGridTextColumn Header="Value" Binding="{Binding Path=Value}" Width="2*" CanUserReorder="false" CanUserSort="False" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="2">
+            <Button x:Name="OK" Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" Width="75" Height="23" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

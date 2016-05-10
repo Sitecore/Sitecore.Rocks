@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FB504E79-AD4F-4D68-88C8-0E1F668D7FC5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore.Rocks.Server</RootNamespace>
+    <AssemblyName>Sitecore.Rocks.Server</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Developing|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Sitecore.Rocks.Server.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SC.Lucene.Net.8.1.0.151207\lib\Lucene.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Client, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SC.Sitecore.Client.8.1.0.151207\lib\Sitecore.Client.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SC.Sitecore.Kernel.8.1.0.151207\lib\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SC.Sitecore.Update.8.1.0.151207\lib\Sitecore.Update.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\HeadingStyleExceptions.txt" />
+    <Content Include="sitecore\shell\WebService\Browse.aspx" />
+    <Content Include="sitecore\shell\WebService\Service2.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Diagnostics\SitecoreVersionAttribute.cs" />
+    <Compile Include="Extensibility\Composition\CreationPolicy.cs" />
+    <Compile Include="Extensibility\Composition\ExportAttribute.cs" />
+    <Compile Include="Extensibility\Composition\ExportDefinition.cs" />
+    <Compile Include="Extensibility\Composition\ImportAttribute.cs" />
+    <Compile Include="Extensibility\Composition\ImportManyAttribute.cs" />
+    <Compile Include="Extensibility\Composition\UnexportAttribute.cs" />
+    <Compile Include="Extensibility\EnvHost.cs" />
+    <Compile Include="Extensibility\ExtensibilityAttribute.cs" />
+    <Compile Include="Extensibility\ExtensibilityHost.cs" />
+    <Compile Include="Extensibility\ExtensibilityInitializationAttribute.cs" />
+    <Compile Include="Extensibility\ExtensibilityLoader.cs" />
+    <Compile Include="Extensibility\Pipelines\Pipeline.cs" />
+    <Compile Include="Extensibility\Pipelines\PipelineAttribute.cs" />
+    <Compile Include="Extensibility\Pipelines\PipelineManager.cs" />
+    <Compile Include="Extensibility\Pipelines\PipelineProcessor.cs" />
+    <Compile Include="Extensions\AssemblyExtensions\AssemblyExtensions.cs" />
+    <Compile Include="Extensions\QueryExtensions\QueryExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions\StringExtensions.cs" />
+    <Compile Include="Extensions\XElementExtensions\XElementExtensions.cs" />
+    <Compile Include="Extensions\XmlTextWriterExtensions\XmlTextWriterExtensions.cs" />
+    <Compile Include="Hosts\AppVersionHost.cs" />
+    <Compile Include="IO\LocalFile.cs" />
+    <Compile Include="Jobs\BackgroundJob.cs" />
+    <Compile Include="Layouts\BindingMode.cs" />
+    <Compile Include="Layouts\LayoutWriter.cs" />
+    <Compile Include="Layouts\PlaceHolderAnalyzer.cs" />
+    <Compile Include="Layouts\SpeakCoreVersionHelper.cs" />
+    <Compile Include="Packages\NuGetPackageBuilderBase.cs" />
+    <Compile Include="Packages\PureNuGetPackageBuilder.cs" />
+    <Compile Include="Packages\PackageBuilder.cs" />
+    <Compile Include="Packages\PackageInstaller.cs" />
+    <Compile Include="Packages\SitecoreNuGetPackageBuilder.cs" />
+    <Compile Include="Packages\UpdatePackageBuilder.cs" />
+    <Compile Include="Packages\ZipPackageBuilder.cs" />
+    <Compile Include="Pipelines\BreadcrumbDropDown\2000 - Search.cs" />
+    <Compile Include="Pipelines\DeleteItems\2000 - CheckCloneLinks.cs" />
+    <Compile Include="Pipelines\DeleteItems\3000 - CheckLinks.cs" />
+    <Compile Include="Pipelines\BreadcrumbDropDown\BreadcrumbDropDownPipeline.cs" />
+    <Compile Include="Pipelines\DeleteItems\DeleteItemPipeline.cs" />
+    <Compile Include="Pipelines\DeleteItems\1000 - CheckTemplateLinks.cs" />
+    <Compile Include="Pipelines\BreadcrumbDropDown\1000 - PartialMatch.cs" />
+    <Compile Include="Pipelines\GetFieldValue\010 - GetLayoutField.cs" />
+    <Compile Include="Pipelines\GetFieldValue\999 - GetField.cs" />
+    <Compile Include="Pipelines\GetFieldValue\GetFieldValuePipeline.cs" />
+    <Compile Include="Pipelines\Login\2000 - ServerComponents.cs" />
+    <Compile Include="Pipelines\Login\1000 - SitecoreRocksVersion.cs" />
+    <Compile Include="Pipelines\Login\LoginPipeline.cs" />
+    <Compile Include="Pipelines\Login\3000 - WebCommands.cs" />
+    <Compile Include="Pipelines\SetFieldValue\010 - SetLayoutField.cs" />
+    <Compile Include="Pipelines\SetFieldValue\999 - SetField.cs" />
+    <Compile Include="Pipelines\SetFieldValue\SetFieldValuePipeline.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\010 - SublayoutFields.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\020 - XslRenderingFields.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\030 - WebControlFields.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\040 - AltTextFields.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\050 - SerializationStatus.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\060 - SpeakRenderingFields.cs" />
+    <Compile Include="Pipelines\WriteItemHeader\WriteItemHeaderPipeline.cs" />
+    <Compile Include="QueryAnalyzers\Functions\Attribute.cs" />
+    <Compile Include="QueryAnalyzers\Functions\ContainsAny.cs" />
+    <Compile Include="QueryAnalyzers\Functions\Count.cs" />
+    <Compile Include="QueryAnalyzers\Functions\Counter.cs" />
+    <Compile Include="QueryAnalyzers\Functions\FunctionAttribute.cs" />
+    <Compile Include="QueryAnalyzers\Functions\GetID.cs" />
+    <Compile Include="QueryAnalyzers\Functions\GetLanguage.cs" />
+    <Compile Include="QueryAnalyzers\Functions\GetPath.cs" />
+    <Compile Include="QueryAnalyzers\Functions\IFunction.cs" />
+    <Compile Include="QueryAnalyzers\Functions\Paths.cs" />
+    <Compile Include="QueryAnalyzers\Functions\Replace.cs" />
+    <Compile Include="QueryAnalyzers\Functions\VersionCount.cs" />
+    <Compile Include="QueryAnalyzers\Functions\XPathSelect.cs" />
+    <Compile Include="QueryAnalyzers\ImportSourceAttribute.cs" />
+    <Compile Include="QueryAnalyzers\ImportSources\CsvImportSource.cs" />
+    <Compile Include="QueryAnalyzers\ImportSources\ImportSourceBase.cs" />
+    <Compile Include="QueryAnalyzers\ImportSources\TreeImportSource.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\CreateKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\ImportKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\PackageKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\ReplaceKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\SerializeKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\UseKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Comment.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Create.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Database.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\FastQuery.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Import.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemDatabase.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemLanguage.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemShortId.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemsOpcode.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemVersion.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Package.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Replace.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Reset.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Serialize.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\SetContextNode.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\SetLanguage.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Use.cs" />
+    <Compile Include="QueryAnalyzers\OrderByColumn.cs" />
+    <Compile Include="QueryAnalyzers\QueryAnalyzer.cs" />
+    <Compile Include="QueryAnalyzers\IQueryAnalyzerKeyword.cs" />
+    <Compile Include="QueryAnalyzers\KeywordAttribute.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\DeleteKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\HelpKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\InsertKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\PublishKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\SelectKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\SetKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Keywords\UpdateKeyword.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Help.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Publish.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\Parser.cs" />
+    <Compile Include="QueryAnalyzers\QueryAnalyzerManager.cs" />
+    <Compile Include="QueryAnalyzers\QueryAnalyzerQuery.cs" />
+    <Compile Include="QueryAnalyzers\QueryTranslator.cs" />
+    <Compile Include="QueryAnalyzers\ReservedWordAttribute.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlerAttribute.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\DatabaseWhereHandler.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\FastQueryWhereHandler.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\IImportSource.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\IWhereHandler.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\QueryWhereHandler.cs" />
+    <Compile Include="QueryAnalyzers\WhereHandlers\SearchWhereHandler.cs" />
+    <Compile Include="Requests\Archives\EmptyArchive.cs" />
+    <Compile Include="Requests\Archives\RestoreItems.cs" />
+    <Compile Include="QueryAnalyzers\SelectColumn.cs" />
+    <Compile Include="QueryAnalyzers\ColumnExpression.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Batches.cs" />
+    <Compile Include="QueryAnalyzers\SelectField.cs" />
+    <Compile Include="QueryAnalyzers\SelectItem.cs" />
+    <Compile Include="QueryAnalyzers\SelectDataTable.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\QueryAnalyzerTokenizer.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Delete.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Insert.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\ItemPath.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Search.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\SetMaxItems.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Update.cs" />
+    <Compile Include="Requests\Caches\Clear.cs" />
+    <Compile Include="Requests\Caches\ClearAll.cs" />
+    <Compile Include="Requests\Cloning\Clone.cs" />
+    <Compile Include="Requests\Caches\GetCacheKeys.cs" />
+    <Compile Include="Requests\Caches\GetCaches.cs" />
+    <Compile Include="Requests\Caches\RemoveCacheKeys.cs" />
+    <Compile Include="Requests\Caches\Scavenge.cs" />
+    <Compile Include="Requests\Cloning\Unclone.cs" />
+    <Compile Include="Requests\CodeGeneration\CompiledCodeGenerator.cs" />
+    <Compile Include="Requests\CodeGeneration\GetTemplatesWithFields.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Requests\CodeGeneration\AspxGenerator.cs" />
+    <Compile Include="Requests\CodeGeneration\XsltGenerator.cs" />
+    <Compile Include="Requests\DebugTraces\DeleteSessions.cs" />
+    <Compile Include="Requests\DebugTraces\GetSession.cs" />
+    <Compile Include="Requests\DebugTraces\GetSessions.cs" />
+    <Compile Include="Requests\Archives\GetArchivedItems.cs" />
+    <Compile Include="Requests\Documentation\Export.cs" />
+    <Compile Include="Requests\Documentation\Import.cs" />
+    <Compile Include="Requests\Files\DeleteTempFolders.cs" />
+    <Compile Include="Requests\Files\GetTempFolders.cs" />
+    <Compile Include="Requests\Files\ReadFile.cs" />
+    <Compile Include="Requests\Indexes\IndexExtensions.cs" />
+    <Compile Include="Requests\Indexes\LuceneRequest.cs" />
+    <Compile Include="Requests\Items\CopyItems.cs" />
+    <Compile Include="Requests\Items\DeleteItems.cs" />
+    <Compile Include="Requests\Items\Fields\DropTreeFieldWriter.cs" />
+    <Compile Include="Requests\Items\Move.cs" />
+    <Compile Include="Requests\Items\Rename.cs" />
+    <Compile Include="Requests\Languages\SetContextLanguage.cs" />
+    <Compile Include="Requests\LayoutBuilders\CreateDataSource.cs" />
+    <Compile Include="Requests\LayoutBuilders\GetPlaceHolderSettings.cs" />
+    <Compile Include="Requests\LayoutBuilders\GetQuickSteps.cs" />
+    <Compile Include="Requests\LayoutBuilders\GetRenderingsInPlaceHolder.cs" />
+    <Compile Include="Requests\Layouts\CreatePlaceHolderSettings.cs" />
+    <Compile Include="Requests\Layouts\GetDevices.cs" />
+    <Compile Include="Requests\Layouts\GetLayoutPlaceHolders.cs" />
+    <Compile Include="Requests\Layouts\GetRenderingParameters.cs" />
+    <Compile Include="Requests\Items\GetDescendants.cs" />
+    <Compile Include="Requests\Items\Fields\GeneralLinkFieldWriter.cs" />
+    <Compile Include="Requests\Items\GetDisplayNames.cs" />
+    <Compile Include="Requests\Items\GetHistory.cs" />
+    <Compile Include="Requests\Items\GetItemHeaders.cs" />
+    <Compile Include="Requests\Items\GetItemId.cs" />
+    <Compile Include="Requests\Items\GetItemUrls.cs" />
+    <Compile Include="Requests\Items\GetModifiedItems.cs" />
+    <Compile Include="Requests\Items\GetThumbnail.cs" />
+    <Compile Include="Requests\Items\SetDisplayNames.cs" />
+    <Compile Include="Requests\Items\SetThumbnail.cs" />
+    <Compile Include="Requests\Layouts\GetRenderings.cs" />
+    <Compile Include="Requests\Layouts\SaveLayout.cs" />
+    <Compile Include="Requests\Packages\AnalyzePackage.cs" />
+    <Compile Include="Requests\Packages\BuildPackageBase.cs" />
+    <Compile Include="Requests\Packages\BuildPureNuGetPackage.cs" />
+    <Compile Include="Requests\Packages\BuildPackage.cs" />
+    <Compile Include="Requests\Packages\BuildSitecoreNuGetPackage.cs" />
+    <Compile Include="Requests\Packages\BuildUpdatePackage.cs" />
+    <Compile Include="Requests\Packages\CreateAntiPackage.cs" />
+    <Compile Include="Requests\Packages\GetPackageFolder.cs" />
+    <Compile Include="Requests\Packages\GetPackageInformation.cs" />
+    <Compile Include="Requests\Packages\InstallPackage.cs" />
+    <Compile Include="Requests\Packages\PackageAnalyzer.cs" />
+    <Compile Include="Requests\Packages\PackagePostStep.cs" />
+    <Compile Include="Requests\Packages\Upload.cs" />
+    <Compile Include="Requests\Packages\UploadAndInstall.cs" />
+    <Compile Include="Requests\Projects\GetItemsWithFilePaths.cs" />
+    <Compile Include="Requests\Projects\RebindFileItems.cs" />
+    <Compile Include="Requests\Publishing\AdvancedPublish.cs" />
+    <Compile Include="Requests\Publishing\GetAdvancedPublishingInformation.cs" />
+    <Compile Include="Requests\Publishing\PublishItemAndRelatedItems.cs" />
+    <Compile Include="Requests\Renderings\ReadXslt.cs" />
+    <Compile Include="Requests\Files\Upload.cs" />
+    <Compile Include="Requests\Renderings\RenderXslt.cs" />
+    <Compile Include="Requests\Files\SaveFile.cs" />
+    <Compile Include="Requests\Renderings\SaveXslt.cs" />
+    <Compile Include="Requests\GetChildren.cs" />
+    <Compile Include="Requests\Indexes\GetDocument.cs" />
+    <Compile Include="Requests\Indexes\GetDocuments.cs" />
+    <Compile Include="Requests\Indexes\GetIndexes.cs" />
+    <Compile Include="Requests\Indexes\GetTerms.cs" />
+    <Compile Include="Requests\Indexes\OptimizeIndex.cs" />
+    <Compile Include="Requests\Indexes\RebuildIndex.cs" />
+    <Compile Include="Requests\Indexes\Search.cs" />
+    <Compile Include="Requests\Items\CopyTo.cs" />
+    <Compile Include="Requests\Items\CreateItem.cs" />
+    <Compile Include="Requests\Items\Duplicate.cs" />
+    <Compile Include="Requests\Items\Exists.cs" />
+    <Compile Include="Requests\Items\Fields\SecurityFieldWriter.cs" />
+    <Compile Include="Requests\Items\Fields\LayoutFieldWriter.cs" />
+    <Compile Include="Requests\Items\Fields\FieldWriterBase.cs" />
+    <Compile Include="Requests\Items\Fields\FieldWriterFactory.cs" />
+    <Compile Include="Requests\Items\Fields\RuleSetFieldWriter.cs" />
+    <Compile Include="Requests\Items\GetBreadcrumbItem.cs" />
+    <Compile Include="Requests\Items\GetDependencies.cs" />
+    <Compile Include="Requests\Items\GetItemHeader.cs" />
+    <Compile Include="Requests\Items\SetFieldValue.cs" />
+    <Compile Include="Requests\Languages\GetLanguages.cs" />
+    <Compile Include="Requests\Layouts\GetLayouts.cs" />
+    <Compile Include="Requests\Links\GetLinks.cs" />
+    <Compile Include="Requests\Links\GetTemplateInstances.cs" />
+    <Compile Include="Requests\Media\Attach.cs" />
+    <Compile Include="Requests\Files\Delete.cs" />
+    <Compile Include="Requests\Media\Detach.cs" />
+    <Compile Include="Requests\Media\DownloadAttachment.cs" />
+    <Compile Include="Requests\Media\Search.cs" />
+    <Compile Include="Requests\Media\Upload.cs" />
+    <Compile Include="Requests\Packages\CreatePackage.cs" />
+    <Compile Include="Requests\Packages\DeserializeItem.cs" />
+    <Compile Include="Requests\Publishing\CleanUpPublishingQueue.cs" />
+    <Compile Include="Requests\Publishing\ClearPublishingQueue.cs" />
+    <Compile Include="Requests\Publishing\GetPublishingQueue.cs" />
+    <Compile Include="Requests\Publishing\GetPublishingRestrictions.cs" />
+    <Compile Include="Requests\Publishing\Publish.cs" />
+    <Compile Include="Requests\Publishing\PublishItem.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\QueryAnalyzerBuilder.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\QueryAnalyzerParser.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\QueryAnalyzerTokenBuilder.cs" />
+    <Compile Include="QueryAnalyzers\Parsers\QueryAnalyzerTokenType.cs" />
+    <Compile Include="Requests\QueryAnalyzer\GetKeywords.cs" />
+    <Compile Include="Requests\QueryAnalyzer\Run.cs" />
+    <Compile Include="QueryAnalyzers\Opcodes\Select.cs" />
+    <Compile Include="Requests\RebuildLinkDatabase.cs" />
+    <Compile Include="Requests\RebuildSearchIndex.cs" />
+    <Compile Include="Requests\Query.cs" />
+    <Compile Include="Requests\Projects\Commit.cs" />
+    <Compile Include="Requests\GetFiles.cs" />
+    <Compile Include="Requests\Reports\XsltGenerator.cs" />
+    <Compile Include="Requests\Rules\GetConditionsAndActions.cs" />
+    <Compile Include="Requests\Rules\TestRule.cs" />
+    <Compile Include="Requests\Serialization\GetItemSerializationPath.cs" />
+    <Compile Include="Requests\Serialization\RevertDatabase.cs" />
+    <Compile Include="Requests\Serialization\RevertItem.cs" />
+    <Compile Include="Requests\Serialization\RevertTree.cs" />
+    <Compile Include="Requests\Serialization\SerializeDatabase.cs" />
+    <Compile Include="Requests\Serialization\SerializeItem.cs" />
+    <Compile Include="Requests\Serialization\SerializeTree.cs" />
+    <Compile Include="Requests\Serialization\UpdateDatabase.cs" />
+    <Compile Include="Requests\Serialization\UpdateItem.cs" />
+    <Compile Include="Requests\Serialization\UpdateTree.cs" />
+    <Compile Include="Requests\Templates\ChangeTemplates.cs" />
+    <Compile Include="Requests\Templates\GetHierarchy.cs" />
+    <Compile Include="Requests\UI\XpathBuilder\Evaluate.cs" />
+    <Compile Include="Requests\Search\Search.cs" />
+    <Compile Include="Requests\Search\SelectItems.cs" />
+    <Compile Include="Requests\Security\ClearOwnership.cs" />
+    <Compile Include="Requests\Security\Lock.cs" />
+    <Compile Include="Requests\Security\TakeOwnership.cs" />
+    <Compile Include="Requests\Security\Unlock.cs" />
+    <Compile Include="Requests\Sites\GetDatabasesAndLanguages.cs" />
+    <Compile Include="Requests\Sites\TestTypeAndAssembly.cs" />
+    <Compile Include="Requests\Statistics\GetStatistics.cs" />
+    <Compile Include="Requests\Templates\GetFieldXml.cs" />
+    <Compile Include="Requests\Templates\GetSectionXml.cs" />
+    <Compile Include="Requests\Templates\GetTemplateBase.cs" />
+    <Compile Include="Requests\Templates\GetTemplateFieldSorterFields.cs" />
+    <Compile Include="Requests\Templates\SaveTemplateFieldSorterFields.cs" />
+    <Compile Include="Requests\UI\LogViewer\GetLogItem.cs" />
+    <Compile Include="Requests\Projects\Update.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\Items\GetItemFields.cs" />
+    <Compile Include="Requests\ContentTrees\GetWebConfig.cs" />
+    <Compile Include="Requests\Templates\ChangeTemplate.cs" />
+    <Compile Include="Requests\CreateItemPath.cs" />
+    <Compile Include="Requests\GetChildrenFromPath.cs" />
+    <Compile Include="Requests\Templates\GetFieldTypes.cs" />
+    <Compile Include="Requests\GetGutterItems.cs" />
+    <Compile Include="Requests\GetGutters.cs" />
+    <Compile Include="Requests\GetInsertOptions.cs" />
+    <Compile Include="Requests\UI\JobViewer\GetJobs.cs" />
+    <Compile Include="Requests\GetLayout.cs" />
+    <Compile Include="Requests\UI\LogViewer\GetLog.cs" />
+    <Compile Include="Requests\GetPlaceholders.cs" />
+    <Compile Include="Requests\GetSubitemSortings.cs" />
+    <Compile Include="Requests\Templates\GetTemplateXml.cs" />
+    <Compile Include="Requests\RequestHandler.cs" />
+    <Compile Include="Requests\ResetSortOrder.cs" />
+    <Compile Include="Requests\Items\Save.cs" />
+    <Compile Include="Requests\Templates\SaveTemplateXml.cs" />
+    <Compile Include="Requests\ServerComponents.cs" />
+    <Compile Include="Requests\SetGutter.cs" />
+    <Compile Include="Requests\SetSortOrder.cs" />
+    <Compile Include="Requests\Templates\GetTemplates.cs" />
+    <Compile Include="Requests\Validate.cs" />
+    <Compile Include="Requests\ContentTrees\Find.cs" />
+    <Compile Include="Requests\Validations\GetItemValidation.cs" />
+    <Compile Include="Requests\Validations\GetValidationReport.cs" />
+    <Compile Include="Requests\Validations\GetValidations.cs" />
+    <Compile Include="Requests\Validations\StartItemValidation.cs" />
+    <Compile Include="Requests\Validations\StartValidationAssessment.cs" />
+    <Compile Include="Requests\Validations\TestQuery.cs" />
+    <Compile Include="Requests\Validation\GetValidators.cs" />
+    <Compile Include="Requests\Validation\GetValidationIssues.cs" />
+    <Compile Include="Requests\Workflows\ExecuteWorkflowCommand.cs" />
+    <Compile Include="Requests\Workflows\GetWorkflowCommands.cs" />
+    <Compile Include="Requests\Workflows\SetWorkflowState.cs" />
+    <Compile Include="ServerHost.cs" />
+    <Compile Include="sitecore\shell\WebService\Service2.asmx.cs">
+      <DependentUpon>Service2.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="sitecore\shell\WebService\Sitecore.Rocks.Validation.ashx.cs">
+      <DependentUpon>Sitecore.Rocks.Validation.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Validations\Analytics\AnalyticsDisabled.cs" />
+    <Compile Include="Validations\Analytics\AutoDetectRobots.cs" />
+    <Compile Include="Validations\Caching\CachingEnabled.cs" />
+    <Compile Include="Validations\Caching\HtmlCache.cs" />
+    <Compile Include="Validations\Configuration\CustomWebSite.cs" />
+    <Compile Include="Validations\Configuration\IndexingServerSpecificProperties.cs" />
+    <Compile Include="Validations\Configuration\IsIndexingDisabled.cs" />
+    <Compile Include="Validations\Configuration\SheerUiProfiling.cs" />
+    <Compile Include="Validations\Configuration\SiteContentLanguage.cs" />
+    <Compile Include="Validations\Configuration\SiteHostName.cs" />
+    <Compile Include="Validations\Configuration\SiteLanguage.cs" />
+    <Compile Include="Validations\Configuration\WebConfigContentEditorStylesheet.cs" />
+    <Compile Include="Validations\Configuration\WebConfigCustomErrors.cs" />
+    <Compile Include="Validations\Configuration\WebConfigDebug.cs" />
+    <Compile Include="Validations\Configuration\WebConfigMailServer.cs" />
+    <Compile Include="Validations\Configuration\WebConfigTrace.cs" />
+    <Compile Include="Validations\Configuration\WebConfigTypes.cs" />
+    <Compile Include="Validations\Configuration\WebConfigWebStylesheet.cs" />
+    <Compile Include="Validations\Configuration\WellformedIncludeFiles.cs" />
+    <Compile Include="Validations\Configuration\WritableFolders.cs" />
+    <Compile Include="Validations\CustomValidation.cs" />
+    <Compile Include="Validations\DatabaseLanguageDescriptor.cs" />
+    <Compile Include="Validations\FileSystemNavigator.cs" />
+    <Compile Include="Validations\IItemValidation.cs" />
+    <Compile Include="Validations\IRenderingValidation.cs" />
+    <Compile Include="Validations\Items\Fields\DateRangeChecker.cs" />
+    <Compile Include="Validations\Items\Fields\LoremIpsumText.cs" />
+    <Compile Include="Validations\Items\Fields\PublishUnpublishDateRange.cs" />
+    <Compile Include="Validations\Items\Fields\ReminderArchiveDateRange.cs" />
+    <Compile Include="Validations\Items\Fields\ValidFromValidToDateRange.cs" />
+    <Compile Include="Validations\Items\ItemsWithSameDisplayName.cs" />
+    <Compile Include="Validations\Items\ItemsWithSameName.cs" />
+    <Compile Include="Validations\Items\Media\NoMedia.cs" />
+    <Compile Include="Validations\Items\Performance\ManySubitems.cs" />
+    <Compile Include="Validations\Items\Performance\ManyVersions.cs" />
+    <Compile Include="Validations\Items\Presentation\LayoutFiles.cs" />
+    <Compile Include="Validations\Items\Presentation\LayoutOnTemplate.cs" />
+    <Compile Include="Validations\Items\Presentation\LayoutOverridesStandardValues.cs" />
+    <Compile Include="Validations\Items\Presentation\PlaceholdersButNoRenderings.cs" />
+    <Compile Include="Validations\Items\Presentation\ReferenceToNonExistingPlaceholder.cs" />
+    <Compile Include="Validations\Items\Presentation\SublayoutFiles.cs" />
+    <Compile Include="Validations\Items\Presentation\XsltFiles.cs" />
+    <Compile Include="Validations\Items\Security\ExplicitSecurityDenies.cs" />
+    <Compile Include="Validations\Items\Security\LockedByNonExistingUserValidator.cs" />
+    <Compile Include="Validations\Items\Security\OwnedByNonExistingUserValidator.cs" />
+    <Compile Include="Validations\Items\Security\SecurityOnNonExistingRole.cs" />
+    <Compile Include="Validations\Items\Security\SecurityOnNonExistingUser.cs" />
+    <Compile Include="Validations\Items\Security\SecurityOnUser.cs" />
+    <Compile Include="Validations\Items\Speak\ButtonText.cs" />
+    <Compile Include="Validations\Items\Speak\ControlHelp.cs" />
+    <Compile Include="Validations\Items\Speak\DoNotUseHtmlInLabels.cs" />
+    <Compile Include="Validations\Items\Speak\DoNotUseUppercase.cs" />
+    <Compile Include="Validations\Items\Speak\EmptyPageSettings.cs" />
+    <Compile Include="Validations\Items\Speak\GeneralTextStyle.cs" />
+    <Compile Include="Validations\Items\Speak\HeadingStyle.cs" />
+    <Compile Include="Validations\Items\Speak\InvalidDefaultParameter.cs" />
+    <Compile Include="Validations\Items\Speak\InvalidPageSettingsName.cs" />
+    <Compile Include="Validations\Items\Speak\LabelMustEndWithColon.cs" />
+    <Compile Include="Validations\Items\Speak\MissingBddTestFile.cs" />
+    <Compile Include="Validations\Items\Speak\MissingDotInControlHelp.cs" />
+    <Compile Include="Validations\Items\Speak\MissingDotInParameterHelp.cs" />
+    <Compile Include="Validations\Items\Speak\MissingExampleFile.cs" />
+    <Compile Include="Validations\Items\Speak\MissingParametersTemplate.cs" />
+    <Compile Include="Validations\Items\Speak\NoVersionedFieldsInParameters.cs" />
+    <Compile Include="Validations\Items\Speak\PageCodeMissing.cs" />
+    <Compile Include="Validations\Items\Speak\ParameterHelp.cs" />
+    <Compile Include="Validations\Items\Templates\DeprecatedTemplateFieldType.cs" />
+    <Compile Include="Validations\Items\Templates\DuplicateTemplateField.cs" />
+    <Compile Include="Validations\Items\Templates\FriendlyTemplateFieldName.cs" />
+    <Compile Include="Validations\Items\Templates\UnusedTemplates.cs" />
+    <Compile Include="Validations\Items\Templates\UseIdInsteadOfPaths.cs" />
+    <Compile Include="Validations\Items\Validators.cs" />
+    <Compile Include="Validations\ItemValidation.cs" />
+    <Compile Include="Validations\IValidation.cs" />
+    <Compile Include="Validations\RenderingValidation.cs" />
+    <Compile Include="Validations\Security\AdministratorPassword.cs" />
+    <Compile Include="Validations\Security\DataFolderLocation.cs" />
+    <Compile Include="Validations\Security\LicenseExpiry.cs" />
+    <Compile Include="Validations\Security\PartnerLicense.cs" />
+    <Compile Include="Validations\SeverityLevel.cs" />
+    <Compile Include="Validations\Speak\SpeakPageValidation.cs" />
+    <Compile Include="Validations\Speak\SpeakRenderingValidation.cs" />
+    <Compile Include="Validations\Speak\ViewRenderingValidation.cs" />
+    <Compile Include="Validations\Validation.cs" />
+    <Compile Include="Validations\ValidationAnalyzer.cs" />
+    <Compile Include="Validations\ValidationAnalyzerOptions.cs" />
+    <Compile Include="Validations\ValidationAttribute.cs" />
+    <Compile Include="Validations\ValidationManager.cs" />
+    <Compile Include="Validations\ValidationWriter.cs" />
+    <Compile Include="Validations\Workflows\WorkflowFinalState.cs" />
+    <Compile Include="Validations\Workflows\WorkflowInitialState.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.Developing.config">
+      <DependentUpon>web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sitecore\shell\WebService\Sitecore.Rocks.Validation.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\CodeContractNullability.dll" />
+    <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\MsgPack.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Requests\XmlLayouts\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>52053</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:82</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

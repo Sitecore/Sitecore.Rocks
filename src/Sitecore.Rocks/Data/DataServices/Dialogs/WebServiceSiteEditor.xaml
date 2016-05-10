@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Sitecore.Rocks.Data.DataServices.Dialogs.WebServiceSiteEditor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Host Name:" HorizontalAlignment="Right" Grid.Row="3" Grid.Column="0" Margin="0,0,4,0" Target="{Binding ElementName=Server}" />
+        <ComboBox x:Name="Server" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" IsEditable="true" SelectionChanged="SetLocalSite" />
+        <TextBlock Text="E.g. 'www.server.com' or 'localhost:81'" Grid.Row="4" Grid.Column="1" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+            VerticalAlignment="Top" />
+
+        <Label Content="User Name:" HorizontalAlignment="Right" Grid.Row="5" Grid.Column="0" Margin="0,8,4,0" Target="{Binding ElementName=UserName}" />
+        <TextBox Name="UserName" Grid.Row="5" Grid.Column="1" Margin="0,8,0,0" VerticalAlignment="Center" Text="sitecore\admin" />
+        <TextBlock Text="E.g. 'sitecore\user'" Grid.Row="6" Grid.Column="1" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" VerticalAlignment="Top" />
+
+        <Label Content="Password:" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0" Margin="0,8,4,0" Target="{Binding ElementName=Password}" />
+        <PasswordBox Name="Password" VerticalAlignment="Center" Grid.Row="7" Grid.Column="1" Margin="0,8,0,0" AutomationProperties.AutomationId="TextBox.Password"
+            Password="b" />
+
+        <CheckBox Name="UseWindowsAuthentication" Unchecked="UseWindowsAuthentication_OnUnchecked" Checked="UseWindowsAuthentication_OnChecked"
+            Content="Use Windows Authentication" VerticalAlignment="Center" Grid.Row="8" Grid.Column="1" Margin="0,8,0,0" />
+
+        <Label Content="Location:" HorizontalAlignment="Right" Grid.Row="9" Grid.Column="0" Margin="0,8,4,0" Target="{Binding ElementName=WebRootPath}" />
+        <Grid Grid.Row="9" Grid.Column="1" Margin="0,4,0,0" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBox Name="WebRootPath" VerticalAlignment="Center" Grid.Column="0" TextChanged="WebRootPathChanged" />
+            <Button Content="Browse" Margin="2,0,0,0" Height="21" Width="75" Grid.Column="1" Click="Browse" VerticalAlignment="Center" />
+        </Grid>
+        <TextBlock Text="Optional - specify only if you have physical access" Grid.Row="10" Grid.Column="1"
+            Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" VerticalAlignment="Top" />
+
+        <CheckBox x:Name="AutomaticUpdate" Content="Automatically Upgrade Server Components When the Dialog Closes" Margin="0,12,0,0" Grid.Column="1" Grid.Row="11"
+            x:FieldModifier="public" />
+        <CheckBox x:Name="AutomaticallyUpdate" Content="Automatically Update Hard Rock Web Service and Plugins On Login" Margin="0,8,0,0" Grid.Column="1" Grid.Row="12"
+            x:FieldModifier="public" />
+    </Grid>
+</UserControl>

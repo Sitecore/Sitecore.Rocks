@@ -1,0 +1,49 @@
+﻿<Window x:Class="Sitecore.Rocks.Shell.Dialogs.NewItemWizardDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls;assembly=Sitecore.Rocks" Title="New Item" Height="600" Width="450"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image Source="/Sitecore.Rocks;component/Resources/32x32/question_and_answer.png" Margin="0,0,8,0" VerticalAlignment="Top" Grid.RowSpan="3"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor" Width="32" Height="32" />
+
+                <TextBlock Text="Do you want to create a Sitecore item?" Grid.Row="0" Grid.Column="1" />
+
+                <TextBlock Text="If yes, select the location which the item should be created." Grid.Row="1" Grid.Column="1" Margin="0,16,0,0" />
+
+                <c:ItemTreeView x:Name="TreeView" Grid.Row="2" Grid.Column="1" BorderThickness="1"
+                    BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                    Margin="0,8,0,0" />
+            </Grid>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="8">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" Width="75" Height="23" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" Margin="8,0,0,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

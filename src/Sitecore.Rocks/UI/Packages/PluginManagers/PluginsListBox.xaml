@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Packages.PluginManagers.PluginsListBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls1="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:controls="clr-namespace:Sitecore.Rocks.Controls" xmlns:pluginManagers="clr-namespace:Sitecore.Rocks.UI.Packages.PluginManagers" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="PackagesPane" Margin="4,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ComboBox x:Name="PrereleasesComboBox" Visibility="Collapsed" SelectionChanged="SetPrerelease" Width="150" Margin="8,4,0,0" Height="23">
+                <ComboBoxItem Content="Stable Only" IsSelected="True" />
+                <ComboBoxItem Content="Include Prereleases" />
+            </ComboBox>
+
+            <controls1:WatermarkedTextBox x:Name="Search" HorizontalAlignment="Right" Margin="0,4,8,0" Watermark="Filter" Width="200" DeferredTextChanged="FilterPackages"
+                Grid.Column="2" />
+        </Grid>
+
+        <controls:Loading x:Name="Loading" Visibility="Collapsed" Grid.Row="1" />
+
+        <Grid x:Name="PackageListPane" Grid.Row="1" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="NoPackages" Visibility="Collapsed" Grid.ColumnSpan="3" Grid.Column="0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="There are no plugins to show." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" HorizontalAlignment="Center" />
+                    <TextBlock Text="Open the Feeds dialog to add new galleries." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                        HorizontalAlignment="Center" Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ListBox x:Name="PluginList" BorderThickness="0" HorizontalContentAlignment="Stretch" SelectionChanged="SetPackage"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+
+                <StackPanel Grid.Row="1" x:Name="PagerStackPanel" HorizontalAlignment="Center" Margin="0,8,0,4" Orientation="Horizontal" Visibility="Collapsed" />
+            </Grid>
+
+            <GridSplitter x:Name="GridSplitter" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" Width="5" VerticalAlignment="Stretch" Grid.Column="1" />
+
+            <Border x:Name="InfoPanel" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,0,0,0" Grid.Column="2" BorderThickness="0">
+                <pluginManagers:PluginInformationPanel x:Name="PackageInformationPanel" Margin="8" />
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

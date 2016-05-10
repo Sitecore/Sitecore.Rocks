@@ -1,0 +1,29 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Publishing.Dialogs.PublishDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Publish" Height="144" Width="360" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+    ResizeMode="NoResize">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Height="32" VerticalAlignment="Top">
+            <Image Source="/Sitecore.Rocks;component/Resources/32x32/upload.png" Width="32" Height="32" Margin="0,0,16,0" VerticalAlignment="Center" />
+            <TextBlock x:Name="Text" VerticalAlignment="Center" FontWeight="Bold" />
+        </StackPanel>
+
+        <CheckBox x:Name="JobViewer" Content="Open Job Viewer" Grid.Row="1" Margin="0,0,0,8" />
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox x:Name="DontShowAgain" Content="Don't Show This Dialog Again" />
+
+            <Button Content="OK" IsDefault="True" IsCancel="True" Click="OkClick" Width="75" Height="23" HorizontalAlignment="Right" Grid.Column="1" />
+        </Grid>
+    </Grid>
+</Window>

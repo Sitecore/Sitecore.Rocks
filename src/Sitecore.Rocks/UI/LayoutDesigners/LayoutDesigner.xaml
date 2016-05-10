@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.LayoutDesigners.LayoutDesigner" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    xmlns:overlays="clr-namespace:Sitecore.Rocks.UI.LayoutDesigners.LayoutTreeViews.Overlays" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:r="clr-namespace:Sitecore.Rocks.Controls.Ribbons" FocusManager.FocusedElement="{Binding ElementName=Devices}"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" x:Name="Control" KeyDown="HandleKeyDown">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=Control}" />
+
+        <r:Ribbon x:Name="Ribbon" Grid.Row="0" Visibility="Collapsed" />
+
+        <ToolBarTray x:Name="Toolbar" Grid.Row="1" IsLocked="True" HorizontalAlignment="Stretch" KeyboardNavigation.IsTabStop="False">
+            <ToolBar HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" KeyboardNavigation.TabNavigation="Continue" KeyboardNavigation.IsTabStop="False">
+                <Button x:Name="Menu" ToolTip="Menu" Click="OpenMenu" KeyboardNavigation.TabIndex="0">
+                    <controls:ButtonIcon Icon="Resources/16x16/menu.png" Style="{StaticResource ToolButtonImage}" KeyboardNavigation.IsTabStop="False" />
+                </Button>
+
+                <Separator />
+                <Button Click="AddRendering" ToolTip="Add a new rendering.">
+                    <c:ToolBarButton Icon="Resources/16x16/element_add.png" Text="Add Rendering" />
+                </Button>
+
+                <Button Click="AddPlaceholder" ToolTip="Add a new placeholder.">
+                    <c:ToolBarButton Icon="Resources/16x16/elements_selection.png" Text="Add Placeholder" />
+                </Button>
+
+                <Button Click="OpenPropertyWindow" ToolTip="Open the Properties window.">
+                    <StackPanel Orientation="Horizontal">
+                        <controls:ButtonIcon Icon="Resources/16x16/properties.png" Style="{StaticResource ToolButtonImage}" />
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Border x:Name="LayoutDesignerViewBorder" Grid.Row="2" />
+
+        <overlays:OverlayCanvas x:Name="Canvas" Grid.Row="2" />
+    </Grid>
+</UserControl>

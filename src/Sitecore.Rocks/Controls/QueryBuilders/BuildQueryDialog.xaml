@@ -1,0 +1,42 @@
+﻿<Window x:Class="Sitecore.Rocks.Controls.QueryBuilders.BuildQueryDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    xmlns:queryBuilders="clr-namespace:Sitecore.Rocks.Controls.QueryBuilders" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" Title="Build Custom Validation Query"
+    Height="600" Width="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+                <ResourceDictionary>
+                    <Style TargetType="Button">
+                        <Setter Property="Width" Value="75" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="DatabasePanel" Orientation="Horizontal">
+            <Label Content="Database:" />
+            <controls:DatabaseSelector x:Name="DatabaseSelector" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0,0,0" />
+        </StackPanel>
+
+        <StackPanel x:Name="SitePanel" Orientation="Horizontal">
+            <Label Content="Site:" />
+            <c:SiteSelector x:Name="SiteSelector" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0,0,0" />
+        </StackPanel>
+
+        <queryBuilders:QueryBuilder x:Name="QueryBuilder" Grid.Row="1" Margin="0,8,0,0" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="2">
+            <Button Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

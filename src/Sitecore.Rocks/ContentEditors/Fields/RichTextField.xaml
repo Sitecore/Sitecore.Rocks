@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Fields.RichTextField" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:r="clr-namespace:Sitecore.Rocks.Controls.Resizer"
+    xmlns:s="clr-namespace:Sitecore.Rocks.Controls.SyntaxEditors" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300" x:Name="RichTextControl">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ToolBarButtonDataTemplate">
+            <ContentPresenter x:Name="presenter" Content="{Binding}" />
+
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ButtonBase}}, Path=IsEnabled}" Value="False">
+                    <Setter TargetName="presenter" Property="Opacity" Value="0.4" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <Style x:Key="MenuLabelStyle" TargetType="MenuItem">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="IsEnabled" Value="False" />
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="ResizePanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <s:SyntaxEditor x:Name="Editor" />
+        <r:FieldControlResizer x:Name="Resizer" Target="{Binding ElementName=ResizePanel}" Grid.Row="1" DefaultHeight="100" />
+    </Grid>
+</UserControl>

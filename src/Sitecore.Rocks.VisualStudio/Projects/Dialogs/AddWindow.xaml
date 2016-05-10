@@ -1,0 +1,33 @@
+﻿<Window x:Class="Sitecore.Rocks.Projects.Dialogs.AddWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Mark Files" Height="400" Width="600" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <DataTemplate x:Key="AddCheckBox">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="ListView" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+            AlternationCount="1" GridViewColumnHeader.Click="HeaderClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Mark" CellTemplate="{StaticResource AddCheckBox}" />
+                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
+                    <GridViewColumn Header="Extension" DisplayMemberBinding="{Binding Extension}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button Content="OK" IsDefault="True" Margin="0,0,8,0" Width="75" Height="23" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

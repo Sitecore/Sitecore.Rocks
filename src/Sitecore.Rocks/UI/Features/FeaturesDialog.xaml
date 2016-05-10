@@ -1,0 +1,54 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Features.FeaturesDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Turn Features On or Off" Height="600" Width="800"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="You can turn off features that you do not need. Removing features clears up the UI and increases performance." />
+
+        <Grid Grid.Row="1" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <RadioButton Content="Minimum" Checked="SetMinimum" FontWeight="Bold" />
+                <TextBlock Text="Enables the absolute bare minimum functionality." Margin="16,2,0,0" />
+
+                <RadioButton Content="Basic" Checked="SetBasic" Margin="0,12,0,0" FontWeight="Bold" />
+                <TextBlock Text="Enables basic features for editing and some developing." Margin="16,2,0,0" />
+
+                <RadioButton Content="Medium" Checked="SetMedium" Margin="0,12,0,0" FontWeight="Bold" />
+                <TextBlock Text="Enables common features for editing and light development." Margin="16,2,0,0" />
+
+                <RadioButton Content="Development" Checked="SetDevelopment" Margin="0,12,0,0" FontWeight="Bold" />
+                <TextBlock Text="Enables all features for editing and development." Margin="16,2,0,0" />
+
+                <RadioButton Content="Advanced" Checked="SetAdvanced" Margin="0,12,0,0" FontWeight="Bold" />
+                <TextBlock Text="Enables all advanced features." Margin="16,2,0,0" />
+
+                <RadioButton Content="All" Checked="SetAll" Margin="0,12,0,0" FontWeight="Bold" />
+                <TextBlock Text="Enable all features except experimental features (if any)." Margin="16,2,0,0" />
+            </StackPanel>
+
+            <Border Grid.Column="2" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                <ScrollViewer Padding="4">
+                    <StackPanel x:Name="FeatureStackPanel" />
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,8,0,0" Grid.Row="2">
+            <Button Content="OK" x:Name="OkButton" IsDefault="True" Click="OkClick" Width="75" Height="23" />
+            <Button Content="Cancel" x:Name="CloseButton" Margin="8,0,0,0" IsCancel="True" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

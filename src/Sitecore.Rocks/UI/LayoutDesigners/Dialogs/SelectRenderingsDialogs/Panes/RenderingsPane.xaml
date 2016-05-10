@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.LayoutDesigners.Dialogs.SelectRenderingsDialogs.Panes.RenderingsPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:data="clr-namespace:Sitecore.Rocks.Data"
+    xmlns:p="clr-namespace:Sitecore.Rocks.UI.LayoutDesigners.Dialogs.SelectRenderingsDialogs.Panes" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <p:SpeakVersionConverter x:Key="SpeakVersionConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="4" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ListBox x:Name="FilterListbox" SelectionChanged="ChangeFilter" />
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,8,0,0">
+                <Button Content="Add" Height="23" Click="AddFilter" />
+                <Button x:Name="RemoveFilterButton" Content="Remove" Height="23" Margin="4,0,0,0" Click="RemoveFilter" />
+            </StackPanel>
+        </Grid>
+
+        <GridSplitter Grid.Column="1" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns" Width="4" HorizontalAlignment="Stretch" />
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <controls:WatermarkedTextBox x:Name="FilterTextBox" Watermark="Filter" Margin="0,0,0,2" DeferredTextChanged="FilterTextChanged" />
+
+            <Grid x:Name="Stack" Grid.Row="1" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ListView x:Name="RenderingsListView" SelectionMode="Extended" SelectionChanged="RenderingsSelectionChanged" MouseDoubleClick="HandleMouseDoubleClick"
+                    GridViewColumnHeader.Click="HeaderClick">
+                    <ListView.Resources>
+                        <ControlTemplate TargetType="{x:Type GroupItem}" x:Key="GroupItemTemplate">
+                            <Expander IsExpanded="True" Margin="0,4,0,0" Padding="0" Expanded="SetExpanded" Collapsed="SetCollapsed" Tag="{Binding}"
+                                Initialized="InitExpander">
+                                <Expander.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Path=Name}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
+                                        <TextBlock Text=" " />
+                                        <TextBlock Text="{Binding Path=ItemCount, StringFormat=({0})}" Foreground="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" />
+                                    </StackPanel>
+                                </Expander.Header>
+                                <Expander.Content>
+                                    <ItemsPresenter />
+                                </Expander.Content>
+                            </Expander>
+                        </ControlTemplate>
+                    </ListView.Resources>
+
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template" Value="{StaticResource GroupItemTemplate}" />
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="NameColumn" Header="Name">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance data:ItemHeader}">
+                                            <Image Source="{Binding Path=Icon.BitmapSource}" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor"
+                                                Margin="8,0,0,0" />
+                                            <TextBlock Text="{Binding Name}" Margin="4,0,0,0" VerticalAlignment="Center" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn x:Name="TemplateNameColumn" Header="Template">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TemplateName}" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                            d:DataContext="{d:DesignInstance data:ItemHeader}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn x:Name="VersionColumn" Header="SPEAK Version">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Converter={StaticResource SpeakVersionConverter}}"
+                                            Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" d:DataContext="{d:DesignInstance data:ItemHeader}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+            <TextBlock Name="Loading" Text="Loading..." Margin="0,16,0,16" Grid.Row="1" HorizontalAlignment="Center"
+                Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+        </Grid>
+    </Grid>
+</UserControl>

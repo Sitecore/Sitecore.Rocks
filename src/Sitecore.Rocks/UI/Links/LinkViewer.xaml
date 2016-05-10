@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Links.LinkViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" x:Name="Control" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler Target="{Binding ElementName=Control}" />
+
+        <TabControl x:Name="Tabs" Margin="0,4,0,0" TabStripPlacement="Top" IsSynchronizedWithCurrentItem="True" />
+
+        <Border x:Name="NoTabs" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="No links available." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+        </Border>
+    </Grid>
+</UserControl>

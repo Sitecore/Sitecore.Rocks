@@ -1,0 +1,4 @@
+﻿[$RootKey$\AppCommandLine\rocks.plugin]
+"Package"="{6fb7d81e-c4ff-4b7f-adf4-b04e65155687}"
+"Arguments"="1"
+"DemandLoad"=dword:00000000

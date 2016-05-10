@@ -1,0 +1,41 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.LayoutDesigners.Dialogs.SelectColumnsDialogs.SelectColumnsDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" Title="Select Columns" Height="600" Width="800"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Text="Select the columns, that you want to show, from the list below. The list contains the properties from all the renderings that are currently selected in the layout. Adding or removing renderings will update this list."
+            TextWrapping="Wrap" Height="Auto" />
+
+        <Grid x:Name="FieldsGrid" Grid.Row="1" Margin="0,8,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Columns:" />
+
+            <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                <ScrollViewer Padding="4">
+                    <StackPanel x:Name="ColumnsStackPanel" />
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0" Grid.Row="2">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" IsEnabled="False" Margin="0,0,8,0" Click="OkClick" />
+            <Button x:Name="CancelButton" Content="Cancel" IsCancel="True" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.TemplateHierarchies.TemplateHierarchyTab" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    x:Name="Control" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler Target="{Binding ElementName=Control}" />
+
+        <ToolBarTray IsLocked="True" HorizontalAlignment="Stretch">
+            <ToolBar x:Name="ToolBar" HorizontalAlignment="Stretch" Loaded="ToolBarLoaded">
+                <Button ToolTip="Goto" Click="GotoTemplate">
+                    <controls:ButtonIcon Icon="Resources/16x16/right.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+
+                <ToggleButton x:Name="SubTemplatesButton" ToolTip="Sub Templates" Click="ViewSubTemplates">
+                    <controls:ButtonIcon Icon="Resources/16x16/subnodes.png" Style="{StaticResource ToolButtonImage}" />
+                </ToggleButton>
+
+                <ToggleButton x:Name="SuperTemplatesButton" ToolTip="Super Templates" Click="ViewSuperTemplates">
+                    <controls:ButtonIcon Icon="Resources/16x16/supernodes.png" Style="{StaticResource ToolButtonImage}" />
+                </ToggleButton>
+
+                <Button ToolTip="Refresh" Click="Refresh">
+                    <controls:ButtonIcon Icon="Resources/16x16/refresh.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <c:Loading x:Name="Loading" Grid.Row="1" />
+        <c:ItemTreeView x:Name="ItemTreeView" Grid.Row="1" Visibility="Collapsed" BorderThickness="1"
+            BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+            SupportsVirtualItems="False" AllowDrop="False" DoubleClick="DoubleClick" />
+
+        <GridSplitter x:Name="GridSplitter" ResizeBehavior="PreviousAndNext" ResizeDirection="Rows" Grid.Row="2" Height="5" VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+
+        <c:Loading x:Name="FieldsLoading" Grid.Row="3" Visibility="Collapsed" />
+        <Grid x:Name="FieldsTextPanel" Visibility="Collapsed" Grid.Row="3">
+            <TextBlock Text="This template has no fields." VerticalAlignment="Center" HorizontalAlignment="Center"
+                Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+        </Grid>
+        <Border x:Name="FieldsListViewBorder" Grid.Row="3" Visibility="Collapsed">
+            <ListView x:Name="FieldsListView" SelectionMode="Single" ContextMenuOpening="OpenFieldsContextMenu">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="NameColumn" Header="Field Name" DisplayMemberBinding="{Binding FormattedName}" Width="Auto" />
+                        <GridViewColumn x:Name="TypeColumn" Header="Type" DisplayMemberBinding="{Binding Type}" Width="Auto" />
+                        <GridViewColumn x:Name="VersioningColumn" Header="Versioning" DisplayMemberBinding="{Binding Versioning}" Width="Auto" />
+                        <GridViewColumn x:Name="SourceColumn" Header="Source" DisplayMemberBinding="{Binding Source}" Width="Auto" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+    </Grid>
+
+</UserControl>

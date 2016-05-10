@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Packages.PluginManagers.Dialogs.PluginFolders.PluginFoldersListBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="List" SelectionChanged="EnableButtons" />
+
+            <StackPanel Grid.Column="2">
+                <Button x:Name="RemoveButton" Width="75" Height="23" Margin="8,0,0,0" Content="Remove" Click="Remove" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Margin="0,2,0,0" Content="Location:" />
+
+                <Grid Grid.Column="1" Grid.Row="0" Margin="0,2,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="LocationTextBox" VerticalAlignment="Center" TextChanged="EnableButtons" />
+                    <Button Grid.Column="1" Width="75" Height="21" Margin="2,0,0,0" Content="Browse" Click="Browse" />
+                </Grid>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                    Text="Example: c:\users\Me\AppData\Sitecore\Sitecore.Rocks\Plugins" />
+            </Grid>
+
+            <Button x:Name="AddButton" Grid.Column="1" Width="75" Height="23" Margin="8,4,0,0" VerticalAlignment="Top" Content="Add" Click="Add" />
+        </Grid>
+    </Grid>
+</UserControl>

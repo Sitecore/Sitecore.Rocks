@@ -1,0 +1,115 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.FolderSynchronization.FolderSynchronizationPropertyPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:fs="clr-namespace:Sitecore.Rocks.UI.FolderSynchronization" mc:Ignorable="d" d:DesignHeight="300"
+    d:DesignWidth="300">
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <CheckBox x:Name="SynchronizeOutputCheckBox" Content="Synchronize Project Output Folder" Grid.Row="0" Grid.ColumnSpan="2" Checked="SetProjectSynchronization"
+            Unchecked="SetProjectSynchronization" />
+
+        <TextBlock Text="Synchronized Folders:" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="0,16,0,0" />
+
+        <ListBox x:Name="FolderListBox" Grid.Row="2" Grid.Column="0" Margin="0,4,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="fs:FolderSynchronizer">
+                    <Grid Margin="8,2,8,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Source:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,0,0,0" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding SourceFolder}" FontWeight="Bold" />
+                            <TextBlock Text="{Binding AbsoluteSourceFolder, StringFormat=' - {0}'}" />
+                        </TextBlock>
+
+                        <TextBlock Text="Destination:" Grid.Row="1" Margin="0,2,0,0" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,2,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding DestinationFolder}" FontWeight="Bold" />
+                            <TextBlock Text="{Binding AbsoluteDestinationFolder, StringFormat=' - {0}'}" />
+                        </TextBlock>
+
+                        <TextBlock Text="Mode:" Grid.Row="2" Margin="0,2,0,0" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Mode}" Margin="8,2,0,0" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" />
+
+                        <TextBlock Text="Pattern:" Grid.Row="3" Margin="0,2,0,0" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding Pattern}" Margin="8,2,0,0" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" FontWeight="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Margin="8,4,0,0" Grid.Row="2">
+            <Button Content="Sync" Click="Sync" Width="75" Height="23">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Button.IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=FolderListBox, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="Button.IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+
+            <Button x:Name="AddButton" Content="Add" Click="Add" Width="75" Height="23" Margin="0,16,0,0" />
+
+            <Button Content="Edit" Click="Edit" Width="75" Height="23" Margin="0,4,0,0">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Button.IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=FolderListBox, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="Button.IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="Remove" Click="Remove" Width="75" Height="23" Margin="0,4,0,0">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Button.IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=FolderListBox, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="Button.IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="Refresh" Click="Refresh" Width="75" Height="23" Margin="0,16,0,0" />
+        </StackPanel>
+
+        <TextBlock Text="Log:" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" Margin="0,16,0,0" />
+        <ListBox x:Name="LogListBox" Grid.Row="4" Grid.Column="0" Margin="0,4,0,0" />
+
+        <StackPanel Grid.Column="1" Margin="8,4,0,0" Grid.Row="4">
+            <Button Content="Clear" Click="ClearLog" Width="75" Height="23" />
+            <Button Content="Refresh" Click="RefreshLog" Width="75" Height="23" Margin="0,8,0,0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h" />
+    <Extern href="vsshlids.h" />
+    <!--<Extern href="msobtnid.h" xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" />-->
+    <Extern href="VsDbgCmd.h" />
+    <Extern href="VsDebugGuids.h" />
+
+    <Include href="Sitecore.Rocks.vsct" />
+
+    <Commands package="SitecorePkg">
+        <!-- MENUS -->
+        <Menus>
+            <!-- Top level "Sitecore" menu -->
+            <Menu guid="SitecoreCmdSet" id="MainMenu" priority="0x1000" type="Menu">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_BUILDDEBUGRUN" />
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <Strings>
+                    <ButtonText>Sitecore</ButtonText>
+                    <CommandName>Sitecore</CommandName>
+                </Strings>
+            </Menu>
+
+            <Menu guid="SitecoreCmdSet" id="SolutionItemMenu" priority="0x0100" type="Menu">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenuGroup" />
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Sitecore</ButtonText>
+                    <CommandName>Sitecore</CommandName>
+                </Strings>
+            </Menu>
+
+            <Menu guid="SitecoreCmdSet" id="SolutionFolderMenu" priority="0x0100" type="Menu">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenuGroup" />
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Sitecore</ButtonText>
+                    <CommandName>Sitecore</CommandName>
+                </Strings>
+            </Menu>
+
+            <Menu guid="SitecoreCmdSet" id="SolutionProjectMenu" priority="0x0100" type="Menu">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenuGroup" />
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Sitecore</ButtonText>
+                    <CommandName>Sitecore</CommandName>
+                </Strings>
+            </Menu>
+
+        </Menus>
+
+        <!-- GROUPS -->
+
+        <Groups>
+            <Group guid="SitecoreCmdSet" id="CommandGroup" priority="0x0">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="CreateMenuGroup" priority="0x0100">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ToolsMenuGroup" priority="0x0200">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="PluginMenuGroup" priority="0x0300">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ExtensibilityMenuGroup" priority="0x0400">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="AboutMenuGroup" priority="0x0500">
+                <Parent guid="SitecoreCmdSet" id="MainMenu" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="SitecoreExplorerToolbarGroup" priority="0x0100">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="SolutionItemMenuGroup" priority="0x0600">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionItemConflictGroup" priority="0x0000">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionItemFileGroup" priority="0x0050">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionItemGroup" priority="0x0100">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="RegisterFileGroup" priority="0x0150">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionItemToolboxGroup" priority="0x0200">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionItemExtensibilityGroup" priority="0x0300">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemMenu" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="SolutionFolderMenuGroup" priority="0x0590">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_FOLDERNODE" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionFolderConflictGroup" priority="0x0000">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionFolderFileGroup" priority="0x0050">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionFolderGroup" priority="0x0100">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionFolderToolboxGroup" priority="0x0200">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="SolutionFolderExtensibilityGroup" priority="0x0300">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="FolderSyncFileGroup" priority="0x025">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderMenu" />
+            </Group>
+
+
+            <Group guid="SitecoreCmdSet" id="SolutionProjectMenuGroup" priority="0x0790">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectConflictGroup" priority="0x0000">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectFileGroup" priority="0x0050">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectGroup" priority="0x0100">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectManagementGroup" priority="0x0200">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectToolboxGroup" priority="0x0300">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+            <Group guid="SitecoreCmdSet" id="ProjectExtensibilityGroup" priority="0x0300">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+
+            <Group guid="SitecoreCmdSet" id="ProjectPropertiesGroup" priority="0x0400">
+                <Parent guid="SitecoreCmdSet" id="SolutionProjectMenu" />
+            </Group>
+        </Groups>
+
+        <!-- BUTTONS -->
+
+        <Buttons>
+            <!-- CreateMenuGroup -->
+
+            <Button guid="SitecoreCmdSet" id="cmdidNewConnection" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CreateMenuGroup" />
+                <Icon guid="iconNewConnections" id="iconNewConnection" />
+                <Strings>
+                    <CommandName>New Connection</CommandName>
+                    <ButtonText>New Connection...</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- ToolsMenuGroup -->
+
+            <Button guid="SitecoreCmdSet" id="cmdidSitecoreContentTree" priority="0x0200" type="Button">
+                <Parent guid="SitecoreCmdSet" id="ToolsMenuGroup" />
+                <Strings>
+                    <CommandName>Sitecore Explorer</CommandName>
+                    <ButtonText>Sitecore Explorer</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidStartPage" priority="0x0250" type="Button">
+                <Parent guid="SitecoreCmdSet" id="ToolsMenuGroup" />
+                <Strings>
+                    <CommandName>Sitecore Start Page</CommandName>
+                    <ButtonText>Sitecore Start Page</ButtonText>
+                </Strings>
+            </Button>
+
+
+            <!-- PluginMenuGroup -->
+
+            <Button guid="SitecoreCmdSet" id="cmdidTurnFeaturesOnOrOff" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="PluginMenuGroup" />
+                <Strings>
+                    <CommandName>Turn Features On or Off</CommandName>
+                    <ButtonText>Turn Features On or Off...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidManagePlugins" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="PluginMenuGroup" />
+                <Strings>
+                    <CommandName>Manage Plugins</CommandName>
+                    <ButtonText>Manage Plugins...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidMarketplace" priority="0x0150" type="Button">
+                <Parent guid="SitecoreCmdSet" id="AboutMenuGroup" />
+                <Strings>
+                    <CommandName>Sitecore Marketplace</CommandName>
+                    <ButtonText>Sitecore Marketplace...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidVisitWebSite" priority="0x0200" type="Button">
+                <Parent guid="SitecoreCmdSet" id="AboutMenuGroup" />
+                <Strings>
+                    <CommandName>Sitecore Rocks Website</CommandName>
+                    <ButtonText>Sitecore Rocks Website...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidAbout" priority="0x0300" type="Button">
+                <Parent guid="SitecoreCmdSet" id="AboutMenuGroup" />
+                <Strings>
+                    <CommandName>About</CommandName>
+                    <ButtonText>About...</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- ExtensibilityMenu -->
+
+            <Button guid="SitecoreCmdSet" id="cmdidExtensibilityMenu" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="ExtensibilityMenuGroup" />
+                <CommandFlag>DynamicItemStart</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>cmdidPluginCommandMenu</CommandName>
+                    <ButtonText>Extensibility Menu</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidSolutionItemExtensibilityMenu" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="SolutionItemExtensibilityGroup" />
+                <CommandFlag>DynamicItemStart</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>cmdidSolutionItemExtensibilityMenu</CommandName>
+                    <ButtonText>Extensibility Menu</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidSolutionFolderExtensibilityMenu" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="SolutionFolderExtensibilityGroup" />
+                <CommandFlag>DynamicItemStart</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>cmdidSolutionFolderExtensibilityMenu</CommandName>
+                    <ButtonText>Extensibility Menu</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidProjectExtensibilityMenu" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="ProjectExtensibilityGroup" />
+                <CommandFlag>DynamicItemStart</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>cmdidProjectExtensibilityMenu</CommandName>
+                    <ButtonText>Extensibility Menu</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- Projects -->
+
+            <Button guid="SitecoreCmdSet" id="cmdidAddProject" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>SitecoreProjectOptions</CommandName>
+                    <ButtonText>Project Properties</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidEditProject" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Modify Connection</CommandName>
+                    <ButtonText>Modify Connection...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidEditProjectFile" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Open .sitecore File</CommandName>
+                    <ButtonText>Open .sitecore File</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidSearchReferences" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Search for References to this File</CommandName>
+                    <ButtonText>Search for References to this File</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRemoveProject" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Disconnect</CommandName>
+                    <ButtonText>Disconnect...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidAddToSitecore" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Include Files in .sitecore File</CommandName>
+                    <ButtonText>Include Files in .sitecore File...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidCommitToSitecore" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Deploy Local Files to Website</CommandName>
+                    <ButtonText>Deploy Local Files to Website...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidResolveUsingLocal" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Resolve Conflict using Local Files</CommandName>
+                    <ButtonText>Resolve Conflict using Local Files</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidResolveUsingServer" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Resolve Conflict using Website Files</CommandName>
+                    <ButtonText>Resolve Conflict using Website Files</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidUpdateFromSitecore" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Update Local Files from Website</CommandName>
+                    <ButtonText>Update Local Files from Website...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidExclude" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Exclude Files from .sitecore File</CommandName>
+                    <ButtonText>Exclude Files from .sitecore File...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidCreateFileItem" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Files</CommandName>
+                    <ButtonText>Register Files...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterViewLayout" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register View Layout</CommandName>
+                    <ButtonText>Register View Layout...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterViewRendering" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register View Rendering</CommandName>
+                    <ButtonText>Register View Rendering...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterXslRendering" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Xsl Rendering</CommandName>
+                    <ButtonText>Register Xsl Rendering...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterXsltRendering" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Xsl Rendering</CommandName>
+                    <ButtonText>Register Xsl Rendering...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterLayout" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Layout</CommandName>
+                    <ButtonText>Register Layout...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterSublayout" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Sublayout</CommandName>
+                    <ButtonText>Register Sublayout...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterModel" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Model</CommandName>
+                    <ButtonText>Register Model...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidRegisterController" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Register Controller Action</CommandName>
+                    <ButtonText>Register Controller Action...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidStartFolderSync" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Start Folder Sync</CommandName>
+                    <ButtonText>Start Folder Sync...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidStopFolderSync" priority="0x0100" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Stop Folder Sync</CommandName>
+                    <ButtonText>Stop Folder Sync...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidSyncNow" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Sync Now</CommandName>
+                    <ButtonText>Sync Now</ButtonText>
+                </Strings>
+            </Button>
+
+
+            <Button guid="SitecoreCmdSet" id="cmdidLocateFileItemInContentTree" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Locate in Sitecore Explorer</CommandName>
+                    <ButtonText>Locate in Sitecore Explorer</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidEditItem" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Edit Item</CommandName>
+                    <ButtonText>Edit Item</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidBindFileItem" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Link File and Item</CommandName>
+                    <ButtonText>Link File and Item...</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="SitecoreCmdSet" id="cmdidAddToToolbox" priority="0x0000" type="Button">
+                <Parent guid="SitecoreCmdSet" id="CommandGroup" />
+                <CommandFlag>CommandWellOnly</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Add to Toolbox</CommandName>
+                    <ButtonText>Add to Toolbox</ButtonText>
+                </Strings>
+            </Button>
+
+        </Buttons>
+
+        <Bitmaps>
+            <Bitmap guid="guidImages" href="Resources\Images_32bit.bmp" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows" />
+            <Bitmap guid="iconNewConnections" href="Resources\16x16\server_add.png" usedList="iconNewConnection" />
+        </Bitmaps>
+    </Commands>
+
+    <!-- COMMANDPLACEMENTS -->
+
+    <CommandPlacements>
+        <!-- Solution Context Menu -->
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidUpdateFromSitecore" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCommitToSitecore" priority="0x0200">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRevert" priority="0x0300">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToSitecore" priority="0x0400">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidExclude" priority="0x0500">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidSearchReferences" priority="0x0600">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingLocal" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemConflictGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingServer" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemConflictGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidBindFileItem" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidEditItem" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidLocateFileItemInContentTree" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToToolbox" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionItemToolboxGroup" />
+        </CommandPlacement>
+
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidUpdateFromSitecore" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCommitToSitecore" priority="0x0200">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRevert" priority="0x0300">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToSitecore" priority="0x0400">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidExclude" priority="0x0500">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingLocal" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderConflictGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingServer" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderConflictGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCreateFileItem" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToToolbox" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="SolutionFolderToolboxGroup" />
+        </CommandPlacement>
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidUpdateFromSitecore" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCommitToSitecore" priority="0x0200">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCheckOut" priority="0x0250">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRevert" priority="0x0300">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToSitecore" priority="0x0400">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidExclude" priority="0x0500">
+            <Parent guid="SitecoreCmdSet" id="ProjectGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingLocal" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="ProjectConflictGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidResolveUsingServer" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="ProjectConflictGroup" />
+        </CommandPlacement>
+        <!--
+    <CommandPlacement guid="SitecoreCmdSet" id="cmdidRemoveProject" priority="0x0300">
+      <Parent guid="SitecoreCmdSet" id="ProjectManagementGroup" />
+    </CommandPlacement>
+<CommandPlacement guid="SitecoreCmdSet" id="cmdidEditProject" priority="0x0200">
+      <Parent guid="SitecoreCmdSet" id="ProjectManagementGroup" />
+    </CommandPlacement>
+    -->
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidEditProjectFile" priority="0x0400">
+            <Parent guid="SitecoreCmdSet" id="ProjectManagementGroup" />
+        </CommandPlacement>
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterViewLayout" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterViewRendering" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterXslRendering" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterXsltRendering" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterLayout" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterSublayout" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterModel" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidRegisterController" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidCreateFileItem" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="RegisterFileGroup" />
+        </CommandPlacement>
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidStartFolderSync" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="FolderSyncFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidStopFolderSync" priority="0x0100">
+            <Parent guid="SitecoreCmdSet" id="FolderSyncFileGroup" />
+        </CommandPlacement>
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidSyncNow" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="FolderSyncFileGroup" />
+        </CommandPlacement>
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddToToolbox" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="ProjectToolboxGroup" />
+        </CommandPlacement>
+
+        <CommandPlacement guid="SitecoreCmdSet" id="cmdidAddProject" priority="0x0000">
+            <Parent guid="SitecoreCmdSet" id="ProjectPropertiesGroup" />
+        </CommandPlacement>
+    </CommandPlacements>
+
+    <Symbols>
+        <GuidSymbol name="SitecorePkg" value="{6fb7d81e-c4ff-4b7f-adf4-b04e65155687}" />
+
+        <GuidSymbol name="SitecoreCmdSet" value="{cbee88f2-acbf-4c8d-8f1e-e0565c67bd7e}">
+            <IDSymbol name="MainMenu" value="0x1020" />
+            <IDSymbol name="ToolsMenuGroup" value="0x1021" />
+            <IDSymbol name="CreateMenuGroup" value="0x1022" />
+            <IDSymbol name="PluginMenuGroup" value="0x1023" />
+            <IDSymbol name="SitecoreExplorerToolbar" value="0x1024" />
+            <IDSymbol name="SitecoreExplorerToolbarGroup" value="0x1025" />
+            <IDSymbol name="CommandGroup" value="0x1026" />
+            <IDSymbol name="SolutionItemGroup" value="0x1027" />
+            <IDSymbol name="SolutionFolderGroup" value="0x1028" />
+            <IDSymbol name="ProjectGroup" value="0x1029" />
+            <IDSymbol name="SolutionItemConflictGroup" value="0x102a" />
+            <IDSymbol name="SolutionFolderConflictGroup" value="0x102b" />
+            <IDSymbol name="ProjectConflictGroup" value="0x102c" />
+            <IDSymbol name="ProjectManagementGroup" value="0x102d" />
+            <IDSymbol name="SolutionItemMenuGroup" value="0x102e" />
+            <IDSymbol name="SolutionItemMenu" value="0x102f" />
+            <IDSymbol name="SolutionFolderMenuGroup" value="0x1030" />
+            <IDSymbol name="SolutionFolderMenu" value="0x1031" />
+            <IDSymbol name="SolutionProjectMenuGroup" value="0x1032" />
+            <IDSymbol name="SolutionProjectMenu" value="0x1033" />
+            <IDSymbol name="SolutionItemFileGroup" value="0x1034" />
+            <IDSymbol name="SolutionFolderFileGroup" value="0x1035" />
+            <IDSymbol name="ProjectFileGroup" value="0x1036" />
+            <IDSymbol name="ProjectToolboxGroup" value="0x1037" />
+            <IDSymbol name="SolutionFolderToolboxGroup" value="0x1038" />
+            <IDSymbol name="SolutionItemToolboxGroup" value="0x1039" />
+            <IDSymbol name="ExtensibilityMenuGroup" value="0x103a" />
+            <IDSymbol name="SolutionItemExtensibilityGroup" value="0x103b" />
+            <IDSymbol name="SolutionFolderExtensibilityGroup" value="0x103c" />
+            <IDSymbol name="ProjectExtensibilityGroup" value="0x103d" />
+            <IDSymbol name="AboutMenuGroup" value="0x103e" />
+            <IDSymbol name="WatchMenuGroup" value="0x103f" />
+            <IDSymbol name="RegisterFileGroup" value="0x1043" />
+            <IDSymbol name="ProjectPropertiesGroup" value="0x1044" />
+            <IDSymbol name="FolderSyncFileGroup" value="0x1045" />
+
+            <IDSymbol name="cmdidSitecoreContentTree" value="0x0101" />
+            <IDSymbol name="cmdidNewConnection" value="0x010e" />
+            <IDSymbol name="cmdidManagePlugins" value="0x0124" />
+            <IDSymbol name="cmdidAbout" value="0x0125" />
+            <IDSymbol name="cmdidVisitWebSite" value="0x0126" />
+            <IDSymbol name="cmdidCommandsCheatSheet" value="0x0128" />
+            <IDSymbol name="cmdidStartPage" value="0x0129" />
+            <IDSymbol name="cmdidMarketplace" value="0x012c" />
+            <IDSymbol name="cmdidTurnFeaturesOnOrOff" value="0x012d" />
+
+            <IDSymbol name="cmdidAddToSitecore" value="0x0200" />
+            <IDSymbol name="cmdidCommitToSitecore" value="0x0201" />
+            <IDSymbol name="cmdidUpdateFromSitecore" value="0x0202" />
+            <IDSymbol name="cmdidAddProject" value="0x0203" />
+            <IDSymbol name="cmdidEditProject" value="0x0204" />
+            <IDSymbol name="cmdidRemoveProject" value="0x0205" />
+            <IDSymbol name="cmdidRevert" value="0x0206" />
+            <IDSymbol name="cmdidExclude" value="0x0207" />
+            <IDSymbol name="cmdidResolveUsingLocal" value="0x0208" />
+            <IDSymbol name="cmdidResolveUsingServer" value="0x0209" />
+            <IDSymbol name="cmdidCheckOut" value="0x020a" />
+            <IDSymbol name="cmdidCreateFileItem" value="0x020b" />
+            <IDSymbol name="cmdidLocateFileItemInContentTree" value="0x020c" />
+            <IDSymbol name="cmdidEditItem" value="0x020d" />
+            <IDSymbol name="cmdidBindFileItem" value="0x020e" />
+            <IDSymbol name="cmdidAddToToolbox" value="0x020f" />
+            <IDSymbol name="cmdidEditProjectFile" value="0x0210" />
+            <IDSymbol name="cmdidSearchReferences" value="0x0211" />
+            <IDSymbol name="cmdidRegisterViewLayout" value="0x0213" />
+            <IDSymbol name="cmdidRegisterViewRendering" value="0x0214" />
+            <IDSymbol name="cmdidRegisterXslRendering" value="0x0215" />
+            <IDSymbol name="cmdidRegisterXsltRendering" value="0x0216" />
+            <IDSymbol name="cmdidRegisterLayout" value="0x0217" />
+            <IDSymbol name="cmdidRegisterSublayout" value="0x0218" />
+            <IDSymbol name="cmdidRegisterModel" value="0x0219" />
+            <IDSymbol name="cmdidRegisterController" value="0x021a" />
+            <IDSymbol name="cmdidStartFolderSync" value="0x021b" />
+            <IDSymbol name="cmdidStopFolderSync" value="0x021c" />
+            <IDSymbol name="cmdidSyncNow" value="0x021d" />
+
+            <IDSymbol name="cmdidExtensibilityMenu" value="0x1000" />
+            <IDSymbol name="cmdidSolutionItemExtensibilityMenu" value="0x1100" />
+            <IDSymbol name="cmdidSolutionFolderExtensibilityMenu" value="0x1200" />
+            <IDSymbol name="cmdidProjectExtensibilityMenu" value="0x1300" />
+        </GuidSymbol>
+
+        <GuidSymbol name="iconNewConnections" value="{4eb5edd8-da2b-472d-9001-4867ba0430a2}">
+            <IDSymbol name="iconNewConnection" value="1" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidImages" value="{35fe33fc-682c-4603-a407-4ddee4499ad2}">
+            <IDSymbol name="bmpPic1" value="1" />
+            <IDSymbol name="bmpPic2" value="2" />
+            <IDSymbol name="bmpPicSearch" value="3" />
+            <IDSymbol name="bmpPicX" value="4" />
+            <IDSymbol name="bmpPicArrows" value="5" />
+        </GuidSymbol>
+
+    </Symbols>
+
+</CommandTable>

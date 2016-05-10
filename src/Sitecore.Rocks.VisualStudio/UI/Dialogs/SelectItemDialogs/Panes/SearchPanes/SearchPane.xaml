@@ -1,0 +1,7 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Dialogs.SelectItemDialogs.Panes.SearchPanes.SearchPane" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:dialogs="clr-namespace:Sitecore.Rocks.UI.Libraries.Dialogs;assembly=Sitecore.Rocks" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300">
+
+    <dialogs:SearchBuilder x:Name="SearchControl" />
+</UserControl>

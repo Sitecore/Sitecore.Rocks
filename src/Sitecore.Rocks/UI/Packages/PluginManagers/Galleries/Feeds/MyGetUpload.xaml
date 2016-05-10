@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Packages.PluginManagers.Galleries.Feeds.MyGetUpload" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Margin="8">
+        <TextBlock Text="MyGet.org currently hosts the Sitecore Rocks Plugin NuGet repository." TextWrapping="Wrap" />
+        <TextBlock Text="To upload a package, create a login on MyGet.org and Add a package to the repository." TextWrapping="Wrap" Margin="0,8,0,0" />
+        <TextBlock TextWrapping="Wrap" Margin="0,16,0,0">
+            <Hyperlink Click="GotoMyGet">Go to the MyGet.org</Hyperlink>
+        </TextBlock>
+    </StackPanel>
+</UserControl>

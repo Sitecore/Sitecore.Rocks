@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Packages.PackageBuilders.PackageBuilder" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:s="clr-namespace:Sitecore.Rocks.Controls.SyntaxEditors" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid x:Name="Designer">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <controls:ThemeHandler />
+            <controls:KeyboardHandler Grid.Row="0" />
+
+            <ToolBarTray Grid.Row="0" IsLocked="True" HorizontalAlignment="Stretch" KeyboardNavigation.IsTabStop="False">
+                <ToolBar HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" KeyboardNavigation.TabNavigation="Continue" KeyboardNavigation.IsTabStop="False">
+                    <Button x:Name="BuildButton" Click="Build" ToolTip="Build package.">
+                        <StackPanel Orientation="Horizontal">
+                            <c:ToolBarButton Icon="Resources/16x16/play.png" Text="Build" />
+                        </StackPanel>
+                    </Button>
+                    <Button Click="OpenFolder" ToolTip="Open the folder where the package is located in Windows Explorer.">
+                        <StackPanel Orientation="Horizontal">
+                            <c:ToolBarButton Icon="Resources/16x16/open.png" Text="Open Folder" />
+                        </StackPanel>
+                    </Button>
+                    <Button Click="Manage" ToolTip="Open the package management window.">
+                        <c:ToolBarButton Icon="Resources/16x16/manage.png" Text="Manage Packages" />
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+
+            <TabControl Margin="8" Grid.Row="1">
+                <TabItem Header="Information" IsSelected="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Package Format:" HorizontalAlignment="Right" Margin="0,2,0,2" Grid.Column="0" Grid.Row="0" />
+                        <ComboBox x:Name="PackageFormatComboBox" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" />
+
+                        <Label Content="Package Name:" HorizontalAlignment="Right" Margin="0,2,0,2" Grid.Column="0" Grid.Row="1" />
+                        <TextBox x:Name="PackageNameTextBox" VerticalAlignment="Center" TextChanged="SetModified" Grid.Column="1" Grid.Row="1" />
+
+                        <Label Content="Author:" HorizontalAlignment="Right" Margin="0,2,0,2" Grid.Column="0" Grid.Row="2" />
+                        <TextBox x:Name="AuthorTextBox" VerticalAlignment="Center" TextChanged="SetModified" Grid.Column="1" Grid.Row="2" />
+
+                        <Label Content="Version:" HorizontalAlignment="Right" Margin="0,2,0,2" Grid.Column="0" Grid.Row="3" />
+                        <TextBox x:Name="VersionTextBox" VerticalAlignment="Center" TextChanged="SetModified" Grid.Column="1" Grid.Row="3" />
+
+                        <Label Content="Publisher:" HorizontalAlignment="Right" Margin="0,2,0,2" Grid.Column="0" Grid.Row="4" />
+                        <TextBox x:Name="PublisherTextBox" VerticalAlignment="Center" TextChanged="SetModified" Grid.Column="1" Grid.Row="4" />
+
+                        <Label Content="License:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,0,2" Grid.Column="0" Grid.Row="5" />
+                        <s:SyntaxEditor x:Name="LicenseEditor" Syntax="XHtml" BorderThickness="1" Margin="0,2,0,2" Grid.Column="1" Grid.Row="5" />
+
+                        <Label Content="Comment:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,0,2" Grid.Column="0" Grid.Row="6" />
+                        <TextBox x:Name="CommentTextBox" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,2,0,2" Grid.Column="1" Grid.Row="6" />
+
+                        <Label Content="Readme:" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,0,2" Grid.Column="0" Grid.Row="7" />
+                        <TextBox x:Name="ReadmeTextBox" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,2,0,2" Grid.Column="1" Grid.Row="7" />
+                    </Grid>
+                </TabItem>
+
+                <TabItem x:Name="ItemsTab" Header="Items">
+                    <Grid>
+                        <Border x:Name="NoItems" AllowDrop="True" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                            Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Drag and drop item from the Sitecore Explorer." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                                    HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border x:Name="ItemListPanel" Visibility="Collapsed">
+                            <ListView x:Name="ItemList" KeyDown="HandleItemListKeyDown" AllowDrop="true" HorizontalContentAlignment="Stretch"
+                                ContextMenuOpening="OpenContextMenu" SelectionMode="Extended" GridViewColumnHeader.Click="ItemListHeaderClick">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn x:Name="ItemNameColumn" Header="Item Name" DisplayMemberBinding="{Binding Name}" />
+                                        <GridViewColumn x:Name="ItemPathColumn" Header="Path" DisplayMemberBinding="{Binding Path}" />
+                                        <GridViewColumn x:Name="ItemTemplateColumn" Header="Template" DisplayMemberBinding="{Binding TemplateName}" />
+                                        <GridViewColumn x:Name="ItemDatabaseColumn" Header="Database" DisplayMemberBinding="{Binding DatabaseName}" />
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Border>
+                    </Grid>
+                </TabItem>
+
+                <TabItem x:Name="FilesTab" Header="Files">
+                    <Grid>
+                        <Border x:Name="NoFiles" AllowDrop="True" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                            Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Drag and drop files from the Web Site node in Sitecore Explorer."
+                                    Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border x:Name="FileListPanel" Visibility="Collapsed">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <ListView x:Name="FileList" KeyDown="HandleFileListKeyDown" AllowDrop="true" HorizontalContentAlignment="Stretch"
+                                    ContextMenuOpening="OpenContextMenu" SelectionMode="Extended" GridViewColumnHeader.Click="FileListHeaderClick">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn x:Name="FileNameColumn" Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                            <GridViewColumn x:Name="FolderPathColumn" Header="Folder Path" DisplayMemberBinding="{Binding FolderPath}" />
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,4,0,0">
+                                    <Label Content="NuGet Target Folder:" />
+                                    <ComboBox x:Name="TargetComboBox" SelectedIndex="0">
+                                        <ComboBoxItem Content="wwwroot" />
+                                        <ComboBoxItem Content="content" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Grid x:Name="NotLoaded" Visibility="Collapsed">
+            <TextBlock Text="Package could not be loaded. Please close the window." VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+    </Grid>
+</UserControl>

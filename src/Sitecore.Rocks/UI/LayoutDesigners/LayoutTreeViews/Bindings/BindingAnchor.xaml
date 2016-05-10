@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.LayoutDesigners.LayoutTreeViews.Bindings.BindingAnchor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
+    <Border x:Name="Grip" Background="Transparent" Width="16" Height="16" Margin="4,0,0,0" ToolTip="Drag to another control to create a binding." SnapsToDevicePixels="True"
+        UseLayoutRounding="True">
+        <Image Source="/Sitecore.Rocks.Speak;component/Resources/16x16/anchor.png" Width="16" Height="16" SnapsToDevicePixels="True" UseLayoutRounding="True" />
+    </Border>
+</UserControl>

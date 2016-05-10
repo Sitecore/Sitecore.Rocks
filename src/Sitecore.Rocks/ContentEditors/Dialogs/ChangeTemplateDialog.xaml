@@ -1,0 +1,33 @@
+﻿<Window x:Class="Sitecore.Rocks.ContentEditors.Dialogs.ChangeTemplateDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ts="clr-namespace:Sitecore.Rocks.Controls.TemplateSelector" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    Title="Change Template" Height="800" Width="1000" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:DialogHelpText
+            Text="Templates form the framework around which items are built. They define fields used to control how data is entered and can inherit from other templates to enable reuse." />
+
+        <TextBlock Grid.Row="1" x:Name="TemplateNameTextBlock" Margin="0,16,0,0" Visibility="Collapsed" />
+
+        <TextBlock Grid.Row="2" Text="Select the New Template:" Margin="0,16,0,0" />
+
+        <ts:TemplateSelector x:Name="TemplateSelector" Grid.Row="3" Margin="0,2,0,0" SelectionChanged="TemplateSelectionChanged" DoubleClick="HandleDoubleClick" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="4">
+            <Button x:Name="OK" Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" />
+        </StackPanel>
+    </Grid>
+</Window>

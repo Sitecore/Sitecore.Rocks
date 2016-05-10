@@ -1,0 +1,30 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Dialogs.SelectDatabaseDialogs.SelectDatabaseDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Title="Select Database" Height="600" Width="500">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Databases:" Target="{Binding ElementName=TreeView}" />
+
+        <c:ItemTreeView x:Name="TreeView" MouseDoubleClick="HandleMouseDoubleClick" KeyDown="HandleKeyDown" Grid.Row="1" SupportsVirtualItems="True" BorderThickness="1"
+            BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+            AllowContextMenu="false" AllowRenameItem="False" AllowDrag="false" AllowDrop="False" FilterChildren="GetChildren" SelectedItemsChanged="EnableButtons" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Margin="0,8,0,0">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" Click="OkClicked" Width="75" Height="23" />
+            <Button Content="Cancel" IsCancel="True" Width="75" Height="23" Margin="4,0,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>

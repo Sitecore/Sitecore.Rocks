@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Fields.TreeList" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:Sitecore.Rocks.Controls.Resizer"
+    xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" d:DesignHeight="300" d:DesignWidth="300" mc:Ignorable="d">
+
+    <Grid x:Name="ResizePanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel>
+                <controls:WatermarkedTextBox x:Name="SourceFilter" Margin="0,0,0,2" VerticalAlignment="Top" DeferredTextChanged="SourceFilterTextChanged" DockPanel.Dock="Top"
+                    Watermark="Filter" />
+                <c:ItemTreeView x:Name="Source" MouseDoubleClick="SourceDoubleClick" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+                    FilterChildren="FilterChildren" />
+            </DockPanel>
+
+            <StackPanel Grid.Column="1" Margin="4,0,4,0" VerticalAlignment="Center">
+                <Button Click="AddItem">
+                    <Image x:Name="RightImage" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" />
+                </Button>
+                <Button Margin="0,4,0,0" Click="RemoveItem">
+                    <Image x:Name="LeftImage" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" />
+                </Button>
+            </StackPanel>
+
+            <DockPanel x:Name="TargetDockPanel" Grid.Column="2">
+                <controls:WatermarkedTextBox x:Name="TargetFilter" Margin="0,0,0,2" VerticalAlignment="Top" DeferredTextChanged="TargetFilterTextChanged" DockPanel.Dock="Top"
+                    Watermark="Filter" />
+                <ListBox x:Name="Target" MouseDoubleClick="TargetDoubleClick" SelectionMode="Extended" ContextMenuOpening="OpenContextMenu"
+                    Style="{DynamicResource FieldControlListBox}" />
+            </DockPanel>
+
+            <StackPanel Grid.Column="3" Margin="4,0,0,0" VerticalAlignment="Center">
+                <Button Click="MoveUp">
+                    <Image x:Name="UpImage" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" />
+                </Button>
+                <Button Margin="0,4,0,0" Click="MoveDown">
+                    <Image x:Name="DownImage" Width="16" Height="16" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" />
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <r:FieldControlResizer x:Name="Resizer" Grid.Row="1" DefaultHeight="150" Target="{Binding ElementName=ResizePanel}" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Sitecore.Rocks.Controls.ItemDependencyListViews.ItemDependencyListView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+                <ResourceDictionary>
+                    <DataTemplate x:Key="Commit">
+                        <CheckBox IsChecked="{Binding Path=IsChecked, Mode=TwoWay}" Checked="ItemChecked" Unchecked="ItemChecked" />
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+            <Label x:Name="ListViewLabel" Target="{Binding ElementName=ListView}" />
+            <controls:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterChanged" Watermark="Filter" VerticalAlignment="Center" HorizontalAlignment="Right"
+                Width="150" Margin="8,0,0,0" DockPanel.Dock="Right" />
+        </DockPanel>
+
+        <c:Loading x:Name="Loading" Grid.Row="1" />
+
+        <Border Grid.Row="1" x:Name="ContextMenuPanel">
+            <ListView x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+                AlternationCount="1" GridViewColumnHeader.Click="HeaderClick" Visibility="Collapsed" ContextMenuOpening="OpenContextMenu">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn CellTemplate="{StaticResource Commit}" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ItemName}" />
+                        <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
+                        <GridViewColumn Header="Template" DisplayMemberBinding="{Binding TemplateName}" />
+                        <GridViewColumn Header="Updated" DisplayMemberBinding="{Binding Updated}" />
+                        <GridViewColumn Header="UpdatedBy" DisplayMemberBinding="{Binding UpdatedBy}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+
+        <DockPanel Grid.Row="2">
+            <CheckBox Checked="CheckAll" Unchecked="UncheckAll" Content="Select/Unselect All" IsChecked="True" Margin="0,4,0,0" />
+            <TextBlock x:Name="SelectCount" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,4,0,0" />
+        </DockPanel>
+    </Grid>
+</UserControl>

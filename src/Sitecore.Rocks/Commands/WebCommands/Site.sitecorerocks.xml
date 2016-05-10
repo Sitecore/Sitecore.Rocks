@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<commands>
+    <command>
+        <context>Sitecore.Rocks.Data.IItemSelectionContext</context>
+        <text>Clone Item</text>
+        <sorting>10000</sorting>
+        <group>WebCommands</group>
+        <request>/sitecore/shell/Applications/Dialogs/CloneItem.aspx?fo=$itemid&amp;sc_content=$databasename&amp;la=$languagename</request>
+        <window title="Clone Item">Dialog</window>
+        <afterexecute>
+            <command type="Sitecore.Rocks.ContentTrees.Commands.Editing.EditItems" />
+        </afterexecute>
+    </command>
+
+    <submenu>
+        <context>Sitecore.Rocks.Data.ISiteSelectionContext</context>
+        <text>Client</text>
+        <name>Client</name>
+        <group>Tools</group>
+        <submenu>Tools</submenu>
+        <sorting>3100</sorting>
+    </submenu>
+
+    <command>
+        <context>Sitecore.Rocks.Data.ISiteSelectionContext</context>
+        <submenu>Client</submenu>
+        <text>Security Editor</text>
+        <sorting>1100</sorting>
+        <group>WebCommands</group>
+        <request>/en/sitecore/shell/Applications/Security/Security Editor.aspx</request>
+        <window>Window</window>
+    </command>
+
+    <command>
+        <context>Sitecore.Rocks.Data.ISiteSelectionContext</context>
+        <submenu>Client</submenu>
+        <text>Access Viewer</text>
+        <sorting>1000</sorting>
+        <group>WebCommands</group>
+        <request>/en/sitecore/shell/Applications/Security/Access Viewer.aspx</request>
+        <window>Window</window>
+    </command>
+
+    <command>
+        <context>Sitecore.Rocks.Data.ISiteSelectionContext</context>
+        <submenu>Client</submenu>
+        <text>User Manager</text>
+        <sorting>2000</sorting>
+        <group>WebCommands</group>
+        <request>/en/sitecore/shell/Applications/Security/User Manager.aspx</request>
+        <window>Window</window>
+    </command>
+</commands>

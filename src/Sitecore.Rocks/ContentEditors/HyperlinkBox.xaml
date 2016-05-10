@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.HyperlinkBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:ce="clr-namespace:Sitecore.Rocks.ContentEditors" mc:Ignorable="d" d:DesignHeight="300"
+    d:DesignWidth="300" x:Name="UserControl">
+    <UserControl.Resources>
+        <Style x:Key="BoxBorder" TargetType="{x:Type Border}">
+            <Setter Property="BorderBrush" Value="#7DA2CE" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ce:HyperlinkBox}},Path=IsSelected}" Value="True">
+                    <Setter Property="Background" Value="#7DA2CE" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="BoxHyperlink" TargetType="{x:Type Hyperlink}">
+            <Setter Property="Foreground" Value="#333366" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ce:HyperlinkBox}},Path=IsSelected}" Value="True">
+                    <Setter Property="Foreground" Value="White" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Margin="2" BorderThickness="1" Style="{StaticResource BoxBorder}">
+        <TextBlock>
+            <Hyperlink x:Name="Link" TextDecorations="{x:Null}" Style="{StaticResource BoxHyperlink}">
+                <TextBlock Padding="2,0,2,0" Text="{Binding ElementName=UserControl,Path=Text}" />
+            </Hyperlink>
+        </TextBlock>
+    </Border>
+</UserControl>

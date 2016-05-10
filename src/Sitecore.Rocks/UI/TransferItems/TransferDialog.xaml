@@ -1,0 +1,20 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.TransferItems.TransferDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Transfering Items..." Height="100" Width="350"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ProgressBar x:Name="ProgressBar" Width="200" />
+            <TextBlock x:Name="InfoTextBlock" Margin="0,16,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,8,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="Cancel" IsCancel="True" Width="75" Height="23" Click="CancelClick" />
+        </StackPanel>
+    </Grid>
+</Window>

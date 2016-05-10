@@ -1,0 +1,361 @@
+﻿<items>
+    <item id="{0DE95AE4-41AB-4D01-9EB0-67441B7C2450}" path="/sitecore/content" />
+    <item id="{EB2E4FFD-2761-4653-B052-26A64D385227}" path="/sitecore/layout" />
+    <item id="{E18F4BC6-46A2-4842-898B-B6613733F06F}" path="/sitecore/layout/Devices" />
+    <item id="{75CC5CE4-8979-4008-9D3C-806477D57619}" path="/sitecore/layout/Layouts" />
+    <item id="{6E14276A-FD7F-40EC-9880-4EA96135AE9D}" path="/sitecore/layout/Layouts/System" />
+    <item id="{1CE3B36C-9B0C-4EB5-A996-BFCB4EAA5287}" path="/sitecore/layout/Placeholder Settings" />
+    <item id="{32566F0E-7686-45F1-A12F-D7260BD78BC3}" path="/sitecore/layout/Renderings" />
+    <item id="{1936B96E-DA1F-4A3A-8AAF-8C46268E2D84}" path="/sitecore/layout/Renderings/Sample" />
+    <item id="{F4008F10-BBB2-4565-B652-467491361D5A}" path="/sitecore/layout/Renderings/System" />
+    <item id="{B4A0FB13-9758-427C-A7EB-1A406C045192}" path="/sitecore/layout/Renderings/System/WebEdit" />
+    <item id="{03ADA6B9-D09F-4552-A1B0-E6AAF9C3FED9}" path="/sitecore/layout/Renderings/System/Feeds" />
+    <item id="{EB443C0B-F923-409E-85F3-E7893C8C30C2}" path="/sitecore/layout/Sublayouts" />
+    <item id="{3D6658D8-A0BF-4E75-B3E2-D050FABCF4E1}" path="/sitecore/media library" />
+    <item id="{730C1699-87A4-4CA7-A9CE-294AD7151F13}" path="/sitecore/media library/Files" />
+    <item id="{15451229-7534-44EF-815D-D93D6170BFCB}" path="/sitecore/media library/Images" />
+    <item id="{13D6D6C6-C50B-4BBD-B331-2B04F1A58F21}" path="/sitecore/system" />
+    <item id="{5F094FE4-CC4B-40FD-9377-9AB00E7F7CA5}" path="/sitecore/system/Aliases" />
+    <item id="{504AE189-9F36-4C62-9767-66D73D6C3084}" path="/sitecore/system/Dictionary" />
+    <item id="{64C4F646-A3FA-4205-B98E-4DE2C609B60F}" path="/sitecore/system/Languages" />
+    <item id="{08477468-D438-43D4-9D6A-6D84A611971C}" path="/sitecore/system/Modules" />
+    <item id="{21624119-2F26-4B9D-96BD-7A4BABA4CCC6}" path="/sitecore/system/Proxies" />
+    <item id="{D9E44555-02A6-407A-B4FC-96B9026CAADD}" path="/sitecore/system/Publishing targets" />
+    <item id="{EF58CA2C-3E59-44E0-82C1-97FF9B98535F}" path="/sitecore/system/Tasks" />
+    <item id="{3EBEC263-B57E-4A3C-A232-7C70519F9908}" path="/sitecore/system/Tasks/Commands" />
+    <item id="{A705D262-5714-4880-9962-051E25F1416D}" path="/sitecore/system/Tasks/Schedules" />
+    <item id="{F32BE1E8-A933-43EA-9265-0540FD6BB916}" path="/sitecore/system/Toolbox" />
+    <item id="{05592656-56D7-4D85-AACF-30919EE494F9}" path="/sitecore/system/Workflows" />
+    <item id="{3C1715FE-6A13-4FCF-845F-DE308BA9741D}" path="/sitecore/templates" />
+    <item id="{2E5892C5-A529-4646-989B-1F15DE10453E}" path="/sitecore/templates/Common" />
+    <item id="{A87A00B1-E6DB-45AB-8B54-636FEC3B5523}" path="/sitecore/templates/Common/Folder" type="folder" />
+    <item id="{73BAECEB-744D-4D4A-A7A5-7A935638643F}" path="/sitecore/templates/Sample" />
+    <item id="{76036F5E-CBCE-46D1-AF0A-4143F9B557AA}" path="/sitecore/templates/Sample/Sample Item" />
+    <item id="{E4E2AF32-9230-4D6C-AF02-A0E0B7925409}" path="/sitecore/templates/Sample/Sample Item/Data/Title" />
+    <item id="{3156AA9A-B88B-4EA7-B268-75CB918630D5}" path="/sitecore/templates/Sample/Sample Item/Data/Text" />
+    <item id="{4BF98EF5-1D09-4DD1-9AFE-795F9829FD44}" path="/sitecore/templates/System" />
+    <item id="{54BCFFB7-8F46-4948-AE74-DA5B6B5AFA86}" path="/sitecore/templates/System/Alias" />
+    <item id="{8CBAB1DF-CF26-4C80-9002-62AA153D1E4C}" path="/sitecore/templates/System/Alias/Data/Linked item" />
+    <item id="{6FBC1147-6B0F-49DA-90CE-38DE0B806B44}" path="/sitecore/templates/System/Branches" />
+    <item id="{35E75C72-4985-4E09-88C3-0EAC6CD1E64F}" path="/sitecore/templates/System/Branches/Branch" />
+    <item id="{B2613CC1-A748-46A3-A0DB-3774574BD339}" path="/sitecore/templates/System/Branches/Command Template" />
+    <item id="{854CC8F6-94AD-4521-A4B6-44ED8F794C98}" path="/sitecore/templates/System/Branches/Command Template/Data/Command" />
+    <item id="{B4D19D07-B3EB-4F7D-98EC-8BCB41CCC58E}" path="/sitecore/templates/System/Branches/Insert Rule" />
+    <item id="{4A6DFA44-4706-4B98-8C88-ADA44F8FDB7C}" path="/sitecore/templates/System/Branches/Insert Rule/Data/Type" />
+    <item id="{85ADBF5B-E836-4932-A333-FE0F9FA1ED1E}" path="/sitecore/templates/System/Branches/Branch Folder" type="folder" />
+    <item id="{8E215ECD-6462-4384-8980-1B581C8354AA}" path="/sitecore/templates/System/Browsers" />
+    <item id="{6A10B7B1-48F6-48F2-B3AE-4AE3061F3448}" path="/sitecore/templates/System/Browsers/Script" />
+    <item id="{7D0DB605-C3EC-4F69-8F23-F15478B41124}" path="/sitecore/templates/System/Browsers/Script/Data/Source" />
+    <item id="{958B0134-77EE-4148-A6CE-7457830D1877}" path="/sitecore/templates/System/Browsers/Script/Data/Defer" />
+    <item id="{1349EB63-C41D-439C-AB9D-F86D2E1AEAC9}" path="/sitecore/templates/System/Browsers/Stylesheet" />
+    <item id="{753D9148-734A-4F0F-8EE2-AC3E61E8B27F}" path="/sitecore/templates/System/Browsers/Stylesheet/Data/Source" />
+    <item id="{93B36B23-4B04-44A0-AF37-5FCDED572D02}" path="/sitecore/templates/System/Dictionary" />
+    <item id="{6D1CD897-1936-4A3A-A511-289A94C2A7B1}" path="/sitecore/templates/System/Dictionary/Dictionary entry" />
+    <item id="{580C75A8-C01A-4580-83CB-987776CEB3AF}" path="/sitecore/templates/System/Dictionary/Dictionary entry/Data/Key" />
+    <item id="{2BA3454A-9A9C-4CDF-A9F8-107FD484EB6E}" path="/sitecore/templates/System/Dictionary/Dictionary entry/Data/Phrase" />
+    <item id="{267D9AC7-5D85-4E9D-AF89-99AB296CC218}" path="/sitecore/templates/System/Dictionary/Dictionary folder" type="folder" />
+    <item id="{F68F13A6-3395-426A-B9A1-FA2DC60D94EB}" path="/sitecore/templates/System/Language" />
+    <item id="{49E5E8F3-ED4A-4A06-ABE1-B9408951DEE9}" path="/sitecore/templates/System/Language/Data/Charset" />
+    <item id="{990596CE-0024-43F3-BF4C-A991BFA69B45}" path="/sitecore/templates/System/Language/Data/Code page" />
+    <item id="{60669E54-7B9C-4B55-A0C4-8F25059D8B94}" path="/sitecore/templates/System/Language/Data/Dictionary" />
+    <item id="{8728D8FF-66D9-40C2-8B34-C4FC1466942E}" path="/sitecore/templates/System/Language/Data/Encoding" />
+    <item id="{C437E416-8948-427D-A982-8ED37AE3F553}" path="/sitecore/templates/System/Language/Data/Iso" />
+    <item id="{0620F810-9294-4F14-AF9F-F5772EFCA0B2}" path="/sitecore/templates/System/Language/Data/Regional Iso Code" />
+    <item id="{4CB05A97-3BF9-47FE-A835-6088E592FDE6}" path="/sitecore/templates/System/Language/Data/WorldLingo Language Identifier" />
+    <item id="{FB6B721E-D64D-4392-A1F0-A15194CBFAD9}" path="/sitecore/templates/System/Layout" />
+    <item id="{B6F7EEB4-E8D7-476F-8936-5ACE6A76F20B}" path="/sitecore/templates/System/Layout/Device" />
+    <item id="{3A5475C5-D476-45F2-933F-67B73B1888A2}" path="/sitecore/templates/System/Layout/Device/Data/Default" />
+    <item id="{160B90C2-4011-4E89-9C5E-C617DDFBC8C7}" path="/sitecore/templates/System/Layout/Device/Data/Fallback device" />
+    <item id="{DC7B67C1-0278-4004-9F17-10241DEE6407}" path="/sitecore/templates/System/Layout/Device/Data/Capabilities Type" />
+    <item id="{E2E60CB8-AFAE-4465-8443-40D3A95EEF0F}" path="/sitecore/templates/System/Layout/Device/Detection/Agent" />
+    <item id="{32326F99-C0DA-4817-9DBE-79E6DE8005E4}" path="/sitecore/templates/System/Layout/Device/Detection/Query string" />
+    <item id="{3A45A723-64EE-4919-9D41-02FD40FD1466}" path="/sitecore/templates/System/Layout/Layout" type="layout" />
+    <item id="{A036B2BC-BA04-44F6-A75F-BAE6CD242ABF}" path="/sitecore/templates/System/Layout/Layout/Data/Path" />
+    <item id="{93227C5D-4FEF-474D-94C0-F252EC8E8219}" path="/sitecore/templates/System/Layout/Layout Folder" type="folder" />
+    <item id="{85B7F5D9-6F3A-4AD1-B218-D9FBE1DF8BB3}" path="/sitecore/templates/System/Layout/Layout group" />
+    <item id="{BECD2136-596F-4405-9D70-92EAFC70A349}" path="/sitecore/templates/System/Layout/Layout Preset" />
+    <item id="{E44B54E1-72DF-40A9-9854-6877BD208CF4}" path="/sitecore/templates/System/Layout/Layout Preset/Data/Layout" />
+    <item id="{5C547D4E-7111-4995-95B0-6B561751BF2E}" path="/sitecore/templates/System/Layout/Placeholder" />
+    <item id="{E391B526-D0C5-439D-803E-17512EAE6222}" path="/sitecore/templates/System/Layout/Placeholder/Data/Allowed Controls" />
+    <item id="{87871FF5-1965-46D6-884F-01D6A0B9C4C1}" path="/sitecore/templates/System/Layout/Placeholder/Data/Description" />
+    <item id="{4B8AD536-4FA6-4122-A31E-32BB6BC42806}" path="/sitecore/templates/System/Layout/Rendering group" />
+    <item id="{8CD580E4-ED45-45C3-BABB-38583ED66CC4}" path="/sitecore/templates/System/Layout/Rendering Parameters" />
+    <item id="{8CA06D6A-B353-44E8-BC31-B528C7306971}" path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters" />
+    <item id="{E42027F4-766D-45A7-8CF4-29E5C94326F7}" path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/General/Placeholder" />
+    <item id="{0793DCFF-0EE7-48AD-B9D4-EF1DD24EB59B}" path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/General/Data Source" />
+    <item id="{485E33D4-79F1-428F-8258-2CB29BB7CC6B}"
+        path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/Parameters/Additional Parameters" />
+    <item id="{3094D236-5985-4C4F-AE6A-E30740885532}" path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/Caching/Caching" />
+    <item id="{C502BDEB-F5DA-4AD0-8095-D7CC1D0E1EEC}"
+        path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/Personalization/Personalization" />
+    <item id="{0FA4635B-8BF4-46DF-994D-621B76F0A7AD}" path="/sitecore/templates/System/Layout/Rendering Parameters/Standard Rendering Parameters/Test Lab/Tests" />
+    <item id="{531BF4A2-C3B2-4EB9-89D0-FA30C82AB33B}" path="/sitecore/templates/System/Layout/Renderings" />
+    <item id="{39587D7D-F06D-4CB4-A25E-AA7D847EDDD0}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering" type="rendering" />
+    <item id="{BA5E7B23-491E-40C6-A7F4-931101255077}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Method" />
+    <item id="{BA2C331E-89A7-4D46-AC29-7D444801CAF6}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Class" />
+    <item id="{67CF836A-D8DA-41C4-89AA-60226864C1CE}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Assembly" />
+    <item id="{14B8780B-60FB-444A-A6B4-CFEC99655CC8}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Placeholder" />
+    <item id="{C51390E2-C2BA-4F51-B944-EC26D2A1D8DF}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Data source" />
+    <item id="{60404BEB-6E5D-4EEF-8785-021AC36702A3}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Parameters" />
+    <item id="{DB0C0085-097F-40FB-984F-49812E506D37}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Data/Login rendering" />
+    <item id="{2FB6F99F-4486-4C52-9FFC-E43C15003614}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Editor Options/Customize page" />
+    <item id="{A3454EAC-0C04-4CB9-8812-032532E29816}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Editor Options/Description" />
+    <item id="{AB4F984B-14EA-49B7-9B6E-398444889926}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Editor Options/Open Properties After Add" />
+    <item id="{07B61643-429B-4ED0-89D7-CE29C4F3D960}" path="/sitecore/templates/System/Layout/Renderings/Method Rendering/Editor Options/Parameters Template" />
+    <item id="{92D4A8C4-5754-4E1A-96A6-095BD193E12B}" path="/sitecore/templates/System/Layout/Renderings/Rendering" />
+    <item id="{72EEC748-E047-4F08-B97B-16D09B1A1DFF}" path="/sitecore/templates/System/Layout/Renderings/Rendering/Data/Placeholder" />
+    <item id="{362C1401-6906-47FA-8902-1219A258DE83}" path="/sitecore/templates/System/Layout/Renderings/Rendering/Data/Rendering" />
+    <item id="{7EE0975B-0698-493E-B3A2-0B2EF33D0522}" path="/sitecore/templates/System/Layout/Renderings/Rendering Folder" type="folder" />
+    <item id="{0A98E368-CDB9-4E1E-927C-8E0C24A003FB}" path="/sitecore/templates/System/Layout/Renderings/Sublayout" type="sublayout" />
+    <item id="{E42081B6-8A95-4A11-89CE-DF70ED502F57}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Data/Path" />
+    <item id="{32CEE5FB-EFCE-4CA6-B697-3B97900C40D3}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Data/Placeholder" />
+    <item id="{5D1DDBD2-CA51-4708-8F58-B1E5DCDCE14C}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Data/Data source" />
+    <item id="{AD6A7DB0-C741-4509-A5EB-FA582642E960}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Data/Parameters" />
+    <item id="{42654CFD-393A-4FD5-8FDF-71061374A99D}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Data/Login rendering" />
+    <item id="{7C51DBF3-2303-44B9-A3CB-6E24967A6284}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Editor Options/Description" />
+    <item id="{E28F0784-53EC-4B5C-803E-638FDB1EC15D}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Editor Options/Parameters Template" />
+    <item id="{462A3406-2182-4134-8484-FDC3DD0326DD}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Editor Options/Open Properties After Add" />
+    <item id="{05FCCF51-6825-4041-8D60-4D6263210207}" path="/sitecore/templates/System/Layout/Renderings/Sublayout/Editor Options/Customize page" />
+    <item id="{3BAA73E5-6BA9-4462-BF72-C106F8801B11}" path="/sitecore/templates/System/Layout/Renderings/Sublayout Folder" type="folder" />
+    <item id="{83E993C5-C0FC-4472-86A9-2F6CFED694E4}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering" type="rendering" />
+    <item id="{4CF70E19-DD41-4AB2-B097-17E81C86288B}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Data/Url" />
+    <item id="{D7C8A16C-2E43-43F7-9176-271334992745}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Data/Placeholder" />
+    <item id="{1D43657E-76A4-49C4-911A-D430E0DC5EBE}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Data/Login rendering" />
+    <item id="{2B70EC45-C010-43E5-927D-276DD060227E}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Editor Options/Description" />
+    <item id="{EF18A032-5623-4ADD-8F10-2C9BA36E14E8}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Editor Options/Parameters Template" />
+    <item id="{37DDC6AE-B9B9-4E1C-B4B7-E3A81E0683F3}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Editor Options/Open Properties After Add" />
+    <item id="{055AA90A-39D7-4830-A935-EBDAC6C9CB2C}" path="/sitecore/templates/System/Layout/Renderings/Url Rendering/Editor Options/Customize page" />
+    <item id="{1DDE3F02-0BD7-4779-867A-DC578ADF91EA}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol" type="rendering" />
+    <item id="{1F424EB0-6138-4BC4-93B0-BD45EC6B1CB2}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Namespace" />
+    <item id="{B8979E80-7623-4B3A-BFD2-3F3F05883D58}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Tag" />
+    <item id="{E2ABDEC6-83A6-4B68-97D1-B3CD79F10A8E}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/TagPrefix" />
+    <item id="{C50B1F5B-26DA-476A-AAC6-9B734975971C}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Assembly" />
+    <item id="{6D6A0DA0-F3EA-4799-9CAE-CE748E0B6A24}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Placeholder" />
+    <item id="{A116F3A4-0D3A-4DD9-BD7C-0F37470BE5DC}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Parameters" />
+    <item id="{B6ADCF38-9BC1-48DD-8C0C-4C239940F888}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Data/Login rendering" />
+    <item id="{4A7F5F08-125D-47A4-B849-9EC366D51928}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Editor Options/Description" />
+    <item id="{9003574A-FB95-4F3C-B17C-33893DAD35A9}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Editor Options/Parameters Template" />
+    <item id="{C2FD8EB3-41B2-4CD9-816B-C8F515980C7A}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Editor Options/Open Properties After Add" />
+    <item id="{CA07D29A-01F7-44E7-A590-6933BCB6B919}" path="/sitecore/templates/System/Layout/Renderings/Webcontrol/Editor Options/Customize page" />
+    <item id="{B658CE99-894A-4CB1-936B-F23F17C63B5B}" path="/sitecore/templates/System/Layout/Renderings/XmlControl" type="rendering" />
+    <item id="{07C0CAB1-A744-42EB-BA83-AFD313D598D3}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Data/Control name" />
+    <item id="{1D86C159-939E-48A5-B55D-DDCE9714D545}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Data/Placeholder" />
+    <item id="{F1B05793-A93F-4FDA-A418-30C7E0400172}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Data/Data source" />
+    <item id="{42952B25-5D75-4F3A-81B0-E1573B75A935}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Data/Parameters" />
+    <item id="{EFA28A93-5A35-44A5-9F6E-AF530B51DDC9}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Data/Login rendering" />
+    <item id="{DAD1FFBA-6AF0-4EBA-A161-0444942936AF}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Editor Options/Description" />
+    <item id="{A38F1701-8D99-477E-8892-5D3F726592B7}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Editor Options/Parameters Template" />
+    <item id="{864E44EB-514F-4DD2-8A36-86B7ADA06077}" path="/sitecore/templates/System/Layout/Renderings/XmlControl/Editor Options/Open Properties After Add" />
+    <item id="{F1F1D639-4F54-40C2-8BE0-81266B392CEB}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering" type="rendering" />
+    <item id="{78783F79-1411-4B91-958D-AD81F81E2485}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Data/Path" />
+    <item id="{8AA9BB12-1A7B-4BC0-851A-25B7A1FF3A88}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Data/Placeholder" />
+    <item id="{E67044AD-FB48-489E-83A6-263A89A8C948}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Data/Data source" />
+    <item id="{CCA35CD7-DC3D-4A2F-8E7F-F6EC68D49E74}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Data/Parameters" />
+    <item id="{3FD02019-D7B6-4003-BC75-A04262C3CF49}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Data/Login rendering" />
+    <item id="{58266FB1-BED3-46F1-997D-117A3F5556EE}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Editor Options/Description" />
+    <item id="{CFF1E810-B68B-47FD-9B94-8E3582586A72}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Editor Options/Parameters Template" />
+    <item id="{DDB5EF32-FF24-4C55-AAC2-96162E910E8C}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Editor Options/Open Properties After Add" />
+    <item id="{CEDEFAC5-C7C3-4CF3-9AED-B5301F22DA64}" path="/sitecore/templates/System/Layout/Renderings/Xsl Rendering/Editor Options/Customize page" />
+    <item id="{94D063F7-CD45-45AD-A2EF-84AB03358CD9}" path="/sitecore/templates/System/Layout/Sections" />
+    <item id="{B9C92DB0-1EA4-4816-B83A-6B163E1660DE}" path="/sitecore/templates/System/Layout/Sections/BaseSection" />
+    <item id="{E8D2DD19-1347-4562-AE3F-310DC0B21A6C}" path="/sitecore/templates/System/Layout/Sections/Caching" />
+    <item id="{3D08DB46-2267-41B0-BC52-BE69FD618633}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/Cacheable" />
+    <item id="{8B6D532B-6128-4486-A044-CA06D90948BA}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByData" />
+    <item id="{C98CF969-BA71-42DA-833D-B3FC1368BA27}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByDevice" />
+    <item id="{8D9232B0-613F-440B-A2FA-DCDD80FBD33E}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByLogin" />
+    <item id="{3AD2506A-DC39-4B1E-959F-9D524ADDBF50}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByParm" />
+    <item id="{1084D3D2-0457-456A-ABBC-EB4CC0966072}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByQueryString" />
+    <item id="{0E54A8DC-72AD-4372-A7C7-BB4773FAD44D}" path="/sitecore/templates/System/Layout/Sections/Caching/Caching/VaryByUser" />
+    <item id="{1163DA83-B2EF-4381-BF09-B2FF714B1B3F}" path="/sitecore/templates/System/Layout/Xml layout" />
+    <item id="{5851D498-15F9-4B1A-BB02-0B736C13AFE3}" path="/sitecore/templates/System/Layout/Xml layout/Data/Control" />
+    <item id="{C155D613-6F1E-42B8-96B1-15CE7C845850}" path="/sitecore/templates/System/Layout/Xml layout/Data/Path" />
+    <item id="{E3E2D58C-DF95-4230-ADC9-279924CECE84}" path="/sitecore/templates/System/Main section" />
+    <item id="{D150DF1B-01BA-45B7-AEB1-4CA5C2F20A64}" path="/sitecore/templates/System/Media" />
+    <item id="{FE5DD826-48C6-436D-B87A-7C4210C7413B}" path="/sitecore/templates/System/Media/Media folder" type="folder" />
+    <item id="{00373F71-5D08-4E9A-840F-9BB3C8193518}" path="/sitecore/templates/System/Media/Unversioned" />
+    <item id="{D56DB3AA-7373-4651-837E-8D3977A0B544}" path="/sitecore/templates/System/Media/Unversioned/Audio" type="media" />
+    <item id="{16692733-9A61-45E6-B0D4-4C0C06F8DD3C}" path="/sitecore/templates/System/Media/Unversioned/Doc" type="media" />
+    <item id="{777F0C76-D712-46EA-9F40-371ACDA18A1C}" path="/sitecore/templates/System/Media/Unversioned/Document" type="media" />
+    <item id="{7BB0411F-50CD-4C21-AD8F-1FCDE7C3AFFE}" path="/sitecore/templates/System/Media/Unversioned/Docx" type="media" />
+    <item id="{962B53C4-F93B-4DF9-9821-415C867B8903}" path="/sitecore/templates/System/Media/Unversioned/File" type="media" />
+    <item id="{40E50ED9-BA07-4702-992E-A912738D32DC}" path="/sitecore/templates/System/Media/Unversioned/File/Media/Blob" />
+    <item id="{2134867A-AC67-4DAC-836C-A9264FD9D6D6}" path="/sitecore/templates/System/Media/Unversioned/File/Media/File Path" />
+    <item id="{3F4B20E9-36E6-4D45-A423-C86567373F82}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Title" />
+    <item id="{2FAFE7CB-2691-4800-8848-255EFA1D31AA}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Keywords" />
+    <item id="{BA8341A1-FF30-47B8-AE6A-F4947E4113F0}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Description" />
+    <item id="{C06867FE-9A43-4C7D-B739-48780492D06F}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Extension" />
+    <item id="{6F47A0A5-9C94-4B48-ABEB-42D38DEF6054}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Mime Type" />
+    <item id="{6954B7C7-2487-423F-8600-436CB3B6DC0E}" path="/sitecore/templates/System/Media/Unversioned/File/Information/Size" />
+    <item id="{FBD90442-DB0C-48F1-A0F4-0427CD9AFCCE}" path="/sitecore/templates/System/Media/Unversioned/File/Properties/Format" />
+    <item id="{9867C0B9-A7BE-4D96-AD7E-4AD18109ED20}" path="/sitecore/templates/System/Media/Unversioned/Flash" type="media" />
+    <item id="{E15D042D-3031-487A-9FCF-C178E3AA2EF4}" path="/sitecore/templates/System/Media/Unversioned/Flash/Flash/Width" />
+    <item id="{22B3E3E9-13D4-47E4-B718-B3E75224F6D8}" path="/sitecore/templates/System/Media/Unversioned/Flash/Flash/Height" />
+    <item id="{C685BFBC-C618-44EA-94E1-6245203F1DE8}" path="/sitecore/templates/System/Media/Unversioned/Flash/Flash/Version" />
+    <item id="{50CE79C9-9A3C-4B10-BA94-6198B34F3A15}" path="/sitecore/templates/System/Media/Unversioned/Flash/Flash/FrameRate" />
+    <item id="{147CB11B-9BBB-4B25-9558-F1642B693810}" path="/sitecore/templates/System/Media/Unversioned/Flash/Flash/FrameCount" />
+    <item id="{AF131F8D-10B2-4ACF-B2F4-6A1476DB7290}" path="/sitecore/templates/System/Media/Unversioned/Flash/Properties/Dimensions" />
+    <item id="{F1828A2C-7E5D-4BBD-98CA-320474871548}" path="/sitecore/templates/System/Media/Unversioned/Image" type="media" />
+    <item id="{65885C44-8FCD-4A7F-94F1-EE63703FE193}" path="/sitecore/templates/System/Media/Unversioned/Image/Image/Alt" />
+    <item id="{22EAC599-F13B-4607-A89D-C091763A467D}" path="/sitecore/templates/System/Media/Unversioned/Image/Image/Width" />
+    <item id="{DE2CA9E4-C117-4C8A-A139-1FF4B199D15A}" path="/sitecore/templates/System/Media/Unversioned/Image/Image/Height" />
+    <item id="{CB09946F-3218-4823-87D2-D5007C199A96}" path="/sitecore/templates/System/Media/Unversioned/Image/Properties/Dimensions" />
+    <item id="{DAF085E8-602E-43A6-8299-038FF171349F}" path="/sitecore/templates/System/Media/Unversioned/Jpeg" type="media" />
+    <item id="{327878C4-28C8-4E71-8914-5DE34E00E716}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/Artist" />
+    <item id="{0AD015CB-E1A7-4CD7-BFBB-F8B50AB1FC8C}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/Copyright" />
+    <item id="{90A6FE48-F3E0-42F3-A18A-EDAA7DB9CA57}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/DateTime" />
+    <item id="{95AF1A8C-9FAB-4915-A0D8-E1669AF18B1B}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/ImageDescription" />
+    <item id="{7798CD59-76DC-4869-8BDA-2952A64B8687}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/Make" />
+    <item id="{1A25C485-C7F4-4488-AD5A-B8D72E4A66DF}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/Model" />
+    <item id="{B0145335-8735-414B-9169-A1D4E4DC9641}" path="/sitecore/templates/System/Media/Unversioned/Jpeg/Exif/Software" />
+    <item id="{E76ADBDF-87D1-4FCB-BA71-274F7DBF5670}" path="/sitecore/templates/System/Media/Unversioned/Movie" type="media" />
+    <item id="{B60424A5-CE06-4C2E-9F49-A6D732F55D4B}" path="/sitecore/templates/System/Media/Unversioned/Mp3" type="media" />
+    <item id="{8A2C49C5-C9BD-41B1-B37E-89B6D6F29216}" path="/sitecore/templates/System/Media/Unversioned/Mp3/ID3/Song Title" />
+    <item id="{A5046C9A-E783-46AE-B3FA-2E984F144238}" path="/sitecore/templates/System/Media/Unversioned/Mp3/ID3/Track Number" />
+    <item id="{0B6B65DA-A422-49E9-8D34-07434EEDAA4A}" path="/sitecore/templates/System/Media/Unversioned/Mp3/ID3/Year" />
+    <item id="{2EF2D6AD-ED90-4546-8DBD-ADB1F99B1972}" path="/sitecore/templates/System/Media/Unversioned/Mp3/ID3/Comment" />
+    <item id="{A0F8B87D-694B-4D1E-AC7F-E2266C7D62BB}" path="/sitecore/templates/System/Media/Unversioned/Mp3/Properties/Artist" />
+    <item id="{7833428C-0E27-4720-90CC-178FFCEB07C1}" path="/sitecore/templates/System/Media/Unversioned/Mp3/Properties/Album" />
+    <item id="{0603F166-35B8-469F-8123-E8D87BEDC171}" path="/sitecore/templates/System/Media/Unversioned/Pdf" type="media" />
+    <item id="{4F4A3A3B-239F-4988-98E1-DA3779749CBC}" path="/sitecore/templates/System/Media/Unversioned/Zip" type="media" />
+    <item id="{2611ED8C-ECFF-4449-B25A-20D84B62363A}" path="/sitecore/templates/System/Media/Unversioned/Zip/Properties/File Count" />
+    <item id="{CC68CD9B-28E4-4143-BA18-88863A6B917B}" path="/sitecore/templates/System/Media/Versioned" />
+    <item id="{E19A2758-F802-4FDC-B497-5FF7B3BAC54B}" path="/sitecore/templates/System/Media/Versioned/Audio" type="media" />
+    <item id="{3DB3A3CA-A0A9-4228-994B-F70C8E99A1CE}" path="/sitecore/templates/System/Media/Versioned/Doc" type="media" />
+    <item id="{2A130D0C-A2A9-4443-B418-917F857BF6C9}" path="/sitecore/templates/System/Media/Versioned/Document" type="media" />
+    <item id="{F57FB07D-332A-4934-AA67-0A629C5396E2}" path="/sitecore/templates/System/Media/Versioned/Docx" type="media" />
+    <item id="{611933AC-CE0C-4DDC-9683-F830232DB150}" path="/sitecore/templates/System/Media/Versioned/File" type="media" />
+    <item id="{DBBE7D99-1388-4357-BB34-AD71EDF18ED3}" path="/sitecore/templates/System/Media/Versioned/File/Media/Blob" />
+    <item id="{A50B93FD-C413-4065-AEC7-5EA8CE107200}" path="/sitecore/templates/System/Media/Versioned/File/Media/File Path" />
+    <item id="{E625E7DA-F988-4442-A598-D21040EC9815}" path="/sitecore/templates/System/Media/Versioned/File/Information/Title" />
+    <item id="{1CC29119-82E2-449F-B208-33790D434B95}" path="/sitecore/templates/System/Media/Versioned/File/Information/Keywords" />
+    <item id="{EBEB197C-376E-47C4-95D7-7FC26682D12E}" path="/sitecore/templates/System/Media/Versioned/File/Information/Description" />
+    <item id="{3EB149F8-DE14-4220-A8F4-9E723CFAE5D9}" path="/sitecore/templates/System/Media/Versioned/File/Information/Extension" />
+    <item id="{ABA5CE58-6D8F-43A4-B4FA-B181651347DD}" path="/sitecore/templates/System/Media/Versioned/File/Information/Mime Type" />
+    <item id="{5BE6C122-84C9-4661-A0C9-3718909C8DAD}" path="/sitecore/templates/System/Media/Versioned/File/Information/Size" />
+    <item id="{AC8BF2AC-D76E-4BE3-A6E3-187689CE77F2}" path="/sitecore/templates/System/Media/Versioned/File/Properties/Format" />
+    <item id="{2E16714D-8406-4445-98B7-CD70F658611B}" path="/sitecore/templates/System/Media/Versioned/Flash" type="media" />
+    <item id="{BEE879B4-F3F4-4F3D-8AC1-E58055479730}" path="/sitecore/templates/System/Media/Versioned/Flash/Flash/Width" />
+    <item id="{6E2BA32E-F831-4719-9364-698F1319D74B}" path="/sitecore/templates/System/Media/Versioned/Flash/Flash/Height" />
+    <item id="{F6D3E005-747E-4D74-A34F-05305CC86C9B}" path="/sitecore/templates/System/Media/Versioned/Flash/Flash/Version" />
+    <item id="{CAF7A3C0-DD82-4089-8A50-2A78898494D5}" path="/sitecore/templates/System/Media/Versioned/Flash/Flash/FrameRate" />
+    <item id="{440A3125-A076-4359-A4EC-200459CDA166}" path="/sitecore/templates/System/Media/Versioned/Flash/Flash/FrameCount" />
+    <item id="{417D95A5-AC69-4FBF-89A5-1223DB1A4A22}" path="/sitecore/templates/System/Media/Versioned/Flash/Properties/Dimensions" />
+    <item id="{C97BA923-8009-4858-BDD5-D8BE5FCCECF7}" path="/sitecore/templates/System/Media/Versioned/Image" type="media" />
+    <item id="{8CF45D0E-ADD4-4772-911A-AC6FC50F9C7D}" path="/sitecore/templates/System/Media/Versioned/Image/Image/Alt" />
+    <item id="{D8E619C3-2D16-47F4-AD3B-C68103DF86C2}" path="/sitecore/templates/System/Media/Versioned/Image/Image/Width" />
+    <item id="{611BA5DD-8D26-4C9B-A95D-900AC94CB32A}" path="/sitecore/templates/System/Media/Versioned/Image/Image/Height" />
+    <item id="{6405CC9E-9CA1-44A1-ADF8-0DECF05071CE}" path="/sitecore/templates/System/Media/Versioned/Image/Properties/Dimensions" />
+    <item id="{EB3FB96C-D56B-4AC9-97F8-F07B24BB9BF7}" path="/sitecore/templates/System/Media/Versioned/Jpeg" type="media" />
+    <item id="{7F8F7C90-6737-4B6B-9482-DE34AADA13BA}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/Artist" />
+    <item id="{ED74C2C9-20B3-47A4-B021-A652E1E808AA}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/Copyright" />
+    <item id="{8AB38406-B79E-491C-84E0-9919C37168FB}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/DateTime" />
+    <item id="{A67BA51F-0D2F-4C64-A080-A933D9DA4A00}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/ImageDescription" />
+    <item id="{10B97380-7DD1-44B6-BD3F-9FC8B2C7F21E}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/Make" />
+    <item id="{27807440-63B2-429B-B74E-3A6A5C960AAB}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/Model" />
+    <item id="{861A4C20-B8F6-410B-9E40-E2A3A03B7663}" path="/sitecore/templates/System/Media/Versioned/Jpeg/Exif/Software" />
+    <item id="{374D3A99-C098-4CD2-8FBC-DC2D1CA1C904}" path="/sitecore/templates/System/Media/Versioned/Movie" type="media" />
+    <item id="{2449F96D-620E-4E8A-A3E0-D354F78BBD73}" path="/sitecore/templates/System/Media/Versioned/Mp3" type="media" />
+    <item id="{BAC32193-93B3-46E7-9BDF-A3D33E70E580}" path="/sitecore/templates/System/Media/Versioned/Mp3/ID3/Song Title" />
+    <item id="{FA58C2D1-DD4B-41B0-A503-7D9FCB96D04D}" path="/sitecore/templates/System/Media/Versioned/Mp3/ID3/Track Number" />
+    <item id="{CDF85973-AE7A-436D-A475-2B1F7F178E5F}" path="/sitecore/templates/System/Media/Versioned/Mp3/ID3/Year" />
+    <item id="{7C0A47E5-A543-45D0-9CC0-19A367A8C92D}" path="/sitecore/templates/System/Media/Versioned/Mp3/ID3/Comment" />
+    <item id="{2CF72593-419C-4837-9C8C-6A51771DA43A}" path="/sitecore/templates/System/Media/Versioned/Mp3/Properties/Artist" />
+    <item id="{AAAF88C7-F6F7-4186-A0A0-7B6E6E76D3F8}" path="/sitecore/templates/System/Media/Versioned/Mp3/Properties/Album" />
+    <item id="{CC80011D-8EAE-4BFC-84F1-67ECD0223E9E}" path="/sitecore/templates/System/Media/Versioned/Pdf" type="media" />
+    <item id="{1743421C-0D7F-4870-9F7B-70E6F0B63308}" path="/sitecore/templates/System/Media/Versioned/Zip" type="media" />
+    <item id="{D8FD9B99-2227-46BC-8906-0E873720073D}" path="/sitecore/templates/System/Media/Versioned/Zip/Properties/File Count" />
+    <item id="{239F9CF4-E5A0-44E0-B342-0F32CD4C6D8B}" path="/sitecore/templates/System/Node" type="folder" />
+    <item id="{C6576836-910C-4A3D-BA03-C277DBD3B827}" path="/sitecore/templates/System/Root" />
+    <item id="{633549D3-4B7D-40EB-B58F-EDA50BA5F7F0}" path="/sitecore/templates/System/Templates" />
+    <item id="{264BE84E-C140-4097-B771-D1A37189C5B3}" path="/sitecore/templates/System/Templates/Sections" />
+    <item id="{646F4B34-708C-41C2-9F4B-2661849777F3}" path="/sitecore/templates/System/Templates/Sections/Advanced" />
+    <item id="{F7D48A55-2158-4F02-9356-756654404F73}" path="/sitecore/templates/System/Templates/Sections/Advanced/Advanced/__Standard values" />
+    <item id="{B0A67B2A-8B07-4E0B-8809-69F751709806}" path="/sitecore/templates/System/Templates/Sections/Advanced/Advanced/__Tracking" />
+    <item id="{F5BC7AE4-F62D-47CD-9AFB-2C9F85D8313B}" path="/sitecore/templates/System/Templates/Sections/Appearance" />
+    <item id="{D3AE7222-425D-4B77-95D8-EE33AC2B6730}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Context Menu" />
+    <item id="{B5E02AD9-D56F-4C41-A065-A133DB87BDEB}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Display name" />
+    <item id="{D85DB4EC-FF89-4F9C-9E7C-A9E0654797FC}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Editor" />
+    <item id="{A0CB3965-8884-4C7A-8815-B6B2E5CED162}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Editors" />
+    <item id="{39C4902E-9960-4469-AEEF-E878E9C8218F}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Hidden" />
+    <item id="{06D5295C-ED2F-4A54-9BF2-26228D113318}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Icon" />
+    <item id="{9C6106EA-7A5A-48E2-8CAD-F0F693B1E2D4}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Read Only" />
+    <item id="{0C894AAB-962B-4A84-B923-CB24B05E60D2}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Ribbon" />
+    <item id="{079AFCFE-8ACA-4863-BDA7-07893541E2F5}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Skin" />
+    <item id="{BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Sortorder" />
+    <item id="{A791F095-2521-4B4D-BEF9-21DDA221F608}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Style" />
+    <item id="{6FD695E7-7F6D-4CA5-8B49-A829E5950AE9}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Subitems Sorting" />
+    <item id="{F6D8A61C-2F84-4401-BD24-52D2068172BC}" path="/sitecore/templates/System/Templates/Sections/Appearance/Appearance/__Originator" />
+    <item id="{18420296-D8FC-4D93-A79E-2A2B0367A92C}" path="/sitecore/templates/System/Templates/Sections/Help" />
+    <item id="{56776EDF-261C-4ABC-9FE7-70C618795239}" path="/sitecore/templates/System/Templates/Sections/Help/Help/__Help link" />
+    <item id="{577F1689-7DE4-4AD2-A15F-7FDC1759285F}" path="/sitecore/templates/System/Templates/Sections/Help/Help/__Long description" />
+    <item id="{9541E67D-CE8C-4225-803D-33F7F29F09EF}" path="/sitecore/templates/System/Templates/Sections/Help/Help/__Short description" />
+    <item id="{823ECF5F-AE72-40B5-BC87-CB425FE7E5F6}" path="/sitecore/templates/System/Templates/Sections/Insert Options" />
+    <item id="{83798D75-DF25-4C28-9327-E8BAC2B75292}" path="/sitecore/templates/System/Templates/Sections/Insert Options/Insert Options/__Insert Rules" />
+    <item id="{1172F251-DAD4-4EFB-A329-0C63500E4F1E}" path="/sitecore/templates/System/Templates/Sections/Insert Options/Insert Options/__Masters" />
+    <item id="{4D30906D-0B49-4FA7-969D-BF90157357EA}" path="/sitecore/templates/System/Templates/Sections/Layout" />
+    <item id="{F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}" path="/sitecore/templates/System/Templates/Sections/Layout/Layout/__Renderings" />
+    <item id="{B03569B1-1534-43F2-8C83-BD064B7D782C}" path="/sitecore/templates/System/Templates/Sections/Layout/Layout/__Renderers" />
+    <item id="{6EF07334-7FBA-4845-BF0A-CD5B2000C75A}" path="/sitecore/templates/System/Templates/Sections/Lifetime" />
+    <item id="{4C346442-E859-4EFD-89B2-44AEDF467D21}" path="/sitecore/templates/System/Templates/Sections/Lifetime/Lifetime/__Valid to" />
+    <item id="{B8F42732-9CB8-478D-AE95-07E25345FB0F}" path="/sitecore/templates/System/Templates/Sections/Lifetime/Lifetime/__Hide version" />
+    <item id="{C8F93AFE-BFD4-4E8F-9C61-152559854661}" path="/sitecore/templates/System/Templates/Sections/Lifetime/Lifetime/__Valid from" />
+    <item id="{6495CF23-DE9C-48B7-9D3C-05E2418B3CAE}" path="/sitecore/templates/System/Templates/Sections/Publishing" />
+    <item id="{86FE4F77-4D9A-4EC3-9ED9-263D03BD1965}" path="/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Publish" />
+    <item id="{7EAD6FD6-6CF1-4ACA-AC6B-B200E7BAFE88}" path="/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Unpublish" />
+    <item id="{74484BDF-7C86-463C-B49F-7B73B9AFC965}" path="/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Publishing groups" />
+    <item id="{9135200A-5626-4DD8-AB9D-D665B8C11748}" path="/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Never publish" />
+    <item id="{AB811AF4-393C-4A46-ACD7-81D30917E7F4}" path="/sitecore/templates/System/Templates/Sections/Security" />
+    <item id="{52807595-0F8F-4B20-8D2A-CB71D28C6103}" path="/sitecore/templates/System/Templates/Sections/Security/Security/__Owner" />
+    <item id="{DEC8D2D5-E3CF-48B6-A653-8E69E2716641}" path="/sitecore/templates/System/Templates/Sections/Security/Security/__Security" />
+    <item id="{1597272C-C823-4AAC-86F8-CA9CC4D573B5}" path="/sitecore/templates/System/Templates/Sections/Statistics" />
+    <item id="{25BED78C-4957-4165-998A-CA1B52F67497}" path="/sitecore/templates/System/Templates/Sections/Statistics/Statistics/__Created" />
+    <item id="{5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}" path="/sitecore/templates/System/Templates/Sections/Statistics/Statistics/__Created by" />
+    <item id="{8CDC337E-A112-42FB-BBB4-4143751E123F}" path="/sitecore/templates/System/Templates/Sections/Statistics/Statistics/__Revision" />
+    <item id="{D9CF14B1-FA16-4BA6-9288-E8A174D4D522}" path="/sitecore/templates/System/Templates/Sections/Statistics/Statistics/__Updated" />
+    <item id="{BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}" path="/sitecore/templates/System/Templates/Sections/Statistics/Statistics/__Updated by" />
+    <item id="{93F3A8FA-9E5A-4848-A5AD-42AAD11A4871}" path="/sitecore/templates/System/Templates/Sections/Tasks" />
+    <item id="{56C15C6D-FD5A-40CA-BB37-64CEEC6A9BD5}" path="/sitecore/templates/System/Templates/Sections/Tasks/Tasks/__Archive date" />
+    <item id="{ABE5D54C-59D7-41E6-8D3F-C1A3E4EC9B9E}" path="/sitecore/templates/System/Templates/Sections/Tasks/Tasks/__Reminder date" />
+    <item id="{2ED9C4D0-9EFF-490D-A40A-B5D856499C40}" path="/sitecore/templates/System/Templates/Sections/Tasks/Tasks/__Reminder recipients" />
+    <item id="{BB6C8540-118E-4C49-9157-830576D7345A}" path="/sitecore/templates/System/Templates/Sections/Tasks/Tasks/__Reminder text" />
+    <item id="{2491819E-0C61-4F5A-903C-E10FCD9D302A}" path="/sitecore/templates/System/Templates/Sections/Validators" />
+    <item id="{C2F5B2B5-71C1-431E-BF7F-DBDC1E5A2F83}" path="/sitecore/templates/System/Templates/Sections/Validators/Validation Rules/__Quick Action Bar Validation Rules" />
+    <item id="{57CBCA4C-8C94-446C-B8CA-7D8DC54F4285}" path="/sitecore/templates/System/Templates/Sections/Validators/Validation Rules/__Validate Button Validation Rules" />
+    <item id="{B7E5B151-B145-4CED-85C5-FBDB566DFA4D}" path="/sitecore/templates/System/Templates/Sections/Validators/Validation Rules/__Validator Bar Validation Rules" />
+    <item id="{86B52EEF-078E-4D9E-80BF-888287070E6C}" path="/sitecore/templates/System/Templates/Sections/Validators/Validation Rules/__Workflow Validation Rules" />
+    <item id="{06F366E6-A7E6-470B-9EC9-CD29A4F6C8E8}" path="/sitecore/templates/System/Templates/Sections/Workflow" />
+    <item id="{A4F985D9-98B3-4B52-AAAF-4344F6E747C6}" path="/sitecore/templates/System/Templates/Sections/Workflow/Workflow/__Workflow" />
+    <item id="{3E431DE1-525E-47A3-B6B0-1CCBEC3A8C98}" path="/sitecore/templates/System/Templates/Sections/Workflow/Workflow/__Workflow state" />
+    <item id="{001DD393-96C5-490B-924A-B0F25CD9EFD8}" path="/sitecore/templates/System/Templates/Sections/Workflow/Workflow/__Lock" />
+    <item id="{CA9B9F52-4FB0-4F87-A79F-24DEA62CDA65}" path="/sitecore/templates/System/Templates/Sections/Workflow/Workflow/__Default workflow" />
+    <item id="{1930BBEB-7805-471A-A3BE-4858AC7CF696}" path="/sitecore/templates/System/Templates/Standard template" />
+    <item id="{AB86861A-6030-46C5-B394-E8F99E8B87DB}" path="/sitecore/templates/System/Templates/Template" type="template" />
+    <item id="{12C33F3F-86C5-43A5-AEB4-5598CEC45116}" path="/sitecore/templates/System/Templates/Template/Data/__Base template" />
+    <item id="{154DE801-C1E7-4F68-9F0A-26676C1CAAFB}" path="/sitecore/templates/System/Templates/Template/__Standard Values" />
+    <item id="{455A3E98-A627-4B40-8035-E683A0331AC7}" path="/sitecore/templates/System/Templates/Template field" />
+    <item id="{AB162CC0-DC80-4ABF-8871-998EE5D7BA32}" path="/sitecore/templates/System/Templates/Template field/Data/Type" />
+    <item id="{19A69332-A23E-4E70-8D16-B2640CB24CC8}" path="/sitecore/templates/System/Templates/Template field/Data/Title" />
+    <item id="{1EB8AE32-E190-44A6-968D-ED904C794EBF}" path="/sitecore/templates/System/Templates/Template field/Data/Source" />
+    <item id="{FF8A2D01-8A77-4F1B-A966-65806993CD31}" path="/sitecore/templates/System/Templates/Template field/Data/Blob" />
+    <item id="{BE351A73-FCB0-4213-93FA-C302D8AB4F51}" path="/sitecore/templates/System/Templates/Template field/Data/Shared" />
+    <item id="{39847666-389D-409B-95BD-F2016F11EED5}" path="/sitecore/templates/System/Templates/Template field/Data/Unversioned" />
+    <item id="{B118496A-0F78-4A27-B55F-0A6C4B0B0FE1}" path="/sitecore/templates/System/Templates/Template field/Data/Default value" />
+    <item id="{074F44CA-359A-4C13-B3AA-4A6BE2A675B1}" path="/sitecore/templates/System/Templates/Template field/Data/Validation" />
+    <item id="{B12E4906-B96B-495E-B343-CD2E92DC6347}" path="/sitecore/templates/System/Templates/Template field/Data/ValidationText" />
+    <item id="{BF110AA2-F46C-4B8C-8FA5-FA4CEACCF99D}" path="/sitecore/templates/System/Templates/Template field/Data/Reset blank" />
+    <item id="{9CD5874F-0EED-481C-8E75-AE162E613B59}" path="/sitecore/templates/System/Templates/Template field/Data/Exclude From Text Search" />
+    <item id="{337E20E1-999A-4EEA-85AD-B58A03AE75CC}" path="/sitecore/templates/System/Templates/Template field/Validation Rules/Quick Action Bar" />
+    <item id="{21828437-EA4B-40A1-8C61-4CE60EA41DB6}" path="/sitecore/templates/System/Templates/Template field/Validation Rules/Validate Button" />
+    <item id="{9C903E29-650D-4AF2-B9BD-526D5C14A1A5}" path="/sitecore/templates/System/Templates/Template field/Validation Rules/Validator Bar" />
+    <item id="{53C432C4-7122-4E2D-8296-DB4184FD1735}" path="/sitecore/templates/System/Templates/Template field/Validation Rules/Workflow" />
+    <item id="{F8A17D6A-118E-4CD7-B5F5-88FF37A4F237}" path="/sitecore/templates/System/Templates/Template field type" />
+    <item id="{6BF5ED07-BC70-42F4-BB77-C017D340950E}" path="/sitecore/templates/System/Templates/Template field type/Data/Assembly" />
+    <item id="{9FE6154A-A16E-4827-99F6-F51533C34EC8}" path="/sitecore/templates/System/Templates/Template field type/Data/Class" />
+    <item id="{0F0A5388-0467-4A45-95C0-729B1D6DB9FD}" path="/sitecore/templates/System/Templates/Template field type/Data/Control" />
+    <item id="{D9215042-BC5E-46DA-B4D4-7425F9062872}" path="/sitecore/templates/System/Templates/Template field type/Data/Parameters" />
+    <item id="{958A3BBB-C1B2-42C5-B8FE-930698836E5F}" path="/sitecore/templates/System/Templates/Template field type/Data/WebEdit Control" />
+    <item id="{0437FEE2-44C9-46A6-ABE9-28858D9FEE8C}" path="/sitecore/templates/System/Templates/Template Folder" type="folder" />
+    <item id="{E269FBB5-3750-427A-9149-7AA950B49301}" path="/sitecore/templates/System/Templates/Template section" />
+    <item id="{E2E2B75D-A2F7-4075-BDE2-D13306E9E350}" path="/sitecore/templates/System/Templates/Template section/Data/Collapsed by Default" />
+    <item id="{B29EE504-861C-492F-95A3-0D890B6FCA09}" path="/sitecore/templates/User Defined" />
+</items>

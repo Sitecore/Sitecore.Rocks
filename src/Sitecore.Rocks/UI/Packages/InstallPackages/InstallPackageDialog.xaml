@@ -1,0 +1,77 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Packages.InstallPackages.InstallPackageDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Install Package" Width="800" Height="600"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <StackPanel Margin="0,8,0,0">
+                    <TextBlock Text="Analyze Package" FontWeight="Bold" />
+                    <TextBlock Text="Compare the contents of the package with the databases and find conflicts with existing items and files." Margin="0,2,0,0"
+                        TextWrapping="Wrap" />
+                    <Button Content="Analyze" Click="Analyze" Margin="0,4,0,0" Width="120" Height="23" HorizontalAlignment="Left" />
+                </StackPanel>
+
+                <StackPanel Margin="0,32,0,0">
+                    <TextBlock Text="Create an Anti Package" FontWeight="Bold" />
+                    <TextBlock
+                        Text="The package will be analyzed and any already existing items or files, will be put into an Anti Package. This Anti Package can be installed to revert overwritten items or files to their current state and delete any added items or files."
+                        Margin="0,2,0,0" TextWrapping="Wrap" />
+                    <Button x:Name="AntiPackageButton" Click="CreateAntiPackage" Content="Create Anti Package" Margin="0,4,0,0" Width="120" Height="23"
+                        HorizontalAlignment="Left" />
+                </StackPanel>
+
+                <StackPanel Margin="0,32,0,0">
+                    <TextBlock Text="Install Package" FontWeight="Bold" />
+                    <TextBlock Text="Install the package. Any existing items or files will be overwritten." Margin="0,2,0,0" TextWrapping="Wrap" />
+                    <Button x:Name="InstallButton" Content="Install" Click="Install" Margin="0,4,0,0" Width="120" Height="23" HorizontalAlignment="Left" />
+                </StackPanel>
+            </StackPanel>
+
+            <Border Grid.Column="1" Margin="8,8,0,8" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+                <StackPanel Margin="8">
+                    <StackPanel x:Name="NamePanel" Orientation="Horizontal">
+                        <TextBlock Text="Name: " FontWeight="Bold" />
+                        <TextBlock x:Name="NameTextBlock" />
+                    </StackPanel>
+                    <StackPanel x:Name="VersionPanel" Orientation="Horizontal" Margin="0,2,0,0">
+                        <TextBlock Text="Version: " FontWeight="Bold" />
+                        <TextBlock x:Name="VersionTextBlock" />
+                    </StackPanel>
+                    <StackPanel x:Name="AuthorPanel" Orientation="Horizontal" Margin="0,2,0,0">
+                        <TextBlock Text="Author: " FontWeight="Bold" />
+                        <TextBlock x:Name="AuthorTextBlock" />
+                    </StackPanel>
+                    <StackPanel x:Name="PublisherPanel" Orientation="Horizontal" Margin="0,2,0,0">
+                        <TextBlock Text="Publisher: " FontWeight="Bold" />
+                        <TextBlock x:Name="PublisherTextBlock" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="ReadmeTextBlock" TextWrapping="Wrap" TextTrimming="WordEllipsis" Margin="0,16,0,0" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="0,8,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="Close" IsDefault="True" IsCancel="True" Click="OkClick" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

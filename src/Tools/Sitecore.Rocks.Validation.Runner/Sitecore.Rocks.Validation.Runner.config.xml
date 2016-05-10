@@ -1,0 +1,11 @@
+﻿<SitecoreRocksValidation>
+  <binding hostName="Sitecore.Speak.Forms" useWindowsAuth="false" userName="sitecore\admin" password="b21d95ba8b8afb0d" dataService="Hard Rock Web Service"
+    webRootPath="E:\inetpub\wwwroot\Sitecore.Speak.Forms\Website" description="Sitecore.Speak.Forms" isRemoteSitecore="false" automaticallyUpdate="true" isHidden="false"
+    hostNameComparisonMode="StrongWildcard" receiveTimeout="00:10:00" sendTimeout="00:01:00" openTimeout="00:01:00" closeTimeout="00:01:00"
+    maxReceivedMessageSize="16777216" maxBufferSize="16777216" maxBufferPoolSize="524288" maxStringContentLength="16777216" transferMode="Buffered"
+    messageEncoding="Text" textEncoding="utf-8" bypassProxyOnLocal="false" useDefaultWebProxy="true" proxyAddress="" />
+
+  <Validate DatabaseName="core" Languages="en" Context="Site" ItemPathOrId="/sitecore/client/Speak">
+    <Ignore>123</Ignore>
+  </Validate>
+</SitecoreRocksValidation>

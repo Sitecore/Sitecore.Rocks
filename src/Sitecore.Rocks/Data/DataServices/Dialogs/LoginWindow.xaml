@@ -1,0 +1,9 @@
+﻿<Window x:Class="Sitecore.Rocks.Data.DataServices.Dialogs.LoginWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Connecting..." Height="170" Width="280" ShowInTaskbar="False" ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Closing="ControlClosing">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent">
+        <TextBlock x:Name="LoginText" Text="Connecting to server..." FontWeight="Bold" HorizontalAlignment="Center" />
+        <Image Source="/Sitecore.Rocks;component/Resources/64x64/server_client_exchange.png" Width="64" Height="64" Margin="0,24,0,0" />
+    </StackPanel>
+</Window>

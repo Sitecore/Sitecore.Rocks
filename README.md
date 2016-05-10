@@ -1,5 +1,3 @@
-# Sitecore Rocks
-
 Sitecore Rocks makes Sitecore developers happy!
 
 Sitecore Rocks integrates directly with Microsoft Visual Studio 2013 and 2015 

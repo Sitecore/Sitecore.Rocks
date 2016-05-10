@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Sitecore.Rocks.CodeGeneration.DesignSurfaces.DesignSurfaceShape" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" SnapsToDevicePixels="true" d:DesignHeight="300" d:DesignWidth="300" x:Name="MainControl"
+    VerticalAlignment="Top" HorizontalAlignment="Left" MinWidth="200" MinHeight="24" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+    <UserControl.Resources>
+        <Style x:Key="Frame" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#3399ff" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=MainControl, Path=IsSelected}" Value="True">
+                    <Setter Property="BorderBrush" Value="#99b4d1" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="Header" TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="#a0a0a0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=MainControl, Path=IsSelected}" Value="True">
+                    <Setter Property="Background" Value="#99b4d1" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource Frame}" FocusManager.IsFocusScope="True" IsEnabled="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="HeaderGrid" Style="{StaticResource Header}" Focusable="True" MouseLeftButtonDown="ClickHeader">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="HeaderText" FontWeight="Bold" Margin="8,2,8,2" Foreground="White" />
+                <Border x:Name="HeaderButtons" x:FieldModifier="public" Grid.Column="1" />
+            </Grid>
+
+            <ContentPresenter x:Name="Presenter" Grid.Row="1" Content="{Binding Path=Content}" />
+        </Grid>
+    </Border>
+
+</UserControl>

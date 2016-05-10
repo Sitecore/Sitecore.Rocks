@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Indexes.Dialogs.DocumentList" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="DataGrid" TargetType="DataGrid">
+                        <Setter Property="Margin" Value="0,2,0,2" />
+                        <Setter Property="BorderBrush" Value="#DDDDDD" />
+                        <Setter Property="HorizontalGridLinesBrush" Value="#DDDDDD" />
+                        <Setter Property="VerticalGridLinesBrush" Value="#DDDDDD" />
+
+                        <Setter Property="CellStyle">
+                            <Setter.Value>
+                                <Style TargetType="DataGridCell">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="BorderBrush" Value="#84acdd" />
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                        <GradientStop Color="#f2f8ff" Offset="0.0" />
+                                                        <GradientStop Color="#d0e5ff" Offset="1.0" />
+                                                    </LinearGradientBrush>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                    <Setter Property="Padding" Value="4,2,4,2" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="DataGridCell">
+                                                <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                                                    <ContentPresenter />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:KeyboardHandler />
+
+        <Border x:Name="DataGridBorder">
+            <DataGrid x:Name="DataGrid" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" Style="{StaticResource DataGrid}" RowHeaderWidth="0"
+                VerticalScrollBarVisibility="Visible" ContextMenuOpening="OpenContextMenu" />
+        </Border>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,4,0,0">
+            <Button x:Name="PreviousButton" Width="20" Height="20" Content="&lt;" Click="PreviousDocument" />
+            <TextBlock x:Name="Pager" Margin="16,0,0,0" VerticalAlignment="Center" />
+            <Button x:Name="NextButton" Width="20" Height="20" Content="&gt;" Margin="16,0,0,0" Click="NextDocument" />
+        </StackPanel>
+    </Grid>
+</UserControl>

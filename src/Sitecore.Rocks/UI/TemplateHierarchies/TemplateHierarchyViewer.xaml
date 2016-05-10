@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.TemplateHierarchies.TemplateHierarchyViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:a="clr-namespace:Sitecore.Rocks.Applications"
+    xmlns:controls1="clr-namespace:Sitecore.Rocks.UI.Controls" mc:Ignorable="d" x:Name="Control" d:DesignHeight="300" d:DesignWidth="300">
+
+    <Grid>
+        <controls1:ThemeHandler />
+        <controls1:KeyboardHandler Target="{Binding ElementName=Control}" />
+
+        <TabControl x:Name="Tabs" Margin="4" TabStripPlacement="Top" IsSynchronizedWithCurrentItem="True" />
+
+        <Border x:Name="NoTabs" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="No templates available." Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+        </Border>
+    </Grid>
+</UserControl>

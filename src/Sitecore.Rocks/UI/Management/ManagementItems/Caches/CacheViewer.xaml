@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Caches.CacheViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Controls="clr-namespace:Sitecore.Rocks.Controls" xmlns:c="clr-namespace:Sitecore.Rocks.UI.Controls"
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid ContextMenuOpening="OpenContextMenu">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <c:KeyboardHandler />
+
+        <c:WatermarkedTextBox x:Name="Filter" DeferredTextChanged="FilterChanged" Watermark="Filter" VerticalAlignment="Center" HorizontalAlignment="Right" Width="150"
+            Margin="8,0,0,2" DockPanel.Dock="Right" />
+
+        <Controls:Loading x:Name="Loading" Grid.Row="1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="1" />
+
+        <ListView x:Name="CacheList" Grid.Row="1" SelectionMode="Extended" Visibility="Collapsed" GridViewColumnHeader.Click="HeaderClick" MouseDoubleClick="ExploreCache">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="NameColumn" Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto" />
+                    <GridViewColumn x:Name="SizeColumn" Header="Size" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FormattedSize}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="DeltaColumn" Header="Delta" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FormattedDelta}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="CountColumn" Header="Count" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FormattedCount}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="MaxSizeColumn" Header="Max Size" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FormattedMaxSize}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="RemainingSizeColumn" Header="Remaning" Width="Auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FormattedRemainingSize}" TextAlignment="Right" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="EnabledColumn" Header="Enabled" DisplayMemberBinding="{Binding Enabled}" Width="Auto" />
+                    <GridViewColumn x:Name="ScavengableColumn" Header="Scavengable" DisplayMemberBinding="{Binding Scavengable}" Width="Auto" />
+                    <GridViewColumn x:Name="PriorityColumn" Header="Priority" DisplayMemberBinding="{Binding Priority}" Width="Auto" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

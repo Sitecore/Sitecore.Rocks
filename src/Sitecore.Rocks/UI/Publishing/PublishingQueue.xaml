@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Publishing.PublishingQueue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    x:Name="Control" mc:Ignorable="d" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <c:Loading x:Name="Loading" />
+
+        <Grid x:Name="List" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="FilterHeight" Height="0" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <controls:KeyboardHandler Target="{Binding ElementName=Control}" />
+
+            <Border Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="PathLabel" Content="Path" Target="{Binding ElementName=Categories}" Grid.Column="0" Grid.Row="0" Margin="0" />
+                    <Label x:Name="UpdatedByLabel" Content="Updated By" Target="{Binding ElementName=UpdatedBy}" Grid.Column="1" Grid.Row="0" Margin="0" />
+                    <Label x:Name="UpdatedLabel" Content="Updated" Target="{Binding ElementName=Updated}" Grid.Column="2" Grid.Row="0" Margin="0" />
+
+                    <TreeView x:Name="Paths" Grid.Column="0" Grid.Row="1" Margin="4,0,0,0" SelectedItemChanged="ApplyFilters" />
+                    <ListBox x:Name="UpdatedBy" Grid.Column="1" Grid.Row="1" Margin="4,0,0,0" SelectionMode="Extended" SelectionChanged="ApplyFilters" />
+                    <TreeView x:Name="Updated" Grid.Column="2" Grid.Row="1" Margin="4,0,4,0" SelectedItemChanged="ApplyFilters" />
+                </Grid>
+            </Border>
+
+            <GridSplitter ResizeDirection="Rows" Grid.Row="1" Width="Auto" Height="5" BorderThickness="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"
+                Style="{StaticResource GridSplitterStyle}" MouseDoubleClick="ToggleFilters" PreviewMouseLeftButtonUp="SaveGridSplitterPosition" />
+
+            <ListView x:Name="Items" Grid.Row="2" BorderThickness="0,1,0,0" GridViewColumnHeader.Click="HeaderClick" SelectionMode="Extended"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ContextMenuOpening="OpenContextMenu">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
+                        <GridViewColumn Header="Updated" DisplayMemberBinding="{Binding Updated}" />
+                        <GridViewColumn Header="Updated By" DisplayMemberBinding="{Binding UpdatedBy}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+    </Grid>
+</UserControl>

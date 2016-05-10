@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.SearchAndReplace.SearchAndReplacePanel" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    xmlns:c="clr-namespace:Sitecore.Rocks.Controls.SyntaxEditors" TextOptions.TextRenderingMode="Auto" TextOptions.TextFormattingMode="Display" mc:Ignorable="d"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler />
+
+        <TabControl Margin="4">
+            <TabItem Header="Replace" IsSelected="True" x:Name="FieldsTab">
+
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Find What (required):" Target="{Binding ElementName=FindCombo}" />
+                        <ComboBox x:Name="FindCombo" IsEditable="true" Margin="4,0,0,0" />
+                        <TextBox x:Name="Find" TextChanged="RefreshScript" Text="{Binding ElementName=FindCombo, Path=Text}" Visibility="Collapsed" />
+
+                        <Label Content="Replace With (required):" Target="{Binding ElementName=ReplaceCombo}" />
+                        <ComboBox x:Name="ReplaceCombo" IsEditable="true" Margin="4,0,0,0" />
+                        <TextBox x:Name="Replace" TextChanged="RefreshScript" Text="{Binding ElementName=ReplaceCombo, Path=Text}" Visibility="Collapsed" />
+
+                        <Label Content="In Field (optional):" Target="{Binding ElementName=FieldNameCombo}" Margin="0,16,0,0" />
+                        <ComboBox x:Name="FieldNameCombo" IsEditable="true" Margin="4,0,0,0" />
+                        <TextBox x:Name="FieldName" TextChanged="RefreshScript" Text="{Binding ElementName=FieldNameCombo, Path=Text}" Visibility="Collapsed" />
+
+                        <Label Content="Only Items with Template (optional):" Target="{Binding ElementName=TemplateNameCombo}" />
+                        <ComboBox x:Name="TemplateNameCombo" IsEditable="true" Margin="4,0,0,0" />
+                        <TextBox x:Name="TemplateName" TextChanged="RefreshScript" Text="{Binding ElementName=TemplateNameCombo, Path=Text}" Visibility="Collapsed" />
+
+                        <Label Content="Only Subitems of (optional):" Target="{Binding ElementName=Root}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox x:Name="Root" TextChanged="RefreshScript" Margin="4,0,0,0" />
+                            <Button Content="Browse" Click="Browse" Height="21" Width="75" Grid.Column="1" Margin="2,0,0,0" />
+                        </Grid>
+
+                        <GroupBox Header="Find Options" Padding="4" Margin="0,8,0,0">
+                            <CheckBox x:Name="WholeField" Content="Match Whole Field" IsChecked="True" Checked="CheckboxChecked" Unchecked="CheckboxChecked" />
+                        </GroupBox>
+
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Script" x:Name="ScriptTab">
+                <c:SyntaxEditor x:Name="ScriptEditor" Syntax="Query" />
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,4,8,8" HorizontalAlignment="Right">
+            <Button x:Name="ReplaceButton" Content="Replace All" Width="75" Height="23" Click="ReplaceClick" />
+        </StackPanel>
+    </Grid>
+
+
+</UserControl>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="Sitecore.Rocks.Projects.Dialogs.ProjectLogWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Log" Height="600" Width="400" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="ListView" Grid.Row="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+            AlternationCount="1" GridViewColumnHeader.Click="HeaderClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}" />
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Text}" />
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Comment}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid x:Name="ProgressPanel" Grid.Row="1" Margin="0,8,0,0" Visibility="Collapsed">
+            <ProgressBar x:Name="Progress" Height="12" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button x:Name="CloseButton" Content="Cancel" IsDefault="True" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

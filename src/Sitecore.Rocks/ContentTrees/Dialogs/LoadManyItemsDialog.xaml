@@ -1,0 +1,30 @@
+﻿<Window x:Class="Sitecore.Rocks.ContentTrees.Dialogs.LoadManyItemsDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Loading Many Items" Height="164" Width="418"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="75" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Source="/Sitecore.Rocks;component/Resources/32x32/question_and_answer.png" Margin="0,0,16,0" VerticalAlignment="Top" Grid.RowSpan="2"
+            RenderOptions.BitmapScalingMode="NearestNeighbor" Width="32" Height="32" />
+
+        <TextBlock x:Name="Message" Grid.Row="0" Grid.Column="1" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0" Grid.Row="1" Grid.Column="1">
+            <Button Content="Load Top 100" IsDefault="True" Margin="0,0,8,0" Click="OkClick" Width="85" Height="23" Tag="100" AutomationProperties.AutomationId="Load100" />
+            <Button Content="Load All" Margin="0,0,8,0" Click="OkClick" Width="75" Height="23" Tag="0" AutomationProperties.AutomationId="LoadAll" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" AutomationProperties.AutomationId="Cancel" />
+        </StackPanel>
+    </Grid>
+</Window>

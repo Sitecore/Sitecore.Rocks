@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.Management.ManagementItems.Validations.Dialogs.BuildTasks.BuildTaskBuilder"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Target Project" FontWeight="Bold" />
+            <ComboBox x:Name="ProjectComboBox" SelectionChanged="HandleProject" HorizontalAlignment="Left" Width="300" Margin="0,4,0,0" />
+            <TextBlock x:Name="ProjectFolderTextBlock" Text="[No project selected]" Margin="0,4,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,16,0,0">
+            <TextBlock Text="Validation Profile" FontWeight="Bold" />
+            <ComboBox x:Name="ProfileComboBox" SelectionChanged="HandleProfile" HorizontalAlignment="Left" Width="300" Margin="0,4,0,0" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,16,0,0">
+            <TextBlock Text="Sitecore Rocks Validation Runner" FontWeight="Bold" />
+            <TextBlock TextWrapping="Wrap" Margin="0,4,0,0"
+                Text="The Sitecore Rocks Validation Runner application executes the validation process by making a request to the /sitecore/shell/WebService/Sitecore.Rocks.Validation.ashx page. This generate the validation output." />
+            <TextBlock TextWrapping="Wrap" Margin="0,4,0,0" Text="It is recommended that you copy the Runner to a local folder under your Visual Studio project." />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CopyRunnerButton" Content="Copy Sitecore.Rocks.Validation.Runner.exe to project folder" Click="CopyRunner" HorizontalAlignment="Left"
+                    Margin="0,4,0,0" Height="23" />
+                <TextBlock x:Name="CopyRunnerTextBlock" Text="Done" Margin="8,0,0,0" VerticalAlignment="Center" Visibility="Collapsed" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Margin="0,16,0,0">
+            <TextBlock Text="Configuration File" FontWeight="Bold" />
+            <TextBlock Text="The configuration file specifies the web site, database and which validations to run." TextWrapping="Wrap" Margin="0,4,0,0" />
+            <TextBlock Text="It is recommended that you copy the configuration file to a local folder under your Visual Studio project." TextWrapping="Wrap" Margin="0,4,0,0" />
+            <TextBox Margin="0,4,0,0" TextWrapping="NoWrap" IsReadOnly="true" x:Name="ConfigFileTextBox" Height="200" FontFamily="Consolas" FontSize="12" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CopyConfigButton" Margin="0,4,0,0" Click="CopyConfigFile" HorizontalAlignment="Left" Height="23"
+                    Content="Copy configuration to project folder" />
+                <TextBlock x:Name="CopyConfigTextBlock" Text="Done" Margin="8,0,0,0" VerticalAlignment="Center" Visibility="Collapsed" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Margin="0,16,0,0">
+            <TextBlock Text="MSBuild Task" FontWeight="Bold" />
+            <TextBlock Text="The MSBuild should be inserted into the .csproj file of the project." TextWrapping="Wrap" Margin="0,4,0,0" />
+            <TextBox IsReadOnly="true" x:Name="BuildTaskTextBox" Height="80" FontFamily="Consolas" FontSize="12" TextWrapping="NoWrap" />
+        </StackPanel>
+    </Grid>
+</UserControl>

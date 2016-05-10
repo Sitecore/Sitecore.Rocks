@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.StartPage.StartPageViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.UI.Controls" mc:Ignorable="d" TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="Auto" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="TabsPanel">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:ThemeHandler />
+
+        <Grid Grid.Column="1" Grid.Row="2" Margin="8,8,8,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" Text="Active Database: " />
+                <TextBlock Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" x:Name="ActiveSiteTextBlock" />
+                <TextBlock Margin="8,0,0,0">
+                    <Hyperlink Click="ChangeDatabase">Change Active Database</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
+                <CheckBox x:Name="ShowOnStartUp" Content="Show page on startup" Click="SetShowOnStartUp" Margin="32,0,0,0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

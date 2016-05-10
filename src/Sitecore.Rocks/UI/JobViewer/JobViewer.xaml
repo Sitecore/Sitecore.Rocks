@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Sitecore.Rocks.UI.JobViewer.JobViewer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:c="clr-namespace:Sitecore.Rocks.Controls;assembly=Sitecore.Rocks"
+    xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300" x:Name="Control">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:ThemeHandler />
+        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=Control}" />
+
+        <ToolBarTray Grid.Row="0" IsLocked="True" HorizontalAlignment="Stretch">
+            <ToolBar HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" Band="1">
+                <Button x:Name="Menu" ToolTip="Menu" Click="OpenMenu" KeyboardNavigation.TabIndex="0">
+                    <controls:ButtonIcon Icon="Resources/16x16/menu.png" Style="{StaticResource ToolButtonImage}" KeyboardNavigation.IsTabStop="False" />
+                </Button>
+
+                <Separator />
+
+                <ToggleButton x:Name="StartLog" ToolTip="Start" Click="StartJobsClick">
+                    <controls:ButtonIcon Icon="Resources/16x16/play.png" Style="{StaticResource ToolButtonImage}" />
+                </ToggleButton>
+
+                <ToggleButton x:Name="PauseLog" ToolTip="Pause" Click="PauseJobsClick">
+                    <controls:ButtonIcon Icon="Resources/16x16/stop.png" Style="{StaticResource ToolButtonImage}" />
+                </ToggleButton>
+
+                <Button x:Name="RefreshLog" ToolTip="Refresh" Click="RefreshJobsClick">
+                    <controls:ButtonIcon Icon="Resources/16x16/refresh.png" Style="{StaticResource ToolButtonImage}" />
+                </Button>
+
+                <controls:WatermarkedTextBox x:Name="IncludeFilter" Watermark="Filter" DeferredTextChanged="FilterChanged" Width="150" VerticalAlignment="Center"
+                    Margin="8,0,0,0" />
+            </ToolBar>
+        </ToolBarTray>
+
+        <TextBlock Grid.Row="0" x:Name="LastUpdate" Margin="0,0,8,0" VerticalAlignment="Center" Width="Auto" HorizontalAlignment="Right"
+            Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+
+        <ListView x:Name="ListView" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionMode="Single"
+            AlternationCount="1" BorderThickness="0" ContextMenuOpening="OpenContextMenu" GridViewColumnHeader.Click="HeaderClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Category" DisplayMemberBinding="{Binding Category}" />
+                    <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Queue Time" DisplayMemberBinding="{Binding QueueTime}" />
+                    <GridViewColumn Header="Progress" DisplayMemberBinding="{Binding Progress}" />
+                    <GridViewColumn Header="Failed" DisplayMemberBinding="{Binding Failed}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

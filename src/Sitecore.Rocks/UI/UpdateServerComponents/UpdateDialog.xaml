@@ -1,0 +1,25 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.UpdateServerComponents.UpdateDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Update" Height="160" Width="400" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="Message" TextWrapping="Wrap" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <CheckBox x:Name="DontShowAgain" Content="Don't Show This Dialog Again" />
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                <Button Content="OK" IsDefault="True" Click="OkClick" Width="75" Height="23" HorizontalAlignment="Right" />
+                <Button Content="Cancel" IsCancel="True" Click="CancelClick" Width="75" Height="23" HorizontalAlignment="Right" Margin="8,0,0,0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,60 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Packages.AnalyzePackage.AnalyzePackageDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:controls="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls1="clr-namespace:Sitecore.Rocks.UI.Controls"
+    Title="Analyze Package" Width="800" Height="600" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <controls1:KeyboardHandler />
+
+        <controls:Loading x:Name="Loading" />
+
+        <TabControl x:Name="Tabs" Visibility="Collapsed">
+            <TabItem x:Name="ItemTab" Header="Items" IsSelected="True">
+                <Border x:Name="ItemListPanel">
+                    <ListView x:Name="ItemList" HorizontalContentAlignment="Stretch" SelectionMode="Extended" GridViewColumnHeader.Click="ItemListHeaderClick"
+                        ContextMenuOpening="OpenContextMenu">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="ItemNameColumn" Header="Item Name" DisplayMemberBinding="{Binding ItemName}" />
+                                <GridViewColumn x:Name="ItemPathColumn" Header="Path" DisplayMemberBinding="{Binding Path}" />
+                                <GridViewColumn x:Name="ItemDatabaseColumn" Header="Database" DisplayMemberBinding="{Binding DatabaseName}" />
+                                <GridViewColumn x:Name="ItemActionColumn" Header="Action" DisplayMemberBinding="{Binding Action}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Border>
+            </TabItem>
+
+            <TabItem x:Name="FileTab" Header="Files">
+                <ListView x:Name="FileList" HorizontalContentAlignment="Stretch" SelectionMode="Extended" GridViewColumnHeader.Click="FileListHeaderClick">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="FileNameColumn" Header="Name" DisplayMemberBinding="{Binding FileName}" />
+                            <GridViewColumn x:Name="FolderPathColumn" Header="Folder Path" DisplayMemberBinding="{Binding FolderPath}" />
+                            <GridViewColumn x:Name="FileActionColumn" Header="Action" DisplayMemberBinding="{Binding Action}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+
+            <TabItem Header="Post Step">
+                <TextBlock x:Name="PostStepTextBlock" Margin="8" />
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="1" Margin="0,8,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="Close" IsDefault="True" IsCancel="True" Click="OkClick" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

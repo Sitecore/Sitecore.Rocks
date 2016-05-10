@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Sitecore.Rocks.Controls.Resizer.HorizontalResizer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border x:Name="ResizeBar" Height="Auto" MouseDown="HandleMouseDown" MouseMove="HandleMouseMove" MouseUp="HandleMouseUp" Cursor="SizeWE"
+        Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+        <!--
+    <StackPanel Width="4" Height="20" VerticalAlignment="Center">
+      <Rectangle Fill="{StaticResource GridSplitterBackgroundBrush}" Width="2" Height="2"/>
+      <Rectangle Fill="{Binding TextElement.Foreground}" Width="2" Height="2" />
+      <Rectangle Fill="{StaticResource GridSplitterBackgroundBrush}" Width="2" Height="2" />
+      <Rectangle Fill="{Binding TextElement.Foreground}" Width="2" Height="2" />
+      <Rectangle Fill="{StaticResource GridSplitterBackgroundBrush}" Width="2" Height="2"/>
+      <Rectangle Fill="{Binding TextElement.Foreground}" Width="2" Height="2" />
+      <Rectangle Fill="{StaticResource GridSplitterBackgroundBrush}" Width="2" Height="2" />
+      <Rectangle Fill="{Binding TextElement.Foreground}" Width="2" Height="2" />
+      <Rectangle Fill="{StaticResource GridSplitterBackgroundBrush}" Width="2" Height="2"/>
+      <Rectangle Fill="{Binding TextElement.Foreground}" Width="2" Height="2" />
+    </StackPanel>
+    -->
+    </Border>
+</UserControl>

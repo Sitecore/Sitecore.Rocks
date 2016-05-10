@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Fields.DateTimeField" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit" TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="Auto" mc:Ignorable="d" x:Name="Control">
+
+    <Grid>
+        <t:DateTimePicker x:Name="DateTimePicker" ValueChanged="ValueChanged" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="Auto" Width="200"
+            HorizontalAlignment="Left" Height="20" />
+        <TextBox x:Name="DateMacro" IsReadOnly="True" Text="$date" Width="200" Height="20" VerticalAlignment="Center" Visibility="Collapsed" HorizontalAlignment="Left" />
+    </Grid>
+</UserControl>

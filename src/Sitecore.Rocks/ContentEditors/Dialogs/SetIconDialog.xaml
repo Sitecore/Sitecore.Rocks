@@ -1,0 +1,235 @@
+﻿<Window x:Class="Sitecore.Rocks.ContentEditors.Dialogs.SetIconDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:c="clr-namespace:Sitecore.Rocks.Controls" xmlns:controls="clr-namespace:Sitecore.Rocks.UI.Controls"
+    Title="Icon" Height="800" Width="1024" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:DialogHelpText Text="Sitecore user interfaces, including the content tree in the Content Editor, display an icon next to each item." />
+
+        <TextBlock Text="Select the Icon:" Grid.Row="1" Margin="0,16,0,0" />
+
+        <TabControl Grid.Row="2" Margin="0,4,0,0">
+            <TabItem x:Name="RecentTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="RecentImage" Source="/Sitecore.Rocks;component/Resources/glyphicons/glyphicons_054_clock.png" VerticalAlignment="Top"
+                            RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                        <TextBlock Text="Recent" Margin="4,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+
+                <WrapPanel x:Name="RecentIcons" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+            </TabItem>
+
+            <TabItem x:Name="SearchTab">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="SearchImage" Source="/Sitecore.Rocks;component/Resources/glyphicons/glyphicons_027_search.png" VerticalAlignment="Top"
+                            RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                        <TextBlock Text="Search" Margin="4,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Search:" />
+                        <controls:WatermarkedTextBox x:Name="SearchTextBox" PreviewKeyDown="CancelEnter" DeferredTextChanged="Search" Watermark="Search" Grid.Column="1"
+                            VerticalAlignment="Center" />
+                        <ComboBox x:Name="SearchFilterComboBox" Grid.Column="2" Margin="4,0,0,0" VerticalAlignment="Center" SelectionChanged="FilterChanged">
+                            <ComboBoxItem Content="Filter" IsEnabled="False" IsSelected="True" x:Name="FilterComboBoxItem" Visibility="Collapsed" />
+                        </ComboBox>
+                    </Grid>
+
+                    <ScrollViewer Grid.Row="1" BorderThickness="1" VerticalScrollBarVisibility="Auto" Margin="0,4,0,0">
+                        <WrapPanel x:Name="SearchWrapPanel" Orientation="Horizontal" />
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="ApplicationsTab" Header="Applications">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="ApplicationsImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Applications" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="ApplicationsV2Tab" Header="Applications V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="ApplicationsV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="ApplicationsV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="AppsTab" Header="Apps">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="AppsImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove" Tag="Apps"
+                        VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="BusinessTab" Header="Business">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="BusinessImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Business" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="BusinessV2Tab" Header="Business V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="BusinessV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="BusinessV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="ControlsTab" Header="Controls">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="ControlsImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Control" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="Core1Tab" Header="Core 1">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="Core1Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove" Tag="Core"
+                        VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="Core2Tab" Header="Core 2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="Core2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Core2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="Core3Tab" Header="Core 3">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="Core3Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Core3" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="DatabaseTab" Header="Databases">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="DatabaseImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Database" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="FlagsTab" Header="Flags">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="FlagsImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Flags" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="FlagsV2Tab" Header="Flags V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="FlagsV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="FlagsV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="ImagingTab" Header="Imaging">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="ImagingImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Imaging" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="MultimediaTab" Header="Multimedia">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="MultimediaImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Multimedia" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="NetworkTab" Header="Network">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="NetworkImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Network" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="NetworkV2Tab" Header="Network V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="NetworkV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="NetworkV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="OfficeTab" Header="Office">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="OfficeImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Office" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="OfficeWhiteTab" Header="Office White">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="Black">
+                    <Image x:Name="OfficeWhiteImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="OfficeWhite" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="OtherTab" Header="Other">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="OtherImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Other" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="PeopleTab" Header="People">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="PeopleImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="People" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="PeopleV2Tab" Header="People V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="PeopleV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="PeopleV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="SoftwareTab" Header="Software">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="SoftwareImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="Software" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="SoftwareV2Tab" Header="Software V2">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="SoftwareV2Image" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="SoftwareV2" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+            <TabItem x:Name="WordProcessingTab" Header="Word Processing">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Image x:Name="WordProcessingImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="None" MouseUp="HandleMouseUp" MouseMove="HandleMouseMove"
+                        Tag="WordProcessing" VerticalAlignment="Top" />
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+
+        <Grid Grid.Row="3" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderThickness="1"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Width="Auto" Padding="8" HorizontalAlignment="Left">
+                <Image x:Name="Image" HorizontalAlignment="Left" Height="32" Width="32">
+                    <Image.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="1" Softness="0.5" Opacity="0.5" />
+                    </Image.BitmapEffect>
+                </Image>
+            </Border>
+
+            <TextBox x:Name="Path" TextChanged="TextChanged" Grid.Column="1" VerticalAlignment="Top" Margin="4,0,0,0" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0" Grid.Row="4">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" Margin="0,0,8,0" Click="OkClick" Width="75" Height="23" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,0,8,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Sitecore.Rocks.ContentEditors.Panes.NoFieldsPane" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Text="There are no fields to show in this view." HorizontalAlignment="Center"
+            Margin="0,16,0,0" />
+        <TextBlock Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" HorizontalAlignment="Center" Margin="0,16,0,0">
+            Show
+            <Hyperlink Click="ShowStandardFields">Standard Fields</Hyperlink>.
+        </TextBlock>
+    </StackPanel>
+</UserControl>

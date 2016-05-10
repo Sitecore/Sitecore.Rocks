@@ -1,0 +1,53 @@
+﻿<Window x:Class="Sitecore.Rocks.UI.Dialogs.SelectTemplatesDialogs.SelectTemplatesDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:tp="clr-namespace:Sitecore.Rocks.UI.Dialogs.SelectTemplatesDialogs"
+    xmlns:c="clr-namespace:Sitecore.Rocks.Controls" Height="600" Width="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Sitecore.Rocks;component/Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <c:DialogHelpText x:Name="DialogHelpText"
+            Text="Insert Options control the types of items that users can insert beneath existing items. Insert options can include data templates, branch templates, and command templates." />
+
+        <TextBlock x:Name="LabelTextBlock" Text="Select the Insert Options:" Grid.Row="1" Margin="0,16,0,0" />
+
+        <tp:TemplatePicker x:Name="TemplatePicker" Grid.Row="2" Margin="0,4,0,0" TemplatesLoaded="TemplatesLoaded" SelectionChanged="SelectionChanged" />
+
+        <GridSplitter Grid.Row="3" Height="5" HorizontalAlignment="Stretch" ResizeDirection="Rows" ResizeBehavior="PreviousAndNext" />
+
+        <Grid x:Name="SelectedTemplatesBorder" Grid.Row="4" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox x:Name="SelectedTemplatesListBox" KeyDown="HandleKeyDown" SelectionMode="Extended" SelectionChanged="SetSelection" ContextMenuOpening="OpenContextMenu" />
+
+            <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                <Button x:Name="RemoveButton" Content="Remove" Width="75" Height="23" Click="Remove" />
+
+                <Button x:Name="UpButton" Content="Up" Width="75" Height="23" Margin="0,8,0,0" Click="MoveUp" />
+                <Button x:Name="DownButton" Content="Down" Width="75" Height="23" Margin="0,4,0,0" Click="MoveDown" />
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,8,0,0" HorizontalAlignment="Right">
+            <Button x:Name="OkButton" Content="OK" IsDefault="True" Width="75" Height="23" Click="OkClick" />
+            <Button Content="Cancel" IsCancel="True" Margin="8,0,0,0" Width="75" Height="23" />
+        </StackPanel>
+    </Grid>
+</Window>
