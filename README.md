@@ -8,6 +8,12 @@ that they are familiar with.
 
 ![Sitecore Rocks](https://i1.visualstudiogallery.msdn.s-msft.com/44a26c88-83a7-46f6-903c-5c59bcd3d35b/image/file/148813/1/readme1.png)
 
+## Downloading the beta version
+Sitecore Rocks 2.0-beta1 will not be available on Visual Studio Gallery until it comes out of beta.
+
+Until then you can download it from here:
+[http://vsplugins.sitecore.net/downloads/Sitecore.Rocks.2.0.0.0-beta1.zip](http://vsplugins.sitecore.net/downloads/Sitecore.Rocks.2.0.0.0-beta1.zip)
+
 ## Features
 
 * Sitecore Explorer: View the content tree for multiple websites and multiple databases. Delete, edit, or drag and drop multiple items simultaneously.
@@ -85,7 +91,7 @@ some features have been entirely removed. The reasons for this range from poor a
 experimental features, features that are never used, and functionality that is better supplied by other tools (like
 TDS and SIM).
 
-The following features have been remove:
+The following features have been removed:
 
 * Content Editor Auto Fill
 * Content Tree Quick View
@@ -116,5 +122,5 @@ Having Sitecore Rocks on GitHub, allows us to have a well-known process for repo
 
 ## Regarding the code
 Sitecore Rocks was developed as a side project of a very small team over the course of 5 years. Please be aware, that
-the coding standards in Sitecore Rocks does not reflect the general coding standards in Sitecore. The goal was never 
+the coding standards in Sitecore Rocks do not reflect the general coding standards in Sitecore. The goal was never 
 to produce a masterpiece of code, but to deliver - fast!
