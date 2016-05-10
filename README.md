@@ -1,6 +1,7 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/jd2v99onvbxg4v3v?svg=true)](https://ci.appveyor.com/project/JakobChristensen/sitecore-rocks)
 
 # Sitecore Rocks
+
+[![Build status](https://ci.appveyor.com/api/projects/status/jd2v99onvbxg4v3v?svg=true)](https://ci.appveyor.com/project/JakobChristensen/sitecore-rocks)
 
 Sitecore Rocks makes Sitecore developers happy!
 
