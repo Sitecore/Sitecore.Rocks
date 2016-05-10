@@ -10,7 +10,7 @@ namespace Sitecore.Rocks.UI.StartPage.Tabs.GetStarted.SitecoreRocks.LearnAboutSi
     {
         protected override void Execute()
         {
-            AppHost.Browsers.Navigate(@"http://vsplugins.sitecore.net");
+            AppHost.Browsers.Navigate(@"https://github.com/JakobChristensen/Sitecore.Rocks");
         }
     }
 }

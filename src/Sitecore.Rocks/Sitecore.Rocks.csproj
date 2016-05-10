@@ -1417,7 +1417,6 @@
     <Compile Include="UI\StartPage\Tabs\GetStarted\SitecoreRocks\SendFeedback\UserFolder.cs" />
     <Compile Include="UI\StartPage\Tabs\GetStarted\Welcome\LearnAboutSitecore\SharedSourceModules.cs" />
     <Compile Include="UI\StartPage\Tabs\GetStarted\Welcome\LearnAboutSitecore\StartPageLearnAboutSitecoreGroup.cs" />
-    <Compile Include="UI\StartPage\Tabs\GetStarted\SitecoreRocks\LearnAboutSitecoreRocks\OpenSitecoreRocksReleaseNotes.cs" />
     <Compile Include="UI\StartPage\IStartPageCommand.cs" />
     <Compile Include="UI\StartPage\StartPageCommandAttribute.cs" />
     <Compile Include="UI\StartPage\StartPageContext.cs" />
@@ -4027,7 +4026,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

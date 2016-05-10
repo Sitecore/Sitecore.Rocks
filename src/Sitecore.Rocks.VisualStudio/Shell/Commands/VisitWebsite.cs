@@ -19,7 +19,7 @@ namespace Sitecore.Rocks.Shell.Commands
 
         public override void Execute(object parameter)
         {
-            AppHost.Browsers.Navigate(@"http://vsplugins.sitecore.net");
+            AppHost.Browsers.Navigate(@"https://github.com/JakobChristensen/Sitecore.Rocks");
         }
     }
 }

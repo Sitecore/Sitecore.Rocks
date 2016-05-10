@@ -7,10 +7,11 @@
         <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy.
 
 Directly integrated into Microsoft Visual Studio 2013/2015, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
+        <MoreInfo>https://github.com/JakobChristensen/Sitecore.Rocks</MoreInfo>
         <License>Sitecore Rocks License Agreement (Final 092812).rtf</License>
         <Icon>Icon.png</Icon>
         <PreviewImage>Preview.png</PreviewImage>
-        <Tags>Sitecore, Sitecore Rocks, CMS, ASP.NET</Tags>
+        <Tags>Sitecore, Sitecore Rocks, CMS, ASP.NET, C#</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,15.0)" />
