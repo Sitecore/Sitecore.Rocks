@@ -1,3 +1,5 @@
+# Sitecore Rocks
+
 Sitecore Rocks makes Sitecore developers happy!
 
 Sitecore Rocks integrates directly with Microsoft Visual Studio 2013 and 2015 
@@ -69,3 +71,50 @@ Sitecore Rocks is fully extendable using plug-ins that allows you to add new but
 * [Subscribing to Events](docs/Plugins/SubscribingToEvents.md)
 * [File/Item handlers](docs/Plugins/FileItemHandlers.md)
 
+# Sitecore Rocks version 2
+
+In order to make Rocks open source, we had to make some significant changes to get it past our legal department.
+The main showstopper was the use of the ActiPro commercial WPF components as ActiPro does not have a suitable open-source
+license. So we had to replace the components with free and open source alternatives. Some of these new components 
+look different, behave differently, or in rare cases does not provide similar functionality. For the SyntaxEditor 
+we chose to replace it with a standard WPF TextBox which has no syntax highlighting or advanced editing features 
+(we may introduce AvalonEdit from SharpDevelop at a later point). 
+
+Since we had to make significant changes, we took the oppotunity to remove some of the bloat from Sitecore Rocks - and
+some features have been entirely removed. The reasons for this range from poor and unstable implementation, 
+experimental features, features that are never used, and functionality that is better supplied by other tools (like
+TDS and SIM).
+
+The following features have been remove:
+
+* Content Editor Auto Fill
+* Content Tree Quick View
+* Start PowerShell command
+* Sitecore.PowerShell is no longer included
+* Sitecore.NuGet is no longer included
+* ReSharper integration is no longer included
+* Relink Links in Subitems command
+* Edit Layout as File command
+* Debug and Trace window
+* Visual Studio Editor Link Classifier
+* Task Lists.
+
+In addition to the removed features, we also removed Sitecore Rocks Windows (the standard alone version, that did not
+require Visual Studio). It relied heavily on the ActiPro components, and very few people were using it. Since 
+Visual Studio Community is now free and supports extensions, Sitecore Rocks Windows is not really relevant.
+
+We have deprecated support for Visual Studio 2010 and 2012. We did not remove any code - only a couple of flags in the
+.vsix manifest - so it should still work.
+
+Now for a controversial decision: Sitecore Rocks officially only supports Sitecore CMS 8.x and later. Unofficially 
+CMS 5.x, 6.x and 7.x still works. Maintaining backwards compatibility is difficult and in some cases (we are 
+looking at you, Lucene), we had to jump through too many hoops to make things work. In pratice, don't worry too 
+much about this - this is just Sitecore pushing you towards CMS 8.x. Things still work the way they used to - 
+with the exception of a couple of features.
+
+Having Sitecore Rocks on GitHub, allows us to have a well-known process for reporting bugs and having discussions.
+
+## Regarding the code
+Sitecore Rocks was developed as a side project of a very small team over the course of 5 years. Please be aware, that
+the coding standards in Sitecore Rocks does not reflect the general coding standards in Sitecore. The goal was never 
+to produce a masterpiece of code, but to deliver - fast!
