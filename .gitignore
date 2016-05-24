@@ -211,3 +211,7 @@ src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Lucene.2313.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Core.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Cms7.dll
+lib/Lucene.Net.dll
+lib/Sitecore.Client.dll
+lib/Sitecore.Kernel.dll
+lib/Sitecore.Update.dll

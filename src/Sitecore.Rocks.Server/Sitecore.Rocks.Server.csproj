@@ -95,20 +95,20 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Lucene.Net.8.1.0.151207\lib\Lucene.Net.dll</HintPath>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\..\lib\Lucene.Net.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Client, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Client.8.1.0.151207\lib\Sitecore.Client.dll</HintPath>
+    <Reference Include="Sitecore.Client">
+      <HintPath>..\..\lib\Sitecore.Client.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Kernel.8.1.0.151207\lib\Sitecore.Kernel.dll</HintPath>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\..\lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Update.8.1.0.151207\lib\Sitecore.Update.dll</HintPath>
+    <Reference Include="Sitecore.Update">
+      <HintPath>..\..\lib\Sitecore.Update.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
