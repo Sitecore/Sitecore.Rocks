@@ -19,7 +19,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
 
         static SerializationStatus()
         {
-            Cache = new Cache(5000);
+            Cache = new Cache("SerializationStatus", 5000);
         }
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
@@ -38,7 +38,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
         }
 
         [CanBeNull]
-        private string GetRevision([NotNull] string fileName)
+        private string GetRevision([NotNull] string fileName)                                                                                                                                                    
         {
             Debug.ArgumentNotNull(fileName, nameof(fileName));
 
