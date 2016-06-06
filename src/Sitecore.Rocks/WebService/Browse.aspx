@@ -6,21 +6,6 @@
         return Sitecore.Context.User.Identity.IsAuthenticated && Sitecore.Web.Authentication.TicketManager.IsCurrentTicketValid() && !Sitecore.Security.Authentication.AuthenticationHelper.IsAuthenticationTicketExpired();
     }
 
-    [__ReSharperSynthetic]
-    private void __ReSharper_Data_Bind__Conversion<T>(T _, T expression)
-    {
-    }
-
-    [__ReSharperSynthetic]
-    private void __ReSharper_Data_Bind__Conversion<T>(T _, object expression)
-    {
-    }
-
-    [__ReSharperSynthetic]
-    private void __ReSharper_Render(object expression)
-    {
-    }
-
 </script>
 <%
     var username = Request.QueryString["u"] ?? string.Empty;

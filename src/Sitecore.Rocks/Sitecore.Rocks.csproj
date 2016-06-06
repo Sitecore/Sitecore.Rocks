@@ -80,6 +80,10 @@
       <HintPath>..\..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NuGet.Core, Version=2.11.1.812, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NuGet.Core.2.11.1\lib\net40-Client\NuGet.Core.dll</HintPath>
       <Private>True</Private>
@@ -261,6 +265,15 @@
     <Compile Include="UI\KeyboardSchemes\KeyboardSchemeDialog.xaml.cs">
       <DependentUpon>KeyboardSchemeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\LayoutDesigners\GridDesigner\CellAttributes.cs" />
+    <Compile Include="UI\LayoutDesigners\GridDesigner\GridAttributes.cs" />
+    <Compile Include="UI\LayoutDesigners\GridDesigner\GridDesignerEditor.cs" />
+    <Compile Include="UI\LayoutDesigners\GridDesigner\GridDesignerMain.xaml.cs">
+      <DependentUpon>GridDesignerMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LayoutDesigners\GridDesigner\LayoutType.cs" />
+    <Compile Include="UI\LayoutDesigners\GridDesigner\SizeAttributes.cs" />
+    <Compile Include="UI\LayoutDesigners\GridDesigner\Sizes.cs" />
     <Compile Include="UI\Libraries\Commands\Navigating\ExcludeFromLibrary.cs" />
     <Compile Include="UI\Management\ManagementItems\Validations\Commands\ExportAsCsv.cs" />
     <Compile Include="UI\Management\ManagementItems\Validations\Commands\ExportAsXml.cs" />
@@ -3079,6 +3092,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\LayoutDesigners\GridDesigner\GridDesignerMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\LayoutDesigners\LayoutListViews\LayoutListViewTab.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -4026,7 +4043,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
+      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

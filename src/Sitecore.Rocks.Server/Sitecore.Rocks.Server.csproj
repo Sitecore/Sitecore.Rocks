@@ -301,6 +301,7 @@
     <Compile Include="Requests\LayoutBuilders\GetRenderingsInPlaceHolder.cs" />
     <Compile Include="Requests\Layouts\CreatePlaceHolderSettings.cs" />
     <Compile Include="Requests\Layouts\GetDevices.cs" />
+    <Compile Include="Requests\Layouts\GetGridDesignerLayouts.cs" />
     <Compile Include="Requests\Layouts\GetLayoutPlaceHolders.cs" />
     <Compile Include="Requests\Layouts\GetRenderingParameters.cs" />
     <Compile Include="Requests\Items\GetDescendants.cs" />
