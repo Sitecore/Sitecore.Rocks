@@ -92,7 +92,7 @@ namespace Sitecore.Rocks.UI.FolderSynchronization
                 {
                     StartInfo =
                     {
-                        Arguments = string.Format("\"{0}{2}\" \"{1}\" /e /d /i /y", AbsoluteSourceFolder, AbsoluteDestinationFolder, p),
+                        Arguments = string.Format("\"{0}{2}\" \"{1}\" /e /d /i /y /r /c", AbsoluteSourceFolder, AbsoluteDestinationFolder, p),
                         CreateNoWindow = true,
                         UseShellExecute = false,
                         FileName = "xcopy"
@@ -138,7 +138,7 @@ namespace Sitecore.Rocks.UI.FolderSynchronization
                 {
                     StartInfo =
                     {
-                        Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" /mir /njh /njs /ndl /nc /ns /np", AbsoluteSourceFolder.TrimEnd('\\'), AbsoluteDestinationFolder.TrimEnd('\\'), p),
+                        Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\" /mir /njh /njs /ndl /nc /ns /np /A-:R", AbsoluteSourceFolder.TrimEnd('\\'), AbsoluteDestinationFolder.TrimEnd('\\'), p),
                         CreateNoWindow = true,
                         UseShellExecute = false,
                         FileName = "robocopy"
