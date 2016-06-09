@@ -58,6 +58,7 @@ namespace Sitecore.Rocks.UI.TemplateDesigner.Dialogs.BuildSourceDialogs.Paramete
             }
 
             var dialog = new BuildQueryDialog(query, CustomValidationType.Query);
+            dialog.Title = "Build Query";
             if (AppHost.Shell.ShowDialog(dialog) != true)
             {
                 return null;
