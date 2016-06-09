@@ -129,6 +129,22 @@ namespace Sitecore.Rocks.UI.LayoutDesigners.LayoutListViews.Commands
             }
             */
 
+            // patch unique ids
+            var renderingContainer = context.LayoutDesigner.LayoutDesignerView.GetRenderingContainer();
+            foreach (var renderingItem in items)
+            {
+                if (string.IsNullOrEmpty(renderingItem.UniqueId))
+                {
+                    renderingItem.UniqueId = Guid.NewGuid().ToString("B").ToUpperInvariant();
+                    continue;
+                }
+
+                if (renderingContainer.Renderings.Any(r => r.UniqueId == renderingItem.UniqueId))
+                {
+                    renderingItem.UniqueId = Guid.NewGuid().ToString("B").ToUpperInvariant();
+                }
+            }
+
             foreach (var renderingItem in items)
             {
                 var property = renderingItem.DynamicProperties.FirstOrDefault(p => string.Compare(p.Name, @"Id", StringComparison.InvariantCultureIgnoreCase) == 0);

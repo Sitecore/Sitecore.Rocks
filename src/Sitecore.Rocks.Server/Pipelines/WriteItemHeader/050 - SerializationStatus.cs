@@ -24,7 +24,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
         {
-            var status = 0;
+            var status = 0;                     
 
             var reference = new ItemReference(pipeline.Item);
             var path = PathUtils.GetFilePath(reference.ToString());

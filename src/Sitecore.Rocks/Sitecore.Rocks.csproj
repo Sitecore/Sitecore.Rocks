@@ -184,6 +184,7 @@
     <Compile Include="ContentTrees\Commands\Tasks\DesignLayoutBase.cs" />
     <Compile Include="ContentTrees\Commands\Tasks\GenerateSchema.cs" />
     <Compile Include="ContentTrees\Commands\Media\UploadMedia.cs" />
+    <Compile Include="ContentTrees\Commands\Tasks\ShowRawLayout.cs" />
     <Compile Include="ContentTrees\Commands\Templates\SetBaseTemplates.cs" />
     <Compile Include="ContentTrees\Commands\Templates\SortTemplateFields.cs" />
     <Compile Include="Controls\DialogHelpText.xaml.cs">
@@ -4043,7 +4044,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

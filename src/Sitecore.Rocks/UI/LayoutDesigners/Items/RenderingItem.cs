@@ -178,6 +178,8 @@ namespace Sitecore.Rocks.UI.LayoutDesigners.Items
                 return;
             }
 
+            UniqueId = Guid.NewGuid().ToString("B").ToUpperInvariant();
+
             var idProperty = DynamicProperties.FirstOrDefault(p => string.Compare(p.Name, @"id", StringComparison.InvariantCultureIgnoreCase) == 0);
             if (idProperty != null)
             {
