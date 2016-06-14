@@ -45,35 +45,42 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
             var mode = 0;
             var count = 0;
 
-            using (var stream = new StreamReader(fileName))
+            try
             {
-                while (!stream.EndOfStream)
+                using (var stream = new StreamReader(fileName))
                 {
-                    var line = stream.ReadLine();
-                    if (string.IsNullOrEmpty(line))
+                    while (!stream.EndOfStream)
                     {
-                        continue;
-                    }
+                        var line = stream.ReadLine();
+                        if (string.IsNullOrEmpty(line))
+                        {
+                            continue;
+                        }
 
-                    switch (mode)
-                    {
-                        case 0:
-                            if (line.StartsWith("field: {8CDC337E-A112-42FB-BBB4-4143751E123F}", StringComparison.InvariantCultureIgnoreCase))
-                            {
-                                mode = 1;
-                            }
+                        switch (mode)
+                        {
+                            case 0:
+                                if (line.StartsWith("field: {8CDC337E-A112-42FB-BBB4-4143751E123F}", StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    mode = 1;
+                                }
 
-                            break;
-                        case 1:
-                            count++;
-                            if (count == 4)
-                            {
-                                return line;
-                            }
+                                break;
+                            case 1:
+                                count++;
+                                if (count == 4)
+                                {
+                                    return line;
+                                }
 
-                            break;
+                                break;
+                        }
                     }
                 }
+            }
+            catch
+            {
+                return null;
             }
 
             return null;
