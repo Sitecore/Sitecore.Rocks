@@ -24,14 +24,20 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
         {
-            var status = 0;                     
-
-            var reference = new ItemReference(pipeline.Item);
-            var path = PathUtils.GetFilePath(reference.ToString());
-
-            if (FileUtil.FileExists(path))
+            var status = 0;
+            try
             {
-                status = GetStatus(pipeline.Item, path);
+                var reference = new ItemReference(pipeline.Item);
+                var path = PathUtils.GetFilePath(reference.ToString());
+
+                if (FileUtil.FileExists(path))
+                {
+                    status = GetStatus(pipeline.Item, path);
+                }
+            }
+            catch
+            {
+                status = 3;
             }
 
             pipeline.Output.WriteAttributeString("serializationstatus", status.ToString(CultureInfo.InvariantCulture));
