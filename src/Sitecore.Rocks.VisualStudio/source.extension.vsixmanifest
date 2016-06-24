@@ -14,9 +14,9 @@ Directly integrated into Microsoft Visual Studio 2013/2015, Sitecore Rocks provi
         <Tags>Sitecore, Sitecore Rocks, CMS, ASP.NET, C#</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,15.0)" />
-        <InstallationTarget Version="[14.0,15.0)" Id="Microsoft.VisualStudio.Pro" />
-        <InstallationTarget Version="[14.0,15.0)" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,15.0)" />
+        <InstallationTarget Version="[12.0,15.0)" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[12.0,15.0)" Id="Microsoft.VisualStudio.Enterprise" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />

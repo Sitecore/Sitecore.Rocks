@@ -14,6 +14,7 @@ Version 2.0.0-beta1
 * Removed Sitecore.Rocks.Server.Cms7 assembly
 * Removed Sitecore.Rocks.Server.Lucene.* assemblies
 * Removed "Start PowerShell command"
+* Fix: Version numbers in .vsix manifest (2016-06-24) - Catherine Guey Ruang Lim
 
 Version 1.5.1
 =============
