@@ -67,8 +67,7 @@ Directly integrated into Microsoft Visual Studio 2013/2015, Sitecore Rocks provi
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\Toolwindow.zip" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\TreeViewItem.zip" />
         <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\VirtualItem.zip" />
-        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="Sitecore.Rocks.TemplateWizard" Path="|Sitecore.Rocks.TemplateWizard|"
-            AssemblyName="|Sitecore.Rocks.TemplateWizard;AssemblyName|" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="Sitecore.Rocks.TemplateWizard" Path="|Sitecore.Rocks.TemplateWizard|" AssemblyName="Sitecore.Rocks.TemplateWizard" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\Sitecore Rocks\Sitecore.Rocks.Plugin.zip" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates"
             d:TargetPath="ProjectTemplates\Sitecore Rocks\Sitecore.Rocks.Server.Plugin.zip" />

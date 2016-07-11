@@ -1,12 +1,12 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using Sitecore.Rocks.Diagnostics;
 using Sitecore.Rocks.Extensibility.Pipelines;
 using Sitecore.Rocks.Extensions.AssemblyNameExtensions;
 using TaskDialogInterop;
@@ -20,7 +20,7 @@ namespace Sitecore.Rocks.Shell.Pipelines.Initialization
 
         protected override void Process(InitializationPipeline pipeline)
         {
-            Debug.ArgumentNotNull(pipeline, nameof(pipeline));
+            Diagnostics.Debug.ArgumentNotNull(pipeline, nameof(pipeline));
 
             if (!pipeline.IsStartUp)
             {
@@ -29,6 +29,21 @@ namespace Sitecore.Rocks.Shell.Pipelines.Initialization
 
             WriteAssemblyPath();
             CopyAssembly();
+
+            InstallInGac();
+        }
+
+        private void InstallInGac()
+        {
+            var source = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty, @"Sitecore.Rocks.TemplateWizard.dll");
+            try
+            {
+                new System.EnterpriseServices.Internal.Publish().GacInstall(source);
+            }
+            catch (Exception ex)
+            {
+                AppHost.Output.LogException(ex);
+            }
         }
 
         private void CopyAssembly()
