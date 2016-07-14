@@ -1,8 +1,6 @@
 version: 2.0.{build}
 install: 
   - ps: (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
-before_build: 
-  - ps: Vsix-IncrementVsixVersion
 branches:
   only:
   - master
@@ -18,6 +16,7 @@ nuget:
   account_feed: true
 before_build:
 - cmd: nuget restore
+- ps: Vsix-IncrementVsixVersion
 build:
   project: Sitecore.Rocks.sln
   verbosity: minimal
