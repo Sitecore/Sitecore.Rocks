@@ -1,7 +1,6 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
