@@ -22,3 +22,4 @@ build:
   verbosity: minimal
 artifacts:
 - path: src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix
+  name: Sitecore.Rocks.VisualStudio.vsix
