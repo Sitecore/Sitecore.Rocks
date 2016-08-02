@@ -4,16 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Xml;
-using Lucene.Net.Analysis.Standard;
-using Lucene.Net.Documents;
-using Lucene.Net.Index;
-using Lucene.Net.Search;
+using Sitecore.ContentSearch;
+using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data.Items;
 using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
-using Sitecore.Search;
 
 namespace Sitecore.Rocks.Server.Requests.Indexes
 {
@@ -26,25 +22,39 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             Assert.ArgumentNotNull(contextNode, nameof(contextNode));
 
             var result = new List<QueryContext>();
+            var indexName = "sitecore_" + (contextNode.GetQueryContextItem()?.Database.Name ?? "master" )+ "_index";
 
-            using (var context = SearchManager.SystemIndex.CreateSearchContext())
+            ISearchIndex index;
+            try
             {
-                SearchHits hits;
+                index = ContentSearchManager.GetIndex(indexName);
+            }
+            catch
+            {
+                return string.Empty;
+            }
 
+            if (index == null)
+            {
+                return string.Empty;
+            }
+
+            using (var context = index.CreateSearchContext())
+            {
+                List<SearchResultItem> hits;
                 try
                 {
-                    var searchContext = new SearchContext(Context.User);
-                    hits = context.Search(literal, int.MaxValue, searchContext);
+                    hits = context.GetQueryable<SearchResultItem>().Where(item => item.Content.Contains(literal)).ToList();
                 }
                 catch (Exception e)
                 {
                     Log.Error("Invalid lucene search query: " + literal, e, typeof(LuceneRequest));
-                    return null;
+                    return string.Empty;
                 }
 
-                foreach (var hit in hits.FetchResults(0, query.Max))
+                foreach (var hit in hits)
                 {
-                    var item = hit.GetObject<Item>();
+                    var item = hit.GetItem();
                     if (item == null)
                     {
                         continue;
@@ -57,119 +67,6 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             }
 
             return result.ToArray();
-        }
-
-        [NotNull]
-        public string GetDocument([NotNull] string indexName, [NotNull] string documentIndex)
-        {
-            Assert.ArgumentNotNull(indexName, nameof(indexName));
-            Assert.ArgumentNotNull(documentIndex, nameof(documentIndex));
-
-            int no;
-            int.TryParse(documentIndex, out no);
-
-            var writer = new StringWriter();
-            var output = new XmlTextWriter(writer)
-            {
-                Formatting = Formatting.Indented,
-                Indentation = 2
-            };
-
-            var index = SearchManager.GetIndex(indexName);
-
-            var reader = index.GetReader();
-            if (reader == null)
-            {
-                return string.Empty;
-            }
-
-            try
-            {
-                var document = reader.Document(no);
-
-                output.WriteStartElement("document");
-
-                WriteDocument(output, document);
-
-                output.WriteEndElement();
-            }
-            finally
-            {
-                reader.Dispose();
-            }
-
-            return writer.ToString();
-        }
-
-        [NotNull]
-        public string GetDocuments([NotNull] string indexName, [NotNull] string fieldName, [NotNull] string term, [NotNull] string offset)
-        {
-            Assert.ArgumentNotNull(indexName, nameof(indexName));
-            Assert.ArgumentNotNull(fieldName, nameof(fieldName));
-            Assert.ArgumentNotNull(term, nameof(term));
-            Assert.ArgumentNotNull(offset, nameof(offset));
-
-            int o;
-            int.TryParse(offset, out o);
-
-            var writer = new StringWriter();
-            var output = new XmlTextWriter(writer)
-            {
-                Formatting = Formatting.Indented,
-                Indentation = 2
-            };
-
-            var index = SearchManager.GetIndex(indexName);
-
-            var reader = index.GetReader();
-            if (reader == null)
-            {
-                return string.Empty;
-            }
-
-            var documents = new List<Document>();
-            var count = 0;
-
-            try
-            {
-                var terms = reader.Terms();
-
-                while (terms.Next())
-                {
-                    var t = terms.Term;
-                    if (t.Field != fieldName)
-                    {
-                        continue;
-                    }
-
-                    if (t.Text != term)
-                    {
-                        continue;
-                    }
-
-                    var termDocs = reader.TermDocs(t);
-
-                    while (termDocs.Next())
-                    {
-                        if (count >= o && count < o + 100)
-                        {
-                            documents.Add(reader.Document(termDocs.Doc));
-                        }
-
-                        count++;
-                    }
-                }
-
-                output.WriteStartElement("documents");
-                WriteDocuments(output, documents, count);
-                output.WriteEndElement();
-            }
-            finally
-            {
-                reader.Dispose();
-            }
-
-            return writer.ToString();
         }
 
         [NotNull]
@@ -191,172 +88,87 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             return writer.ToString();
         }
 
-        [NotNull]
-        public string GetTerms([NotNull] string indexName, [NotNull] string fieldName)
+        public static List<SearchResultItem> PerformContentSearch(string databaseName, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
         {
-            Assert.ArgumentNotNull(indexName, nameof(indexName));
-            Assert.ArgumentNotNull(fieldName, nameof(fieldName));
+            var indexName = "sitecore_" + databaseName + "_index";
 
-            var index = SearchManager.GetIndex(indexName);
-            if (index == null)
-            {
-                return string.Empty;
-            }
-
-            var reader = index.GetReader();
-            if (reader == null)
-            {
-                return string.Empty;
-            }
-
+            ISearchIndex index;
             try
             {
-                var writer = new StringWriter();
-
-                var output = new XmlTextWriter(writer)
-                {
-                    Formatting = Formatting.Indented,
-                    Indentation = 2
-                };
-
-                output.WriteStartElement("terms");
-
-                var termEnumerator = reader.Terms();
-                while (termEnumerator.Next())
-                {
-                    var term = termEnumerator.Term;
-                    if (term.Field != fieldName)
-                    {
-                        continue;
-                    }
-
-                    output.WriteStartElement("term");
-                    output.WriteAttributeString("documents", reader.DocFreq(term).ToString());
-                    output.WriteCData(term.Text);
-                    output.WriteEndElement();
-                }
-
-                output.WriteEndElement();
-
-                return writer.ToString();
+                index = ContentSearchManager.GetIndex(indexName);
             }
-            finally
+            catch
             {
-                reader.Dispose();
+                return null;
             }
-        }
 
-        public void Optimize([NotNull] string indexName)
-        {
-            Debug.ArgumentNotNull(indexName, nameof(indexName));
-
-            var index = SearchManager.GetIndex(indexName);
-
-            using (var context = index.CreateUpdateContext())
+            if (index == null)
             {
-                var writer = context.GetIndexWriter();
-                if (writer != null)
-                {
-                    writer.Optimize();
-                }
-
-                context.Commit();
+                return null;
             }
-        }
 
-        public static void PerformContentSearch([NotNull] SearchResultCollection results, [NotNull] QueryBase query, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
-        {
-            Debug.ArgumentNotNull(results, nameof(results));
-            Debug.ArgumentNotNull(query, nameof(query));
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
-
-            using (var context = SearchManager.SystemIndex.CreateSearchContext())
+            using (var context = index.CreateSearchContext())
             {
-                SearchHits hits;
-
                 try
                 {
+                    var hits = context.GetQueryable<SearchResultItem>().Where(item => item.Content.Contains(queryText));
+
                     if (root != null)
                     {
-                        hits = context.Search(query, int.MaxValue, new SearchContext(Context.User, root));
+                        hits = hits.Where(item => item.Paths.Contains(root.ID));
                     }
-                    else
-                    {
-                        var searchContext = new SearchContext(Context.User);
 
-                        hits = context.Search(query, int.MaxValue, searchContext);
-                    }
+                    hits = hits.Skip(pageNumber * 250).Take(250);
+
+                    return hits.ToList();
                 }
                 catch (Exception e)
                 {
                     Log.Error("Invalid lucene search query: " + queryText, e, typeof(LuceneRequest));
-                    return;
-                }
-
-                foreach (var hit in hits.FetchResults(pageNumber * 250, (pageNumber + 1) * 250 - 1))
-                {
-                    results.AddResult(hit);
+                    return null;
                 }
             }
         }
 
-        public static void PerformMediaSearch([NotNull] List<Item> results, [NotNull] QueryBase query, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
+        public static List<SearchResultItem> PerformMediaSearch([NotNull] string databaseName, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
         {
-            Debug.ArgumentNotNull(results, nameof(results));
-            Debug.ArgumentNotNull(query, nameof(query));
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
+            var indexName = "sitecore_" + databaseName + "_index";
 
-            using (var context = SearchManager.SystemIndex.CreateSearchContext())
+            ISearchIndex index;
+            try
             {
-                SearchHits hits;
+                index = ContentSearchManager.GetIndex(indexName);
+            }
+            catch
+            {
+                return null;
+            }
 
+            if (index == null)
+            {
+                return null;
+            }
+
+            using (var context = index.CreateSearchContext())
+            {
                 try
                 {
+                    var hits = context.GetQueryable<SearchResultItem>().Where(item => item.Content.Contains(queryText) && item.TemplateId != TemplateIDs.MainSection && item.TemplateId != TemplateIDs.Folder && item.TemplateId != TemplateIDs.MediaFolder && item.TemplateId != TemplateIDs.Node);
+
                     if (root != null)
                     {
-                        hits = context.Search(query, int.MaxValue, new SearchContext(Context.User, root));
+                        hits = hits.Where(item => item.Paths.Contains(root.ID));
                     }
-                    else
-                    {
-                        hits = context.Search(query, int.MaxValue, new SearchContext(Context.User));
-                    }
+
+                    hits = hits.Skip(pageNumber * 250).Take(250);
+
+                    return hits.ToList();
                 }
                 catch (Exception e)
                 {
                     Log.Error("Invalid lucene search query: " + queryText, e, typeof(LuceneRequest));
-                    return;
+                    return null;
                 }
-
-                var start = pageNumber * 250;
-                var end = start + 250 - 1;
-
-                do
-                {
-                    foreach (var hit in hits.FetchResults(start, end))
-                    {
-                        var item = hit.GetObject<Item>();
-                        if (item == null)
-                        {
-                            continue;
-                        }
-
-                        if (item.TemplateID == TemplateIDs.MainSection || item.TemplateID == TemplateIDs.Folder || item.TemplateID == TemplateIDs.MediaFolder || item.TemplateID == TemplateIDs.Node)
-                        {
-                            continue;
-                        }
-
-                        results.Add(item);
-                    }
-
-                    start = end + 1;
-                    end = start + 250 - results.Count;
-
-                    if (start >= hits.Length)
-                    {
-                        break;
-                    }
-                }
-                while (results.Count < 250);
             }
         }
 
@@ -369,10 +181,17 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             Assert.ArgumentNotNull(type, nameof(type));
             Assert.ArgumentNotNull(pageOffset, nameof(pageOffset));
 
-            var index = SearchManager.GetIndex(indexName);
+            ISearchIndex index;
+            try
+            {
+                index = ContentSearchManager.GetIndex(indexName);
+            }
+            catch
+            {
+                return string.Empty;
+            }
 
-            var searcher = index.GetSearcher();
-            if (searcher == null)
+            if (index == null)
             {
                 return string.Empty;
             }
@@ -380,120 +199,25 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             int offset;
             int.TryParse(pageOffset, out offset);
 
-            TopDocs hits = null;
-
-            try
+            using (var context = index.CreateSearchContext())
             {
-                switch (type)
+                var searchResultItems = context.GetQueryable<SearchResultItem>().Where(item => item[fieldName].Contains(search)).Skip(offset).ToList();
+                                                                                                                   
+                var writer = new StringWriter();
+                var output = new XmlTextWriter(writer)
                 {
-                    case "QueryParser":
-                        hits = QueryParserSearch(searcher, fieldName, search);
-                        break;
-                    case "TermQuery":
-                        hits = TermSearch(searcher, fieldName, search);
-                        break;
-                    case "PrefixQuery":
-                        hits = PrefixSearch(searcher, fieldName, search);
-                        break;
-                    case "WildCardQuery":
-                        hits = WildCardSearch(searcher, fieldName, search);
-                        break;
-                }
+                    Formatting = Formatting.Indented,
+                    Indentation = 2
+                };
+
+                output.WriteStartElement("hits");
+
+                WriteDocuments(output, searchResultItems, 0);
+
+                output.WriteEndElement();
+
+                return writer.ToString();
             }
-            catch
-            {
-                return string.Empty;
-            }
-
-            if (hits == null)
-            {
-                return string.Empty;
-            }
-
-            var writer = new StringWriter();
-            var output = new XmlTextWriter(writer)
-            {
-                Formatting = Formatting.Indented,
-                Indentation = 2
-            };
-
-            output.WriteStartElement("hits");
-
-            WriteDocuments(output, searcher, hits, offset);
-
-            output.WriteEndElement();
-
-            return writer.ToString();
-        }
-
-        [CanBeNull]
-        private SearchConfiguration GetConfiguration()
-        {
-            var searchManagerType = typeof(SearchManager);
-
-            return searchManagerType.InvokeMember("_configuration", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField, null, null, null) as SearchConfiguration;
-        }
-
-        [CanBeNull]
-        private IndexReader GetReader([NotNull] Index index)
-        {
-            Debug.ArgumentNotNull(index, nameof(index));
-
-            var methodInfo = typeof(Index).GetMethod("CreateReader", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            return methodInfo.Invoke(index, null) as IndexReader;
-        }
-
-        [CanBeNull]
-        private TopDocs PrefixSearch([NotNull] IndexSearcher searcher, [NotNull] string field, [NotNull] string searchTerm)
-        {
-            Debug.ArgumentNotNull(searcher, nameof(searcher));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(searchTerm, nameof(searchTerm));
-
-            var term = new Term(field, searchTerm);
-            var query = new PrefixQuery(term);
-
-            return searcher.Search(query, int.MaxValue);
-        }
-
-        [CanBeNull]
-        private TopDocs QueryParserSearch([NotNull] IndexSearcher searcher, [NotNull] string field, [NotNull] string searchTerm)
-        {
-            Debug.ArgumentNotNull(searcher, nameof(searcher));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(searchTerm, nameof(searchTerm));
-
-            var parser = new Lucene.Net.QueryParsers.QueryParser(Lucene.Net.Util.Version.LUCENE_30, field, new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30));
-            var query = parser.Parse(Lucene.Net.QueryParsers.QueryParser.Escape(searchTerm));
-
-            return searcher.Search(query, int.MaxValue);
-        }
-
-        [CanBeNull]
-        private TopDocs TermSearch([NotNull] IndexSearcher searcher, [NotNull] string field, [NotNull] string searchTerm)
-        {
-            Debug.ArgumentNotNull(searcher, nameof(searcher));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(searchTerm, nameof(searchTerm));
-
-            var term = new Term(field, searchTerm);
-            var query = new TermQuery(term);
-
-            return searcher.Search(query, int.MaxValue);
-        }
-
-        [CanBeNull]
-        private TopDocs WildCardSearch([NotNull] IndexSearcher searcher, [NotNull] string field, [NotNull] string searchTerm)
-        {
-            Debug.ArgumentNotNull(searcher, nameof(searcher));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(searchTerm, nameof(searchTerm));
-
-            var term = new Term(field, searchTerm);
-            var query = new WildcardQuery(term);
-
-            return searcher.Search(query, int.MaxValue);
         }
 
         private void WriteColumns([NotNull] XmlTextWriter output, [NotNull] List<string> columns)
@@ -513,29 +237,7 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             output.WriteEndElement();
         }
 
-        private void WriteDocument([NotNull] XmlTextWriter output, [NotNull] Document document)
-        {
-            Debug.ArgumentNotNull(output, nameof(output));
-            Debug.ArgumentNotNull(document, nameof(document));
-
-            var fields = document.GetFields();
-
-            foreach (var f in fields)
-            {
-                var field = f as Field;
-                if (field == null)
-                {
-                    continue;
-                }
-
-                output.WriteStartElement("field");
-                output.WriteAttributeString("name", field.Name);
-                output.WriteCData(field.StringValue);
-                output.WriteEndElement();
-            }
-        }
-
-        private void WriteDocument([NotNull] XmlTextWriter output, [NotNull] List<string> columns, [NotNull] Document doc)
+        private void WriteDocument([NotNull] XmlTextWriter output, [NotNull] List<string> columns, [NotNull] SearchResultItem doc)
         {
             Assert.ArgumentNotNull(output, nameof(output));
             Debug.ArgumentNotNull(columns, nameof(columns));
@@ -545,20 +247,14 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
 
             var names = new List<string>();
 
-            foreach (var f in doc.GetFields())
+            foreach (var pair in doc.Fields)
             {
-                var field = f as Field;
-                if (field == null)
-                {
-                    continue;
-                }
-
-                var name = field.Name;
+                var name = pair.Key;
 
                 var index = 0;
                 while (names.Contains(name))
                 {
-                    name = field.Name + index;
+                    name = pair.Key + index;
                     index++;
                 }
 
@@ -571,36 +267,14 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
 
                 output.WriteStartElement("field");
                 output.WriteAttributeString("name", name);
-                output.WriteCData(field.StringValue);
+                output.WriteCData(pair.Value?.ToString() ?? string.Empty);
                 output.WriteEndElement();
             }
 
             output.WriteEndElement();
         }
 
-        private void WriteDocuments([NotNull] XmlTextWriter output, IndexSearcher searcher, [NotNull] TopDocs hits, int offset)
-        {
-            Debug.ArgumentNotNull(hits, nameof(hits));
-            Debug.ArgumentNotNull(output, nameof(output));
-
-            var documents = new List<Document>();
-
-            for (var i = offset; i < offset + 100; i++)
-            {
-                if (i >= hits.TotalHits)
-                {
-                    break;
-                }
-
-                var d = searcher.Doc(hits.ScoreDocs[i].Doc);
-
-                documents.Add(d);
-            }
-
-            WriteDocuments(output, documents, hits.TotalHits);
-        }
-
-        private void WriteDocuments([NotNull] XmlTextWriter output, [NotNull] IEnumerable<Document> documents, int total)
+        private void WriteDocuments([NotNull] XmlTextWriter output, [NotNull] List<SearchResultItem> documents, int total)
         {
             Assert.ArgumentNotNull(output, nameof(output));
             Assert.ArgumentNotNull(documents, nameof(documents));
@@ -608,7 +282,7 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             var columns = new List<string>();
 
             output.WriteStartElement("documents");
-            output.WriteAttributeString("count", documents.Count().ToString());
+            output.WriteAttributeString("count", documents.Count.ToString());
             output.WriteAttributeString("total", total.ToString());
 
             foreach (var document in documents)
@@ -621,88 +295,23 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
             WriteColumns(output, columns);
         }
 
-        private void WriteFields([NotNull] XmlTextWriter output, [NotNull] Index index)
-        {
-            Debug.ArgumentNotNull(output, nameof(output));
-            Debug.ArgumentNotNull(index, nameof(index));
-
-            var reader = GetReader(index);
-            if (reader == null)
-            {
-                return;
-            }
-
-            var counts = new Dictionary<string, int>();
-
-            var termEnumerator = reader.Terms();
-            while (termEnumerator.Next())
-            {
-                var term = termEnumerator.Term;
-                var field = term.Field;
-
-                int count;
-                if (!counts.TryGetValue(field, out count))
-                {
-                    counts[field] = 1;
-                }
-                else
-                {
-                    counts[field] += 1;
-                }
-            }
-
-            try
-            {
-                var fieldNames = reader.GetFieldNames(IndexReader.FieldOption.ALL);
-
-                foreach (var fieldName in fieldNames)
-                {
-                    var name = fieldName;
-
-                    int count;
-                    if (!counts.TryGetValue(name, out count))
-                    {
-                        count = 0;
-                    }
-
-                    output.WriteStartElement("field");
-                    output.WriteAttributeString("name", name);
-                    output.WriteAttributeString("count", count.ToString());
-                    output.WriteEndElement();
-                }
-            }
-            finally
-            {
-                reader.Dispose();
-            }
-        }
-
         private void WriteIndexes([NotNull] XmlTextWriter output)
         {
             Debug.ArgumentNotNull(output, nameof(output));
 
-            if (SearchManager.IndexCount <= 0)
+            if (!ContentSearchManager.Indexes.Any())
             {
                 return;
             }
 
-            var configuration = GetConfiguration();
-            if (configuration == null || configuration.Indexes.Count <= 0)
+            foreach (var index in ContentSearchManager.Indexes)
             {
-                return;
-            }
-
-            foreach (var key in configuration.Indexes.Keys)
-            {
-                var index = configuration.Indexes[key];
-
                 output.WriteStartElement("index");
 
                 output.WriteAttributeString("name", index.Name);
-                output.WriteAttributeString("count", index.GetDocumentCount().ToString());
+                output.WriteAttributeString("count", "0");
 
                 output.WriteStartElement("fields");
-                WriteFields(output, index);
                 output.WriteEndElement();
 
                 output.WriteEndElement();

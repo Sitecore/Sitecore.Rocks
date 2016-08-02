@@ -1,14 +1,14 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Sitecore.Configuration;
+using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Pipelines.Search;
 using Sitecore.Rocks.Server.Extensions.XmlTextWriterExtensions;
 using Sitecore.Rocks.Server.Requests.Indexes;
-using Sitecore.Search;
 
 namespace Sitecore.Rocks.Server.Requests.Search
 {
@@ -33,23 +33,23 @@ namespace Sitecore.Rocks.Server.Requests.Search
                     return string.Empty;
                 }
 
-                root = database.GetItem(itemId);
-                if (root == null)
+                if (!string.IsNullOrEmpty(itemId))
                 {
-                    return string.Empty;
+                    root = database.GetItem(itemId);
+                    if (root == null)
+                    {
+                        return string.Empty;
+                    }
                 }
             }
 
             queryText = EscapeQueryText(queryText);
 
-            var query = GetQuery(queryText, field, condition);
-
-            var results = new SearchResultCollection();
+            List<SearchResultItem> results;
 
             using (new LongRunningOperationWatcher(250, "Search for '{0}' query", queryText))
             {
-                PerformSearch(results, query, queryText, root, pageNumber);
-                Categorize(results);
+                results = PerformSearch(databaseName, queryText, root, pageNumber);
             }
 
             if (results.Count == 0)
@@ -58,26 +58,6 @@ namespace Sitecore.Rocks.Server.Requests.Search
             }
 
             return FormatResults(results);
-        }
-
-        private void Categorize([NotNull] SearchResultCollection results)
-        {
-            Assert.ArgumentNotNull(results, nameof(results));
-
-            var categorizer = Factory.CreateObject("/sitecore/search/categorizer", true) as CategorizeResults.Categorizer;
-            Assert.IsNotNull(categorizer, "categorizer");
-
-            foreach (var result in results)
-            {
-                var item = result.GetObject<Item>();
-                if (item == null)
-                {
-                    results.AddResultToCategory(result, Texts.OTHER);
-                    continue;
-                }
-
-                results.AddResultToCategory(result, categorizer.GetCategory(item));
-            }
         }
 
         [NotNull]
@@ -89,7 +69,7 @@ namespace Sitecore.Rocks.Server.Requests.Search
         }
 
         [NotNull]
-        private string FormatResults([NotNull] SearchResultCollection results)
+        private string FormatResults([NotNull] List<SearchResultItem> results)
         {
             Debug.ArgumentNotNull(results, nameof(results));
 
@@ -98,18 +78,15 @@ namespace Sitecore.Rocks.Server.Requests.Search
 
             output.WriteStartElement("hits");
 
-            foreach (var category in results.Categories)
+            foreach (var result in results)
             {
-                foreach (var hit in category)
+                var item = result.GetItem();
+                if (item == null)
                 {
-                    var item = hit.GetObject<Item>();
-                    if (item == null)
-                    {
-                        continue;
-                    }
-
-                    output.WriteItemHeader(item, category.Name);
+                    continue;
                 }
+
+                output.WriteItemHeader(item, string.Empty);
             }
 
             output.WriteEndElement();
@@ -117,47 +94,9 @@ namespace Sitecore.Rocks.Server.Requests.Search
             return writer.ToString();
         }
 
-        [NotNull]
-        private QueryBase GetQuery([NotNull] string queryText, [NotNull] string field, [NotNull] string condition)
+        private List<SearchResultItem> PerformSearch([NotNull] string databaseName, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
         {
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(condition, nameof(condition));
-
-            if (string.IsNullOrEmpty(field) && string.IsNullOrEmpty(condition))
-            {
-                return new FullTextQuery(queryText);
-            }
-
-            var query = new CombinedQuery();
-
-            if (!string.IsNullOrEmpty(field))
-            {
-                var occurance = QueryOccurance.Should;
-
-                switch (condition.ToLowerInvariant())
-                {
-                    case "must":
-                        occurance = QueryOccurance.Must;
-                        break;
-                    case "not":
-                        occurance = QueryOccurance.MustNot;
-                        break;
-                }
-
-                query.Add(new FieldQuery(field.ToLowerInvariant(), queryText), occurance);
-            }
-
-            return query;
-        }
-
-        private void PerformSearch([NotNull] SearchResultCollection results, [NotNull] QueryBase query, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
-        {
-            Debug.ArgumentNotNull(results, nameof(results));
-            Debug.ArgumentNotNull(query, nameof(query));
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
-
-            LuceneRequest.PerformContentSearch(results, query, queryText, root, pageNumber);
+            return LuceneRequest.PerformContentSearch(databaseName, queryText, root, pageNumber);
         }
     }
 }

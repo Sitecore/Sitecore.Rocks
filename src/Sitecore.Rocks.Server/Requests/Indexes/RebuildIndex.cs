@@ -1,8 +1,8 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
+using Sitecore.ContentSearch;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Jobs;
-using Sitecore.Search;
 
 namespace Sitecore.Rocks.Server.Requests.Indexes
 {
@@ -22,8 +22,7 @@ namespace Sitecore.Rocks.Server.Requests.Indexes
         {
             Debug.ArgumentNotNull(indexName, nameof(indexName));
 
-            var index = SearchManager.GetIndex(indexName);
-
+            var index = ContentSearchManager.GetIndex(indexName);
             index.Rebuild();
         }
     }

@@ -27,7 +27,25 @@ namespace Sitecore.Rocks.Server.Requests.Items
             }
 
             var list = items.Split('|');
-            var itemList = list.Where(id => !string.IsNullOrEmpty(id)).Select(database.GetItem).Where(item => item != null).ToList();
+
+            var itemList = new List<Item>();
+            foreach (var id in list)
+            {
+                if (string.IsNullOrEmpty(id))
+                {
+                    continue;
+                }
+
+                var item = database.GetItem(id);
+                if (item == null)
+                {
+                    continue;
+                }
+
+                itemList.Add(item);
+            }
+
+            // itemList = list.Where(id => !string.IsNullOrEmpty(id)).Select(database.GetItem).Where(item => item != null).ToList();
             var count = 0;
 
             var writer = new StringWriter();

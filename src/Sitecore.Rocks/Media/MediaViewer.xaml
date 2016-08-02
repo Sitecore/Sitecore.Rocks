@@ -101,14 +101,14 @@
 
             <Border x:Name="NoQuery" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Enter a query and click Go." HorizontalAlignment="Center" />
+                    <TextBlock Text="Enter a query and click Go." HorizontalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
                 </StackPanel>
             </Border>
 
             <Border x:Name="NoHits" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="No items match your search." HorizontalAlignment="Center" />
-                    <TextBlock HorizontalAlignment="Center" Margin="0, 16, 0, 0">
+                    <TextBlock Text="No items match your search." HorizontalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                    <TextBlock HorizontalAlignment="Center" Margin="0, 16, 0, 0" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}">
                         Do you want to <Hyperlink Click="RebuildSearchIndex">rebuild the search index</Hyperlink>?
                     </TextBlock>
                 </StackPanel>
@@ -116,8 +116,8 @@
 
             <Border x:Name="NoItems" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="No items matches your filters." HorizontalAlignment="Center" />
-                    <TextBlock HorizontalAlignment="Center" Margin="0, 16, 0, 0">
+                    <TextBlock Text="No items matches your filters." HorizontalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+                    <TextBlock HorizontalAlignment="Center" Margin="0, 16, 0, 0" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}">
                         Do you want to <Hyperlink Click="ResetFilters">reset the filters</Hyperlink>?
                     </TextBlock>
                 </StackPanel>

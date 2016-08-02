@@ -276,6 +276,26 @@
     <Compile Include="UI\LayoutDesigners\GridDesigner\SizeAttributes.cs" />
     <Compile Include="UI\LayoutDesigners\GridDesigner\Sizes.cs" />
     <Compile Include="UI\Libraries\Commands\Navigating\ExcludeFromLibrary.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\RebuildIndex.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\Refresh.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerContext.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerDialog.xaml.cs">
+      <DependentUpon>DocumentExplorerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentList.xaml.cs">
+      <DependentUpon>DocumentList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentListContext.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\Commands\CopyTerm.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\Commands\ExploreDocuments.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerContext.cs" />
+    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerDialog.xaml.cs">
+      <DependentUpon>TermExplorerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Management\ManagementItems\Indexes\IndexViewer.xaml.cs">
+      <DependentUpon>IndexViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Management\ManagementItems\Indexes\IndexViewerContext.cs" />
     <Compile Include="UI\Management\ManagementItems\Validations\Commands\ExportAsCsv.cs" />
     <Compile Include="UI\Management\ManagementItems\Validations\Commands\ExportAsXml.cs" />
     <Compile Include="UI\Management\ManagementItems\Validations\Commands\ExportToHtml.cs" />
@@ -1227,7 +1247,6 @@
       <DependentUpon>LogViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\LogViewer\LogViewerContext.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\Commands\CopyTerm.cs" />
     <Compile Include="UI\Packages\PackageBuilders\Builders\BasePackageBuilder.cs" />
     <Compile Include="UI\Packages\PackageBuilders\Builders\IPackageBuilder.cs" />
     <Compile Include="UI\Packages\PackageBuilders\Builders\UpdatePackageBuilder.cs" />
@@ -1653,27 +1672,6 @@
     <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\CacheExplorerContext.cs" />
     <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\Commands\Refresh.cs" />
     <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\Commands\RemoveCacheKeys.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\ExploreTerms.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\OptimizeIndex.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\RebuildIndex.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Commands\Refresh.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentListContext.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerContext.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerDialog.xaml.cs">
-      <DependentUpon>DocumentExplorerDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentList.xaml.cs">
-      <DependentUpon>DocumentList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\Commands\ExploreDocuments.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerContext.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerDialog.xaml.cs">
-      <DependentUpon>TermExplorerDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Management\ManagementItems\Indexes\IndexViewerContext.cs" />
-    <Compile Include="UI\Management\ManagementItems\Indexes\IndexViewer.xaml.cs">
-      <DependentUpon>IndexViewer.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\AddNewLanguage.cs" />
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\Delete.cs" />
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\LocateInContentTree.cs" />
@@ -3149,6 +3147,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Management\ManagementItems\Indexes\IndexViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\Management\ManagementItems\Validations\Dialogs\BuildTasks\BuildTaskBuilder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -3446,22 +3460,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\CacheExplorerDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentExplorer\DocumentExplorerDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\DocumentList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Management\ManagementItems\Indexes\Dialogs\TermExplorer\TermExplorerDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Management\ManagementItems\Indexes\IndexViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -4044,7 +4042,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
+      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

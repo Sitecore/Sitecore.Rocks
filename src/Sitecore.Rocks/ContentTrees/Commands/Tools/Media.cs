@@ -23,29 +23,29 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Tools
 
         public override bool CanExecute(object parameter)
         {
-            var context = parameter as ISiteSelectionContext;
+            var context = parameter as IDatabaseSelectionContext;
             if (context == null)
             {
                 return false;
             }
 
-            if (!context.Site.DataService.CanExecuteAsync("Media.Search"))
+            if (!context.DatabaseUri.Site.DataService.CanExecuteAsync("Media.Search"))
             {
                 return false;
             }
 
-            return context.Site != Site.Empty;
+            return context.DatabaseUri.Site != Site.Empty;
         }
 
         public override void Execute(object parameter)
         {
-            var context = parameter as ISiteSelectionContext;
+            var context = parameter as IDatabaseSelectionContext;
             if (context == null)
             {
                 return;
             }
 
-            AppHost.Windows.Factory.OpenMediaViewer(context.Site);
+            AppHost.Windows.Factory.OpenMediaViewer(context.DatabaseUri.Site);
         }
 
         bool IStartPageCommand.CanExecute(StartPageContext context)

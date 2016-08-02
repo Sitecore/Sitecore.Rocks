@@ -22,26 +22,26 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Searching
 
         public override bool CanExecute(object parameter)
         {
-            var context = parameter as ISiteSelectionContext;
+            var context = parameter as IDatabaseSelectionContext;
             if (context == null)
             {
                 return false;
             }
 
-            if (!context.Site.DataService.CanExecuteAsync("Search.Search"))
+            if (!context.DatabaseUri.Site.DataService.CanExecuteAsync("Search.Search"))
             {
                 return false;
             }
 
-            return context.Site != Site.Empty;
+            return context.DatabaseUri.Site != Site.Empty;
         }
 
         public override void Execute(object parameter)
         {
-            var context = parameter as ISiteSelectionContext;
+            var context = parameter as IDatabaseSelectionContext;
             if (context != null)
             {
-                AppHost.Windows.Factory.OpenSearchViewer(context.Site);
+                AppHost.Windows.Factory.OpenSearchViewer(context.DatabaseUri.Site);
             }
         }
     }

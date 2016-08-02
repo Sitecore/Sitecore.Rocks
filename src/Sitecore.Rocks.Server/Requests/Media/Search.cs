@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Sitecore.Configuration;
+using Sitecore.ContentSearch.SearchTypes;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Extensions.XmlTextWriterExtensions;
 using Sitecore.Rocks.Server.Requests.Indexes;
-using Sitecore.Search;
 
 namespace Sitecore.Rocks.Server.Requests.Media
 {
@@ -33,20 +33,23 @@ namespace Sitecore.Rocks.Server.Requests.Media
                     return string.Empty;
                 }
 
-                root = database.GetItem(itemId);
-                if (root == null)
+                if (!string.IsNullOrEmpty(itemId))
                 {
-                    return string.Empty;
+                    root = database.GetItem(itemId);
+                    if (root == null)
+                    {
+                        return string.Empty;
+                    }
                 }
             }
 
-            var results = new List<Item>();
+            queryText = EscapeQueryText(queryText);
 
-            var query = GetQuery(queryText, field, condition);
+            List<SearchResultItem> results;
 
-            using (new LongRunningOperationWatcher(250, "Search for '{0} query", queryText))
+            using (new LongRunningOperationWatcher(250, "Search for '{0}' query", queryText))
             {
-                PerformSearch(results, query, queryText, root, pageNumber);
+                results = PerformSearch(databaseName, queryText, root, pageNumber);
             }
 
             if (results.Count == 0)
@@ -58,7 +61,15 @@ namespace Sitecore.Rocks.Server.Requests.Media
         }
 
         [NotNull]
-        private string FormatResults([NotNull] List<Item> results)
+        private string EscapeQueryText([NotNull] string queryText)
+        {
+            Debug.ArgumentNotNull(queryText, nameof(queryText));
+
+            return queryText.Replace(@"\", @"\\");
+        }
+
+        [NotNull]
+        private string FormatResults([NotNull] List<SearchResultItem> results)
         {
             Debug.ArgumentNotNull(results, nameof(results));
 
@@ -67,9 +78,13 @@ namespace Sitecore.Rocks.Server.Requests.Media
 
             output.WriteStartElement("hits");
 
-            foreach (var item in results)
+            foreach (var result in results)
             {
-                output.WriteItemHeader(item);
+                var item = result.GetItem();
+                if (item != null)
+                {
+                    output.WriteItemHeader(item);
+                }
             }
 
             output.WriteEndElement();
@@ -78,46 +93,9 @@ namespace Sitecore.Rocks.Server.Requests.Media
         }
 
         [NotNull]
-        private QueryBase GetQuery([NotNull] string queryText, [NotNull] string field, [NotNull] string condition)
+        private List<SearchResultItem> PerformSearch([NotNull] string databaseName, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
         {
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
-            Debug.ArgumentNotNull(field, nameof(field));
-            Debug.ArgumentNotNull(condition, nameof(condition));
-
-            if (string.IsNullOrEmpty(field) && string.IsNullOrEmpty(condition))
-            {
-                return new FullTextQuery(queryText);
-            }
-
-            var query = new CombinedQuery();
-
-            if (!string.IsNullOrEmpty(field))
-            {
-                var occurance = QueryOccurance.Should;
-
-                switch (condition.ToLowerInvariant())
-                {
-                    case "must":
-                        occurance = QueryOccurance.Must;
-                        break;
-                    case "not":
-                        occurance = QueryOccurance.MustNot;
-                        break;
-                }
-
-                query.Add(new FieldQuery(field.ToLowerInvariant(), queryText), occurance);
-            }
-
-            return query;
-        }
-
-        private void PerformSearch([NotNull] List<Item> results, [NotNull] QueryBase query, [NotNull] string queryText, [CanBeNull] Item root, int pageNumber)
-        {
-            Debug.ArgumentNotNull(results, nameof(results));
-            Debug.ArgumentNotNull(query, nameof(query));
-            Debug.ArgumentNotNull(queryText, nameof(queryText));
-
-            LuceneRequest.PerformMediaSearch(results, query, queryText, root, pageNumber);
+            return LuceneRequest.PerformMediaSearch(databaseName, queryText, root, pageNumber);
         }
     }
 }

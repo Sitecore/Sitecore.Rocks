@@ -656,7 +656,7 @@ namespace Sitecore.Rocks.Extensions.DataServiceExtensions
             Assert.ArgumentNotNull(root, nameof(root));
             Assert.ArgumentNotNull(callback, nameof(callback));
 
-            var databaseName = string.Empty;
+            var databaseName = databaseUri.DatabaseName.Name;
             var itemId = string.Empty;
 
             if (root != ItemUri.Empty)
@@ -703,7 +703,7 @@ namespace Sitecore.Rocks.Extensions.DataServiceExtensions
             Assert.ArgumentNotNull(root, nameof(root));
             Assert.ArgumentNotNull(callback, nameof(callback));
 
-            var databaseName = string.Empty;
+            var databaseName = databaseUri.DatabaseName.Name;
             var itemId = string.Empty;
 
             if (root != ItemUri.Empty)

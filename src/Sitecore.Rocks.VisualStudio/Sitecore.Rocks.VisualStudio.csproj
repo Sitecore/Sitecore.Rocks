@@ -798,6 +798,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <None Include="app.config" />
     <None Include="Key.snk" />
     <Content Include="ProjectTemplates\Sitecore Rocks\Sitecore.Rocks.Plugin.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
