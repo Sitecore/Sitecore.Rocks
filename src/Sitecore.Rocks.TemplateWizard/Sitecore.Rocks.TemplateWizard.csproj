@@ -76,6 +76,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Version.cs" />
     <Compile Include="Wizard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
