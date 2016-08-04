@@ -15,7 +15,7 @@ namespace Sitecore.Rocks.Shell.Pipelines.Initialization
     [Pipeline(typeof(InitializationPipeline), 4000)]
     public class InitializeTemplateWizard : PipelineProcessor<InitializationPipeline>
     {
-        private const string RegistryPath = "Software\\Sitecore\\VisualStudio\\";
+        private const string RegistryPath = "Software\\Sitecore\\Sitecore.Rocks.VisualStudio\\";
 
         protected override void Process(InitializationPipeline pipeline)
         {
