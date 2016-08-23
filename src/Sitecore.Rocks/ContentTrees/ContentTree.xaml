@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <controls:ThemeHandler />
-        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=Control}" />
+        <controls:KeyboardHandler Grid.Row="0" Target="{Binding ElementName=ItemTreeView}" />
 
         <ToolBarTray Grid.Row="0" IsLocked="True" HorizontalAlignment="Stretch" KeyboardNavigation.IsTabStop="False">
             <ToolBar x:Name="ToolBar" SnapsToDevicePixels="True" HorizontalAlignment="Stretch" Loaded="ToolBarLoaded" KeyboardNavigation.TabNavigation="Continue"

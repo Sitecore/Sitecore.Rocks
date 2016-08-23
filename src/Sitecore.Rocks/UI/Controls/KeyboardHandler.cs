@@ -28,7 +28,7 @@ namespace Sitecore.Rocks.UI.Controls
         public KeyboardHandler()
         {
             Loaded += ControlLoaded;
-            UsePreviewEvent = true;
+            UsePreviewEvent = false;
         }
 
         [CanBeNull]
