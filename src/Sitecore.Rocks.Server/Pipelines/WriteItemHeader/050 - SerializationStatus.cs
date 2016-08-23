@@ -3,7 +3,7 @@
 using System;
 using System.Globalization;
 using System.IO;
-using Sitecore.Caching;
+using System.Runtime.Caching;
 using Sitecore.Data.Items;
 using Sitecore.Data.Serialization;
 using Sitecore.Diagnostics;
@@ -15,12 +15,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
     [Pipeline(typeof(WriteItemHeaderPipeline), 5000)]
     public class SerializationStatus : PipelineProcessor<WriteItemHeaderPipeline>
     {
-        private static readonly Cache Cache;
-
-        static SerializationStatus()
-        {
-            Cache = new Cache("SerializationStatus", 5000);
-        }
+        private static readonly MemoryCache Cache = new MemoryCache("serialization");
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
         {
@@ -103,16 +98,12 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
             string revision = null;
             var lastWrite = fileInfo.LastWriteTimeUtc;
 
-            var cacheEntry = Cache.GetEntry(fileName, true);
-            if (cacheEntry != null)
+            var cacheRecord = Cache.Get(fileName) as CacheRecord;
+            if (cacheRecord != null)
             {
-                var cacheRecord = cacheEntry.Data as CacheRecord;
-                if (cacheRecord != null)
+                if (cacheRecord.LastWrite == lastWrite)
                 {
-                    if (cacheRecord.LastWrite == lastWrite)
-                    {
-                        revision = cacheRecord.Revision;
-                    }
+                    revision = cacheRecord.Revision;
                 }
             }
 
@@ -124,7 +115,8 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
                     return 3;
                 }
 
-                Cache.Add(fileName, new CacheRecord(lastWrite, revision), 1);
+                var expires = DateTime.Now.AddHours(4);
+                Cache.Set(fileName, new CacheRecord(lastWrite, revision), expires);
             }
 
             return revision != item.Statistics.Revision ? 2 : 1;
