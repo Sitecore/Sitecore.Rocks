@@ -96,24 +96,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Sitecore.Client, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Client.8.1.0.151207\lib\Sitecore.Client.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Sitecore.Client.NoReferences.8.1.151207\lib\NET45\Sitecore.Client.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.ContentSearch.8.1.0.151207\lib\Sitecore.ContentSearch.dll</HintPath>
+      <HintPath>..\..\packages\Sitecore.ContentSearch.NoReferences.8.1.151207\lib\NET45\Sitecore.ContentSearch.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.ContentSearch.Linq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.ContentSearch.Linq.8.1.0.151207\lib\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <HintPath>..\..\packages\Sitecore.ContentSearch.Linq.NoReferences.8.1.151207\lib\NET45\Sitecore.ContentSearch.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Kernel.8.1.0.151207\lib\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Sitecore.Kernel.NoReferences.8.1.151207\lib\NET45\Sitecore.Kernel.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SC.Sitecore.Update.8.1.0.151207\lib\Sitecore.Update.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Sitecore.Update.NoReferences.8.1.151207\lib\NET45\Sitecore.Update.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data.DataSetExtensions" />
