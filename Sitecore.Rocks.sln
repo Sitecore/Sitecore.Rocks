@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGELOG.md = CHANGELOG.md
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE = LICENSE
+		.nuget\NuGet.Config = .nuget\NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -23,6 +24,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.VisualStudio
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.TemplateWizard", "src\Sitecore.Rocks.TemplateWizard\Sitecore.Rocks.TemplateWizard.csproj", "{C7509E56-744C-4EC6-A422-763A2BF39029}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4845A6CE-5CE3-4480-A4C6-C90C4749E6F3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
