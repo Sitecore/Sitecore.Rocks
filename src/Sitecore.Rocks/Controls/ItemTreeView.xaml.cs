@@ -783,7 +783,7 @@ namespace Sitecore.Rocks.Controls
                 return;
             }
 
-            if (e.Key != Key.Enter)
+            if (e.Key != Key.Enter || Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl) || Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt) || Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
             {
                 return;
             }

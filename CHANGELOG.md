@@ -1,4 +1,8 @@
-Version 2.0.0-beta1
+Version vNext
+===================
+* Fix: Ctrl+Return, Ctrl+Shift+Return works in Sitecore Explorer (2016-09-08) - Eugene Barandon
+
+Version 2.0.0-33
 ===================
 * Add: Added Ribbon to Template Designer (2016-01-08)
 * Fix: Template Field Sorted is not theme correctly (2016-01-08)
