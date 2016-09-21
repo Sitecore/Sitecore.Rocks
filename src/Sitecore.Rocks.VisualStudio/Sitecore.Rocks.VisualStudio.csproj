@@ -199,6 +199,8 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
@@ -272,6 +274,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContentEditors\Commands\Fields\BrowseTypeName.cs" />
+    <Compile Include="ContentTrees\Commands\Helix\CreateHelixSolition.cs" />
+    <Compile Include="ContentTrees\Commands\Helix\Dialogs\CreateHelixSolutionDialog.xaml.cs">
+      <DependentUpon>CreateHelixSolutionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTrees\Commands\Helix\HelixSubmenu.cs" />
     <Compile Include="Controls\Dialogs\BrowseTypeName\BrowseTypeNameDialog.xaml.cs">
       <DependentUpon>BrowseTypeNameDialog.xaml</DependentUpon>
     </Compile>
@@ -814,6 +821,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="Resources\Helix Solution Template.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
@@ -837,6 +848,10 @@
     <Content Include="Resources\Package.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ContentTrees\Commands\Helix\Dialogs\CreateHelixSolutionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Dialogs\BrowseTypeName\BrowseTypeNameDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
