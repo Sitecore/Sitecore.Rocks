@@ -136,34 +136,39 @@ Update single field
 ```
 update set 
   @Text = "Welcome to Sitecore"
-from /sitecore/content/Home```
+from /sitecore/content/Home
+```
 
 Update multiple fields
 ```
 update set 
   @Title = "Sitecore", 
   @Text = "Hello" 
-from /sitecore/content/Home```
+from /sitecore/content/Home
+```
 
 Update multiple fields in multiple items
 ```
 update set 
   @Title = "Sitecore", 
   @Text = "Hello" 
-from /sitecore/content/*[@@TemplateName = "Sample Item"];```
+from /sitecore/content/*[@@TemplateName = "Sample Item"];
+```
 
 Reset Updated fields to Created fields
 ```
 update set 
   @#__Updated By# = @#__Created By#, 
   @__Updated = @__Created, 
-from /sitecore/content/Home```
+from /sitecore/content/Home
+```
 
 Expressions
 ```
 update set 
   @Text = "Title: " + @Title
-from /sitecore/content/Home```
+from /sitecore/content/Home
+```
 
 ## Import keyword
 The ```import``` keyword imports items/data into Sitecore.
@@ -219,7 +224,8 @@ The items are create under the current context node.
 Import a tree from a file:
 ```
 set contextnode=/sitecore/content/Home;
-import tree file "c:\tree.txt"```
+import tree file "c:\tree.txt"
+```
 
 Import a tree from a string literal:
 ```
