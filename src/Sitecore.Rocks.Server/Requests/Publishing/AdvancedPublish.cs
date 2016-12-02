@@ -15,10 +15,10 @@ namespace Sitecore.Rocks.Server.Requests.Publishing
     public class AdvancedPublish
     {
         [NotNull]
-        public string Execute([NotNull] string databaseName, [NotNull] string itemId, int mode, int source, [NotNull] string languages, [NotNull] string targets, bool relatedItems)
+        public string Execute([NotNull] string databaseName, [NotNull] string itemIds, int mode, int source, [NotNull] string languages, [NotNull] string targets, bool relatedItems)
         {
             Assert.ArgumentNotNull(databaseName, nameof(databaseName));
-            Assert.ArgumentNotNull(itemId, nameof(itemId));
+            Assert.ArgumentNotNull(itemIds, nameof(itemIds));
             Assert.ArgumentNotNull(languages, nameof(languages));
             Assert.ArgumentNotNull(targets, nameof(targets));
             Assert.ArgumentNotNull(relatedItems, nameof(relatedItems));
@@ -32,21 +32,22 @@ namespace Sitecore.Rocks.Server.Requests.Publishing
             var languageList = GetLanguages(database, languages);
             var targetList = GetTargets(database, targets);
 
-            var instance = ServerHost.AppVersion.Get(this, new System.Version(7, 2));
-
-            switch (source)
+            foreach (var itemId in itemIds.Split('|'))
             {
-                case 0:
-                    PublishDatabase(database, mode, languageList, targetList);
-                    break;
+                switch (source)
+                {
+                    case 0:
+                        PublishDatabase(database, mode, languageList, targetList);
+                        break;
 
-                case 1:
-                    instance.PublishItem(database, itemId, false, languageList, targetList, relatedItems);
-                    break;
+                    case 1:
+                        PublishItem(database, itemId, false, languageList, targetList, relatedItems);
+                        break;
 
-                case 2:
-                    instance.PublishItem(database, itemId, true, languageList, targetList, relatedItems);
-                    break;
+                    case 2:
+                        PublishItem(database, itemId, true, languageList, targetList, relatedItems);
+                        break;
+                }
             }
 
             return string.Empty;

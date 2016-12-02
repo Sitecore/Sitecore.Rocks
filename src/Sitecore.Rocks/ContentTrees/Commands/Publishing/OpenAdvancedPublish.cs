@@ -81,26 +81,25 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Publishing
         {
             Debug.ArgumentNotNull(databaseUri, nameof(databaseUri));
 
-            var d = new AdvancedPublishDialog(databaseUri);
-            if (AppHost.Shell.ShowDialog(d) != true)
+            var dialog = new AdvancedPublishDialog(databaseUri);
+            if (AppHost.Shell.ShowDialog(dialog) != true)
             {
                 return;
             }
 
-            var profile = d.GetCurrentProfile();
+            var profile = dialog.GetCurrentProfile();
             if (profile == null)
             {
                 return;
             }
 
-            var itemId = string.Empty;
+            var itemIds = string.Empty;
             var itemContext = context as IItemSelectionContext;
             if (itemContext != null)
             {
-                var item = itemContext.Items.FirstOrDefault();
-                if (item != null)
+                if (itemContext.Items.Any())
                 {
-                    itemId = item.ItemUri.ItemId.ToString();
+                    itemIds = string.Join("|", itemContext.Items.Select(i => i.ItemUri.ItemId.ToString()));
                 }
             }
 
@@ -109,7 +108,7 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Publishing
 
             ExecuteCompleted completed = (response, result) => DataService.HandleExecute(response, result);
 
-            databaseUri.Site.DataService.ExecuteAsync("Publishing.AdvancedPublish", completed, databaseUri.DatabaseName.ToString(), itemId, profile.Mode, profile.Source, languageList, targetList, profile.RelatedItems);
+            databaseUri.Site.DataService.ExecuteAsync("Publishing.AdvancedPublish", completed, databaseUri.DatabaseName.ToString(), itemIds, profile.Mode, profile.Source, languageList, targetList, profile.RelatedItems);
 
             if (AppHost.Settings.Options.ShowJobViewer)
             {

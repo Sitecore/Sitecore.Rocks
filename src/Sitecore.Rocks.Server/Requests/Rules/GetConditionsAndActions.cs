@@ -46,18 +46,7 @@ namespace Sitecore.Rocks.Server.Requests.Rules
             Assert.ArgumentNotNull(database, nameof(database));
             Assert.ArgumentNotNull(dataSource, nameof(dataSource));
 
-            var instance = this;
-
-            var dataSourceItem = database.GetItem(dataSource);
-            if (dataSourceItem != null)
-            {
-                if (dataSourceItem.TemplateID == RulesContextFolder)
-                {
-                    instance = ServerHost.AppVersion.Get(this, new System.Version(7, 1));
-                }
-            }
-
-            instance.WriteRules(output, database, dataSource);
+            WriteRules(output, database, dataSource);
         }
 
         protected void WriteAction([NotNull] XmlTextWriter output, [NotNull] Item item, [NotNull] string category)

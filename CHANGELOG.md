@@ -1,6 +1,7 @@
 Version vNext
 ===================
 * Fix: Ctrl+Return, Ctrl+Shift+Return works in Sitecore Explorer (2016-09-08) - Eugene Barandon
+* Fix: Advanced Publishing now supports multiple items (2016-12-02) - Lyle Jordan
 
 Version 2.0.0-33
 ===================
