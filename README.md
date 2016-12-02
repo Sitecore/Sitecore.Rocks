@@ -11,12 +11,6 @@ that they are familiar with.
 
 ![Sitecore Rocks](https://i1.visualstudiogallery.msdn.s-msft.com/44a26c88-83a7-46f6-903c-5c59bcd3d35b/image/file/148813/1/readme1.png)
 
-## Downloading the beta version
-Sitecore Rocks 2.0-beta1 will not be available on Visual Studio Gallery until it comes out of beta.
-
-Until then you can download it from here:
-[http://vsplugins.sitecore.net/downloads/Sitecore.Rocks.2.0.0.0-beta1.zip](http://vsplugins.sitecore.net/downloads/Sitecore.Rocks.2.0.0.0-beta1.zip)
-
 ## Features
 
 * Sitecore Explorer: View the content tree for multiple websites and multiple databases. Delete, edit, or drag and drop multiple items simultaneously.
@@ -36,6 +30,7 @@ Sitecore Rocks is fully extendable using plug-ins that allows you to add new but
 
 ## Downloading
 * [Sitecore Rocks Visual Studio](https://visualstudiogallery.msdn.microsoft.com/44a26c88-83a7-46f6-903c-5c59bcd3d35b) (plugin for Visual Studio)
+* Or get the latest build from [AppVeyor](https://ci.appveyor.com/project/JakobChristensen/sitecore-rocks/build/artifacts)
 
 ## Videos
 * [YouTube Playlist](https://www.youtube.com/view_play_list?p=2B8CA35C742803E4)
