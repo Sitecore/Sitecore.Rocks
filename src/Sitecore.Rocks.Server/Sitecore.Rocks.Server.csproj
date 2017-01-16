@@ -381,6 +381,7 @@
     <Compile Include="Requests\GetFiles.cs" />
     <Compile Include="Requests\Reports\XsltGenerator.cs" />
     <Compile Include="Requests\Rules\GetConditionsAndActions.cs" />
+    <Compile Include="Requests\Rules\GetConditionsAndActions60.cs" />
     <Compile Include="Requests\Rules\TestRule.cs" />
     <Compile Include="Requests\Serialization\GetItemSerializationPath.cs" />
     <Compile Include="Requests\Serialization\RevertDatabase.cs" />

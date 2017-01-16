@@ -18,8 +18,6 @@ namespace Sitecore.Rocks.Server.Requests.Rules
 {
     public class GetConditionsAndActions
     {
-        private static readonly ID RulesContextFolder = new ID("{DDA66314-03F3-4C89-84A9-39DFFB235B06}");
-
         [NotNull]
         public string Execute([NotNull] string databaseName, [NotNull] string dataSource)
         {
@@ -46,7 +44,17 @@ namespace Sitecore.Rocks.Server.Requests.Rules
             Assert.ArgumentNotNull(database, nameof(database));
             Assert.ArgumentNotNull(dataSource, nameof(dataSource));
 
-            WriteRules(output, database, dataSource);
+            // backwards compatibility for SPEAK
+            var actionsItem = database.GetItem(dataSource + "/Conditions");
+            if (actionsItem != null)
+            {
+                var oldWriter = new GetConditionsAndActions60();
+                oldWriter.WriteRules(output, database, dataSource);
+            }
+            else
+            {
+                WriteRules(output, database, dataSource);
+            }
         }
 
         protected void WriteAction([NotNull] XmlTextWriter output, [NotNull] Item item, [NotNull] string category)
