@@ -23,6 +23,11 @@ namespace Sitecore.Rocks.UI.Management.ManagementItems.Caches.Commands
                 return false;
             }
 
+            if (context.CacheViewer.Context.Site.SitecoreVersion >= Constants.Versions.Version82)
+            {
+                return false;
+            }
+
             var selectedItems = context.CacheViewer.CacheList.SelectedItems;
             if (selectedItems.Count != 1)
             {

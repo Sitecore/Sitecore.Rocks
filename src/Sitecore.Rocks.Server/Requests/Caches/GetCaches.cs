@@ -1,6 +1,7 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System.IO;
+using System.Linq;
 using System.Xml;
 using Sitecore.Caching;
 
@@ -20,9 +21,9 @@ namespace Sitecore.Rocks.Server.Requests.Caches
 
             output.WriteStartElement("caches");
 
-            var caches = CacheManager.GetAllCaches();
+            object[] caches = (object[])CacheManager.GetAllCaches();
 
-            foreach (var cache in caches)
+            foreach (var cache in caches.OfType<Cache>())
             {
                 output.WriteStartElement("cache");
 

@@ -31,6 +31,8 @@ namespace Sitecore.Rocks
             public static readonly Version Version72 = new Version(7, 2);
 
             public static readonly Version Version80 = new Version(8, 0);
+
+            public static readonly Version Version82 = new Version(8, 2);
         }
     }
 }
