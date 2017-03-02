@@ -38,7 +38,8 @@ Sitecore Rocks is fully extendable using plug-ins that allows you to add new but
 * [Sitecore Rocks series by Sen Gupta](https://www.youtube.com/watch?v=O4R7AbwotS0&list=PLFNs4m6IdelTc277XFzwxh2AaXC4bzyrg)
 
 ## External blog posts
-* None at the moment.
+* [How and why to use Sitecore Rocks by John West] (https://community.sitecore.net/technical_blogs/b/sitecorejohn_blog/posts/sitecore-differentiating-factors-blog-series-sitecore-rocks)
+* [28 Days of Sitecore Rocks by Trevor Campbell] (https://community.sitecore.net/members/trevorcampbell_5f00_842526747)
 
 ## Tips and tricks
 * [Tips](docs/Tips/Tips.md)
