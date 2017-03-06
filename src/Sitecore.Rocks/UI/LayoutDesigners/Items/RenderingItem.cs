@@ -1021,7 +1021,7 @@ namespace Sitecore.Rocks.UI.LayoutDesigners.Items
             output.WriteAttributeStringNotEmpty(@"id", ItemId);
             output.WriteAttributeStringNotEmpty(@"mvt", MultiVariateTests);
             output.WriteAttributeStringNotEmpty(@"par", Parameters);
-            output.WriteAttributeStringNotEmpty(@"ph", PlaceholderKey.Key);
+            output.WriteAttributeString(@"ph", PlaceholderKey.Key ?? string.Empty);
             output.WriteAttributeStringNotEmpty(@"uid", UniqueId);
             output.WriteAttributeStringNotEmpty(@"vbd", VaryByData ? @"1" : string.Empty);
             output.WriteAttributeStringNotEmpty(@"vbdev", VaryByDevice ? @"1" : string.Empty);
