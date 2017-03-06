@@ -636,14 +636,10 @@
     <Compile Include="UI\Commandy\Modes\InsertRenderingMode.cs" />
     <Compile Include="UI\Commandy\Searchers\InsertRenderingSearcher.cs" />
     <Compile Include="UI\LayoutDesigners\Chunks\FileBasedRenderingChunk.cs" />
-    <Compile Include="UI\LayoutDesigners\Chunks\Forms\SpeakFormRenderingChunkDialog.xaml.cs">
-      <DependentUpon>SpeakFormRenderingChunkDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UI\LayoutDesigners\Chunks\IRenderingChunk.cs" />
     <Compile Include="UI\LayoutDesigners\Chunks\RenderingChunkBase.cs" />
     <Compile Include="UI\LayoutDesigners\Chunks\RenderingChunkManager.cs" />
     <Compile Include="UI\LayoutDesigners\Chunks\FileRenderingChunkManagerPopulator.cs" />
-    <Compile Include="UI\LayoutDesigners\Chunks\Forms\SpeakFormRenderingChunk.cs" />
     <Compile Include="UI\LayoutDesigners\Commands\Chunks\ExportChunk.cs" />
     <Compile Include="UI\LayoutDesigners\Commands\Chunks\ChunksSubmenu.cs" />
     <Compile Include="UI\LayoutDesigners\Controls\RenderingButton.xaml.cs">
@@ -2991,10 +2987,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UI\LayoutDesigners\Chunks\Forms\SpeakFormRenderingChunkDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="UI\LayoutDesigners\Controls\EmptySelectionPane.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -4042,7 +4034,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
