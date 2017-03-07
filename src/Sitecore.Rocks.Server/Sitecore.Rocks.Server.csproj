@@ -139,6 +139,7 @@
     <Compile Include="Extensions\XElementExtensions\XElementExtensions.cs" />
     <Compile Include="Extensions\XmlTextWriterExtensions\XmlTextWriterExtensions.cs" />
     <Compile Include="IO\LocalFile.cs" />
+    <Compile Include="IO\YamlTextWriter.cs" />
     <Compile Include="Jobs\BackgroundJob.cs" />
     <Compile Include="Layouts\BindingMode.cs" />
     <Compile Include="Layouts\LayoutWriter.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="Requests\Files\DeleteTempFolders.cs" />
     <Compile Include="Requests\Files\GetTempFolders.cs" />
     <Compile Include="Requests\Files\ReadFile.cs" />
+    <Compile Include="Requests\Exporting\ExportAsYaml.cs" />
     <Compile Include="Requests\Layouts\GetRawLayout.cs" />
     <Compile Include="Requests\Indexes\LuceneRequest.cs" />
     <Compile Include="Requests\Items\CopyItems.cs" />
