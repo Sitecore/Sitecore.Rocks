@@ -169,7 +169,7 @@
     <Compile Include="ContentEditors\Toolbars\SkinGallery.cs" />
     <Compile Include="ContentTrees\Commands\Editing\CopyIconPathToClipboard.cs" />
     <Compile Include="ContentTrees\Commands\Editing\CopyTemplateIdToClipboard.cs" />
-    <Compile Include="ContentTrees\Commands\Exporting\WriteYaml.cs" />
+    <Compile Include="ContentTrees\Commands\Exporting\ExportAsYaml.cs" />
     <Compile Include="ContentTrees\Commands\Publishing\PublishItemAndRelatedItems.cs" />
     <Compile Include="ContentTrees\Commands\Speak\CreatePageCode.cs" />
     <Compile Include="ContentTrees\Commands\Speak\CreateParametersTemplate.cs" />
@@ -4035,7 +4035,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

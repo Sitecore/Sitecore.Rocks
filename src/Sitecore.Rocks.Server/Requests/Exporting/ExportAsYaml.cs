@@ -32,18 +32,23 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
 
             using (var writer = new StreamWriter(fileName))
             {
-                Export(new YamlTextWriter(writer), item);
+                Export(new YamlTextWriter(writer), item, true);
             }
 
             return fileName;
         }
 
-        private void Export(YamlTextWriter output, Item item)
+        private void Export(YamlTextWriter output, Item item, bool isRoot)
         {
             output.WriteStartElement(item.TemplateName, item.Name);
-            output.WriteAttributeString("ItemPath", item.Paths.Path);
-            output.WriteAttributeString("Database", item.Database.Name);
-            output.WriteAttributeString("ID", item.ID.ToString());
+
+            if (isRoot)
+            {
+                output.WriteAttributeString("ItemPath", item.Paths.Path);
+                output.WriteAttributeString("Database", item.Database.Name);
+            }
+
+            output.WriteAttributeString("Id", item.ID.ToString());
 
             item.Fields.ReadAll();
 
@@ -83,7 +88,7 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
 
             foreach (var field in item.Fields.Where(f => !f.Name.StartsWith("__") && f.Shared).OrderBy(f => f.Name))
             {
-                output.WriteAttributeString(field.Name, field.Value);
+                output.WriteAttributeStringIf(field.Name, field.Value);
             }
 
             if (versions.Any())
@@ -105,7 +110,7 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
 
                         foreach (var field in versionedItem.Item2.OrderBy(f => f.Name))
                         {
-                            output.WriteAttributeString(field.Name, field.Value);
+                            output.WriteAttributeStringIf(field.Name, field.Value);
                         }
 
                         output.WriteEndElement();
@@ -119,7 +124,7 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
 
             foreach (Item child in item.Children)
             {
-                Export(output, child);
+                Export(output, child, false);
             }
 
             output.WriteEndElement();

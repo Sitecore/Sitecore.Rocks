@@ -12,9 +12,9 @@ using Sitecore.Rocks.Extensibility;
 namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 {
     [Command(Submenu = "XML"), Feature(FeatureNames.Exporting)]
-    public class WriteYaml : CommandBase
+    public class ExportAsYaml : CommandBase
     {
-        public WriteYaml()
+        public ExportAsYaml()
         {
             Text = "Export as YAML...";
             Group = "YAML";
