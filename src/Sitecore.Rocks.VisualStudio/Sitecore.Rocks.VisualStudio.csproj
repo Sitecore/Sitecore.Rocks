@@ -553,8 +553,8 @@
     <Resource Include="Resources\16x16\queryanalyzer.png" />
     <Resource Include="Resources\16x16\search.png" />
     <Resource Include="Resources\16x16\xpathbuilder.png" />
-    <Content Include="Images\Preview.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Preview.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Sitecore.Rocks.vsct" />
@@ -811,8 +811,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\code.png" />
-    <Content Include="Images\Icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Package.ico" />
