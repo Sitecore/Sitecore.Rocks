@@ -1,56 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0"
-      xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-    <Identifier Id="6fb7d81e-c4ff-4b7f-adf4-b04e65155687">
-        <Name>Sitecore Rocks</Name>
-        <Author>Sitecore</Author>
-        <Version>2.0.0.40</Version>
-        <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy. 
 
-Directly integrated into Microsoft Visual Studio 2013/2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.
-</Description>
-        <Locale>1033</Locale>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="V6fb7d81e-c4ff-4b7f-adf4-b04e65155687" Version="2.0.57" Language="en-US" Publisher="Sitecore" />
+        <DisplayName>Sitecore Rocks</DisplayName>
+        <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy.
+
+Directly integrated into Microsoft Visual Studio 2013/2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
+        <MoreInfo>https://github.com/JakobChristensen/Sitecore.Rocks</MoreInfo>
         <License>Sitecore Rocks License Agreement (Final 092812).rtf</License>
-        <MoreInfoUrl>https://github.com/JakobChristensen/Sitecore.Rocks</MoreInfoUrl>
-        <GettingStartedGuide>https://github.com/JakobChristensen/Sitecore.Rocks</GettingStartedGuide>
-        <Icon>Images\Icon.png</Icon>
-        <PreviewImage>Images\Preview.png</PreviewImage>
-        <InstalledByMsi>false</InstalledByMsi>
-        <SupportedProducts>
-            <VisualStudio Version="12.0">
-                <Edition>Ultimate</Edition>
-                <Edition>Premium</Edition>
-                <Edition>Pro</Edition>
-            </VisualStudio>
-            <VisualStudio Version="14.0">
-                <Edition>Ultimate</Edition>
-                <Edition>Premium</Edition>
-                <Edition>Pro</Edition>
-                <Edition>Community</Edition>
-                <Edition>Enterprise</Edition>
-            </VisualStudio>
-          <VisualStudio Version="15.0">
-            <Edition>Ultimate</Edition>
-            <Edition>Premium</Edition>
-            <Edition>Pro</Edition>
-            <Edition>Community</Edition>
-            <Edition>Enterprise</Edition>
-          </VisualStudio>
-        </SupportedProducts>
-        <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
-    </Identifier>
-    <References>
-        <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
-            <Name>Visual Studio MPF</Name>
-        </Reference>
-    </References>
-    <Content>
-        <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
-        <VsPackage>CommandLineSwitches.pkgdef</VsPackage>
-        <MefComponent>Sitecore.VisualStudio.dll</MefComponent>
-        <Assembly AssemblyName="|Sitecore.Rocks.TemplateWizard;AssemblyName|">|Sitecore.Rocks.TemplateWizard|</Assembly>
-        <ProjectTemplate>ProjectTemplates</ProjectTemplate>
-        <ItemTemplate>ItemTemplates</ItemTemplate>
-    </Content>
-</Vsix>
+        <Icon>Icon.png</Icon>
+        <PreviewImage>Preview.png</PreviewImage>
+        <Tags>Sitecore, Sitecore Rocks, CMS, ASP.NET, C#</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,15.0]" />
+        <InstallationTarget Version="[12.0,15.0]" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[12.0,15.0]" Id="Microsoft.VisualStudio.Enterprise" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Items.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Layouts\Layout without Code Behind.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Layouts\Layout.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\MVC\MvcControllerAction.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\MVC\MvcModel.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\MVC\MvcViewLayout.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\MVC\MvcViewRendering.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Packages\Package.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\ContentEditorWarning.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\HttpRequestProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\LoeaderProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\PreprocessRequestProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\PublishItem.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\RenderingFieldProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\RenderLayoutProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Pipelines\SaveProcessor.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Renderings\Sublayout.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Renderings\xsl.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Rules\RuleAction.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Rules\RuleCondition.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak\BaseComponent.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak\Component.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak\JQueryUIComponent.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak\PageCode.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak 1.2\Component.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Speak 1.2\ComponentJavaScript.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\UI\Command.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\UI\GutterRenderer.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\UI\SubitemsSortingComparer.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\UI\Validator.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore\Workflows\WorkflowAction.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\ContentEditorCommand.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\ContentEditorFieldCommand.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\ContentTreeCommand.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\DocumentWindow.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\FieldType.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\InfoPane.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\LoadItemPipeline.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\Management Tab.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\SaveItemPipeline.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\SetFieldVisibility.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\Skin.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\Toolwindow.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\TreeViewItem.zip" />
+        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="File" Path="ItemTemplates" d:TargetPath="ItemTemplates\Sitecore Rocks\VirtualItem.zip" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="Sitecore.Rocks.TemplateWizard" Path="|Sitecore.Rocks.TemplateWizard|" AssemblyName="Sitecore.Rocks.TemplateWizard" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\Sitecore Rocks\Sitecore.Rocks.Plugin.zip" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates"
+            d:TargetPath="ProjectTemplates\Sitecore Rocks\Sitecore.Rocks.Server.Plugin.zip" />
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="CommandLineSwitches.pkgdef" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.26208.0,16.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+</PackageManifest>
