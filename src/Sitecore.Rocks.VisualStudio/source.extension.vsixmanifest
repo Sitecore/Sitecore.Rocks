@@ -8,7 +8,7 @@
         <Version>2.0.0.40</Version>
         <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy. 
 
-Directly integrated into Microsoft Visual Studio 2013/2015, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.
+Directly integrated into Microsoft Visual Studio 2013/2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.
 </Description>
         <Locale>1033</Locale>
         <License>Sitecore Rocks License Agreement (Final 092812).rtf</License>
@@ -30,6 +30,13 @@ Directly integrated into Microsoft Visual Studio 2013/2015, Sitecore Rocks provi
                 <Edition>Community</Edition>
                 <Edition>Enterprise</Edition>
             </VisualStudio>
+          <VisualStudio Version="15.0">
+            <Edition>Ultimate</Edition>
+            <Edition>Premium</Edition>
+            <Edition>Pro</Edition>
+            <Edition>Community</Edition>
+            <Edition>Enterprise</Edition>
+          </VisualStudio>
         </SupportedProducts>
         <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
     </Identifier>

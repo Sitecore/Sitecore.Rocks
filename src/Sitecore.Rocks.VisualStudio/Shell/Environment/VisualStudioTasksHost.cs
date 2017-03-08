@@ -87,9 +87,10 @@ namespace Sitecore.Rocks.Shell.Environment
             ErrorListProvider provider;
             if (!errorLists.TryGetValue(taskListName, out provider))
             {
+                Guid guid = new Guid("{7651A701-06E5-11D1-8EBD-00A0C90F26EA}"); // new Guid(EnvDTE.Constants.vsViewKindCode);
                 provider = new ErrorListProvider(SitecorePackage.Instance)
                 {
-                    ProviderGuid = new Guid(EnvDTE.Constants.vsViewKindCode),
+                    ProviderGuid = guid,
                     ProviderName = taskListName,
                     DisableAutoRoute = false
                 };

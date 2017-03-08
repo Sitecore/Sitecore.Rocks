@@ -31,7 +31,8 @@ namespace Sitecore.Rocks.Shell.Environment
 
             var activeWindow = SitecorePackage.Instance.Dte.ActiveWindow;
 
-            var outputWindow = SitecorePackage.Instance.Dte.Windows.Item(EnvDTE.Constants.vsWindowKindOutput);
+            // var outputWindow = SitecorePackage.Instance.Dte.Windows.Item(EnvDTE.Constants.vsWindowKindOutput);
+            var outputWindow = SitecorePackage.Instance.Dte.Windows.Item("{34E76E81-EE4A-11D0-AE2E-00A0C90FFFC3}");
             if (outputWindow == null)
             {
                 return;

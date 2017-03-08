@@ -85,7 +85,8 @@ namespace Sitecore.Rocks.ContentTrees.Commands
                 return;
             }
 
-            dte.Windows.Item(EnvDTE.Constants.vsWindowKindSolutionExplorer).Activate();
+            // dte.Windows.Item(EnvDTE.Constants.vsWindowKindSolutionExplorer).Activate();
+            dte.Windows.Item("{3AE79031-E1BC-11D0-8F78-00A0C9110057}").Activate();
 
             var hierarchyItem = dte.ToolWindows.SolutionExplorer.GetItem(solutionExplorerPath);
             if (hierarchyItem == null)
