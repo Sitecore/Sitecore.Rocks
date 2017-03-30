@@ -24,10 +24,7 @@ namespace Sitecore.Rocks.Sites
 
         private static readonly List<Site> sites = new List<Site>();
 
-        static SiteManager()
-        {
-            Load();
-        }
+        static SiteManager() { Load(); }
 
         [NotNull]
         public static IEnumerable<Site> Sites
@@ -43,7 +40,8 @@ namespace Sitecore.Rocks.Sites
             sites.Add(site);
         }
 
-        [Localizable(false), NotNull]
+        [Localizable(false)]
+        [NotNull]
         public static Site CreateSite([NotNull] string hostName, [NotNull] string userName, [NotNull] string password, [NotNull] string dataServiceName, [NotNull] string webRootPath)
         {
             Assert.ArgumentNotNull(hostName, nameof(hostName));
@@ -64,7 +62,7 @@ namespace Sitecore.Rocks.Sites
                 Password = password,
                 HostName = hostName,
                 DataServiceName = dataServiceName,
-                WebRootPath = webRootPath,
+                WebRootPath = webRootPath
             };
 
             connection.FileName = ConnectionManager.GetFileName(connection);
@@ -124,26 +122,18 @@ namespace Sitecore.Rocks.Sites
             return sites.FirstOrDefault(site => string.Compare(site.Name, name, StringComparison.InvariantCultureIgnoreCase) == 0);
         }
 
-        [NotNull, Obsolete(@"Use Sites property.")]
-        public static IEnumerable<Site> GetSites()
-        {
-            return sites;
-        }
+        [NotNull]
+        [Obsolete(@"Use Sites property.")]
+        public static IEnumerable<Site> GetSites() { return sites; }
 
         [CanBeNull]
-        public static Site NewConnection()
-        {
-            return NewConnection(null);
-        }
+        public static Site NewConnection() { return NewConnection(null); }
 
         [CanBeNull]
-        public static Site NewConnection([CanBeNull] ConnectionFolderTreeViewItem parent)
-        {
-            return NewConnection("localhost", @"sitecore\admin", parent);
-        }
+        public static Site NewConnection([CanBeNull] ConnectionFolderTreeViewItem parent) { return NewConnection("localhost", @"sitecore\admin", parent); }
 
         [CanBeNull]
-        public static Site NewConnection([Localizable(false), NotNull] string hostName, [NotNull] string userName)
+        public static Site NewConnection([Localizable(false)] [NotNull] string hostName, [NotNull] string userName)
         {
             Assert.ArgumentNotNull(hostName, nameof(hostName));
             Assert.ArgumentNotNull(userName, nameof(userName));
@@ -152,7 +142,7 @@ namespace Sitecore.Rocks.Sites
         }
 
         [CanBeNull]
-        public static Site NewConnection([Localizable(false), NotNull] string hostName, [NotNull] string userName, [CanBeNull] ConnectionFolderTreeViewItem parent)
+        public static Site NewConnection([Localizable(false)] [NotNull] string hostName, [NotNull] string userName, [CanBeNull] ConnectionFolderTreeViewItem parent)
         {
             Assert.ArgumentNotNull(hostName, nameof(hostName));
             Assert.ArgumentNotNull(userName, nameof(userName));
@@ -161,7 +151,7 @@ namespace Sitecore.Rocks.Sites
             {
                 UserName = userName,
                 Password = @"b",
-                HostName = hostName,
+                HostName = hostName
             };
 
             var site = new Site(connection);
@@ -173,22 +163,25 @@ namespace Sitecore.Rocks.Sites
                 return null;
             }
 
-            if (FindSite(site.HostName, site.UserName) == null)
+            var oldSite = FindSite(site.HostName, site.UserName);
+            if (oldSite != null)
             {
-                if (parent != null)
-                {
-                    connection.FileName = ConnectionManager.GetFileName(connection, parent.Folder);
-                }
-
-                Add(site);
-
-                ConnectionManager.Add(site.Connection);
-                ConnectionManager.Save();
-
-                CreateSiteTreeViewItem(site, parent);
-
-                Notifications.RaiseSiteAdded(site, site);
+                AppHost.Sites.Disconnect(oldSite);
             }
+
+            if (parent != null)
+            {
+                connection.FileName = ConnectionManager.GetFileName(connection, parent.Folder);
+            }
+
+            Add(site);
+
+            ConnectionManager.Add(site.Connection);
+            ConnectionManager.Save();
+
+            CreateSiteTreeViewItem(site, parent);
+
+            Notifications.RaiseSiteAdded(site, site);
 
             var editor = dialog.DataServiceEditor as WebServiceSiteEditor;
             if (editor != null)
@@ -228,14 +221,9 @@ namespace Sitecore.Rocks.Sites
         }
 
         [Obsolete]
-        public static void Save()
-        {
-            ConnectionManager.Save();
-        }
+        public static void Save() { ConnectionManager.Save(); }
 
-        internal static void LoadSites()
-        {
-        }
+        internal static void LoadSites() { }
 
         private static void CreateSiteTreeViewItem([NotNull] Site site, [CanBeNull] ConnectionFolderTreeViewItem parent)
         {
