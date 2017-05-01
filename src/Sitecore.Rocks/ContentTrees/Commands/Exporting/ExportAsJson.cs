@@ -1,5 +1,3 @@
-// © 2015-2017 Sitecore Corporation A/S. All rights reserved.
-
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -12,13 +10,13 @@ using Sitecore.Rocks.Extensibility;
 namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 {
     [Command(Submenu = "XML"), Feature(FeatureNames.Exporting)]
-    public class ExportAsYaml : CommandBase
+    public class ExportAsJson : CommandBase
     {
-        public ExportAsYaml()
+        public ExportAsJson()
         {
-            Text = "Export as YAML...";
+            Text = "Export as JSON...";
             Group = "YAML";
-            SortingValue = 5000;
+            SortingValue = 5010;
         }
 
         public override bool CanExecute(object parameter)
@@ -47,10 +45,10 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 
             var dialog = new SaveFileDialog
             {
-                Title = "Export as YAML",
+                Title = "Export as JSON",
                 CheckPathExists = true,
                 OverwritePrompt = true,
-                Filter = "*.content.yaml|*.content.yaml|*.*|*.*"
+                Filter = "*.content.json|*.content.json|*.*|*.*"
             };
 
             if (dialog.ShowDialog() != true)
@@ -74,14 +72,14 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
                 }
                 catch (WebException ex)
                 {
-                    if (AppHost.MessageBox($"Failed to download the YAML file: {response}\n\nDo you want to report this error?\n\n{ex.Message}\n{ex.StackTrace}", "Information", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
+                    if (AppHost.MessageBox($"Failed to download the JSON file: {response}\n\nDo you want to report this error?\n\n{ex.Message}\n{ex.StackTrace}", "Information", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
                     {
                         AppHost.Shell.HandleException(ex);
                     }
                 }
             }
 
-            item.ItemUri.Site.DataService.ExecuteAsync("Exporting.ExportAsYaml", Completed, item.ItemUri.DatabaseName.ToString(), item.ItemUri.ItemId.ToString());
+            item.ItemUri.Site.DataService.ExecuteAsync("Exporting.ExportAsJson", Completed, item.ItemUri.DatabaseName.ToString(), item.ItemUri.ItemId.ToString());
         }
     }
 }

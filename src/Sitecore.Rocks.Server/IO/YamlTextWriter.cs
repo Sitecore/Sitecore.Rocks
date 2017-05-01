@@ -1,4 +1,4 @@
-﻿// © 2015 Sitecore Corporation A/S. All rights reserved.
+﻿// © 2015-2017 Sitecore Corporation A/S. All rights reserved.
 
 using System.IO;
 
@@ -17,9 +17,9 @@ namespace Sitecore.Rocks.Server.IO
             Indent = indent;
         }
 
-        public int Indentation { get; set; } = 4;
-
         public int Indent { get; protected set; }
+
+        public int Indentation { get; set; } = 4;
 
         [NotNull]
         protected TextWriter InnerWriter { get; }
@@ -30,25 +30,7 @@ namespace Sitecore.Rocks.Server.IO
             InnerWriter.Write(key);
             InnerWriter.Write(": ");
 
-            if (value.IndexOf('\r') >= 0 || value.IndexOf('\n') >= 0)
-            {
-                value = value.Replace('\n', '\r').Replace("\r\r", "\r");
-
-                InnerWriter.WriteLine('|');
-
-                Indent++;
-                foreach (var line in value.Split('\r'))
-                {
-                    InnerWriter.Write(new string(' ', Indent * Indentation));
-                    InnerWriter.WriteLine(line);
-                }
-
-                Indent--;
-            }
-            else
-            {
-                InnerWriter.WriteLine(value);
-            }
+            WriteValue(value);
         }
 
         public void WriteAttributeStringIf([NotNull] string key, [NotNull] string value)
@@ -61,7 +43,8 @@ namespace Sitecore.Rocks.Server.IO
             InnerWriter.Write(new string(' ', Indent * Indentation));
             InnerWriter.Write(key);
             InnerWriter.Write(": ");
-            InnerWriter.WriteLine(value);
+
+            WriteValue(value);
         }
 
         public void WriteAttributeStringIf([NotNull] string key, int value, int defaultValue = 0)
@@ -107,6 +90,29 @@ namespace Sitecore.Rocks.Server.IO
             InnerWriter.Write(": ");
             InnerWriter.WriteLine(value);
             Indent++;
+        }
+
+        private void WriteValue(string value)
+        {
+            if (value.IndexOf('\r') >= 0 || value.IndexOf('\n') >= 0)
+            {
+                value = value.Replace('\n', '\r').Replace("\r\r", "\r");
+
+                InnerWriter.WriteLine('|');
+
+                Indent++;
+                foreach (var line in value.Split('\r'))
+                {
+                    InnerWriter.Write(new string(' ', Indent * Indentation));
+                    InnerWriter.WriteLine(line);
+                }
+
+                Indent--;
+            }
+            else
+            {
+                InnerWriter.WriteLine(value);
+            }
         }
     }
 }

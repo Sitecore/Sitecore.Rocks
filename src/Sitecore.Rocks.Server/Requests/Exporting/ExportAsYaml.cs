@@ -42,18 +42,19 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
         {
             output.WriteStartElement(item.TemplateName, item.Name);
 
+            output.WriteAttributeString("Id", item.ID.ToString());
+
             if (isRoot)
             {
                 output.WriteAttributeString("ItemPath", item.Paths.Path);
                 output.WriteAttributeString("Database", item.Database.Name);
             }
 
-            output.WriteAttributeString("Id", item.ID.ToString());
-
             item.Fields.ReadAll();
 
             var versionedItems = item.Versions.GetVersions(true);
             var versions = new List<Tuple<Language, List<Field>, List<Tuple<int, List<Field>>>>>();
+            var sharedFields = item.Fields.Where(f => !f.Name.StartsWith("__") && f.Shared).ToArray();
 
             foreach (var language in versionedItems.Select(i => i.Language).Distinct().ToList())
             {
@@ -86,45 +87,56 @@ namespace Sitecore.Rocks.Server.Requests.Exporting
                 }
             }
 
-            foreach (var field in item.Fields.Where(f => !f.Name.StartsWith("__") && f.Shared).OrderBy(f => f.Name))
+            if (versions.Any() || sharedFields.Any())
             {
-                output.WriteAttributeStringIf(field.Name, field.Value);
-            }
+                output.WriteStartElement("Fields");
 
-            if (versions.Any())
-            {
-                output.WriteStartElement("..Versions");
-
-                foreach (var language in versions.OrderBy(l => l.Item1.Name))
+                foreach (var field in sharedFields.OrderBy(f => f.Name))
                 {
-                    output.WriteStartElement(language.Item1.Name);
+                    output.WriteAttributeStringIf(field.Name, field.Value);
+                }
 
-                    foreach (var field in language.Item2.OrderBy(f => f.Name))
+                if (versions.Any())
+                {
+                    foreach (var language in versions.OrderBy(l => l.Item1.Name))
                     {
-                        output.WriteAttributeStringIf(field.Name, field.Value);
-                    }
+                        output.WriteStartElement(language.Item1.Name);
 
-                    foreach (var versionedItem in language.Item3.OrderBy(t => t.Item1))
-                    {
-                        output.WriteStartElement(versionedItem.Item1.ToString());
-
-                        foreach (var field in versionedItem.Item2.OrderBy(f => f.Name))
+                        foreach (var field in language.Item2.OrderBy(f => f.Name))
                         {
                             output.WriteAttributeStringIf(field.Name, field.Value);
+                        }
+
+                        foreach (var versionedItem in language.Item3.OrderBy(t => t.Item1))
+                        {
+                            output.WriteStartElement(versionedItem.Item1.ToString());
+
+                            foreach (var field in versionedItem.Item2.OrderBy(f => f.Name))
+                            {
+                                output.WriteAttributeStringIf(field.Name, field.Value);
+                            }
+
+                            output.WriteEndElement();
                         }
 
                         output.WriteEndElement();
                     }
 
-                    output.WriteEndElement();
                 }
 
                 output.WriteEndElement();
             }
 
-            foreach (Item child in item.Children)
+            if (item.Children.Any())
             {
-                Export(output, child, false);
+                output.WriteStartElement("Items");
+
+                foreach (Item child in item.Children)
+                {
+                    Export(output, child, false);
+                }
+
+                output.WriteEndElement();
             }
 
             output.WriteEndElement();
