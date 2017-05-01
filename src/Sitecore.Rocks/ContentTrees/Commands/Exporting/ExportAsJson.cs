@@ -58,7 +58,7 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 
             var item = context.Items.First();
 
-            void Completed(string response, ExecuteResult result)
+            ExecuteCompleted completed = delegate(string response, ExecuteResult result)
             {
                 if (!DataService.HandleExecute(response, result))
                 {
@@ -77,9 +77,10 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
                         AppHost.Shell.HandleException(ex);
                     }
                 }
-            }
+            };
 
-            item.ItemUri.Site.DataService.ExecuteAsync("Exporting.ExportAsJson", Completed, item.ItemUri.DatabaseName.ToString(), item.ItemUri.ItemId.ToString());
+            
+            item.ItemUri.Site.DataService.ExecuteAsync("Exporting.ExportAsJson", completed, item.ItemUri.DatabaseName.ToString(), item.ItemUri.ItemId.ToString());
         }
     }
 }
