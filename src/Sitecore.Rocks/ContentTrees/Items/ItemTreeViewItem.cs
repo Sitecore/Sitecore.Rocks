@@ -24,6 +24,7 @@ using Sitecore.Rocks.Diagnostics;
 using Sitecore.Rocks.Extensibility.Pipelines;
 using Sitecore.Rocks.Extensions.DataServiceExtensions;
 using Sitecore.Rocks.Extensions.FrameworkElementExtensions;
+using Sitecore.Rocks.Extensions.StringExtensions;
 using Sitecore.Rocks.Media;
 using Sitecore.Rocks.UI.TransferItems;
 using TaskDialogInterop;
@@ -374,6 +375,12 @@ namespace Sitecore.Rocks.ContentTrees.Items
             if (pipeline.IsRenamed)
             {
                 Item.Name = newName;
+
+                var n = Item.Path.LastIndexOf('/');
+                if (n >= 0)
+                {
+                    Item.Path = Item.Path.Left(n + 1) + newName;
+                }
 
                 /*
         var itemUri = this.ItemUri;
