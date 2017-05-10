@@ -14,6 +14,7 @@ using Sitecore.Rocks.Diagnostics;
 using Sitecore.Rocks.Extensibility;
 using Sitecore.Rocks.Extensions.StringExtensions;
 using Sitecore.Rocks.Extensions.XElementExtensions;
+using Sitecore.Rocks.Sites.Connections;
 using Sitecore.Rocks.UI.UpdateServerComponents.Updates;
 
 namespace Sitecore.Rocks.UI.UpdateServerComponents
@@ -43,7 +44,7 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
             get { return updaters; }
         }
 
-        public static void AutomaticUpdate([NotNull] string webRootPath)
+        public static void AutomaticUpdate([NotNull] Connection connection, [NotNull] string webRootPath)
         {
             Assert.ArgumentNotNull(webRootPath, nameof(webRootPath));
 
@@ -69,7 +70,7 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
 
             try
             {
-                var plugins = GetInstalledPlugins(webRootPath);
+                var plugins = GetInstalledPlugins(webRootPath, connection.DotNetFrameworkVersion);
 
                 var updates = new List<UpdateInfo>();
 
@@ -171,7 +172,7 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
         }
 
         [NotNull]
-        public static IEnumerable<InstalledPluginInfo> GetInstalledPlugins([NotNull] string webRootPath)
+        public static IEnumerable<InstalledPluginInfo> GetInstalledPlugins([NotNull] string webRootPath, string dotNetFrameworkVersion)
         {
             Assert.ArgumentNotNull(webRootPath, nameof(webRootPath));
 
@@ -179,12 +180,15 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
 
             var result = new List<InstalledPluginInfo>();
 
-            var kernelRuntimeVersion = RuntimeVersion.MaxValue;
+            var kernelRuntimeVersion = RuntimeVersion.Parse(dotNetFrameworkVersion);
+            /*
+            // cannot detect Sitecore.Kernel framework version as this locks the assembly
             var kernelFileName = Path.Combine(webRootPath, @"bin\Sitecore.Kernel.dll");
             if (File.Exists(kernelFileName))
             {
                 kernelRuntimeVersion = GetRuntimeVersion(kernelFileName);
             }
+            */
 
             var folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? string.Empty;
             var fileNames = AppHost.Files.GetFiles(folder, Constants.SitecoreRocksServer + @"*.dll");
@@ -334,11 +338,11 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
 
             try
             {
-                var assembly = Assembly.ReflectionOnlyLoadFrom(fileName);
+                                var assembly = Assembly.ReflectionOnlyLoadFrom(fileName);
 
-                var s = assembly.ImageRuntimeVersion;
+                                var s = assembly.ImageRuntimeVersion;
 
-                return RuntimeVersion.Parse(s);
+                                return RuntimeVersion.Parse(s);
             }
             catch (FileLoadException)
             {

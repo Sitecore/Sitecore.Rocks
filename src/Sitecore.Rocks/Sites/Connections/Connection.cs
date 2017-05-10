@@ -1,4 +1,4 @@
-﻿// © 2015-2016 Sitecore Corporation A/S. All rights reserved.
+﻿// © 2015-2017 Sitecore Corporation A/S. All rights reserved.
 
 using System;
 using System.ComponentModel;
@@ -7,6 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using Sitecore.Rocks.Annotations;
+using Sitecore.Rocks.Data;
 using Sitecore.Rocks.Diagnostics;
 using Sitecore.Rocks.Extensions.XElementExtensions;
 using Sitecore.Rocks.Net;
@@ -30,6 +31,7 @@ namespace Sitecore.Rocks.Sites.Connections
             IsRemoteSitecore = false;
             UseWindowsAuth = false;
             AutomaticallyUpdate = true;
+            DotNetFrameworkVersion = RuntimeVersion.DefaultVersion.ToString();
 
             HostNameComparisonMode = binding.HostNameComparisonMode;
             ReceiveTimeout = binding.ReceiveTimeout;
@@ -62,6 +64,9 @@ namespace Sitecore.Rocks.Sites.Connections
 
         [NotNull, Browsable(false)]
         public string Description { get; set; }
+
+        [Category("Updates")]
+        public string DotNetFrameworkVersion { get; set; }
 
         [NotNull, ReadOnly(true), Category("Connection")]
         public string FileName { get; set; }

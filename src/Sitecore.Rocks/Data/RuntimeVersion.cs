@@ -9,6 +9,7 @@ namespace Sitecore.Rocks.Data
     public class RuntimeVersion
     {
         public static readonly RuntimeVersion Empty = new RuntimeVersion(-1, -1, -1);
+        public static readonly RuntimeVersion DefaultVersion = new RuntimeVersion(10, 0, 0);
 
         public static readonly RuntimeVersion MaxValue = new RuntimeVersion(100, -1, -1);
 

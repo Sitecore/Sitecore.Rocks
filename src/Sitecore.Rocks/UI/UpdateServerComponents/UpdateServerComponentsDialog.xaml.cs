@@ -45,7 +45,7 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
         [NotNull]
         protected List<UpdateInfo> Updates { get; }
 
-        public static void AutomaticUpdate([NotNull] DataService dataService, [NotNull] string serverName, [NotNull] string webRootPath, [CanBeNull] Site site)
+        public static void AutomaticUpdate([NotNull] DataService dataService, [NotNull] string serverName, [NotNull] string webRootPath, [NotNull] Site site)
         {
             Assert.ArgumentNotNull(dataService, nameof(dataService));
             Assert.ArgumentNotNull(serverName, nameof(serverName));
@@ -114,7 +114,9 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
                 Install.Width = 100;
             }
 
-            InstalledPlugins = UpdateServerComponentsManager.GetInstalledPlugins(webRootPath);
+            var dotNetFrameworkVersion = site != null ? site.Connection.DotNetFrameworkVersion : RuntimeVersion.DefaultVersion.ToString();
+
+            InstalledPlugins = UpdateServerComponentsManager.GetInstalledPlugins(webRootPath, dotNetFrameworkVersion);
             LoadComponents(callback, true);
         }
 
@@ -189,7 +191,9 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
                 return;
             }
 
-            InstalledPlugins = UpdateServerComponentsManager.GetInstalledPlugins(WebRootPath);
+            var dotNetFrameworkVersion = Site != null ? Site.Connection.DotNetFrameworkVersion : RuntimeVersion.DefaultVersion.ToString();
+
+            InstalledPlugins = UpdateServerComponentsManager.GetInstalledPlugins(WebRootPath, dotNetFrameworkVersion);
             LoadComponents(completed, false);
         }
 

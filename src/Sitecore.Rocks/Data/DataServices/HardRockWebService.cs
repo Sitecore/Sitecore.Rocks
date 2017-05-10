@@ -513,7 +513,7 @@ namespace Sitecore.Rocks.Data.DataServices
         {
             if (Connection.AutomaticallyUpdate && !string.IsNullOrEmpty(Connection.WebRootPath))
             {
-                UpdateServerComponentsManager.AutomaticUpdate(Connection.WebRootPath);
+                UpdateServerComponentsManager.AutomaticUpdate(Connection, Connection.WebRootPath);
             }
 
             dataService = CreateDataService();
