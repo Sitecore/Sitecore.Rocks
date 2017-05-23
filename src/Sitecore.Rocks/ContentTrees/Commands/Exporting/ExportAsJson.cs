@@ -9,7 +9,7 @@ using Sitecore.Rocks.Extensibility;
 
 namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 {
-    [Command(Submenu = "XML"), Feature(FeatureNames.Exporting)]
+    // [Command(Submenu = "XML"), Feature(FeatureNames.Exporting)]
     public class ExportAsJson : CommandBase
     {
         public ExportAsJson()

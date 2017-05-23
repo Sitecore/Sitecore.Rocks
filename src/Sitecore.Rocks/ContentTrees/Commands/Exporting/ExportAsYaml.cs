@@ -8,6 +8,7 @@ using Sitecore.Rocks.Commands;
 using Sitecore.Rocks.Data;
 using Sitecore.Rocks.Data.DataServices;
 using Sitecore.Rocks.Extensibility;
+using TaskDialogInterop;
 
 namespace Sitecore.Rocks.ContentTrees.Commands.Exporting
 {
