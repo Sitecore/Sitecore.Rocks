@@ -2,11 +2,11 @@
 
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="V6fb7d81e-c4ff-4b7f-adf4-b04e65155687" Version="2.0.60" Language="en-US" Publisher="Sitecore" />
+        <Identity Id="V6fb7d81e-c4ff-4b7f-adf4-b04e65155687" Version="2.1.60" Language="en-US" Publisher="Sitecore" />
         <DisplayName>Sitecore Rocks</DisplayName>
         <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy.
 
-Directly integrated into Microsoft Visual Studio 2013/2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
+Directly integrated into Microsoft Visual Studio 2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
         <MoreInfo>https://github.com/JakobChristensen/Sitecore.Rocks</MoreInfo>
         <License>Sitecore Rocks License Agreement (Final 092812).rtf</License>
         <Icon>Icon.png</Icon>
@@ -14,9 +14,9 @@ Directly integrated into Microsoft Visual Studio 2013/2015/2017, Sitecore Rocks 
         <Tags>Sitecore, Sitecore Rocks, CMS, ASP.NET, C#</Tags>
     </Metadata>
     <Installation>
-        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,15.0]" />
-        <InstallationTarget Version="[12.0,15.0]" Id="Microsoft.VisualStudio.Pro" />
-        <InstallationTarget Version="[12.0,15.0]" Id="Microsoft.VisualStudio.Enterprise" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,15.0]" />
+        <InstallationTarget Version="[14.0,15.0]" Id="Microsoft.VisualStudio.Pro" />
+        <InstallationTarget Version="[14.0,15.0]" Id="Microsoft.VisualStudio.Enterprise" />
     </Installation>
     <Dependencies>
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />

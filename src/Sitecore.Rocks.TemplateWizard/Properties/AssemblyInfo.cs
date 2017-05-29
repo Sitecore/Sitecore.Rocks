@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sitecore")]
 [assembly: AssemblyProduct("Sitecore.Rocks.TemplateWizard")]
-[assembly: AssemblyCopyright("Copyright © Sitecore 2010-2016")]
+[assembly: AssemblyCopyright("Copyright © Sitecore 2010-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
