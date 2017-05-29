@@ -37,7 +37,8 @@ namespace Sitecore.Rocks.ContentEditors.Fields
                 return @"1";
             }
 
-            return @"-";
+            // really weird code in the Content Editor - this should probably be empty - not dash
+            return string.Empty;
         }
 
         public bool IsSupported(Field sourceField)
