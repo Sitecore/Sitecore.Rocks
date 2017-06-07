@@ -75,7 +75,7 @@ namespace Sitecore.Rocks.UI.RuleEditors
         public XElement AddRule()
         {
             var rule = new XElement(@"rule");
-            rule.SetAttributeValue(@"uid", Guid.NewGuid().ToShortId());
+            rule.SetAttributeValue(@"uid", Guid.NewGuid().ToString("B").ToUpperInvariant());
 
             var conditions = new XElement(@"conditions");
             conditions.SetAttributeValue(@"uid", Guid.NewGuid().ToShortId());

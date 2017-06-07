@@ -60,7 +60,7 @@ namespace Sitecore.Rocks.ContentEditors.Fields
 
             if (string.IsNullOrEmpty(value) || value.Contains("<ruleset />"))
             {
-                value = "<ruleset><rule /></ruleset>";
+                value = "<ruleset><rule uid=\"" + Guid.NewGuid().ToString("B").ToUpperInvariant() + "\" /></ruleset>";
             }
 
             var root = value.ToXElement();
