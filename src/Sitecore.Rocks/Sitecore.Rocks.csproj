@@ -1669,7 +1669,6 @@
     </Compile>
     <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\CacheExplorerContext.cs" />
     <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\Commands\Refresh.cs" />
-    <Compile Include="UI\Management\ManagementItems\Caches\Dialogs\CacheExplorer\Commands\RemoveCacheKeys.cs" />
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\AddNewLanguage.cs" />
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\Delete.cs" />
     <Compile Include="UI\Management\ManagementItems\LanguageViewers\Commands\LocateInContentTree.cs" />
@@ -4036,7 +4035,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.None" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildAction="Both" />
+      <UserProperties BuildVersion_BuildAction="Both" BuildVersion_UpdateFileVersion="False" BuildVersion_BuildVersioningStyle="None.None.None.None" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,12 +43,6 @@ namespace Sitecore.Rocks.Server.Validations.Analytics
             if (site == null)
             {
                 output.Write(SeverityLevel.Hint, string.Format("Site \"{0}\" is missing", siteName), string.Format("The site \"{0}\" is a back-end site and is expected to be defined in the web.config.", siteName), "Either define the site or hide this message.");
-                return;
-            }
-
-            if (site.EnableAnalytics)
-            {
-                output.Write(SeverityLevel.Suggestion, "Disable Analytics on back-end sites", string.Format("The site \"{0}\" is a back-end site and analytics should only be enabled for public facing web sites.", siteName), string.Format("Set the 'enableAnalytics' setting to \"false\" for the \"{0}\" site in the web.config.", siteName));
             }
         }
     }

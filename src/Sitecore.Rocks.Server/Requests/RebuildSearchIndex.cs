@@ -1,7 +1,10 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
+using System.Linq;
 using Sitecore.Configuration;
+using Sitecore.ContentSearch.Maintenance;
+using Sitecore.Data.Managers;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Jobs;
 using Sitecore.Search;
@@ -25,30 +28,7 @@ namespace Sitecore.Rocks.Server.Requests
         {
             Debug.ArgumentNotNull(databaseName, nameof(databaseName));
 
-            var database = Factory.GetDatabase(databaseName);
-
-            try
-            {
-                var index = SearchManager.SystemIndex;
-                index.Rebuild();
-            }
-            catch (Exception exception)
-            {
-                Log.Error("Failed to rebuild system search index", exception, GetType());
-            }
-
-            for (var n = 0; n < database.Indexes.Count; n++)
-            {
-                try
-                {
-                    database.Indexes[n].Rebuild(database);
-                    Log.Audit(this, "Rebuild search index: {0}", database.Name);
-                }
-                catch (Exception exception)
-                {
-                    Log.Error("Failed to rebuild search index", exception, GetType());
-                }
-            }
+            IndexCustodian.RebuildAll();
         }
     }
 }

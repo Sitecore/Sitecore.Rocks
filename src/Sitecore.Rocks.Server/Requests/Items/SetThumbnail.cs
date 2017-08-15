@@ -201,7 +201,6 @@ namespace Sitecore.Rocks.Server.Requests.Items
                     {
                         Database = Client.ContentDatabase,
                         Destination = path,
-                        KeepExisting = false,
                         Versioned = false,
                         AlternateText = "Thumbnail for " + item.Paths.Path
                     };

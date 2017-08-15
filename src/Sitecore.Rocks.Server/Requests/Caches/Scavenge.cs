@@ -14,13 +14,13 @@ namespace Sitecore.Rocks.Server.Requests.Caches
 
             foreach (var cacheName in caches.Split('|'))
             {
-                var cache = CacheManager.FindCacheByName(cacheName);
-                if (cache == null)
+                foreach (var cacheInfo in CacheManager.GetAllCaches())
                 {
-                    continue;
+                    if (cacheInfo.Name == cacheName)
+                    {
+                        cacheInfo.Scavenge();
+                    }
                 }
-
-                cache.Scavenge();
             }
 
             return string.Empty;

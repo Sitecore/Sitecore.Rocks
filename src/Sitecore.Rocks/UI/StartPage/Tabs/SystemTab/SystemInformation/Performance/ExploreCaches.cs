@@ -13,7 +13,7 @@ using Sitecore.Rocks.UI.StartPage.Commands;
 
 namespace Sitecore.Rocks.UI.StartPage.Tabs.SystemTab.SystemInformation.Performance
 {
-    [Command(Submenu = ToolsSubmenu.Name), StartPageCommand("Explore Item and Html caches", StartPagePerformanceGroup.Name, 1000), Feature(FeatureNames.Management)]
+    // [Command(Submenu = ToolsSubmenu.Name), StartPageCommand("Explore Item and Html caches", StartPagePerformanceGroup.Name, 1000), Feature(FeatureNames.Management)]
     public class ExploreCaches : StartPageCommandBase
     {
         public ExploreCaches()

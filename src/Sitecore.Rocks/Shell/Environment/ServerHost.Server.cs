@@ -198,12 +198,6 @@ namespace Sitecore.Rocks.Shell.Environment
       }
 
       [System.CodeDom.Compiler.GeneratedCodeAttribute("SitecoreRocks", "1.0.0.0")]
-      public void RemoveCacheKeys([NotNull] Site site, [NotNull] string cacheName, [NotNull] string cacheKeys, [NotNull] ExecuteCompleted completed)
-      {
-        site.DataService.ExecuteAsync("Caches.RemoveCacheKeys", completed, cacheName, cacheKeys);
-      }
-
-      [System.CodeDom.Compiler.GeneratedCodeAttribute("SitecoreRocks", "1.0.0.0")]
       public void Scavenge([NotNull] Site site, [NotNull] string caches, [NotNull] ExecuteCompleted completed)
       {
         site.DataService.ExecuteAsync("Caches.Scavenge", completed, caches);

@@ -48,7 +48,6 @@ namespace Sitecore.Rocks.Server.Requests.Media
                 Database = database,
                 FileBased = false,
                 IncludeExtensionInItemName = false,
-                KeepExisting = true,
                 Language = LanguageManager.DefaultLanguage,
                 Versioned = false
             };

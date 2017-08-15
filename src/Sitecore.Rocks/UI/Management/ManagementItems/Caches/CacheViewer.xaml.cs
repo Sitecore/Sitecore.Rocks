@@ -72,9 +72,9 @@ namespace Sitecore.Rocks.UI.Management.ManagementItems.Caches
 
         public void LoadCaches()
         {
-            if (Context.Site.SitecoreVersion >= Constants.Versions.Version82)
+            if (Context.Site.SitecoreVersion < Constants.Versions.Version82)
             {
-                AppHost.Shell.MessageBox("Cache management is not supported because of breaking changes in Sitecore 8.2", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                AppHost.Shell.MessageBox("Cache management is not supported in Sitecore 8.1 and earlier", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 Loading.Swap(CacheList);
                 RenderCaches();
                 return;

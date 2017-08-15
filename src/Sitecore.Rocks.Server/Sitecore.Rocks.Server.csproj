@@ -81,25 +81,20 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.Client, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.Client.NoReferences.8.1.151207\lib\NET45\Sitecore.Client.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Client, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.Client.NoReferences.8.2.170728\lib\NET452\Sitecore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.ContentSearch.NoReferences.8.1.151207\lib\NET45\Sitecore.ContentSearch.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.ContentSearch.NoReferences.8.2.170728\lib\NET452\Sitecore.ContentSearch.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ContentSearch.Linq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.ContentSearch.Linq.NoReferences.8.1.151207\lib\NET45\Sitecore.ContentSearch.Linq.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.ContentSearch.Linq, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.ContentSearch.Linq.NoReferences.8.2.170728\lib\NET452\Sitecore.ContentSearch.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.Kernel.NoReferences.8.1.151207\lib\NET45\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.Kernel.NoReferences.8.2.170728\lib\NET452\Sitecore.Kernel.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Update, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.Update.NoReferences.8.1.151207\lib\NET45\Sitecore.Update.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Update, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Sitecore.Update.NoReferences.8.2.170728\lib\NET452\Sitecore.Update.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -266,7 +261,6 @@
     <Compile Include="Requests\Cloning\Clone.cs" />
     <Compile Include="Requests\Caches\GetCacheKeys.cs" />
     <Compile Include="Requests\Caches\GetCaches.cs" />
-    <Compile Include="Requests\Caches\RemoveCacheKeys.cs" />
     <Compile Include="Requests\Caches\Scavenge.cs" />
     <Compile Include="Requests\Cloning\Unclone.cs" />
     <Compile Include="Requests\CodeGeneration\CompiledCodeGenerator.cs" />
@@ -587,9 +581,7 @@
     <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\CodeContractNullability.dll" />
     <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\MsgPack.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Requests\XmlLayouts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

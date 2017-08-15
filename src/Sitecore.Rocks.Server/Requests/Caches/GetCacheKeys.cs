@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Xml;
 using Sitecore.Caching;
+using Sitecore.Caching.Generics;
 using Sitecore.Configuration;
 using Sitecore.Data;
 using Sitecore.Diagnostics;
@@ -27,7 +28,7 @@ namespace Sitecore.Rocks.Server.Requests.Caches
 
             output.WriteStartElement("cacheKeys");
 
-            var cache = CacheManager.FindCacheByName(cacheName);
+            var cache = CacheManager.GetNamedInstance(cacheName, 0, false);
             if (cache != null)
             {
                 Write(output, cache);
@@ -38,7 +39,7 @@ namespace Sitecore.Rocks.Server.Requests.Caches
             return writer.ToString();
         }
 
-        private void Write([NotNull] XmlTextWriter output, [NotNull] Cache cache)
+        private void Write([NotNull] XmlTextWriter output, [NotNull] ICache cache)
         {
             Debug.ArgumentNotNull(output, nameof(output));
             Debug.ArgumentNotNull(cache, nameof(cache));
@@ -62,35 +63,27 @@ namespace Sitecore.Rocks.Server.Requests.Caches
 
             foreach (var cacheKey in cache.GetCacheKeys())
             {
-                var entry = cache.GetEntry(cacheKey, false);
-                if (entry.Expired)
-                {
-                    continue;
-                }
-
-                var key = cacheKey.ToString();
-
                 output.WriteStartElement("key");
-                output.WriteAttributeString("key", key);
-                output.WriteAttributeString("size", entry.DataLength.ToString());
-                output.WriteAttributeString("lastAccessed", DateUtil.ToIsoDate(entry.Accessed));
+                output.WriteAttributeString("key", cacheKey.ToString());
+                output.WriteAttributeString("size", string.Empty);
+                output.WriteAttributeString("lastAccessed", string.Empty);
 
                 if (database != null)
                 {
-                    WriteValue(output, database, key);
+                    WriteValue(output, database, cacheKey);
                 }
 
                 output.WriteEndElement();
             }
         }
 
-        private void WriteValue([NotNull] XmlTextWriter output, [NotNull] Database database, [NotNull] string key)
+        private void WriteValue([NotNull] XmlTextWriter output, [NotNull] Database database, [NotNull] object key)
         {
             Debug.ArgumentNotNull(output, nameof(output));
             Debug.ArgumentNotNull(database, nameof(database));
             Debug.ArgumentNotNull(key, nameof(key));
 
-            var id = key.Left(Constants.GuidLength);
+            var id = key.ToString().Left(Constants.GuidLength);
             if (!ID.IsID(id))
             {
                 return;

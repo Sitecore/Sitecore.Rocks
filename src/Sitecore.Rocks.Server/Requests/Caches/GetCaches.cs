@@ -21,19 +21,19 @@ namespace Sitecore.Rocks.Server.Requests.Caches
 
             output.WriteStartElement("caches");
 
-            object[] caches = (object[])CacheManager.GetAllCaches();
+            var caches = CacheManager.GetAllCaches();
 
-            foreach (var cache in caches.OfType<Cache>())
+            foreach (var cacheInfo in caches)
             {
                 output.WriteStartElement("cache");
 
-                output.WriteAttributeString("name", cache.Name);
-                output.WriteAttributeString("size", cache.Size.ToString());
-                output.WriteAttributeString("count", cache.Count.ToString());
-                output.WriteAttributeString("maxsize", cache.MaxSize.ToString());
-                output.WriteAttributeString("scavengable", cache.Scavengable ? "true" : "false");
-                output.WriteAttributeString("enabled", cache.Enabled ? "true" : "false");
-                output.WriteAttributeString("priority", cache.DefaultPriority.ToString());
+                output.WriteAttributeString("name", cacheInfo.Name);
+                output.WriteAttributeString("size", cacheInfo.Size.ToString());
+                output.WriteAttributeString("count", cacheInfo.Count.ToString());
+                output.WriteAttributeString("maxsize", cacheInfo.MaxSize.ToString());
+                output.WriteAttributeString("scavengable", cacheInfo.Scavengable ? "true" : "false");
+                output.WriteAttributeString("enabled", cacheInfo.Enabled ? "true" : "false");
+                output.WriteAttributeString("priority", string.Empty);
 
                 output.WriteEndElement();
             }

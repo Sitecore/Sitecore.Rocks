@@ -132,7 +132,7 @@ namespace Sitecore.Rocks.Server.Requests.Validation
 
                 var fieldId = string.Empty;
                 var validatorFieldId = validator.FieldID;
-                if (!ItemUtil.IsNull(validatorFieldId))
+                if ((object)validatorFieldId != null && !validatorFieldId.IsNull)
                 {
                     fieldId = validatorFieldId.ToString();
                 }
