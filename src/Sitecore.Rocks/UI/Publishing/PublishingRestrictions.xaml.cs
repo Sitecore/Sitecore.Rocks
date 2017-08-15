@@ -140,8 +140,8 @@ namespace Sitecore.Rocks.UI.Publishing
 
         private void Save()
         {
-            var publishTo = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Publish");
-            var publishFrom = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Unpublish");
+            var publishFrom = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Publish");
+            var publishTo = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Unpublish");
             var neverPublish = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Publishing/Publishing/__Never publish");
             var validTo = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Lifetime/Lifetime/__Valid to");
             var validFrom = IdManager.GetFieldId("/sitecore/templates/System/Templates/Sections/Lifetime/Lifetime/__Valid from");
