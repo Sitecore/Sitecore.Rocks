@@ -112,7 +112,7 @@ namespace Sitecore.Rocks.Server.Requests.Packages
 
         private void AddNewItem(Dictionary<string, PackageAnalyzer.PackageItem> paths, PackageAnalyzer.PackageItem packageItem)
         {
-            var path = packageItem.Path;
+            var path = packageItem.Path + "/" + packageItem.ItemName;
 
             if (paths.Keys.Any(p => path.StartsWith(p, StringComparison.InvariantCultureIgnoreCase)))
             {
@@ -126,7 +126,7 @@ namespace Sitecore.Rocks.Server.Requests.Packages
                 paths.Remove(key);
             }
 
-            paths[packageItem.Path] = packageItem;
+            paths[path] = packageItem;
         }
 
         private void AddPostStep(ZipPackageBuilder package, List<PackageAnalyzer.PackageItem> newItems, List<PackageAnalyzer.PackageFile> newFiles)
