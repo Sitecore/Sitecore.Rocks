@@ -1,4 +1,4 @@
-// © 2015-2016 Sitecore Corporation A/S. All rights reserved.
+// © 2015-2017 by Jakob Christensen. All rights reserved.
 
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,7 @@ using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.Data.Query;
 using Sitecore.Diagnostics;
+using Sitecore.Extensions.StringExtensions;
 using Sitecore.Rocks.Server.Extensions.QueryExtensions;
 using Sitecore.Rocks.Server.Pipelines.SetFieldValue;
 
@@ -88,11 +89,37 @@ namespace Sitecore.Rocks.Server.QueryAnalyzers.Opcodes
             item.ChangeTemplate(templateItem);
         }
 
+        private void MoveItem(Item item, string newPath)
+        {
+            var n = newPath.LastIndexOf('/');
+            if (n < 0)
+            {
+                return;
+            }
+
+            var newParentPath = newPath.Left(n);
+            var newItemName = newPath.Mid(n + 1);
+
+            var parentItem = item.Database.CreateItemPath(newParentPath);
+            if (parentItem == null)
+            {
+                return;
+            }
+
+            item.MoveTo(parentItem);
+
+            using (new EditContext(item))
+            {
+                item.Name = newItemName;
+            }
+        }
+
         private void UpdateItem([NotNull] Query query, [NotNull] Item item)
         {
             Debug.ArgumentNotNull(item, nameof(item));
 
             var isEditing = false;
+            var newPath = string.Empty;
 
             foreach (var columnExpression in ColumnExpressions)
             {
@@ -136,6 +163,9 @@ namespace Sitecore.Rocks.Server.QueryAnalyzers.Opcodes
                     case "@templateid":
                         ChangeTemplateById(item, value);
                         break;
+                    case "@path":
+                        newPath = value;
+                        break;
                     default:
                         SetFieldValuePipeline.Run().WithParameters(item, columnName, value);
                         break;
@@ -145,6 +175,11 @@ namespace Sitecore.Rocks.Server.QueryAnalyzers.Opcodes
             if (isEditing)
             {
                 item.Editing.EndEdit();
+            }
+
+            if (!string.IsNullOrEmpty(newPath))
+            {
+                MoveItem(item, newPath);
             }
         }
     }
