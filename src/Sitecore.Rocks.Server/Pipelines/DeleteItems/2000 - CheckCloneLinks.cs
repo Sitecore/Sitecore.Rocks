@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sitecore.Data.Items;
-using Sitecore.Data.Proxies;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Extensibility.Pipelines;
 using Sitecore.SecurityModel;
@@ -32,9 +31,7 @@ namespace Sitecore.Rocks.Server.Pipelines.DeleteItems
 
         private void GetItemClones([NotNull] Item item, [NotNull] List<Item> clones)
         {
-            var realItem = ProxyManager.GetRealItem(item, false);
-
-            var links = Globals.LinkDatabase.GetReferrers(realItem);
+            var links = Globals.LinkDatabase.GetReferrers(item);
 
             foreach (var link in links)
             {
