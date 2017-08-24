@@ -30,17 +30,20 @@ namespace Sitecore.Rocks.Server.Requests
             string prefix;
             if (folder.StartsWith("web:"))
             {
-                folder = Path.Combine(FileUtil.MapPath("/"), FileUtil.NormalizeWebPath(folder.Mid(4).Replace("/", "\\")).Mid(1));
+                var path = FileUtil.NormalizeWebPath(folder.Mid(4)).TrimStart('/');
+                folder = Path.Combine(FileUtil.MapPath("/"), path);
                 prefix = "web:";
             }
             else if (folder.StartsWith("data:"))
             {
-                folder = Path.Combine(FileUtil.MapPath(Settings.DataFolder), FileUtil.NormalizeWebPath(folder.Mid(5).Replace("/", "\\")).Mid(1));
+                var path = FileUtil.NormalizeWebPath(folder.Mid(5)).TrimStart('/');
+                folder = Path.Combine(FileUtil.MapPath(Settings.DataFolder), path);
                 prefix = "data:";
             }
             else
             {
-                folder = Path.Combine(FileUtil.MapPath("/"), FileUtil.NormalizeWebPath(folder.Replace("/", "\\")).Mid(1));
+                var path = FileUtil.NormalizeWebPath(folder).TrimStart('/');
+                folder = Path.Combine(FileUtil.MapPath("/"), path);
                 prefix = "web:";
             }
 
