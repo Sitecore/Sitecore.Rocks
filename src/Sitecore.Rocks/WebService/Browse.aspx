@@ -3,7 +3,7 @@
 
     public bool IsLoggedIn()
     {
-        return Sitecore.Context.User.Identity.IsAuthenticated && Sitecore.Web.Authentication.TicketManager.IsCurrentTicketValid() && !Sitecore.Security.Authentication.AuthenticationHelper.IsAuthenticationTicketExpired();
+        return Sitecore.Context.User.Identity.IsAuthenticated && Sitecore.Web.Authentication.TicketManager.IsCurrentTicketValid();
     }
 
 </script>
