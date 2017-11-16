@@ -897,7 +897,7 @@ namespace Sitecore.Rocks.Controls
             object context;
 
             var point = ((UIElement)e.Source).TranslatePoint(new Point(e.CursorLeft, e.CursorTop), this);
-            if (point.X < 20)
+            if (point.X < 20 && e.CursorLeft != -1 && e.CursorTop != -1)
             {
                 var control = TreeView.GetBaseTreeViewItem(e.Source);
                 if (control == null)
