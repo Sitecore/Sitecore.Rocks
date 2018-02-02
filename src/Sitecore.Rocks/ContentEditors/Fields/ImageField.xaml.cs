@@ -156,7 +156,7 @@ namespace Sitecore.Rocks.ContentEditors.Fields
             {
                 var bitmapImage = new BitmapImage();
                 bitmapImage.DownloadFailed += HandleDownloadFailed;
-                bitmapImage.DecodeFailed += HandleDownloadFailed;
+                bitmapImage.DecodeFailed += (sender, e) => HandleDecodeFailed(sender, e, uri.ToString());
 
                 bitmapImage.LoadIgnoreCache(uri);
 
@@ -296,12 +296,31 @@ namespace Sitecore.Rocks.ContentEditors.Fields
             return this;
         }
 
-        private void HandleDownloadFailed(object sender, ExceptionEventArgs e)
+        private void HandleDownloadFailed(object sender, [NotNull] ExceptionEventArgs e)
         {
             var uri = new Uri(@"pack://application:,,,/Sitecore.Rocks;component/Resources/128x128/delete.png");
 
             ErrorTextBlock.Visibility = Visibility.Visible;
             ErrorTextBlock.Text = "Failed to load image: " + e.ErrorException.Message;
+
+            try
+            {
+                var bitmapImage = new BitmapImage();
+                bitmapImage.LoadIgnoreCache(uri);
+                Image.Source = bitmapImage;
+            }
+            catch (OutOfMemoryException)
+            {
+                Image.Source = Icon.Empty.GetSource();
+            }
+        }
+
+        private void HandleDecodeFailed([CanBeNull] object sender, [NotNull] ExceptionEventArgs e, [NotNull] string url)
+        {
+            var uri = new Uri(@"pack://application:,,,/Sitecore.Rocks;component/Resources/128x128/delete.png");
+
+            ErrorTextBlock.Visibility = Visibility.Visible;
+            ErrorTextBlock.Text = "The image could be not decoded. Please check security settings on this URL: " + url;
 
             try
             {
