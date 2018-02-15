@@ -419,13 +419,7 @@ namespace Sitecore.Rocks.ContentEditors.Dialogs
             Debug.ArgumentNotNull(image, nameof(image));
             Debug.ArgumentNotNull(imageName, nameof(imageName));
 
-            var server = AppHost.Settings.Options.PluginRespositoryUrl;
-            if (!server.StartsWith(@"http://"))
-            {
-                server = @"http://" + server;
-            }
-
-            var path = string.Format(@"{0}/icons/icons_{1}.png", server, imageName);
+            var path = $"https://raw.githubusercontent.com/JakobChristensen/Sitecore.Rocks/master/icons/icons_{imageName}.png";
 
             var policy = new RequestCachePolicy(RequestCacheLevel.Default);
 
