@@ -9,7 +9,7 @@ Sitecore Rocks integrates directly with Microsoft Visual Studio 2013 and 2015
 and gives developers a fast, streamlined development experience by letting them use the tools 
 that they are familiar with. 
 
-![Sitecore Rocks](https://i1.visualstudiogallery.msdn.s-msft.com/44a26c88-83a7-46f6-903c-5c59bcd3d35b/image/file/148813/1/readme1.png)
+![Sitecore Rocks](https://jakobchristensen.gallerycdn.vsassets.io/extensions/jakobchristensen/sitecorerocks/2.1.86/1517567127404/148813/1/Readme1.png)
 
 ## Features
 
