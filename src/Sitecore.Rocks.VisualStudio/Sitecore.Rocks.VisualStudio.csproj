@@ -40,6 +40,9 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files %28x86%29\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Exp</StartArguments>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -79,7 +82,10 @@
     <DeployExtension>True</DeployExtension>
     <CopyVsixExtensionFiles>False</CopyVsixExtensionFiles>
     <CopyVsixExtensionLocation>c:\Users\JC\AppData\Local\Microsoft\VisualStudio\14.0exp\Extensions\Sitecore Rocks</CopyVsixExtensionLocation>
+    <IncludeDebugSymbolsInVSIXContainer>true</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>true</IncludeDebugSymbolsInLocalVSIXDeployment>
     <Prefer32Bit>false</Prefer32Bit>
+    <DefaultIncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3bDebugSymbolsProjectOutputGroup</DefaultIncludeOutputGroupsInVSIX>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -92,6 +98,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
     <Prefer32Bit>false</Prefer32Bit>
+    <DefaultIncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</DefaultIncludeOutputGroupsInVSIX>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -987,12 +994,12 @@
     <ProjectReference Include="..\Sitecore.Rocks.TemplateWizard\Sitecore.Rocks.TemplateWizard.csproj">
       <Project>{C7509E56-744C-4EC6-A422-763A2BF39029}</Project>
       <Name>Sitecore.Rocks.TemplateWizard</Name>
-      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+      <IncludeOutputGroupsInVSIX>$(DefaultIncludeOutputGroupsInVSIX)</IncludeOutputGroupsInVSIX>
     </ProjectReference>
     <ProjectReference Include="..\Sitecore.Rocks\Sitecore.Rocks.csproj">
       <Project>{39d87fbf-43b7-4a35-8065-0fba544ad601}</Project>
       <Name>Sitecore.Rocks</Name>
+      <IncludeOutputGroupsInVSIX>$(DefaultIncludeOutputGroupsInVSIX)</IncludeOutputGroupsInVSIX>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
