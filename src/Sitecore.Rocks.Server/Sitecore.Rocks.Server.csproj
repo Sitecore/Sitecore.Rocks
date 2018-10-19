@@ -587,7 +587,9 @@
     <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\CodeContractNullability.dll" />
     <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\MsgPack.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="sitecore\shell\WebService\Web.config" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -1,4 +1,4 @@
-// © 2015-2016 Sitecore Corporation A/S. All rights reserved.
+// ï¿½ 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
 using System.IO;
@@ -59,6 +59,15 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
                 options.Output.WriteLine(@"/sitecore/shell/WebService/Sitecore.Rocks.Validation.ashx: " + ex.Message);
             }
 
+            try
+            {
+                File.Delete(Path.Combine(webServiceFolder, @"Web.config"));
+            }
+            catch (Exception ex)
+            {
+                options.Output.WriteLine(@"/sitecore/shell/WebService/Web.config: " + ex.Message);
+            }
+
             return true;
         }
 
@@ -77,6 +86,7 @@ namespace Sitecore.Rocks.UI.UpdateServerComponents
                 IO.File.CopyFile(webServiceFolder, Path.Combine(source, @"WebService\\Service2.asmx"));
                 IO.File.CopyFile(webServiceFolder, Path.Combine(source, @"WebService\\Browse.aspx"));
                 IO.File.CopyFile(webServiceFolder, Path.Combine(source, @"WebService\\Sitecore.Rocks.Validation.ashx"));
+                IO.File.CopyFile(webServiceFolder, Path.Combine(source, @"WebService\\Web.config"));
             }
             catch (UnauthorizedAccessException)
             {

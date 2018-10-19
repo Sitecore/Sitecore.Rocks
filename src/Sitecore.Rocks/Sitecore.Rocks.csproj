@@ -3630,6 +3630,10 @@
     <Content Include="WebService\Sitecore.Rocks.Validation.ashx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebService\Web.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Resource Include="Resources\JScript.langdef" />
     <Resource Include="Resources\PowerShell.langdef" />
     <Resource Include="Resources\SCQL.langdef" />
