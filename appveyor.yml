@@ -20,6 +20,15 @@ before_build:
 build:
   project: Sitecore.Rocks.sln
   verbosity: minimal
+after_build:
+- ps: >-
+    msbuild .\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj /p:Configuration=Release /p:Platform=AnyCPU /p:DeployOnBuild=true /p:PublishProfile=FilesystemPublish /p:DebugType=None /verbosity:minimal
+
+    Install-Module -Name Sitecore.Courier
+
+    New-CourierPackage -Target "$((pwd).Path)\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output "$((pwd).Path)\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
 artifacts:
 - path: src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix
   name: Sitecore.Rocks.VisualStudio.vsix
+- path: src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update
+  name: Sitecore.Rocks.Server.update
