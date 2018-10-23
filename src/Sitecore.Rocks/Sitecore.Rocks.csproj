@@ -235,6 +235,7 @@
     <Compile Include="IO\Zip\ZipReader.cs" />
     <Compile Include="IO\Zip\ZipWriter.cs" />
     <Compile Include="Net\Blowfish.cs" />
+    <Compile Include="Net\Pipelines\Troubleshooter\030 - LoginRedirectOnDataService.cs" />
     <Compile Include="Shell\Pipelines\Initialization\1500 - LoadKeyboardScheme.cs" />
     <Compile Include="Shell\ProjectOptions\PropertyPages\BuildTaskPropertyPage.xaml.cs">
       <DependentUpon>BuildTaskPropertyPage.xaml</DependentUpon>
