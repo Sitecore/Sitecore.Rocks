@@ -558,30 +558,31 @@
     <Compile Include="Validations\Workflows\WorkflowInitialState.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.config" />
+    <None Include="Properties\PublishProfiles\FilesystemPublish.pubxml" />
+    <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.Debug.config">
+    <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.Release.config">
+    <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.Developing.config">
+    <None Include="web.Developing.config">
       <DependentUpon>web.config</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore\shell\WebService\Sitecore.Rocks.Validation.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config">
+    <None Include="packages.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\ResharperCodeContractNullability.1.0.5\analyzers\dotnet\cs\CodeContractNullability.dll" />
