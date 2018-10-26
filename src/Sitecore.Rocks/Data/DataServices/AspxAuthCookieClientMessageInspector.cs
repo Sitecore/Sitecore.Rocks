@@ -14,6 +14,14 @@ namespace Sitecore.Rocks.Data.DataServices
 {
     internal class AspxAuthCookieClientMessageInspector : IClientMessageInspector
     {
+        private readonly string[] _cookies =
+        {
+            ".ASPXAUTH",
+            "sitecore_userticket",
+            ".AspNet.ExternalCookie",
+            ".AspNet.Cookies"
+        };
+
         public AspxAuthCookieClientMessageInspector([NotNull] string hostName)
         {
             HostName = hostName;
@@ -32,25 +40,28 @@ namespace Sitecore.Rocks.Data.DataServices
                 return;
             }
 
-            var cookie = httpResponse.Headers[HttpResponseHeader.SetCookie];
-            if (string.IsNullOrEmpty(cookie))
+            var cookieHeader = httpResponse.Headers[HttpResponseHeader.SetCookie];
+            if (string.IsNullOrEmpty(cookieHeader))
             {
                 return;
             }
 
-            var aspxAuthCookie = GetAspxAuthCookie(cookie);
-            if (string.IsNullOrEmpty(aspxAuthCookie))
+            foreach (var cookieName in _cookies)
             {
-                return;
-            }
+                var cookieValue = GetCookie(cookieHeader, cookieName);
+                if (string.IsNullOrEmpty(cookieValue))
+                {
+                    continue;
+                }
 
-            try
-            {
-                Application.SetCookie(new Uri(HostName), @".ASPXAUTH=" + aspxAuthCookie);
-            }
-            catch (Exception ex)
-            {
-                AppHost.Output.Log("Failed to set cookie: " + ex.Message + ex.StackTrace);
+                try
+                {
+                    Application.SetCookie(new Uri(HostName), $"{cookieName}={cookieValue}");
+                }
+                catch (Exception ex)
+                {
+                    AppHost.Output.Log($"Failed to set cookie {cookieName}: " + ex.Message + ex.StackTrace);
+                }
             }
         }
 
@@ -61,15 +72,15 @@ namespace Sitecore.Rocks.Data.DataServices
         }
 
         [CanBeNull]
-        public string GetAspxAuthCookie(string sharedCookie)
+        public string GetCookie(string cookieHeader, string cookieName)
         {
-            var result = sharedCookie ?? string.Empty;
-            var n = result.IndexOf(".ASPXAUTH", StringComparison.Ordinal);
+            var result = cookieHeader ?? string.Empty;
+            var n = result.IndexOf(cookieName, StringComparison.Ordinal);
 
             if (n >= 0)
             {
                 result = result.Mid(n);
-                result = result.Mid(10);
+                result = result.Mid(cookieName.Length+1);
                 n = result.IndexOf(";", StringComparison.Ordinal);
                 if (n >= 0)
                 {
