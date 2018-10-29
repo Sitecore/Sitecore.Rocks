@@ -51,7 +51,7 @@ namespace Sitecore.Rocks.Net.Pipelines.Troubleshooter
             AppHost.MessageBox("Access was denied when trying to communicate with the Sitecore service. \r\n\r\n" +
                                "Sitecore 9.0+ requires configuring anonymous access to utilize the Good Old Web Service. " +
                                "Installing the Hard Rock Web Service will automatically enable anonymous access to the services. \r\n\r\n" +
-                               "See https://kb.sitecore.net/articles/TODO for more information.",
+                               "See https://kb.sitecore.net/articles/763639 for more information.",
                                Resources.Error, MessageBoxButton.OK, MessageBoxImage.Hand);
         }
     }
