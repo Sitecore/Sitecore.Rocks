@@ -44,7 +44,7 @@ namespace Sitecore.Rocks.ContentTrees.Commands.Browsing.Items
         {
             Debug.ArgumentNotNull(item, nameof(item));
 
-            var path = new UrlString(@"/default.aspx");
+            var path = new UrlString("/");
 
             path["sc_itemid"] = item.ItemUri.ItemId.ToString();
             path["sc_mode"] = @"edit";
