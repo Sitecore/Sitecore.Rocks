@@ -5,7 +5,7 @@
 
 Sitecore Rocks makes Sitecore developers happy!
 
-Sitecore Rocks integrates directly with Microsoft Visual Studio 2013 and 2015 
+Sitecore Rocks integrates directly with Microsoft Visual Studio 2015 and 2017 
 and gives developers a fast, streamlined development experience by letting them use the tools 
 that they are familiar with. 
 
