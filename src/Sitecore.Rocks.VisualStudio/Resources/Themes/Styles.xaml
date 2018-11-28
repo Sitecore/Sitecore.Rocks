@@ -1017,6 +1017,12 @@
         </Setter>
     </Style>
 
+    <!-- Date Picker -->
+    <Style BasedOn="{StaticResource {x:Type Control}}"  TargetType="{x:Type DatePicker}">
+        <Setter Property="Background" Value="{StaticResource TextBoxBackground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorder}" />
+    </Style>
+
     <!-- Button-->
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
