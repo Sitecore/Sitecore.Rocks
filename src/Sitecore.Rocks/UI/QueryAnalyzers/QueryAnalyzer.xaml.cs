@@ -712,7 +712,7 @@ namespace Sitecore.Rocks.UI.QueryAnalyzers
             Debug.ArgumentNotNull(sender, nameof(sender));
             Debug.ArgumentNotNull(e, nameof(e));
 
-            AppHost.Browsers.Navigate("https://github.com/JakobChristensen/Sitecore.Rocks/blob/master/docs/QueryAnalyzer/QueryAnalyzerSamples.md");
+            AppHost.Browsers.Navigate("https://github.com/Sitecore/Sitecore.Rocks/blob/master/docs/QueryAnalyzer/QueryAnalyzerSamples.md");
         }
 
         private void OpenScript([NotNull] object sender, [NotNull] RoutedEventArgs e)

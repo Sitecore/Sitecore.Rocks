@@ -10,7 +10,7 @@ namespace Sitecore.Rocks.UI.StartPage.Tabs.GetStarted.SitecoreRocks.Plugins
     {
         protected override void Execute()
         {
-            AppHost.Browsers.Navigate(@"https://github.com/JakobChristensen/Sitecore.Rocks/blob/master/docs/Plugins/CreatingVisualStudioProjects.md");
+            AppHost.Browsers.Navigate(@"https://github.com/Sitecore/Sitecore.Rocks/blob/master/docs/Plugins/CreatingVisualStudioProjects.md");
         }
     }
 }
