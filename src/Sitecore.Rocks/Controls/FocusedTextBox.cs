@@ -85,8 +85,10 @@ namespace Sitecore.Rocks.Controls
             var newSelectionStart = 0;
             for (var i = 1; i < Text.Length; ++i)
             {
-                var currentTextWidth = new FormattedText(Text.Substring(0, i), CultureInfo.CurrentCulture, FlowDirection, currentTypeface, FontSize, Foreground).Width;
-                if (relativePosition > currentTextWidth - CursorLeftPadding)
+#pragma warning disable CS0618 // Type or member is obsolete
+				var currentTextWidth = new FormattedText(Text.Substring(0, i), CultureInfo.CurrentCulture, FlowDirection, currentTypeface, FontSize, Foreground).Width;
+#pragma warning restore CS0618 // Type or member is obsolete
+				if (relativePosition > currentTextWidth - CursorLeftPadding)
                 {
                     newSelectionStart = i;
                 }
