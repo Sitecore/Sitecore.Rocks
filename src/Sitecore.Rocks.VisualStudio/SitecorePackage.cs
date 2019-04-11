@@ -263,9 +263,6 @@ namespace Sitecore.Rocks
 
         protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 		{
-			// Switches to the UI thread in order to consume some services used in command initialization
-			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-
 			AppHost.Container.Register<BrowserHost, VisualStudioBrowserHost>().AsSingleton();
             AppHost.Container.Register<FilesHost, VisualStudioFilesHost>().AsSingleton();
             AppHost.Container.Register<OutputHost, VisualStudioOutputHost>().AsSingleton();
@@ -294,7 +291,10 @@ namespace Sitecore.Rocks
 			Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
             EventManager.RegisterClassHandler(typeof(System.Windows.Window), FrameworkElement.UnloadedEvent, new RoutedEventHandler(WindowUnloaded));
 
-            AppHost.Shell.Initialize();
+			// Switches to the UI thread in order to consume some services used in command initialization
+			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+			AppHost.Shell.Initialize();
 
 			var shellService = await GetServiceAsync(typeof(SVsShell)) as IVsShell;
             if (shellService != null)
