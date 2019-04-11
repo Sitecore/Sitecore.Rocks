@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using EnvDTE;
@@ -50,10 +51,10 @@ using Sitecore.Rocks.UI.XpathBuilder;
 namespace Sitecore.Rocks
 {
     // ReSharper disable ArrangeAttributes
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(@"#110", @"#112", @"1.0", IconResourceID = 400)]
     [ProvideMenuResource(@"Menus.ctmenu", 1)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideToolWindow(typeof(ArchivePane), Style = VsDockStyle.MDI, Transient = true)]
     [ProvideToolWindow(typeof(ContentTreePane))]
     [ProvideToolWindow(typeof(ContentEditorPane), MultiInstances = true, Style = VsDockStyle.MDI, Transient = true)]
@@ -100,7 +101,7 @@ namespace Sitecore.Rocks
     [UsedImplicitly]
 
     // ReSharper restore ArrangeAttributes
-    public sealed class SitecorePackage : Package, IVsShellPropertyEvents
+    public sealed class SitecorePackage : AsyncPackage, IVsShellPropertyEvents
     {
         public const string CodeGenerationFileExtension = ".scx";
 
@@ -260,11 +261,12 @@ namespace Sitecore.Rocks
             AppHost.Tasks.Clear("Sitecore Layouts", window.Caption);
         }
 
-        protected override void Initialize()
-        {
-            base.Initialize();
+        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+		{
+			// Switches to the UI thread in order to consume some services used in command initialization
+			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            AppHost.Container.Register<BrowserHost, VisualStudioBrowserHost>().AsSingleton();
+			AppHost.Container.Register<BrowserHost, VisualStudioBrowserHost>().AsSingleton();
             AppHost.Container.Register<FilesHost, VisualStudioFilesHost>().AsSingleton();
             AppHost.Container.Register<OutputHost, VisualStudioOutputHost>().AsSingleton();
             AppHost.Container.Register<ProjectHost, VisualStudioProjectHost>().AsSingleton();
@@ -289,12 +291,12 @@ namespace Sitecore.Rocks
             AppHost.Plugins.ResolvePluginAssemblies += (fileNames, includePackages, includeAssemblies, includeServerComponents) => AppHost.Plugins.GetPluginAssemblies(fileNames, includePackages, includeAssemblies, includeServerComponents);
             AppHost.Plugins.UninstallHandlers += AppHost.Plugins.UninstallPlugins;
 
-            Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
+			Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
             EventManager.RegisterClassHandler(typeof(System.Windows.Window), FrameworkElement.UnloadedEvent, new RoutedEventHandler(WindowUnloaded));
 
             AppHost.Shell.Initialize();
 
-            var shellService = GetService(typeof(SVsShell)) as IVsShell;
+			var shellService = await GetServiceAsync(typeof(SVsShell)) as IVsShell;
             if (shellService != null)
             {
                 ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _eventSinkCookie));
