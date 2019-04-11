@@ -2,11 +2,11 @@
 
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="V6fb7d81e-c4ff-4b7f-adf4-b04e65155687" Version="2.1.89" Language="en-US" Publisher="Sitecore" />
+        <Identity Id="V6fb7d81e-c4ff-4b7f-adf4-b04e65155687" Version="3.0.0" Language="en-US" Publisher="Sitecore" />
         <DisplayName>Sitecore Rocks</DisplayName>
         <Description xml:space="preserve">Sitecore Rocks makes Sitecore developers happy.
 
-Directly integrated into Microsoft Visual Studio 2015/2017, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
+Directly integrated into Microsoft Visual Studio 2015/2017/2019, Sitecore Rocks provides a fast and streamlined development experience with tools that developers are used to.        </Description>
         <MoreInfo>https://github.com/Sitecore/Sitecore.Rocks</MoreInfo>
         <License>Sitecore Rocks License Agreement (Final 092812).rtf</License>
         <Icon>Icon.png</Icon>
