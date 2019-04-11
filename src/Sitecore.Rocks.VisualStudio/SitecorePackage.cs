@@ -280,7 +280,10 @@ namespace Sitecore.Rocks
 
             AppHost.Usage.Report("Started Sitecore Rocks Visual Studio");
 
-            AppHost.Shell.VisualStudioVersion = new Version(Dte.Version);
+			// Switches to the UI thread in order to consume some services used in command initialization
+			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+			AppHost.Shell.VisualStudioVersion = new Version(Dte.Version);
             AppHost.Shell.VisualStudioLocation = Path.Combine(GetProgramFilesFolder(), "Microsoft Visual Studio " + Dte.Version);
 
             Instance = this;
@@ -290,9 +293,6 @@ namespace Sitecore.Rocks
 
 			Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
             EventManager.RegisterClassHandler(typeof(System.Windows.Window), FrameworkElement.UnloadedEvent, new RoutedEventHandler(WindowUnloaded));
-
-			// Switches to the UI thread in order to consume some services used in command initialization
-			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
 			AppHost.Shell.Initialize();
 
