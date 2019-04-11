@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Windows.Threading;
 using EnvDTE;
+using Microsoft.VisualStudio.Shell;
 using Sitecore.Rocks.Annotations;
 using Sitecore.Rocks.Diagnostics;
 using Sitecore.Rocks.Extensions.ProjectExtensions;
@@ -169,7 +170,11 @@ namespace Sitecore.Rocks.Projects
 
             if (e.FullPath == FileName)
             {
-                Dispatcher.CurrentDispatcher.Invoke(new Action(Reload));
+				ThreadHelper.JoinableTaskFactory.Run(async delegate
+				{
+					await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+					Reload();
+				});
             }
 
             var handler = FileChanged;

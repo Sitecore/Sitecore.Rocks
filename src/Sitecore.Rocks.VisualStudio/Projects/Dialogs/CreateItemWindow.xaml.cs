@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using Microsoft.VisualStudio.Shell;
 using Sitecore.Rocks.Annotations;
 using Sitecore.Rocks.Applications.Storages;
 using Sitecore.Rocks.ContentTrees.Items;
@@ -331,7 +332,11 @@ namespace Sitecore.Rocks.Projects.Dialogs
 
             if (!args.Ignore)
             {
-                projectLogWindow.Dispatcher.Invoke(new Action(() => projectLogWindow.Write(projectItem.Path, args.Text, args.Comment)));
+				ThreadHelper.JoinableTaskFactory.Run(async delegate
+				{
+					await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+					projectLogWindow.Write(projectItem.Path, args.Text, args.Comment);
+				});
             }
         }
 
