@@ -290,7 +290,6 @@
     <Compile Include="Shell\Panes\SimpleEditorFactory.cs" />
     <Compile Include="Shell\Panes\SimpleEditorPane.cs" />
     <Compile Include="Shell\Panes\VsUIShell.cs" />
-    <Compile Include="Projects\Commands\AddToToolbox.cs" />
     <Compile Include="Projects\Commands\CheckOut.cs" />
     <Compile Include="Projects\Commands\BindFileItem.cs" />
     <Compile Include="Projects\Commands\Registering\RegisterFiles.cs" />
@@ -336,12 +335,6 @@
     <Compile Include="Projects\FileItems\PathBasedFileItemHandler.cs" />
     <Compile Include="Projects\FileItems\FileItemHandlerAttribute.cs" />
     <Compile Include="Projects\FileItems\Handlers\SublayoutFileItemHandler.cs" />
-    <Compile Include="Projects\ToolboxItems\FieldRendererToolboxItemHandler.cs" />
-    <Compile Include="Projects\ToolboxItems\HtmlToolboxItemHandler.cs" />
-    <Compile Include="Projects\ToolboxItems\PlaceholderToolboxItemHandler.cs" />
-    <Compile Include="Projects\ToolboxItems\SublayoutToolboxItemHandler.cs" />
-    <Compile Include="Projects\ToolboxItems\ToolboxItemHandlerAttribute.cs" />
-    <Compile Include="Projects\ToolboxItems\ToolboxItemHandler.cs" />
     <Compile Include="Projects\FileItems\Handlers\XsltFileItemHandler.cs" />
     <Compile Include="Projects\Project.cs" />
     <Compile Include="Projects\ProjectFileItem.cs" />
@@ -349,8 +342,6 @@
       <DependentUpon>ProjectLogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Projects\ProjectManager.cs" />
-    <Compile Include="Projects\ToolboxItems\ToolboxItemManager.cs" />
-    <Compile Include="Projects\ToolboxItems\XsltToolboxItemHandler.cs" />
     <Compile Include="Shell\Commands\MenuCommands\ContentEditors\ContentEditorCommand.cs" />
     <Compile Include="Shell\Commands\MenuCommands\ContentTrees\CollapseAll.cs" />
     <Compile Include="Shell\Commands\MenuCommands\ContentTrees\ContentTreeCommand.cs" />
