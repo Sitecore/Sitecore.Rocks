@@ -1,5 +1,6 @@
 ﻿// © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TextTemplating;
 using Microsoft.VisualStudio.TextTemplating.VSHost;
 using Sitecore.Rocks.Annotations;
@@ -14,7 +15,13 @@ namespace Sitecore.Rocks.CodeGeneration.T4
         {
             Assert.ArgumentNotNull(templateFileName, nameof(templateFileName));
 
-            var t4 = SitecorePackage.Instance.GetService<STextTemplating>() as ITextTemplating;
+			ITextTemplating t4 = null;
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				t4 = SitecorePackage.Instance.GetService<STextTemplating>() as ITextTemplating;
+			});
+			
             var sessionHost = t4 as ITextTemplatingSessionHost;
             if (sessionHost == null)
             {
