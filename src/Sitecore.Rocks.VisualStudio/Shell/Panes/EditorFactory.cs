@@ -18,7 +18,12 @@ namespace Sitecore.Rocks.Shell.Panes
             Debug.ArgumentNotNull(documentName, nameof(documentName));
             Debug.ArgumentNotNull(guid, nameof(guid));
 
-            var shellOpenDocument = SitecorePackage.Instance.GetService<IVsUIShellOpenDocument>();
+			IVsUIShellOpenDocument shellOpenDocument = null;
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				shellOpenDocument = SitecorePackage.Instance.GetService<IVsUIShellOpenDocument>();
+			});
             if (shellOpenDocument == null)
             {
                 AppHost.Output.Log("Failed to get IVsUIShellOpenDocument");

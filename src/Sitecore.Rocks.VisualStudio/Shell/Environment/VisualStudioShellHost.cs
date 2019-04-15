@@ -56,7 +56,12 @@ namespace Sitecore.Rocks.Shell.Environment
                     break;
             }
 
-            var pressed = VsShellUtilities.ShowMessageBox(SitecorePackage.Instance, text, string.Empty, icon, button, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+			var pressed = 0;
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				VsShellUtilities.ShowMessageBox(SitecorePackage.Instance, text, string.Empty, icon, button, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+			});
 
             var result = MessageBoxResult.None;
             switch (pressed)
@@ -100,7 +105,13 @@ namespace Sitecore.Rocks.Shell.Environment
         {
             Assert.ArgumentNotNull(dialog, nameof(dialog));
 
-            var shell = SitecorePackage.Instance.GetService<IVsUIShell>();
+			IVsUIShell shell = null;
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				shell = SitecorePackage.Instance.GetService<IVsUIShell>();
+			});
+			
             if (shell == null)
             {
                 AppHost.Output.Log("Failed to get IVsUIShell");

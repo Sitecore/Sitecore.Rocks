@@ -123,7 +123,14 @@ namespace Sitecore.Rocks
         public BuildEvents BuildEvents { get; set; }
 
         [NotNull]
-        public DTE2 Dte => (DTE2)GetService(typeof(SDTE));
+		public DTE2 Dte
+		{
+			get
+			{
+				ThreadHelper.ThrowIfNotOnUIThread();
+				return (DTE2)GetService(typeof(SDTE));
+			}
+		}
 
         [NotNull]
         public Events2 Events { get; set; }
@@ -132,7 +139,14 @@ namespace Sitecore.Rocks
         public static SitecorePackage Instance { get; set; }
 
         [NotNull]
-        public OleMenuCommandService MenuService => (OleMenuCommandService)GetService(typeof(IMenuCommandService));
+        public OleMenuCommandService MenuService
+		{
+			get
+			{
+				ThreadHelper.ThrowIfNotOnUIThread();
+				return (OleMenuCommandService)GetService(typeof(IMenuCommandService));
+			}
+		}
 
         [NotNull]
         public VisualStudioOptions Options => (VisualStudioOptions)GetDialogPage(typeof(VisualStudioOptions));
@@ -168,12 +182,14 @@ namespace Sitecore.Rocks
         [CanBeNull]
         public T GetService<T>() where T : class
         {
+			ThreadHelper.ThrowIfNotOnUIThread();
             return GetService(typeof(T)) as T;
         }
 
         [CanBeNull]
         public IVsTextManager GetTextManagerService()
         {
+			ThreadHelper.ThrowIfNotOnUIThread();
             return GetService(typeof(VsTextManagerClass)) as IVsTextManager;
         }
 
@@ -383,6 +399,7 @@ namespace Sitecore.Rocks
         int IVsShellPropertyEvents.OnShellPropertyChange(int propid, [NotNull] object propValue)
         {
             Debug.ArgumentNotNull(propValue, nameof(propValue));
+			ThreadHelper.ThrowIfNotOnUIThread();
 
             if ((int)__VSSPROPID.VSSPROPID_Zombie != propid)
             {
