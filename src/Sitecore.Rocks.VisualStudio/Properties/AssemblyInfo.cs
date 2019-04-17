@@ -6,7 +6,7 @@ using System.Resources;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle(@"Sitecore.Rocks.VisualStudio")]
-[assembly: AssemblyDescription(@"Sitecore and Microsoft Visual Studio 2015/2017/2019 integration.")]
+[assembly: AssemblyDescription(@"Sitecore and Microsoft Visual Studio integration.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany(@"Sitecore")]
 [assembly: AssemblyProduct(@"Sitecore.Rocks.VisualStudio")]
@@ -16,5 +16,5 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: NeutralResourcesLanguage(@"en-US")]
-[assembly: AssemblyVersion(@"3.0.0.0")]
-[assembly: AssemblyFileVersion(@"3.0.0")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

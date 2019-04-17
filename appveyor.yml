@@ -1,4 +1,4 @@
-version: 2.1.{build}
+version: 3.0.{build}
 install: 
     - cmd: set PATH=C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin;C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin;%PATH%
     - ps: (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
@@ -11,7 +11,8 @@ platform: Any CPU
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_file_version: '{version}'
+  assembly_version: '$(appveyor_build_version)'
+  assembly_file_version: '$(appveyor_build_version)'
 nuget:
   account_feed: true
 before_build:
