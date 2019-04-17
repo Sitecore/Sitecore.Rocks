@@ -60,7 +60,7 @@ namespace Sitecore.Rocks.Shell.Environment
 			ThreadHelper.JoinableTaskFactory.Run(async delegate
 			{
 				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-				VsShellUtilities.ShowMessageBox(SitecorePackage.Instance, text, string.Empty, icon, button, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+				pressed = VsShellUtilities.ShowMessageBox(SitecorePackage.Instance, text, string.Empty, icon, button, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
 			});
 
             var result = MessageBoxResult.None;
