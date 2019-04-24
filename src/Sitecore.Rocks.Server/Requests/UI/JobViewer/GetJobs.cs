@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using Sitecore.Diagnostics;
 using Sitecore.Jobs;
+using Job = Sitecore.Abstractions.BaseJob;
 
 namespace Sitecore.Rocks.Server.Requests.UI.JobViewer
 {

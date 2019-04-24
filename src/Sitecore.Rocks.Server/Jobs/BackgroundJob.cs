@@ -3,6 +3,7 @@
 using System;
 using Sitecore.Diagnostics;
 using Sitecore.Jobs;
+using JobOptions = Sitecore.Jobs.DefaultJobOptions;
 
 namespace Sitecore.Rocks.Server.Jobs
 {

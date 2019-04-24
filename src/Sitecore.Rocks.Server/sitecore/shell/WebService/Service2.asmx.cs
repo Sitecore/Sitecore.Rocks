@@ -26,7 +26,23 @@ namespace Sitecore.Visual
     {
         public Service2()
         {
-            ExtensibilityLoader.Initialize();
+			try
+			{
+				ExtensibilityLoader.Initialize();
+			}
+            catch (Exception e)
+			{
+				Log.Error("Error initializing Sitecore Rocks server components", e, this);
+				var reflectionException = e as System.Reflection.ReflectionTypeLoadException;
+				if (reflectionException != null)
+				{
+					foreach (var loaderException in reflectionException.LoaderExceptions)
+					{
+						Log.Error("Loader exception", loaderException, this);
+					}
+				}
+				throw new Exception("Error initializing Sitecore Rocks server components, see server logs for details.");
+			}
         }
 
         [NotNull, WebMethod(EnableSession = true)]

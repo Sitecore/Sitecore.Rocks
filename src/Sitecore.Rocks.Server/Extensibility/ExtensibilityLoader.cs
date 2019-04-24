@@ -22,8 +22,6 @@ namespace Sitecore.Rocks.Server.Extensibility
                 return;
             }
 
-            isInitialized = true;
-
             var types = LoadExtensibilityTypes();
 
             UnexportTypes(types);
@@ -31,7 +29,9 @@ namespace Sitecore.Rocks.Server.Extensibility
             Load(types, (attribute, type) => attribute.PreInitialize(type));
             Load(types, (attribute, type) => attribute.Initialize(type));
             Load(types, (attribute, type) => attribute.PostInitialize(type));
-        }
+
+			isInitialized = true;
+		}
 
         private static void Load([NotNull] List<Tuple<Type, object[]>> extensibilityTypes, [NotNull] LoadDelegate load)
         {
@@ -90,17 +90,10 @@ namespace Sitecore.Rocks.Server.Extensibility
 
             foreach (var file in files)
             {
-                try
+                var assembly = Assembly.LoadFrom(file);
+                if (assembly != null)
                 {
-                    var assembly = Assembly.LoadFrom(file);
-                    if (assembly != null)
-                    {
-                        LoadExtensibilityTypes(types, assembly);
-                    }
-                }
-                catch
-                {
-                    continue;
+                    LoadExtensibilityTypes(types, assembly);
                 }
             }
         }

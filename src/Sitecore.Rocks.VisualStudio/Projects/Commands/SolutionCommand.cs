@@ -154,7 +154,7 @@ namespace Sitecore.Rocks.Projects.Commands
             var monitorSelection = Package.GetGlobalService(typeof(SVsShellMonitorSelection)) as IVsMonitorSelection;
             if (monitorSelection == null)
             {
-                throw Exceptions.InvalidOperation();
+                throw new Exception(nameof(monitorSelection) + " is null");
             }
 
             var hierarchyPtr = IntPtr.Zero;
