@@ -74,12 +74,11 @@ namespace Sitecore.Rocks.Data.DataServices
                 try
                 {
                     service = GetDataService();
-
                     var result = service.Login(GetCredentials());
-
-                    if (result == @"Invalid user or password.")
+                    var root = result.ToXElement();
+                    if (root.Name == "error")
                     {
-                        AppHost.MessageBox(Resources.HardRockWebService_TestConnection_Invalid_user_name_or_password_, Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                        AppHost.MessageBox(root.Value, Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
                         return false;
                     }
                 }
@@ -524,7 +523,7 @@ namespace Sitecore.Rocks.Data.DataServices
 
             AppHost.Statusbar.SetText(string.Format(Resources.LoginWindow_ControlLoaded_Connecting_to___0______, Connection.HostName));
 
-            EventHandler<LoginCompletedEventArgs> completed = delegate(object sender, LoginCompletedEventArgs e)
+            EventHandler<LoginCompletedEventArgs> completed = delegate (object sender, LoginCompletedEventArgs e)
             {
                 if (e.Error != null)
                 {
@@ -558,9 +557,13 @@ namespace Sitecore.Rocks.Data.DataServices
                     return;
                 }
 
-                if (e.Result == @"Invalid user or password.")
+                var root = e.Result.ToXElement();
+                if (root.Name == "error")
                 {
-                    Dispatcher.CurrentDispatcher.Invoke(new Action(ShowInvalidUserNameOrPassword));
+                    Dispatcher.CurrentDispatcher.Invoke(new Action<string>(x =>
+                    {
+                        AppHost.MessageBox(x, Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }), root.Value);
                     dataService = null;
                     busy = false;
                     return;
@@ -570,7 +573,6 @@ namespace Sitecore.Rocks.Data.DataServices
                 SitecoreVersionString = string.Empty;
                 SitecoreVersion = RuntimeVersion.Empty;
 
-                var root = e.Result.ToXElement();
                 if (root != null)
                 {
                     LoggedInPipeline.Run().WithParameters(this, root);
@@ -621,11 +623,6 @@ namespace Sitecore.Rocks.Data.DataServices
             {
                 Status = DataServiceStatus.Failed;
             }
-        }
-
-        private void ShowInvalidUserNameOrPassword()
-        {
-            AppHost.MessageBox(Resources.LoginWindow_ShowInvalidUserNameOrPassword_Invalid_user_name_or_password_, Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
