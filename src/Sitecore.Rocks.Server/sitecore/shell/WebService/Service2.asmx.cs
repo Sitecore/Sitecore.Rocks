@@ -28,7 +28,8 @@ namespace Sitecore.Visual
         {
 			try
 			{
-				ExtensibilityLoader.Initialize();
+                Sitecore.Rocks.Server.VersionSpecific.Services.Initialize();
+                ExtensibilityLoader.Initialize();
 			}
             catch (Exception e)
 			{

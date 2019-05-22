@@ -986,6 +986,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sitecore.Rocks.Server.Abstractions\Sitecore.Rocks.Server.Abstractions.csproj">
+      <Project>{ac426fec-50f1-4250-b915-b22888a0eee5}</Project>
+      <Name>Sitecore.Rocks.Server.Abstractions</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="..\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj">
       <Project>{fb504e79-ad4f-4d68-88c8-0e1f668d7fc5}</Project>
       <Name>Sitecore.Rocks.Server</Name>

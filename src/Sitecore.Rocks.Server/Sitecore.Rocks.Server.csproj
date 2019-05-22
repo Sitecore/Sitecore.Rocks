@@ -116,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\HeadingStyleExceptions.txt" />
+    <EmbeddedResource Include="..\Sitecore.Rocks.Server.V910\bin\$(Configuration)\Sitecore.Rocks.Server.v9.1.dll">
+      <Link>Resources\Sitecore.Rocks.Server.v9.1.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\Sitecore.Rocks.Server.V920\bin\$(Configuration)\Sitecore.Rocks.Server.v9.2.dll">
+      <Link>Resources\Sitecore.Rocks.Server.v9.2.dll</Link>
+    </EmbeddedResource>
     <Content Include="sitecore\shell\WebService\Browse.aspx" />
     <Content Include="sitecore\shell\WebService\Service2.asmx" />
   </ItemGroup>
@@ -554,6 +560,9 @@
     <Compile Include="Validations\ValidationWriter.cs" />
     <Compile Include="Validations\Workflows\WorkflowFinalState.cs" />
     <Compile Include="Validations\Workflows\WorkflowInitialState.cs" />
+    <Compile Include="VersionSpecific\AssemblyMatcher.cs" />
+    <Compile Include="VersionSpecific\AssemblyResource.cs" />
+    <Compile Include="VersionSpecific\Services.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FilesystemPublish.pubxml" />
@@ -579,6 +588,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore\shell\WebService\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sitecore.Rocks.Server.Abstractions\Sitecore.Rocks.Server.Abstractions.csproj">
+      <Project>{ac426fec-50f1-4250-b915-b22888a0eee5}</Project>
+      <Name>Sitecore.Rocks.Server.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sitecore.Rocks.Server.V910\Sitecore.Rocks.Server.V910.csproj">
+      <Project>{d9529a09-77d1-4bdc-a17c-d2ea3dbe79ea}</Project>
+      <Name>Sitecore.Rocks.Server.V910</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Sitecore.Rocks.Server.V920\Sitecore.Rocks.Server.V920.csproj">
+      <Project>{1cae9fe8-6809-4ffa-85f8-f58502c3f36d}</Project>
+      <Name>Sitecore.Rocks.Server.V920</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

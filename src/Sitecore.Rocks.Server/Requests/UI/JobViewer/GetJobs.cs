@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Sitecore.Diagnostics;
-using Sitecore.Jobs;
-using Job = Sitecore.Abstractions.BaseJob;
+using Sitecore.Rocks.Server.Abstractions.Jobs;
 
 namespace Sitecore.Rocks.Server.Requests.UI.JobViewer
 {
@@ -14,8 +13,8 @@ namespace Sitecore.Rocks.Server.Requests.UI.JobViewer
         [NotNull]
         public string Execute()
         {
-            var jobs = new List<Job>(JobManager.GetJobs());
-
+            var jobManager = Sitecore.Rocks.Server.VersionSpecific.Services.JobManager;
+            var jobs = new List<Job>(jobManager.GetJobs());
             jobs.Sort(this);
 
             var writer = new StringWriter();
@@ -39,37 +38,16 @@ namespace Sitecore.Rocks.Server.Requests.UI.JobViewer
             Debug.ArgumentNotNull(output, nameof(output));
             Debug.ArgumentNotNull(job, nameof(job));
 
-            string state;
-
-            switch (job.Status.State)
-            {
-                case JobState.Initializing:
-                    state = "Initializing";
-                    break;
-                case JobState.Queued:
-                    state = "Queued";
-                    break;
-                case JobState.Running:
-                    state = "Running";
-                    break;
-                case JobState.Finished:
-                    state = "Finished";
-                    break;
-                default:
-                    state = "Unknown";
-                    break;
-            }
-
             output.WriteStartElement("job");
 
             output.WriteAttributeString("name", job.Name);
             output.WriteAttributeString("queuetime", DateUtil.ToIsoDate(job.QueueTime));
             output.WriteAttributeString("category", job.Category);
             output.WriteAttributeString("isdone", job.IsDone ? "1" : "0");
-            output.WriteAttributeString("processed", job.Status.Processed.ToString());
-            output.WriteAttributeString("total", job.Status.Total.ToString());
-            output.WriteAttributeString("failed", job.Status.Failed ? "1" : "0");
-            output.WriteAttributeString("state", state);
+            output.WriteAttributeString("processed", job.ProcessedCount.ToString());
+            output.WriteAttributeString("total", job.TotalCount.ToString());
+            output.WriteAttributeString("failed", job.IsFailed ? "1" : "0");
+            output.WriteAttributeString("state", job.State);
 
             output.WriteEndElement();
         }
