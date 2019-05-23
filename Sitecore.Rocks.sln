@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V910"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.Tests", "src\Sitecore.Rocks.Server.Tests\Sitecore.Rocks.Server.Tests.csproj", "{AF73759C-E1A0-44BC-A65C-37551C49F930}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.IntegrationTests", "src\Sitecore.Rocks.Server.IntegrationTests\Sitecore.Rocks.Server.IntegrationTests.csproj", "{938414DE-55C5-4621-9157-23A14EA65AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{938414DE-55C5-4621-9157-23A14EA65AF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938414DE-55C5-4621-9157-23A14EA65AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938414DE-55C5-4621-9157-23A14EA65AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938414DE-55C5-4621-9157-23A14EA65AF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,12 @@
+# The root folder with the license file and WDP files.
+#$SCInstallRoot = ""
+
+# SQL Parameters
+#$SqlServer = ""
+#$SqlAdminUser = ""
+#$SqlAdminPassword = ""
+
+# Solr Parameters
+#$SolrUrl = ""
+#$SolrRoot = ""
+#$SolrService = ""
