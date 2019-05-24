@@ -46,14 +46,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationTests.cs" />
     <Compile Include="ClientFactory.cs" />
     <Compile Include="Connected Services\HardRocks\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ToolsTests.cs" />
     <Compile Include="Properties.cs" />
-    <Compile Include="ContentTree.cs" />
+    <Compile Include="ContentTreeTests.cs" />
     <Compile Include="Extensions\XmlElementExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

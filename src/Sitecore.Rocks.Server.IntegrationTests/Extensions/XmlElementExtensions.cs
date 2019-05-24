@@ -15,6 +15,17 @@ namespace Sitecore.Rocks.Server.IntegrationTests.Extensions
         public static dynamic ToDynamic(this XmlElement xml)
         {
             var doc = XDocument.Parse(xml.OuterXml);
+            return doc.ToDynamic();
+        }
+
+        public static dynamic ToDynamic(this string xmlString)
+        {
+            var doc = XDocument.Parse(xmlString);
+            return doc.ToDynamic();
+        }
+
+        public static dynamic ToDynamic(this XDocument doc)
+        {
             var jsonText = JsonConvert.SerializeXNode(doc);
             jsonText = jsonText.Replace("\"@", "\"");
             jsonText = jsonText.Replace("\"#text\"", "\"text\"");

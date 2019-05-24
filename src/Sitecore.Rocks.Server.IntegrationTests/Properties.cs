@@ -17,15 +17,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
 
         public static readonly string MasterDb = "master";
 
-        public static string EndPoint
-        {
-            get
-            {
-                var host = System.Environment.GetEnvironmentVariable("HardRocksHost") ??
-                           "https://rocksTest911.local";
-                return $"{host}/sitecore/shell/webservice/service2.asmx";
-            }
-        }
+        public static readonly string RequestNamespace = "Sitecore.Rocks.Server.Requests";
 
     }
 }

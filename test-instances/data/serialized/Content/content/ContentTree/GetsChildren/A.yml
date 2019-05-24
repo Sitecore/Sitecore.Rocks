@@ -1,8 +1,8 @@
 ﻿---
-ID: "dc22a93f-dd62-475e-8dda-e78e36ea730e"
+ID: "f03d2535-0dc9-429b-a3e0-2cc5d37d3f29"
 Parent: "717ab89b-7086-48a1-badd-ca6d114cce95"
 Template: "76036f5e-cbce-46d1-af0a-4143f9b557aa"
-Path: "/sitecore/content/001-GetChildren/B"
+Path: /sitecore/content/ContentTree/GetsChildren/A
 DB: master
 SharedFields:
 - ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
@@ -15,7 +15,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190523T173211Z
+      Value: 20190523T173156Z
     - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
       Hint: __Workflow state
       Value: "{190B1C84-F1BE-47ED-AA41-F42193D9C8FC}"
@@ -25,4 +25,4 @@ Languages:
         sitecore\admin
     - ID: "75577384-3c97-45da-a847-81b00500e250"
       Hint: Title
-      Value: B
+      Value: A
