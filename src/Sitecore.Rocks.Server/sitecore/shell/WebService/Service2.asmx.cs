@@ -24,6 +24,11 @@ namespace Sitecore.Visual
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1), ToolboxItem(false), WebService(Name = "Sitecore Web Service 2", Namespace = "http://sitecore.net/visual/")]
     public class Service2 : Service
     {
+        /// <summary>
+        /// The username of the authenticated / validated Windows Auth user.
+        /// </summary>
+        protected string WindowsAuthUser => Context.Request.ServerVariables["LOGON_USER"];
+
         public Service2()
         {
 			try
@@ -163,33 +168,26 @@ namespace Sitecore.Visual
         {
             Assert.ArgumentNotNull(credentials, nameof(credentials));
 
-            bool login;
-
-            if (credentials.CustomData == "windowsauth")
-            {
-                login = AuthenticationManager.Login(credentials.UserName);
-            }
-            else
-            {
-                login = AuthenticationManager.Login(credentials.UserName, credentials.Password);
-            }
-
-            if (!login)
-            {
-                return "Invalid user or password.";
-            }
-
             var writer = new StringWriter();
             var output = new XmlTextWriter(writer)
             {
                 Formatting = Formatting.Indented
             };
 
-            output.WriteStartElement("login");
+            var login = DoLogin(credentials, out string message);
+            if (!login)
+            {
 
-            LoginPipeline.Run().WithParameters(output);
-
-            output.WriteEndElement();
+                output.WriteStartElement("error");
+                output.WriteString(message);
+                output.WriteEndElement();
+            }
+            else
+            {
+                output.WriteStartElement("login");
+                LoginPipeline.Run().WithParameters(output);
+                output.WriteEndElement();
+            }
 
             return writer.ToString();
         }
@@ -208,34 +206,59 @@ namespace Sitecore.Visual
 
         protected void LoginUser([NotNull] Credentials credentials)
         {
-            Debug.ArgumentNotNull(credentials, nameof(credentials));
-
-            if (Sitecore.Context.IsLoggedIn)
+            string message = null;
+            if (!DoLogin(credentials, out message))
             {
-                if (Sitecore.Context.User.Name.Equals(credentials.UserName, StringComparison.OrdinalIgnoreCase))
-                {
-                    return;
-                }
-
-                Sitecore.Context.Logout();
+                throw new Exception(message);
             }
+        }
+
+        protected bool DoLogin([NotNull] Credentials credentials, out string message)
+        {
+            Assert.ArgumentNotNull(credentials, nameof(credentials));
+
+            bool login;
+            message = null;
 
             if (!SecurityModel.License.LicenseManager.HasContentManager && !SecurityModel.License.LicenseManager.HasExpress)
             {
-                throw new Exception("A required license is missing");
+                message = "A required license is missing";
+                return false;
             }
 
-            var validated = Membership.ValidateUser(credentials.UserName, credentials.Password);
-            Assert.IsTrue(validated, "Unknown username or password.");
-
-            var user = Security.Accounts.User.FromName(credentials.UserName, true);
-
-            if (!user.IsAdministrator && !user.IsInRole(Role.FromName("sitecore\\Sitecore Client Developing")))
+            // Log out if different user
+            if (Sitecore.Context.IsLoggedIn && !Sitecore.Context.User.Name.Equals(credentials.UserName, StringComparison.OrdinalIgnoreCase))
             {
-                throw new Exception("User is not an Administrator or a member of the sitecore\\Sitecore Client Developing role");
+                AuthenticationManager.Logout();
             }
 
-            AuthenticationManager.Login(credentials.UserName, credentials.Password, true);
+            if (credentials.CustomData == "windowsauth" && credentials.UserName == WindowsAuthUser)
+            {
+                // Note: AD Domain must match Sitecore domain name
+                login = AuthenticationManager.Login(credentials.UserName);
+            }
+            else
+            {
+                login = AuthenticationManager.Login(credentials.UserName, credentials.Password);
+            }
+
+            if (!login)
+            {
+                message = "Invalid user or password.";
+                return false;
+            }
+
+            var user = Sitecore.Security.Accounts.User.Current;
+            const string requiredRole = "sitecore\\Sitecore Client Developing";
+            if (!user.IsInRole(requiredRole) && !user.IsAdministrator)
+            {
+                message = $"User {user.Name} must be an admin or a member of {requiredRole} to use Sitecore Rocks.";
+                Log.Warn(message, this);
+                AuthenticationManager.Logout();
+                return false;
+            }
+
+            return true;
         }
 
         [NotNull]
