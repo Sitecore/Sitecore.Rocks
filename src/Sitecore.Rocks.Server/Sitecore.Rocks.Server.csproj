@@ -94,24 +94,38 @@
   <ItemGroup>
     <PackageReference Include="ResharperCodeContractNullability">
       <Version>1.0.5</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Client">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.ContentSearch.Linq">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.ContentSearch">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Kernel">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Logging">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Update">
       <Version>9.2.0-r*</Version>
+      <Private>false</Private>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +579,7 @@
     <Compile Include="VersionSpecific\Services.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\DebugFilesystemPublish.pubxml" />
     <None Include="Properties\PublishProfiles\FilesystemPublish.pubxml" />
     <None Include="web.config" />
   </ItemGroup>
@@ -630,15 +645,4 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
