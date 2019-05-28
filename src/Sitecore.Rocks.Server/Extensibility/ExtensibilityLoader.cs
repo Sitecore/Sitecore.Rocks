@@ -13,6 +13,7 @@ namespace Sitecore.Rocks.Server.Extensibility
 {
     public static class ExtensibilityLoader
     {
+        private static readonly object _lockObject = new object();
         private static bool isInitialized;
 
         public static void Initialize()
@@ -21,17 +22,23 @@ namespace Sitecore.Rocks.Server.Extensibility
             {
                 return;
             }
+            lock (_lockObject)
+            {
+                // double check
+                if (isInitialized)
+                {
+                    return;
+                }
 
-            var types = LoadExtensibilityTypes();
+                var types = LoadExtensibilityTypes();
+                UnexportTypes(types);
+                Load(types, (attribute, type) => attribute.PreInitialize(type));
+                Load(types, (attribute, type) => attribute.Initialize(type));
+                Load(types, (attribute, type) => attribute.PostInitialize(type));
 
-            UnexportTypes(types);
-
-            Load(types, (attribute, type) => attribute.PreInitialize(type));
-            Load(types, (attribute, type) => attribute.Initialize(type));
-            Load(types, (attribute, type) => attribute.PostInitialize(type));
-
-			isInitialized = true;
-		}
+                isInitialized = true;
+            }
+        }
 
         private static void Load([NotNull] List<Tuple<Type, object[]>> extensibilityTypes, [NotNull] LoadDelegate load)
         {
