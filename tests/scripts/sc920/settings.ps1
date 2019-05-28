@@ -45,9 +45,6 @@ $ClientSecret = "SIF-Default"
 # Pipe-separated list of instances (URIs) that are allowed to login via Sitecore Identity.
 $allowedCorsOrigins = "https://$SitecoreContentManagementSitename"
 
-# Copy our config into the install root
-Copy-Item "$PSScriptRoot\$InstallConfig" $InstallConfigPath
-
 # Install XM1 via combined partials file.
 $singleDeveloperParams = @{
     Path = $InstallConfigPath
@@ -70,12 +67,3 @@ $singleDeveloperParams = @{
     ClientSecret = $ClientSecret
     AllowedCorsOrigins = $AllowedCorsOrigins
 }
-
-Push-Location $SCInstallRoot
-
-Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object log.install.txt
-
-# Uncomment the below line and comment out the above if you want to remove the XM1-SingleDeveloper config.
-#Uninstall-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object log.uninstall.txt
-
-Pop-Location

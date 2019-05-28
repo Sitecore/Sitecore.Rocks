@@ -211,5 +211,4 @@ src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Lucene.2313.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Core.dll
 src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Cms7.dll
-/test-instances/*/settings.user.ps1
-/test-instances/xunit/*
+/tests/*/settings.user.ps1

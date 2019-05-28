@@ -47,6 +47,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
             var response = await client.LoginAsync(new Credentials
             {
                 UserName = "sitecore\\admin",
+                Password = string.Empty,
                 CustomData = "windowsauth"
             });
             var result = response?.Body?.LoginResult;
@@ -94,6 +95,10 @@ namespace Sitecore.Rocks.Server.IntegrationTests
                 Assert.NotNull(httpResponse);
 
                 var cookieHeader = httpResponse.Headers[HttpResponseHeader.SetCookie];
+                if (!_contains && cookieHeader == null)
+                {
+                    return;
+                }
                 Assert.NotNull(cookieHeader);
 
                 foreach (var cookie in _cookies)
