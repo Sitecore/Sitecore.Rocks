@@ -14,7 +14,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
     public class ToolsTests
     {
         [Fact]
-        public async Task GetsJobs()
+        public async Task RebuildsIndexAndGetsJobs()
         {
             // trigger a job first
             await ClientFactory.Client.ExecuteAsync($"{Properties.RequestNamespace}.Indexes.RebuildIndex", new ArrayOfAnyType() { "sitecore_master_index" }, Properties.Credentials);

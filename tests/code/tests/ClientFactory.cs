@@ -27,6 +27,8 @@ namespace Sitecore.Rocks.Server.IntegrationTests
             {
                 var client = new SitecoreWebService2SoapClient();
                 client.Endpoint.Address = new EndpointAddress(EndPoint);
+                // Need to up buffer size due to size of some results, e.g. GetsLayout on core
+                ((BasicHttpBinding) client.Endpoint.Binding).MaxReceivedMessageSize = 1024 * 1024 * 16;
                 return client;
             }
         }

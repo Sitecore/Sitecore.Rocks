@@ -17,6 +17,12 @@ namespace Sitecore.Rocks.Server.IntegrationTests
 
         public static readonly string MasterDb = "master";
 
+        public static readonly string CoreDb = "core";
+
+        public static readonly string Language = "en";
+
+        public static readonly string Version = "1";
+
         public static readonly string RequestNamespace = "Sitecore.Rocks.Server.Requests";
 
     }

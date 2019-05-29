@@ -29,7 +29,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
         {
             const string testId = "{717AB89B-7086-48A1-BADD-CA6D114CCE95}";
             var response = await ClientFactory.Client.GetChildrenAsync(testId, Properties.MasterDb, Properties.Credentials);
-            var result = response?.Body?.GetChildrenResult.ToDynamic();
+            var result = response?.Body?.GetChildrenResult?.ToDynamic();
             Assert.NotNull(result);
             Assert.Collection((IList<dynamic>)result.children.item,
                 x => Assert.Contains("A", x.text),
@@ -38,16 +38,28 @@ namespace Sitecore.Rocks.Server.IntegrationTests
         }
 
         [Fact]
+        public async Task CreatesItem()
+        {
+            const string testId = "{969DCD6B-84AD-4F8F-A05B-6F4F9C86C7D9}";
+            const string templateId = "{76036F5E-CBCE-46D1-AF0A-4143F9B557AA}"; // Sample Item
+            const string name = "Lorem";
+            var response = await ClientFactory.Client.AddFromTemplateAsync(testId, templateId, name, Properties.MasterDb,
+                Properties.Credentials);
+            var result = response?.Body?.AddFromTemplateResult?.ToDynamic();
+            Assert.NotNull(result);
+            Assert.Equal("ok", result.sitecore.status);
+            Assert.True(Guid.TryParse(result.sitecore.data.data, out Guid guid));
+        }
+
+        [Fact]
         public async Task SavesItem()
         {
             const string testId = "{BAEA3739-F2D2-4B53-A1F8-55019F8FEAEA}";
-            const string language = "en";
-            const string version = "1";
             const string value = "Lorem ipsum";
 
             Func<Task<dynamic>> getTestField = async () =>
             {
-                var getFieldsResponse = await ClientFactory.Client.GetItemFieldsAsync(testId, language, version, true,
+                var getFieldsResponse = await ClientFactory.Client.GetItemFieldsAsync(testId, Properties.Language, Properties.Version, true,
                     Properties.MasterDb, Properties.Credentials);
                 var fields = getFieldsResponse.Body.GetItemFieldsResult.ToDynamic();
                 var saveField = ((IList<dynamic>) fields.item.field).First(x => !x.name.StartsWith("__"));
@@ -60,8 +72,8 @@ namespace Sitecore.Rocks.Server.IntegrationTests
                     new XElement("field",
                         new XAttribute("itemid", testId),
                         new XAttribute("fieldid", field.fieldid),
-                        new XAttribute("language", language),
-                        new XAttribute("version", version),
+                        new XAttribute("language", Properties.Language),
+                        new XAttribute("version", Properties.Version),
                         new XElement("value", value)
                     )
                 )

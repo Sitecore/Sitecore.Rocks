@@ -54,6 +54,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="IndexesTests.cs" />
+    <Compile Include="LayoutTests.cs" />
     <Compile Include="LinksTests.cs" />
     <Compile Include="ToolsTests.cs" />
     <Compile Include="Properties.cs" />
