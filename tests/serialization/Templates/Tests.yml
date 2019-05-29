@@ -1,0 +1,18 @@
+﻿---
+ID: "73b327ae-5617-4f75-9719-370fbf35e4d0"
+Parent: "3c1715fe-6a13-4fcf-845f-de308ba9741d"
+Template: "0437fee2-44c9-46a6-abe9-28858d9fee8c"
+Path: /sitecore/templates/Tests
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190528T192145Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

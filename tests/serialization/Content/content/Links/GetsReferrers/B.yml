@@ -1,0 +1,22 @@
+﻿---
+ID: "2c606fe9-b27e-4483-a48f-2d5a6dc0c7a1"
+Parent: "926a4463-6626-4479-9c9c-f7413b84e61d"
+Template: "0ae9d8be-93a1-4e7c-a80f-b98c35dc827a"
+Path: /sitecore/content/Links/GetsReferrers/B
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190528T194757Z
+    - ID: "4edc1eb6-c171-47b3-82b5-26e33a7d95e3"
+      Hint: Link
+      Type: TreelistEx
+      Value: "{DB7B6F7E-16ED-40C9-B507-22350B26B4C6}"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

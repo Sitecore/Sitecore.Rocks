@@ -53,6 +53,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="LinksTests.cs" />
     <Compile Include="ToolsTests.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="ContentTreeTests.cs" />
