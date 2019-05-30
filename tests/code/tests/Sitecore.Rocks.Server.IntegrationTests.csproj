@@ -56,6 +56,7 @@
     <Compile Include="IndexesTests.cs" />
     <Compile Include="LayoutTests.cs" />
     <Compile Include="LinksTests.cs" />
+    <Compile Include="TemplateTests.cs" />
     <Compile Include="ToolsTests.cs" />
     <Compile Include="Properties.cs" />
     <Compile Include="ContentTreeTests.cs" />
