@@ -26,7 +26,7 @@ Function Invoke-Test {
             New-Item -Type Directory $RocksLocation\App_Data\unicorn
         }
         Copy-Item -r -Force .\tests\serialization\* $RocksLocation\App_Data\unicorn\
-        Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret
+        Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret  -InformationAction Continue
 
         # Build Tests
         & msbuild .\tests\code\tests\Sitecore.Rocks.Server.IntegrationTests.csproj /p:Configuration=Debug /p:Platform=AnyCPU /restore /v:m
@@ -38,6 +38,9 @@ Function Invoke-Test {
         Write-Host "Executing integration tests on $RocksHost..." -ForegroundColor green
         & "$env:temp\rocks_xunit\xunit.runner.console.2.4.1\tools\net472\xunit.console.exe" .\tests\code\tests\bin\Debug\Sitecore.Rocks.Server.IntegrationTests.dll -verbose
 
+        # Resync Unicorn to clear changes
+        Write-Host "Cleaning up changes to test data..." -ForegroundColor green
+        Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret -WarningAction SilentlyContinue
     } finally {
         Pop-Location
     }

@@ -11,7 +11,7 @@ try {
     $secret = ([xml](Get-Content -Raw .\tests\code\instance\App_Config\Include\RocksTestData.config)).configuration.sitecore.unicorn.authenticationProvider.SharedSecret
 
     # For reserializing test data
-    Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret -Verb 'Reserialize'
+    Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret -Verb 'Reserialize' -InformationAction Continue
     Remove-Item -r -Force .\tests\serialization\*
     Copy-Item -r -Force $RocksLocation\App_Data\unicorn\* .\tests\serialization
 } finally {
