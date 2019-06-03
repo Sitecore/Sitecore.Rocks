@@ -1,0 +1,29 @@
+﻿---
+ID: "c1fb9add-2232-47b7-ae61-d04982668a9e"
+Parent: "b37ee9e3-2300-4e4f-b22b-a389e8ed38d9"
+Template: "67f99ed5-12c3-42a1-843c-8115b9137b06"
+Path: /sitecore/content/Layout/SavesLayout
+DB: master
+SharedFields:
+- ID: "a4f985d9-98b3-4b52-aaaf-4344f6e747c6"
+  Hint: __Workflow
+  Value: "{A5BC37E7-ED96-4C1E-8590-A26E64DB55EA}"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value:
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190529T172112Z
+    - ID: "3e431de1-525e-47a3-b6b0-1ccbec3a8c98"
+      Hint: __Workflow state
+      Value: "{190B1C84-F1BE-47ED-AA41-F42193D9C8FC}"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
