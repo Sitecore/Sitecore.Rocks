@@ -5,11 +5,9 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EED65E38-2F34-4AE8-B8FB-C176A6725C98}"
 	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
 		CHANGELOG.md = CHANGELOG.md
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE = LICENSE
-		.nuget\NuGet.Config = .nuget\NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -34,6 +32,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V910", "src\Sitecore.Rocks.Server.V910\Sitecore.Rocks.Server.V910.csproj", "{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.Tests", "src\Sitecore.Rocks.Server.Tests\Sitecore.Rocks.Server.Tests.csproj", "{AF73759C-E1A0-44BC-A65C-37551C49F930}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{095432D9-F27F-42EE-A4BC-E097EBC81BAA}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		src\SharedAssemblyInfo.cs = src\SharedAssemblyInfo.cs
+		src\SharedAssemblyVersion.cs = src\SharedAssemblyVersion.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

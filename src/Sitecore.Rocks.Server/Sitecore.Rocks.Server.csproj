@@ -140,6 +140,12 @@
     <Content Include="sitecore\shell\WebService\Service2.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyVersion.cs">
+      <Link>Properties\SharedAssemblyVersion.cs</Link>
+    </Compile>
     <Compile Include="Diagnostics\SitecoreVersionAttribute.cs" />
     <Compile Include="Extensibility\Composition\CreationPolicy.cs" />
     <Compile Include="Extensibility\Composition\ExportAttribute.cs" />
