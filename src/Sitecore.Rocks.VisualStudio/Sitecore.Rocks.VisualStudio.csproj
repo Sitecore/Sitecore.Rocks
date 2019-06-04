@@ -138,6 +138,12 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyVersion.cs">
+      <Link>Properties\SharedAssemblyVersion.cs</Link>
+    </Compile>
     <Compile Include="ContentEditors\Commands\Fields\BrowseTypeName.cs" />
     <Compile Include="Controls\Dialogs\BrowseTypeName\BrowseTypeNameDialog.xaml.cs">
       <DependentUpon>BrowseTypeNameDialog.xaml</DependentUpon>
