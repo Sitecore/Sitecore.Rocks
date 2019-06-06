@@ -17,7 +17,6 @@ namespace Sitecore.Rocks.Data.DataServices
         private readonly string[] _cookies =
         {
             ".ASPXAUTH",
-            "sitecore_userticket",
             ".AspNet.ExternalCookie",
             ".AspNet.Cookies"
         };
@@ -30,6 +29,9 @@ namespace Sitecore.Rocks.Data.DataServices
         [NotNull]
         public string HostName { get; }
 
+        /// <summary>
+        /// Save select cookies to the WPF Application so that they will be sent with non-WCF requests (e.g. media library images).
+        /// </summary>
         public void AfterReceiveReply([NotNull] ref Message reply, [CanBeNull] object correlationState)
         {
             Assert.ArgumentNotNull(reply, nameof(reply));
@@ -66,13 +68,7 @@ namespace Sitecore.Rocks.Data.DataServices
         }
 
         [CanBeNull]
-        public object BeforeSendRequest([CanBeNull] ref Message request, [CanBeNull] IClientChannel channel)
-        {
-            return null;
-        }
-
-        [CanBeNull]
-        public string GetCookie(string cookieHeader, string cookieName)
+        private string GetCookie(string cookieHeader, string cookieName)
         {
             var result = cookieHeader ?? string.Empty;
             var n = result.IndexOf(cookieName, StringComparison.Ordinal);
@@ -80,7 +76,7 @@ namespace Sitecore.Rocks.Data.DataServices
             if (n >= 0)
             {
                 result = result.Mid(n);
-                result = result.Mid(cookieName.Length+1);
+                result = result.Mid(cookieName.Length + 1);
                 n = result.IndexOf(";", StringComparison.Ordinal);
                 if (n >= 0)
                 {
@@ -92,5 +88,34 @@ namespace Sitecore.Rocks.Data.DataServices
 
             return string.Empty;
         }
+
+        /// <summary>
+        /// Ensure that WCF only sends back the cookies we want, as cookies like sitecore_userticket cause more harm than good.
+        /// </summary>
+        [CanBeNull]
+        public object BeforeSendRequest([CanBeNull] ref Message request, [CanBeNull] IClientChannel channel)
+        {
+            var cookieManager = channel.GetProperty<IHttpCookieContainerManager>();
+            cookieManager.CookieContainer = FilterCookies(cookieManager.CookieContainer);
+
+            return null;
+        }
+
+        private CookieContainer FilterCookies(CookieContainer original)
+        {
+            var cookies = original.GetCookies(new Uri(HostName));
+            var cookieContainer = new CookieContainer();
+            foreach (var cookieName in _cookies)
+            {
+                var value = cookies[cookieName];
+                if (value == null)
+                {
+                    continue;
+                }
+                cookieContainer.Add(value);
+            }
+            return cookieContainer;
+        }
+
     }
 }
