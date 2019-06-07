@@ -27,6 +27,7 @@ steps:
 
 # Patch the shared assembly info
 - task: Assembly-Info-NetFramework@2
+  displayName: 'Patch Assembly Versions'
   inputs:
     Path: '$(Build.SourcesDirectory)'
     FileNames: 'src\SharedAssemblyVersion.cs'
@@ -46,11 +47,13 @@ steps:
       [xml]$content = Get-Content $FullPath
       $content.PackageManifest.Metadata.Identity.Version = $version
       $content.Save($FullPath)
+  displayName: 'Patch VSIX Version'
   env:
     BUILD_NUMBER: $(Build.BuildNumber)
 
 # Nuget restore
 - task: NuGetCommand@2
+  displayName: 'NuGet Restore'
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
@@ -59,6 +62,7 @@ steps:
 
 # Solution build
 - task: VSBuild@1
+  displayName: 'VSIX Build'
   inputs:
     solution: '**\*.sln'
     maximumCpuCount: true
@@ -67,6 +71,7 @@ steps:
 
 # Sitecore.Rocks.Server publish
 - task: MSBuild@1
+  displayName: 'Sitecore.Rocks.Server Build'
   inputs:
     solution: '.\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj'
     platform: 'AnyCPU'
@@ -77,15 +82,18 @@ steps:
 - powershell: |
     Install-Module -Name Sitecore.Courier -Scope CurrentUser -Force
     New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
+  displayName: 'Sitecore.Rocks.Server Update Package Build'
 
 # Publish VSIX
 - task: PublishPipelineArtifact@0
+  displayName: 'VSIX Artifact Publish'
   inputs:
     artifactName: 'Sitecore.Rocks.VisualStudio.vsix'
     targetPath: '.\src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
 
 # Publish Update Package
 - task: PublishPipelineArtifact@0
+  displayName: 'Sitecore.Rocks.Server Artifact Publish'
   inputs:
     artifactName: 'Sitecore.Rocks.Server.update'
     targetPath: '.\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
