@@ -13,18 +13,6 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
 
 steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: '$version = $args[0]
-      Write-Host "Set version: $version"
-      
-      $FullPath = Resolve-Path .\src\Sitecore.Rocks.VisualStudio\source.extension.vsixmanifest
-      Write-Host $FullPath
-      [xml]$content = Get-Content $FullPath
-      $content.PackageManifest.Metadata.Identity.Version = $version
-      $content.Save($FullPath)'
-
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
