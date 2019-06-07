@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EED65E38-2F34-4AE8-B8FB-C176A6725C98}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,7 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EED65E38-2
 		CHANGELOG.md = CHANGELOG.md
 		CONTRIBUTING.md = CONTRIBUTING.md
 		LICENSE = LICENSE
-		.nuget\NuGet.Config = .nuget\NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -46,5 +45,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDC5C691-38E7-4A3E-909F-4F0F4B507845}
 	EndGlobalSection
 EndGlobal
