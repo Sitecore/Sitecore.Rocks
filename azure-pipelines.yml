@@ -18,7 +18,7 @@ steps:
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
-    FileNames: '**\AssemblyInfo.cs'
+    FileNames: 'src\SharedAssemblyVersion.cs'
     InsertAttributes: false
     FileEncoding: 'auto'
     WriteBOM: false

@@ -10,8 +10,9 @@ configuration: Release
 platform: Any CPU
 assembly_info:
   patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_file_version: '{version}'
+  file: 'src\SharedAssemblyVersion.cs'
+  assembly_version: '$(appveyor_build_version)'
+  assembly_file_version: '$(appveyor_build_version)'
 nuget:
   account_feed: true
 before_build:
