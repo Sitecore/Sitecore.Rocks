@@ -76,7 +76,7 @@ steps:
 
 # Sitecore.Rocks.Server Update Package
 - powershell: |
-    Install-Module -Name Sitecore.Courier
+    Install-Module -Name Sitecore.Courier -Scope CurrentUser -Force -Verbose
     New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
 
 # Publish VSIX
