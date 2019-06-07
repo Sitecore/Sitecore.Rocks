@@ -47,6 +47,7 @@ steps:
     Contents: |
       **/*.vsix
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
 
 - task: PublishPipelineArtifact@0
   inputs:
