@@ -15,6 +15,16 @@ variables:
 name: 3.0.$(patch) # Set the value of $(Build.BuildNumber)
 
 steps:
+- task: Assembly-Info-NetFramework@2
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: '**\AssemblyInfo.cs'
+    InsertAttributes: false
+    FileEncoding: 'auto'
+    WriteBOM: false
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+
 - powershell: |
       $version = $env:BUILD_NUMBER
       Write-Host "Set version: $version"
