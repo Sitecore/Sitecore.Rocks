@@ -28,8 +28,6 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: |
-      README.md
-      build/**
       **/*.vsix
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
