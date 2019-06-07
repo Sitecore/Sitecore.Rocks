@@ -1,5 +1,14 @@
 trigger:
-- '*'
+  branches:
+    include:
+    - master
+    - develop
+    - release/*
+    - hotfix/*
+pr:
+  branches:
+    include:
+    - '*'
 
 pool:
   vmImage: 'windows-2019'
