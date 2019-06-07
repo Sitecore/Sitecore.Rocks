@@ -71,8 +71,7 @@ steps:
     solution: '.\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj'
     platform: 'AnyCPU'
     configuration: 'Release'
-    msbuildArguments: '/p:PublishProfile=FilesystemPublish /verbosity:minimal'
-    clean: true
+    msbuildArguments: '/p:PublishProfile=FilesystemPublish'
 
 # Sitecore.Rocks.Server Update Package
 - powershell: |
