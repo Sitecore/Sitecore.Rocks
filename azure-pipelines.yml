@@ -24,6 +24,8 @@ variables:
 name: 2.1.$(patch) # Set the value of $(Build.BuildNumber)
 
 steps:
+
+# Patch the shared assembly info
 - task: Assembly-Info-NetFramework@2
   inputs:
     Path: '$(Build.SourcesDirectory)'
@@ -34,6 +36,7 @@ steps:
     VersionNumber: '$(Build.BuildNumber)'
     FileVersionNumber: '$(Build.BuildNumber)'
 
+# Patch the VSIX version
 - powershell: |
       $version = $env:BUILD_NUMBER
       Write-Host "Set version: $version"
@@ -46,6 +49,7 @@ steps:
   env:
     BUILD_NUMBER: $(Build.BuildNumber)
 
+# Nuget restore
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
@@ -53,6 +57,7 @@ steps:
     feedsToUse: 'config'
     nugetConfigPath: 'nuget.config'
 
+# Solution build
 - task: VSBuild@1
   inputs:
     solution: '**\*.sln'
@@ -60,15 +65,28 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: CopyFiles@2
+# Sitecore.Rocks.Server publish
+- task: MSBuild@1
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: |
-      **/*.vsix
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    flattenFolders: true
+    solution: '.\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj'
+    platform: 'AnyCPU'
+    configuration: 'Release'
+    msbuildArguments: '/p:PublishProfile=FilesystemPublish /verbosity:minimal'
+    clean: true
 
+# Sitecore.Rocks.Server Update Package
+- powershell: |
+    Install-Module -Name Sitecore.Courier
+    New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
+
+# Publish VSIX
 - task: PublishPipelineArtifact@0
   inputs:
-    artifactName: 'drop'
-    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'Sitecore.Rocks.VisualStudio.vsix'
+    targetPath: '.\src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
+
+# Publish Update Package
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'Sitecore.Rocks.Server.update'
+    targetPath: '.\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
