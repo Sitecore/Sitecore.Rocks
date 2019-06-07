@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - '*'
 
@@ -18,10 +13,39 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: '$version = $args[0]
+      Write-Host "Set version: $version"
+      
+      $FullPath = Resolve-Path .\src\Sitecore.Rocks.VisualStudio\source.extension.vsixmanifest
+      Write-Host $FullPath
+      [xml]$content = Get-Content $FullPath
+      $content.PackageManifest.Metadata.Identity.Version = $version
+      $content.Save($FullPath)'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+
+- task: VSBuild@1
+  inputs:
+    solution: '**\*.sln'
+    maximumCpuCount: true
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: |
+      README.md
+      build/**
+      **/*.vsix
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishPipelineArtifact@0
+  inputs:
+    artifactName: 'drop'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
