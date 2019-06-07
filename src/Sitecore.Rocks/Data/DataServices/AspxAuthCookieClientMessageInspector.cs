@@ -51,7 +51,7 @@ namespace Sitecore.Rocks.Data.DataServices
             foreach (var cookieName in _cookies)
             {
                 var cookieValue = GetCookie(cookieHeader, cookieName);
-                if (string.IsNullOrEmpty(cookieValue))
+                if (cookieValue == null)
                 {
                     continue;
                 }
@@ -86,7 +86,7 @@ namespace Sitecore.Rocks.Data.DataServices
                 return result;
             }
 
-            return string.Empty;
+            return null;
         }
 
         /// <summary>
