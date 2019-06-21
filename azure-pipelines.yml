@@ -11,7 +11,7 @@ pr:
     - '*'
 
 pool:
-  vmImage: 'windows-2019'
+  name: 'Default'
 
 variables:
   # patch will be incremented at each build. This is useful to create a unique build version.
