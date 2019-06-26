@@ -1,0 +1,25 @@
+﻿---
+ID: "abd4054f-0173-4f50-b73f-0ccfee32b3bf"
+Parent: "5b1d386c-7a18-4863-8f1a-d211cd4689cc"
+Template: "0ae9d8be-93a1-4e7c-a80f-b98c35dc827a"
+Path: /sitecore/content/Links/GetsReferences/Link
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190528T192514Z
+    - ID: "4edc1eb6-c171-47b3-82b5-26e33a7d95e3"
+      Hint: Link
+      Type: TreelistEx
+      Value: |
+        {554A01BE-11B5-4426-9594-AC336E9B67C9}
+        {ACB28C8A-AEC5-46CC-835D-5CCE5FE2C261}
+        {C5C7B5CC-A1BA-4BF9-8364-96C9F13130CA}
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin

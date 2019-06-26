@@ -1,0 +1,10 @@
+﻿---
+ID: "e8aebb1a-0ec5-4eaf-a092-fc7b8f572eb5"
+Parent: "4928522a-9cdf-4353-b579-154c3aad8c1f"
+Template: "4928522a-9cdf-4353-b579-154c3aad8c1f"
+Path: /sitecore/templates/Tests/Template/GetsTemplateXml/Template/__Standard Values
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1

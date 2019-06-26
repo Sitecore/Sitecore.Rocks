@@ -2,21 +2,12 @@
 
 using System;
 using Sitecore.Diagnostics;
-using Sitecore.Jobs;
+using Sitecore.Rocks.Server.Abstractions.Jobs;
 
 namespace Sitecore.Rocks.Server.Jobs
 {
     public class BackgroundJob
     {
-        private readonly Action action;
-
-        private BackgroundJob([NotNull] Action action)
-        {
-            Debug.ArgumentNotNull(action, nameof(action));
-
-            this.action = action;
-        }
-
         [NotNull]
         public static string Run([NotNull] string jobName, [NotNull] string category, [NotNull] Action action)
         {
@@ -24,36 +15,14 @@ namespace Sitecore.Rocks.Server.Jobs
             Assert.ArgumentNotNull(category, nameof(category));
             Assert.ArgumentNotNull(action, nameof(action));
 
-            var jobOptions = new JobOptions(jobName, category, Client.Site.Name, new BackgroundJob(action), "RunJob")
+            var jobRunner = VersionSpecific.Services.JobManager;
+            var jobOptions = new RunJobOptions
             {
-                AfterLife = TimeSpan.FromMinutes(1),
-                ContextUser = Context.User
+                Name = jobName,
+                Category = category,
+                Action = action
             };
-
-            var job = JobManager.Start(jobOptions);
-
-            return job.Handle.ToString();
-        }
-
-        public void RunJob()
-        {
-            var job = Context.Job;
-            if (job == null)
-            {
-                return;
-            }
-
-            try
-            {
-                action();
-            }
-            catch (Exception ex)
-            {
-                job.Status.Failed = true;
-                job.Status.Messages.Add(ex.ToString());
-            }
-
-            job.Status.State = JobState.Finished;
+            return jobRunner.RunJob(jobOptions);
         }
     }
 }

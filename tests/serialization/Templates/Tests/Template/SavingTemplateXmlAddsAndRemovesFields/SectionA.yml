@@ -1,0 +1,18 @@
+﻿---
+ID: "29001d5c-b562-4c4f-9f4f-500a205b76a7"
+Parent: "61257be1-50ee-435d-a824-5f2398e81b2a"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Tests/Template/SavingTemplateXmlAddsAndRemovesFields/SectionA
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190530T150719Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
