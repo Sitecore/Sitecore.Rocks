@@ -64,7 +64,8 @@ namespace Sitecore.Rocks.ContentTrees.Pipelines.DragMove
                 }
             }
 
-            if (AppHost.MessageBox(text, Resources.Confirmation, MessageBoxButton.OKCancel, MessageBoxImage.Exclamation) != MessageBoxResult.OK)
+			var confirmation = AppHost.MessageBox(text, Resources.Confirmation, MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+			if (confirmation != MessageBoxResult.OK)
             {
                 pipeline.Abort();
             }

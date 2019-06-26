@@ -6,6 +6,7 @@ using System.ComponentModel.Design;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using EnvDTE;
@@ -50,10 +51,10 @@ using Sitecore.Rocks.UI.XpathBuilder;
 namespace Sitecore.Rocks
 {
     // ReSharper disable ArrangeAttributes
-    [PackageRegistration(UseManagedResourcesOnly = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(@"#110", @"#112", @"1.0", IconResourceID = 400)]
     [ProvideMenuResource(@"Menus.ctmenu", 1)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.NoSolution_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideToolWindow(typeof(ArchivePane), Style = VsDockStyle.MDI, Transient = true)]
     [ProvideToolWindow(typeof(ContentTreePane))]
     [ProvideToolWindow(typeof(ContentEditorPane), MultiInstances = true, Style = VsDockStyle.MDI, Transient = true)]
@@ -100,7 +101,7 @@ namespace Sitecore.Rocks
     [UsedImplicitly]
 
     // ReSharper restore ArrangeAttributes
-    public sealed class SitecorePackage : Package, IVsShellPropertyEvents
+    public sealed class SitecorePackage : AsyncPackage, IVsShellPropertyEvents
     {
         public const string CodeGenerationFileExtension = ".scx";
 
@@ -122,7 +123,14 @@ namespace Sitecore.Rocks
         public BuildEvents BuildEvents { get; set; }
 
         [NotNull]
-        public DTE2 Dte => (DTE2)GetService(typeof(SDTE));
+		public DTE2 Dte
+		{
+			get
+			{
+				ThreadHelper.ThrowIfNotOnUIThread();
+				return (DTE2)GetService(typeof(SDTE));
+			}
+		}
 
         [NotNull]
         public Events2 Events { get; set; }
@@ -131,7 +139,14 @@ namespace Sitecore.Rocks
         public static SitecorePackage Instance { get; set; }
 
         [NotNull]
-        public OleMenuCommandService MenuService => (OleMenuCommandService)GetService(typeof(IMenuCommandService));
+        public OleMenuCommandService MenuService
+		{
+			get
+			{
+				ThreadHelper.ThrowIfNotOnUIThread();
+				return (OleMenuCommandService)GetService(typeof(IMenuCommandService));
+			}
+		}
 
         [NotNull]
         public VisualStudioOptions Options => (VisualStudioOptions)GetDialogPage(typeof(VisualStudioOptions));
@@ -167,12 +182,14 @@ namespace Sitecore.Rocks
         [CanBeNull]
         public T GetService<T>() where T : class
         {
+			ThreadHelper.ThrowIfNotOnUIThread();
             return GetService(typeof(T)) as T;
         }
 
         [CanBeNull]
         public IVsTextManager GetTextManagerService()
         {
+			ThreadHelper.ThrowIfNotOnUIThread();
             return GetService(typeof(VsTextManagerClass)) as IVsTextManager;
         }
 
@@ -260,11 +277,9 @@ namespace Sitecore.Rocks
             AppHost.Tasks.Clear("Sitecore Layouts", window.Caption);
         }
 
-        protected override void Initialize()
-        {
-            base.Initialize();
-
-            AppHost.Container.Register<BrowserHost, VisualStudioBrowserHost>().AsSingleton();
+        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+		{
+			AppHost.Container.Register<BrowserHost, VisualStudioBrowserHost>().AsSingleton();
             AppHost.Container.Register<FilesHost, VisualStudioFilesHost>().AsSingleton();
             AppHost.Container.Register<OutputHost, VisualStudioOutputHost>().AsSingleton();
             AppHost.Container.Register<ProjectHost, VisualStudioProjectHost>().AsSingleton();
@@ -281,7 +296,10 @@ namespace Sitecore.Rocks
 
             AppHost.Usage.Report("Started Sitecore Rocks Visual Studio");
 
-            AppHost.Shell.VisualStudioVersion = new Version(Dte.Version);
+			// Switches to the UI thread in order to consume some services used in command initialization
+			await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+			AppHost.Shell.VisualStudioVersion = new Version(Dte.Version);
             AppHost.Shell.VisualStudioLocation = Path.Combine(GetProgramFilesFolder(), "Microsoft Visual Studio " + Dte.Version);
 
             Instance = this;
@@ -289,12 +307,12 @@ namespace Sitecore.Rocks
             AppHost.Plugins.ResolvePluginAssemblies += (fileNames, includePackages, includeAssemblies, includeServerComponents) => AppHost.Plugins.GetPluginAssemblies(fileNames, includePackages, includeAssemblies, includeServerComponents);
             AppHost.Plugins.UninstallHandlers += AppHost.Plugins.UninstallPlugins;
 
-            Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
+			Dispatcher.CurrentDispatcher.UnhandledException += HandleException;
             EventManager.RegisterClassHandler(typeof(System.Windows.Window), FrameworkElement.UnloadedEvent, new RoutedEventHandler(WindowUnloaded));
 
-            AppHost.Shell.Initialize();
+			AppHost.Shell.Initialize();
 
-            var shellService = GetService(typeof(SVsShell)) as IVsShell;
+			var shellService = await GetServiceAsync(typeof(SVsShell)) as IVsShell;
             if (shellService != null)
             {
                 ErrorHandler.ThrowOnFailure(shellService.AdviseShellPropertyChanges(this, out _eventSinkCookie));
@@ -381,6 +399,7 @@ namespace Sitecore.Rocks
         int IVsShellPropertyEvents.OnShellPropertyChange(int propid, [NotNull] object propValue)
         {
             Debug.ArgumentNotNull(propValue, nameof(propValue));
+			ThreadHelper.ThrowIfNotOnUIThread();
 
             if ((int)__VSSPROPID.VSSPROPID_Zombie != propid)
             {

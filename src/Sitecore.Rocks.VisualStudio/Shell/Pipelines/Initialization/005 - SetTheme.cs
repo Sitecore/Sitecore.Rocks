@@ -1,5 +1,6 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 using Sitecore.Rocks.Applications;
@@ -20,7 +21,11 @@ namespace Sitecore.Rocks.Shell.Pipelines.Initialization
                 return;
             }
 
-            AppHost.Shell.VisualStudioTheme = GetVisualStudioTheme();
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				AppHost.Shell.VisualStudioTheme = GetVisualStudioTheme();
+			});
         }
 
         private AppTheme GetVisualStudioTheme()
@@ -53,9 +58,9 @@ namespace Sitecore.Rocks.Shell.Pipelines.Initialization
 
         private uint VSColorPaint()
         {
-            // ReSharper disable once SuspiciousTypeConversion.Global
-            var uiShell2 = SitecorePackage.Instance.GetService<SVsUIShell>() as IVsUIShell2;
-            if (uiShell2 == null)
+			// ReSharper disable once SuspiciousTypeConversion.Global
+			var uiShell2 = SitecorePackage.Instance.GetService<SVsUIShell>() as IVsUIShell2;
+			if (uiShell2 == null)
             {
                 return 0;
             }

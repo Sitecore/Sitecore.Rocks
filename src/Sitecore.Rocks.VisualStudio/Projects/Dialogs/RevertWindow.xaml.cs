@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using Microsoft.VisualStudio.Shell;
 using Sitecore.Rocks.Annotations;
 using Sitecore.Rocks.Controls;
 using Sitecore.Rocks.Diagnostics;
@@ -159,7 +160,11 @@ namespace Sitecore.Rocks.Projects.Dialogs
 
             if (!args.Ignore)
             {
-                projectLogWindow.Dispatcher.Invoke(new Action(() => projectLogWindow.Write(projectItem.Path, args.Text, args.Comment)));
+				ThreadHelper.JoinableTaskFactory.Run(async delegate
+				{
+					await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+					projectLogWindow.Write(projectItem.Path, args.Text, args.Comment);
+				});
             }
         }
 
