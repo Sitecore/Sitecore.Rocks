@@ -2,15 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EED65E38-2F34-4AE8-B8FB-C176A6725C98}"
-	ProjectSection(SolutionItems) = preProject
-		CHANGELOG.md = CHANGELOG.md
-		CONTRIBUTING.md = CONTRIBUTING.md
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.VisualStudio", "src\Sitecore.Rocks.VisualStudio\Sitecore.Rocks.VisualStudio.csproj", "{0E1ADD98-D3D8-48AE-B0B7-34F512D3F205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks", "src\Sitecore.Rocks\Sitecore.Rocks.csproj", "{39D87FBF-43B7-4A35-8065-0FBA544AD601}"
@@ -23,6 +14,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.TemplateWizard", "src\Sitecore.Rocks.TemplateWizard\Sitecore.Rocks.TemplateWizard.csproj", "{C7509E56-744C-4EC6-A422-763A2BF39029}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{095432D9-F27F-42EE-A4BC-E097EBC81BAA}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		azure-pipelines.yml = azure-pipelines.yml
+		NuGet.Config = NuGet.Config
+		src\SharedAssemblyInfo.cs = src\SharedAssemblyInfo.cs
+		src\SharedAssemblyVersion.cs = src\SharedAssemblyVersion.cs
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V920", "src\Sitecore.Rocks.Server.V920\Sitecore.Rocks.Server.V920.csproj", "{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version Specific", "Version Specific", "{0C396997-3554-456B-95E8-FD27279140BE}"
@@ -32,14 +32,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V910", "src\Sitecore.Rocks.Server.V910\Sitecore.Rocks.Server.V910.csproj", "{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.Tests", "src\Sitecore.Rocks.Server.Tests\Sitecore.Rocks.Server.Tests.csproj", "{AF73759C-E1A0-44BC-A65C-37551C49F930}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{095432D9-F27F-42EE-A4BC-E097EBC81BAA}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		src\SharedAssemblyInfo.cs = src\SharedAssemblyInfo.cs
-		src\SharedAssemblyVersion.cs = src\SharedAssemblyVersion.cs
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +75,9 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDC5C691-38E7-4A3E-909F-4F0F4B507845}
+  EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D} = {0C396997-3554-456B-95E8-FD27279140BE}
 		{AC426FEC-50F1-4250-B915-B22888A0EEE5} = {0C396997-3554-456B-95E8-FD27279140BE}
