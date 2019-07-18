@@ -420,7 +420,7 @@ namespace Sitecore.Rocks.Data.DataServices
                     var databaseName = database.InnerText;
                     var connectionString = database.GetAttributeValue("connectionstring");
 
-                    list.Add(new DatabaseInfo(new DatabaseName(databaseName), connectionString));
+                    list.Add(new DatabaseInfo(new DatabaseName(databaseName)));
                 }
 
                 return list;

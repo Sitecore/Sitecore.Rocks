@@ -21,16 +21,12 @@ namespace Sitecore.Rocks.ContentTrees.Items
             DatabaseUri = databaseUri;
             ItemHeader.IsEditable = false;
             ToolTip = databaseUri.DatabaseName.Name;
-            ConnectionString = string.Empty;
             Icon = new Icon("Resources/16x16/database.png");
 
             Notifications.RegisterSiteEvents(this, activeDatabaseChanged: HandleActiveDatabaseChanged);
 
             ItemHeader.IsActive = databaseUri == AppHost.Settings.ActiveDatabaseUri;
         }
-
-        [NotNull]
-        public string ConnectionString { get; set; }
 
         [NotNull]
         public DatabaseUri DatabaseUri { get; }

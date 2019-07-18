@@ -114,21 +114,7 @@ namespace Sitecore.Visual
             {
                 foreach (var databaseName in Factory.GetDatabaseNames())
                 {
-                    var connectionString = string.Empty;
-
-                    try
-                    {
-                        var settings = ConfigurationManager.ConnectionStrings[databaseName];
-                        if (settings != null)
-                        {
-                            connectionString = settings.ConnectionString ?? string.Empty;
-                        }
-                    }
-                    catch
-                    {
-                    }
-
-                    packet.AddElement("database", databaseName, "connectionstring", connectionString);
+                    packet.AddElement("database", databaseName);
                 }
             }
             catch
