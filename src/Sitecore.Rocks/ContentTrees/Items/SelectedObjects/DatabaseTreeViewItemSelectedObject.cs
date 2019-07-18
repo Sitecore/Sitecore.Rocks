@@ -15,12 +15,6 @@ namespace Sitecore.Rocks.ContentTrees.Items.SelectedObjects
             DatabaseTreeViewItem = databaseTreeViewItem;
         }
 
-        [Description("The connection string."), DisplayName("Connection String"), Category("Database")]
-        public string ConnectionString
-        {
-            get { return DatabaseTreeViewItem.ConnectionString; }
-        }
-
         [NotNull, Description("The name of the database."), DisplayName("Database Name"), Category("Database")]
         public string DatabaseName
         {
