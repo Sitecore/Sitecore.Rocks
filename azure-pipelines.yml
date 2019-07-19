@@ -51,15 +51,6 @@ steps:
   env:
     BUILD_NUMBER: $(Build.BuildNumber)
 
-# Nuget restore
-- task: NuGetCommand@2
-  displayName: 'NuGet Restore'
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'config'
-    nugetConfigPath: 'nuget.config'
-
 # Solution build
 - task: VSBuild@1
   displayName: 'VSIX Build'
@@ -68,6 +59,7 @@ steps:
     maximumCpuCount: true
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildArgs: '/restore'
 
 # Sitecore.Rocks.Server publish
 - task: MSBuild@1
