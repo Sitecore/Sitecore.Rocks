@@ -250,7 +250,7 @@
     <value>Validating...</value>
   </data>
   <data name="You_are_already_loading_items" xml:space="preserve">
-    <value>Wait... What... Dude, you are already loading items...</value>
+    <value>Please wait, still loading items...</value>
   </data>
   <data name="ContentEditorLoadItemsLoading_in_Progress" xml:space="preserve">
     <value>Loading in Progress</value>
