@@ -15,7 +15,7 @@ namespace Sitecore.Rocks.Controls.TemplateSelector.Filters
         public AllTemplatesFilter()
         {
             Name = "All";
-            Priority = 9000;
+            Priority = 100;
         }
 
         [CanBeNull]
