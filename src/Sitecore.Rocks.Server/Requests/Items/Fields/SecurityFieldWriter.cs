@@ -106,7 +106,7 @@ namespace Sitecore.Rocks.Server.Requests.Items.Fields
             var user = account as User;
             if (user != null)
             {
-                icon = StringUtil.GetString(user.Profile.Portrait, "People/16x16/user2.png");
+                icon = !string.IsNullOrEmpty(user.Profile.Portrait) ? user.Profile.Portrait : "People/16x16/user2.png";
             }
 
             Writer.WriteAttributeString(SecurityStruct.Attribute.Icon, Images.GetThemedImageSource(icon, ImageDimension.id16x16));
