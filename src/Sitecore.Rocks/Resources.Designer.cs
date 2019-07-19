@@ -6578,7 +6578,7 @@ namespace Sitecore.Rocks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wait... What... Dude, you are already loading items....
+        ///   Looks up a localized string similar to Please wait, still loading items....
         /// </summary>
         public static string You_are_already_loading_items {
             get {
