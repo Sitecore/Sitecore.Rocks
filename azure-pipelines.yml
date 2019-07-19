@@ -51,7 +51,13 @@ steps:
   env:
     BUILD_NUMBER: $(Build.BuildNumber)
 
-# Nuget restore
+# Install latest NuGet
+- task: NuGetToolInstaller@1
+  displayName: 'NuGet Install'
+  inputs:
+    checkLatest: true
+
+# NuGet restore
 - task: NuGetCommand@2
   displayName: 'NuGet Restore'
   inputs:
