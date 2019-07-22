@@ -1,7 +1,10 @@
 
 # Sitecore Rocks
 
-[![Build status](https://ci.appveyor.com/api/projects/status/jd2v99onvbxg4v3v?svg=true)](https://ci.appveyor.com/project/JakobChristensen/sitecore-rocks)
+| Branch | Status |
+|-|-|
+| `develop` | [![Build Status](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_apis/build/status/Sitecore.Sitecore.Rocks?branchName=develop)](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_build/latest?definitionId=1&branchName=develop) |
+| `master` | [![Build Status](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_apis/build/status/Sitecore.Sitecore.Rocks?branchName=master)](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_build/latest?definitionId=1&branchName=master) |
 
 Sitecore Rocks makes Sitecore developers happy!
 
@@ -30,7 +33,7 @@ Sitecore Rocks is fully extendable using plug-ins that allows you to add new but
 
 ## Downloading
 * [Sitecore Rocks Visual Studio](https://visualstudiogallery.msdn.microsoft.com/44a26c88-83a7-46f6-903c-5c59bcd3d35b) (plugin for Visual Studio)
-* Or get the latest build from [AppVeyor](https://ci.appveyor.com/project/JakobChristensen/sitecore-rocks/build/artifacts)
+* Or get the artifacts from latest build of the [`develop` branch](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_build/latest?definitionId=1&branchName=develop)
 
 ## Videos
 * [YouTube Playlist](https://www.youtube.com/view_play_list?p=2B8CA35C742803E4)
