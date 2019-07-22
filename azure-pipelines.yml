@@ -105,5 +105,5 @@ steps:
   displayName: 'Publish Pipeline Artifact'
   inputs:
     pathtoPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: binaries
+    artifactName: Sitecore.Rocks
     publishLocation: Container
