@@ -98,10 +98,11 @@ steps:
       src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix
       src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
 
 # Publish Artifacts
 - task: PublishPipelineArtifact@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)'
-    artifact: 'drop'
+    artifact: 'binaries'
