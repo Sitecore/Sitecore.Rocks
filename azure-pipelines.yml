@@ -90,16 +90,27 @@ steps:
     New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
   displayName: 'Sitecore.Rocks.Server Update Package Build'
 
-# Publish VSIX
-- task: PublishPipelineArtifact@0
-  displayName: 'VSIX Artifact Publish'
+# Copy Artifacts
+- task: CopyFiles@2
+  displayName: 'Copy VSIX Artifact to Staging Directory'
   inputs:
-    artifactName: 'Sitecore.Rocks.VisualStudio.vsix'
-    targetPath: '.\src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
+    Contents: '.\src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: CopyFiles@2
+  displayName: 'Copy Update Package Artifact to Staging Directory'
+  inputs:
+    Contents: '.\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-# Publish Update Package
-- task: PublishPipelineArtifact@0
-  displayName: 'Sitecore.Rocks.Server Artifact Publish'
+# Publish Artifacts
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
   inputs:
-    artifactName: 'Sitecore.Rocks.Server.update'
-    targetPath: '.\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: 'drop'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Build Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
