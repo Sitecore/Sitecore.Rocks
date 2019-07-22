@@ -105,13 +105,3 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)'
     artifact: 'drop'
-- task: UniversalPackages@0
-  displayName: 'Publish to Artifact Feed'
-  inputs:
-    command: 'publish'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    feedsToUsePublish: 'internal'
-    vstsFeedPublish: '93ef6e70-28e0-4144-b7c8-fed332b8c4a8'
-    vstsFeedPackagePublish: 'sitecore-rocks'
-    versionOption: 'custom'
-    versionPublish: '$(Build.BuildNumber)'
