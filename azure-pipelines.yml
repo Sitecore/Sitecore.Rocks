@@ -92,14 +92,11 @@ steps:
 
 # Copy Artifacts
 - task: CopyFiles@2
-  displayName: 'Copy VSIX Artifact to Staging Directory'
+  displayName: 'Copy Artifacts to Staging Directory'
   inputs:
-    Contents: '.\src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: CopyFiles@2
-  displayName: 'Copy Update Package Artifact to Staging Directory'
-  inputs:
-    Contents: '.\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
+    Contents: |
+      src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix
+      src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 # Publish Artifacts
