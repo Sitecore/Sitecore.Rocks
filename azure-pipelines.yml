@@ -111,7 +111,7 @@ steps:
     command: 'publish'
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
     feedsToUsePublish: 'internal'
-    vstsFeedPublish: 'f8fb1c43-a7fd-4877-b353-1f2ee75f2026'
+    vstsFeedPublish: '93ef6e70-28e0-4144-b7c8-fed332b8c4a8'
     vstsFeedPackagePublish: 'sitecore-rocks'
     versionOption: 'custom'
     versionPublish: '$(Build.BuildNumber)'
