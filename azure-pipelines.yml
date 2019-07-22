@@ -101,8 +101,9 @@ steps:
     flattenFolders: true
 
 # Publish Artifacts
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
   displayName: 'Publish Pipeline Artifact'
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    artifact: 'binaries'
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: binaries
+    publishLocation: Container
