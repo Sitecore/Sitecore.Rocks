@@ -21,7 +21,7 @@ variables:
   buildConfiguration: 'Release'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
 
-name: 2.1.$(patch) # Set the value of $(Build.BuildNumber)
+name: 3.0.$(patch) # Set the value of $(Build.BuildNumber)
 
 steps:
 
