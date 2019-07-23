@@ -18,10 +18,10 @@ namespace Sitecore.Rocks.Server.IntegrationTests
             var result = response?.Body?.GetDatabasesResult?.ToDynamic();
             Assert.NotNull(result);
             Assert.Collection((IList<dynamic>) result.sitecore.database,
-                x => Assert.Contains("core", x.text),
-                x => Assert.Contains("master", x.text),
-                x => Assert.Contains("web", x.text),
-                x => Assert.Contains("filesystem", x.text));
+                x => Assert.Contains("core", x),
+                x => Assert.Contains("master", x),
+                x => Assert.Contains("web", x),
+                x => Assert.Contains("filesystem", x));
         }
 
         [Fact]
