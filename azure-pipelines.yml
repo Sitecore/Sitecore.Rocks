@@ -95,11 +95,11 @@ steps:
   displayName: 'Publish VSIX Artifact'
   inputs:
     pathtoPublish: 'src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
-    artifactName: 'VSIX'
+    artifactName: 'Sitecore.Rocks.VisualStudio.vsix'
     publishLocation: Container
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Update Package Artifact'
   inputs:
     pathtoPublish: 'src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
-    artifactName: 'Update Package'
+    artifactName: 'Sitecore.Rocks.Server.update'
     publishLocation: Container
