@@ -90,20 +90,16 @@ steps:
     New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
   displayName: 'Sitecore.Rocks.Server Update Package Build'
 
-# Copy Artifacts
-- task: CopyFiles@2
-  displayName: 'Copy Artifacts to Staging Directory'
-  inputs:
-    Contents: |
-      src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix
-      src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    flattenFolders: true
-
 # Publish Artifacts
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Pipeline Artifact'
+  displayName: 'Publish VSIX Artifact'
   inputs:
-    pathtoPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: Sitecore.Rocks
+    pathtoPublish: 'src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
+    artifactName: 'VSIX'
+    publishLocation: Container
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Update Package Artifact'
+  inputs:
+    pathtoPublish: 'src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
+    artifactName: 'Update Package'
     publishLocation: Container
