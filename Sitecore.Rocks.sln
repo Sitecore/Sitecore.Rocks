@@ -1,25 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{EED65E38-2F34-4AE8-B8FB-C176A6725C98}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		CHANGELOG.md = CHANGELOG.md
-		CONTRIBUTING.md = CONTRIBUTING.md
-		LICENSE = LICENSE
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		README.md = README.md
-	EndProjectSection
-EndProject
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.VisualStudio", "src\Sitecore.Rocks.VisualStudio\Sitecore.Rocks.VisualStudio.csproj", "{0E1ADD98-D3D8-48AE-B0B7-34F512D3F205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks", "src\Sitecore.Rocks\Sitecore.Rocks.csproj", "{39D87FBF-43B7-4A35-8065-0FBA544AD601}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server", "src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj", "{FB504E79-AD4F-4D68-88C8-0E1F668D7FC5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA} = {D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D} = {1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.TemplateWizard", "src\Sitecore.Rocks.TemplateWizard\Sitecore.Rocks.TemplateWizard.csproj", "{C7509E56-744C-4EC6-A422-763A2BF39029}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{095432D9-F27F-42EE-A4BC-E097EBC81BAA}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		azure-pipelines.yml = azure-pipelines.yml
+		NuGet.Config = NuGet.Config
+		src\SharedAssemblyInfo.cs = src\SharedAssemblyInfo.cs
+		src\SharedAssemblyVersion.cs = src\SharedAssemblyVersion.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V920", "src\Sitecore.Rocks.Server.V920\Sitecore.Rocks.Server.V920.csproj", "{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Version Specific", "Version Specific", "{0C396997-3554-456B-95E8-FD27279140BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.Abstractions", "src\Sitecore.Rocks.Server.Abstractions\Sitecore.Rocks.Server.Abstractions.csproj", "{AC426FEC-50F1-4250-B915-B22888A0EEE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.V910", "src\Sitecore.Rocks.Server.V910\Sitecore.Rocks.Server.V910.csproj", "{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.Server.Tests", "src\Sitecore.Rocks.Server.Tests\Sitecore.Rocks.Server.Tests.csproj", "{AF73759C-E1A0-44BC-A65C-37551C49F930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,8 +55,35 @@ Global
 		{C7509E56-744C-4EC6-A422-763A2BF39029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7509E56-744C-4EC6-A422-763A2BF39029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7509E56-744C-4EC6-A422-763A2BF39029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC426FEC-50F1-4250-B915-B22888A0EEE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC426FEC-50F1-4250-B915-B22888A0EEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC426FEC-50F1-4250-B915-B22888A0EEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC426FEC-50F1-4250-B915-B22888A0EEE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF73759C-E1A0-44BC-A65C-37551C49F930}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDC5C691-38E7-4A3E-909F-4F0F4B507845}
+  EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D} = {0C396997-3554-456B-95E8-FD27279140BE}
+		{AC426FEC-50F1-4250-B915-B22888A0EEE5} = {0C396997-3554-456B-95E8-FD27279140BE}
+		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA} = {0C396997-3554-456B-95E8-FD27279140BE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6378256-B9F2-4F17-A0C5-AB107F5910C2}
 	EndGlobalSection
 EndGlobal

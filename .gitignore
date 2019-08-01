@@ -202,12 +202,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 
-# Specific files
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Validation.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Speak.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Lucene.3030.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Lucene.2941.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Lucene.2313.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Core.dll
-src/Sitecore.Rocks.Windows/Sitecore.Rocks.Server.Cms7.dll
+settings.user.ps1

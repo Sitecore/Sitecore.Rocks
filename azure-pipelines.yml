@@ -1,0 +1,105 @@
+trigger:
+  branches:
+    include:
+    - master
+    - develop
+    - release/*
+    - hotfix/*
+pr:
+  branches:
+    include:
+    - '*'
+
+pool:
+  name: 'Default'
+
+variables:
+  # patch will be incremented at each build. This is useful to create a unique build version.
+  patch: $[counter('VersionCounter', 200)]
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+
+name: 3.0.$(patch) # Set the value of $(Build.BuildNumber)
+
+steps:
+
+# Patch the shared assembly info
+- task: Assembly-Info-NetFramework@2
+  displayName: 'Patch Assembly Versions'
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: 'src\SharedAssemblyVersion.cs'
+    InsertAttributes: false
+    FileEncoding: 'auto'
+    WriteBOM: false
+    VersionNumber: '$(Build.BuildNumber)'
+    FileVersionNumber: '$(Build.BuildNumber)'
+
+# Patch the VSIX version
+- powershell: |
+      $version = $env:BUILD_NUMBER
+      Write-Host "Set version: $version"
+      
+      $FullPath = Resolve-Path .\src\Sitecore.Rocks.VisualStudio\source.extension.vsixmanifest
+      Write-Host $FullPath
+      [xml]$content = Get-Content $FullPath
+      $content.PackageManifest.Metadata.Identity.Version = $version
+      $content.Save($FullPath)
+  displayName: 'Patch VSIX Version'
+  env:
+    BUILD_NUMBER: $(Build.BuildNumber)
+
+# Install latest NuGet
+- task: NuGetToolInstaller@1
+  displayName: 'NuGet Install'
+  inputs:
+    checkLatest: true
+
+# NuGet restore
+- task: NuGetCommand@2
+  displayName: 'NuGet Restore'
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+
+# Solution build
+- task: VSBuild@1
+  displayName: 'VSIX Build'
+  inputs:
+    solution: '**\*.sln'
+    maximumCpuCount: true
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+# Sitecore.Rocks.Server publish
+- task: MSBuild@1
+  displayName: 'Sitecore.Rocks.Server Build'
+  inputs:
+    solution: '.\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj'
+    platform: 'AnyCPU'
+    configuration: 'Release'
+    msbuildArguments: '/p:DeployOnBuild=true /p:PublishProfile=FilesystemPublish'
+
+# Sitecore.Rocks.Server Update Package
+- powershell: |
+    Install-Module -Name Sitecore.Courier -Scope CurrentUser -Force
+    New-CourierPackage -Target ".\src\Sitecore.Rocks.Server\bin\Release\Publish" -Output ".\src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update" -IncludeFiles $true -SerializationProvider "Sitecore"
+  displayName: 'Sitecore.Rocks.Server Update Package Build'
+
+# Publish Artifacts
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish VSIX Artifact'
+  inputs:
+    pathtoPublish: 'src\Sitecore.Rocks.VisualStudio\bin\Release\Sitecore.Rocks.VisualStudio.vsix'
+    artifactName: 'Sitecore.Rocks.VisualStudio.vsix'
+    publishLocation: Container
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Update Package Artifact'
+  inputs:
+    pathtoPublish: 'src\Sitecore.Rocks.Server\bin\Sitecore.Rocks.Server.update'
+    artifactName: 'Sitecore.Rocks.Server.update'
+    publishLocation: Container

@@ -1,5 +1,6 @@
 ﻿// © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Sitecore.Rocks.Diagnostics;
 
@@ -11,7 +12,12 @@ namespace Sitecore.Rocks.Shell.Environment
         {
             Assert.ArgumentNotNull(text, nameof(text));
 
-            var statusBar = SitecorePackage.Instance.GetService<SVsStatusbar>() as IVsStatusbar;
+			IVsStatusbar statusBar = null;
+			ThreadHelper.JoinableTaskFactory.Run(async delegate
+			{
+				await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+				statusBar = SitecorePackage.Instance.GetService<SVsStatusbar>() as IVsStatusbar;
+			});
             if (statusBar == null)
             {
                 return;

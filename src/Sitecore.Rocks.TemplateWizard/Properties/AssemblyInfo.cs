@@ -4,12 +4,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Sitecore.Rocks.TemplateWizard")]
-[assembly: AssemblyDescription("Template Wizard for Sitecore Rocks")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Sitecore")]
-[assembly: AssemblyProduct("Sitecore.Rocks.TemplateWizard")]
-[assembly: AssemblyCopyright("Copyright © Sitecore 2010-2017")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: ComVisible(false)]
 [assembly: Guid("df2d13c3-f3aa-4b92-a782-6edcf99fdd09")]
+
+// TemplateWizard assembly must retain this version, to match references in vstemplate's.
+// Do not reference SharedAssemblyVersion.
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

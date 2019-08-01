@@ -15,7 +15,7 @@ namespace Sitecore.Rocks.UI.LayoutDesigners.Dialogs.SelectRenderingsDialogs.Filt
         public AllRenderingsFilter()
         {
             Name = "All";
-            Priority = 9000;
+            Priority = 100;
         }
 
         [CanBeNull]

@@ -199,8 +199,7 @@ namespace Sitecore.Rocks.ContentTrees.Items
 
                 var item = new DatabaseTreeViewItem(new DatabaseUri(Site, databaseInfo.DatabaseName))
                 {
-                    Text = databaseInfo.DatabaseName.ToString(),
-                    ConnectionString = databaseInfo.ConnectionString
+                    Text = databaseInfo.DatabaseName.ToString()
                 };
 
                 item.MakeExpandable();

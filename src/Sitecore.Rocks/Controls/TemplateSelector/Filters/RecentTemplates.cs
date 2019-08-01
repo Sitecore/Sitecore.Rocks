@@ -17,7 +17,7 @@ namespace Sitecore.Rocks.Controls.TemplateSelector.Filters
         public RecentTemplates()
         {
             Name = "Recent";
-            Priority = 100;
+            Priority = 9000;
         }
 
         [CanBeNull]

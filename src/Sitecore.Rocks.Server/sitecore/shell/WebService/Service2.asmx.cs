@@ -31,7 +31,24 @@ namespace Sitecore.Visual
 
         public Service2()
         {
-            ExtensibilityLoader.Initialize();
+			try
+			{
+                Sitecore.Rocks.Server.VersionSpecific.Services.Initialize();
+                ExtensibilityLoader.Initialize();
+			}
+            catch (Exception e)
+			{
+				Log.Error("Error initializing Sitecore Rocks server components", e, this);
+				var reflectionException = e as System.Reflection.ReflectionTypeLoadException;
+				if (reflectionException != null)
+				{
+					foreach (var loaderException in reflectionException.LoaderExceptions)
+					{
+						Log.Error("Loader exception", loaderException, this);
+					}
+				}
+				throw new Exception("Error initializing Sitecore Rocks server components, see server logs for details.");
+			}
         }
 
         [NotNull, WebMethod(EnableSession = true)]
@@ -97,21 +114,7 @@ namespace Sitecore.Visual
             {
                 foreach (var databaseName in Factory.GetDatabaseNames())
                 {
-                    var connectionString = string.Empty;
-
-                    try
-                    {
-                        var settings = ConfigurationManager.ConnectionStrings[databaseName];
-                        if (settings != null)
-                        {
-                            connectionString = settings.ConnectionString ?? string.Empty;
-                        }
-                    }
-                    catch
-                    {
-                    }
-
-                    packet.AddElement("database", databaseName, "connectionstring", connectionString);
+                    packet.AddElement("database", databaseName);
                 }
             }
             catch

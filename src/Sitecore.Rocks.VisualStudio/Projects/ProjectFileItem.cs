@@ -90,7 +90,7 @@ namespace Sitecore.Rocks.Projects
 
             if (IsValid)
             {
-                fileContent = Convert.ToBase64String(System.IO.File.ReadAllBytes(AbsoluteFileName));
+                fileContent = System.Convert.ToBase64String(System.IO.File.ReadAllBytes(AbsoluteFileName));
             }
             else
             {

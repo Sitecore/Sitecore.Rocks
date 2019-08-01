@@ -18,7 +18,7 @@ namespace Sitecore.Rocks.UI.LayoutDesigners.Dialogs.SelectRenderingsDialogs.Filt
         public RecentRenderingsFilter()
         {
             Name = "Recent";
-            Priority = 100;
+            Priority = 9000;
         }
 
         [CanBeNull]
