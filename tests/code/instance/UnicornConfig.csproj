@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Rainbow.config" />
-    <Content Include="App_Config\Include\RocksTestData.config" />
+    <Content Include="App_Config\Include\zzz\RocksTestData.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\FilesystemPublish.pubxml" />

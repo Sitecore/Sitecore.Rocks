@@ -16,19 +16,22 @@ namespace Sitecore.Rocks.Server.IntegrationTests
 {
     public class AuthenticationTests
     {
-        // for pre-9.1, this would need to be updated to look conditionally for .ASPXAUTH instead
         private static readonly string[] IdentityServerAuthCookies = new[]
         {
             ".AspNet.ExternalCookie",
-            ".AspNet.Cookies",
-            "sitecore_userticket"
+            ".AspNet.Cookies"
+        };
+
+        private static readonly string[] AspNetMembershipCookies = new[]
+        {
+            ".ASPXAUTH"
         };
 
         [Fact]
         public async Task LogsIn()
         {
             var client = ClientFactory.Client;
-            client.Endpoint.EndpointBehaviors.Add(new CookieAssertionBehavior(IdentityServerAuthCookies, contains: true));
+            client.Endpoint.EndpointBehaviors.Add(new CookieAssertionBehavior(IdentityServerAuthCookies, AspNetMembershipCookies, contains: true));
 
             var response = await client.LoginAsync(Properties.Credentials);
             var result = response?.Body?.LoginResult;
@@ -42,7 +45,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
         public async Task WindowsAuthLoginFails()
         {
             var client = ClientFactory.Client;
-            client.Endpoint.EndpointBehaviors.Add(new CookieAssertionBehavior(IdentityServerAuthCookies, contains: false));
+            client.Endpoint.EndpointBehaviors.Add(new CookieAssertionBehavior(IdentityServerAuthCookies, AspNetMembershipCookies, contains: false));
 
             var response = await client.LoginAsync(new Credentials
             {
@@ -56,18 +59,20 @@ namespace Sitecore.Rocks.Server.IntegrationTests
 
         private class CookieAssertionBehavior : IEndpointBehavior
         {
-            private readonly string[] _cookies;
+            private readonly string[] _identityCookies;
+            private readonly string[] _membershipCookies;
             private readonly bool _contains;
 
-            public CookieAssertionBehavior(string[] cookies, bool contains)
+            public CookieAssertionBehavior(string[] identityCookies, string[] membershipCookies, bool contains)
             {
-                _cookies = cookies;
+                _identityCookies = identityCookies;
+                _membershipCookies = membershipCookies;
                 _contains = contains;
             }
 
             public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
             {
-                clientRuntime.MessageInspectors.Add(new CookieAssertionInspector(_cookies, _contains));
+                clientRuntime.MessageInspectors.Add(new CookieAssertionInspector(_identityCookies, _membershipCookies, _contains));
             }
 
             #region unused
@@ -80,17 +85,27 @@ namespace Sitecore.Rocks.Server.IntegrationTests
 
         private class CookieAssertionInspector : IClientMessageInspector
         {
-            private readonly string[] _cookies;
+            private readonly Version FirstIdentityVersion = new Version(9, 1);
+
+            private readonly string[] _identityCookies;
+            private readonly string[] _membershipCookies;
             private readonly bool _contains;
 
-            public CookieAssertionInspector(string[] cookies, bool contains)
+            public CookieAssertionInspector(string[] identityCookies, string[] membershipCookies, bool contains)
             {
-                _cookies = cookies;
+                _identityCookies = identityCookies;
+                _membershipCookies = membershipCookies;
                 _contains = contains;
             }
 
             public void AfterReceiveReply(ref Message reply, object correlationState)
             {
+                var expectedCookies = _membershipCookies;
+                if (ClientFactory.SitecoreVersion >= FirstIdentityVersion)
+                {
+                    expectedCookies = _identityCookies;
+                }
+
                 var httpResponse = reply.Properties[HttpResponseMessageProperty.Name] as HttpResponseMessageProperty;
                 Assert.NotNull(httpResponse);
 
@@ -101,7 +116,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
                 }
                 Assert.NotNull(cookieHeader);
 
-                foreach (var cookie in _cookies)
+                foreach (var cookie in expectedCookies)
                 {
                     if (_contains)
                     {
