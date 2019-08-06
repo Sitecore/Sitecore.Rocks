@@ -2,7 +2,9 @@
 Function Invoke-Test {
     Param(
         [string]$RocksLocation,
-        [string]$RocksHost
+        [string]$RocksHost,
+        [string]$SitecoreVersion,
+        [string]$DataFolder = "App_Data"
     )
 
     Push-Location $PSScriptRoot\..\.. 
@@ -19,14 +21,14 @@ Function Invoke-Test {
 
         # Copy test data and sync
         Import-Module .\tests\scripts\unicorn\Unicorn.psm1
-        $secret = ([xml](Get-Content -Raw .\tests\code\instance\App_Config\Include\RocksTestData.config)).configuration.sitecore.unicorn.authenticationProvider.SharedSecret
-        if (Test-Path "$RocksLocation\App_Data\unicorn") {
-            Remove-Item -r -Force $RocksLocation\App_Data\unicorn\*
+        $secret = ([xml](Get-Content -Raw .\tests\code\instance\App_Config\Include\zzz\RocksTestData.config)).configuration.sitecore.unicorn.authenticationProvider.SharedSecret
+        if (Test-Path "$RocksLocation\$DataFolder\unicorn") {
+            Remove-Item -r -Force $RocksLocation\$DataFolder\unicorn\*
         } else {
-            New-Item -Type Directory $RocksLocation\App_Data\unicorn
+            New-Item -Type Directory $RocksLocation\$DataFolder\unicorn
         }
-        Copy-Item -r -Force .\tests\serialization\* $RocksLocation\App_Data\unicorn\
-        Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret  -InformationAction Continue
+        Copy-Item -r -Force .\tests\serialization\* $RocksLocation\$DataFolder\unicorn\
+        Sync-Unicorn -ControlPanelUrl "$RocksHost/unicorn.aspx" -SharedSecret $secret -DebugSecurity -InformationAction Continue
 
         # Build Tests
         & msbuild .\tests\code\tests\Sitecore.Rocks.Server.IntegrationTests.csproj /p:Configuration=Debug /p:Platform=AnyCPU /restore /v:m
@@ -35,6 +37,7 @@ Function Invoke-Test {
         $xunitLocation = "$env:temp\rocks_xunit"
         & nuget install xunit.runner.console -Version 2.4.1 -o "$env:temp\rocks_xunit"
         $env:HardRocksHost = $RocksHost
+        $env:SitecoreVersion = $SitecoreVersion
         Write-Host "Executing integration tests on $RocksHost..." -ForegroundColor green
         & "$env:temp\rocks_xunit\xunit.runner.console.2.4.1\tools\net472\xunit.console.exe" .\tests\code\tests\bin\Debug\Sitecore.Rocks.Server.IntegrationTests.dll -verbose
 

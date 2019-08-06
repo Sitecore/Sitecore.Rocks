@@ -236,7 +236,7 @@ namespace Sitecore.Rocks.Server.Requests.Items
             }
             catch (Exception ex)
             {
-                Log.Error("Failed to get Lookup source", ex);
+                Log.Error("Failed to get Lookup source", ex, this);
                 items = null;
             }
 
