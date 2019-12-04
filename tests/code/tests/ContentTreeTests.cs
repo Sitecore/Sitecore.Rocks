@@ -17,11 +17,11 @@ namespace Sitecore.Rocks.Server.IntegrationTests
             var response = await ClientFactory.Client.GetDatabasesAsync(Properties.Credentials);
             var result = response?.Body?.GetDatabasesResult?.ToDynamic();
             Assert.NotNull(result);
-            Assert.Collection((IList<dynamic>) result.sitecore.database,
-                x => Assert.Contains("core", x),
-                x => Assert.Contains("master", x),
-                x => Assert.Contains("web", x),
-                x => Assert.Contains("filesystem", x));
+            var list = (IList<dynamic>) result.sitecore.database;
+            Assert.Contains("core", list);
+            Assert.Contains("master", list);
+            Assert.Contains("web", list);
+            Assert.Contains("filesystem", list);
         }
 
         [Fact]

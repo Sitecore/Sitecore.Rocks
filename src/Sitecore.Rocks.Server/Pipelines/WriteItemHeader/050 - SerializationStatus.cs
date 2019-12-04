@@ -16,8 +16,30 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
     public class SerializationStatus : PipelineProcessor<WriteItemHeaderPipeline>
     {
         private static readonly MemoryCache Cache = new MemoryCache("serialization");
+        private static bool ShouldExecute = false;
+
+        static SerializationStatus()
+        {
+            /**
+             * No longer exists as of 9.3.
+             */
+            const string ItemReferenceClass = "Sitecore.Data.Serialization.ItemReference, Sitecore.Kernel";
+            if (Type.GetType(ItemReferenceClass) == null)
+            {
+                ShouldExecute = false;
+            }
+        }
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
+        {
+            if (!ShouldExecute)
+            {
+                return;
+            }
+            DoProcess(pipeline);
+        }
+
+        protected void DoProcess(WriteItemHeaderPipeline pipeline)
         {
             var status = 0;
             try
