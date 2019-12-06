@@ -24,10 +24,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
              * No longer exists as of 9.3.
              */
             const string ItemReferenceClass = "Sitecore.Data.Serialization.ItemReference, Sitecore.Kernel";
-            if (Type.GetType(ItemReferenceClass) == null)
-            {
-                ShouldExecute = false;
-            }
+            ShouldExecute = Type.GetType(ItemReferenceClass) == null;
         }
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
