@@ -5,6 +5,7 @@ using System.Reflection;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Abstractions.Jobs;
 using Sitecore.Rocks.Server.Abstractions.Serialization;
+using Sitecore.Rocks.Server.Abstractions.Validators;
 
 
 namespace Sitecore.Rocks.Server.VersionSpecific
@@ -15,6 +16,7 @@ namespace Sitecore.Rocks.Server.VersionSpecific
         private static bool _initialized = false;
         private static IJobManager _jobManager = null;
         private static ISerializationService _serializationService = null;
+        private static ILegacyIndexingValidator _legacyIndexingValidator = null;
 
         public static IJobManager JobManager
         { 
@@ -33,6 +35,16 @@ namespace Sitecore.Rocks.Server.VersionSpecific
                 Assert.AreEqual(_initialized, true, "Services have not been initialized");
                 Assert.IsNotNull(_serializationService, $"{nameof(SerializationService)} has not been initialized");
                 return _serializationService;
+            }
+        }
+
+        public static ILegacyIndexingValidator LegacyIndexingValidator
+        {
+            get
+            {
+                Assert.AreEqual(_initialized, true, "Services have not been initialized");
+                Assert.IsNotNull(_legacyIndexingValidator, $"{nameof(LegacyIndexingValidator)} has not been initialized");
+                return _legacyIndexingValidator;
             }
         }
 
@@ -96,6 +108,7 @@ namespace Sitecore.Rocks.Server.VersionSpecific
 
             _jobManager = GetType<IJobManager>();
             _serializationService = GetType<ISerializationService>();
+            _legacyIndexingValidator = GetType<ILegacyIndexingValidator>();
         }
 
     }

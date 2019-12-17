@@ -51,6 +51,7 @@
     <Compile Include="Jobs\JobManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\SerializationService.cs" />
+    <Compile Include="Validators\LegacyIndexingValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Sitecore.Kernel">

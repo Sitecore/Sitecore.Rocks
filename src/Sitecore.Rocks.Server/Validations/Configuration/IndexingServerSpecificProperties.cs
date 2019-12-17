@@ -20,12 +20,19 @@ namespace Sitecore.Rocks.Server.Validations.Configuration
         {
             Assert.ArgumentNotNull(output, nameof(output));
 
-            if (Settings.Indexing.UpdateInterval == TimeSpan.Zero)
+            var validationHelper = VersionSpecific.Services.LegacyIndexingValidator;
+
+            if (!validationHelper.ShouldValidate)
             {
                 return;
             }
 
-            if (Settings.Indexing.ServerSpecificProperties)
+            if (validationHelper.UpdateIntervalSettingValue == TimeSpan.Zero)
+            {
+                return;
+            }
+
+            if (validationHelper.ServerSpecificPropertiesSettingValue)
             {
                 return;
             }
