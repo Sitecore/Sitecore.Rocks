@@ -14,7 +14,7 @@ namespace Sitecore.Rocks.Server.VersionSpecific
         private static readonly object _lockObject = new object();
         private static bool _initialized = false;
         private static IJobManager _jobManager = null;
-        private static IItemPathResolver _itemPathResolver = null;
+        private static ISerializationService _serializationService = null;
 
         public static IJobManager JobManager
         { 
@@ -26,13 +26,13 @@ namespace Sitecore.Rocks.Server.VersionSpecific
             }
         }
 
-        public static IItemPathResolver ItemPathResolver
+        public static ISerializationService SerializationService
         {
             get
             {
                 Assert.AreEqual(_initialized, true, "Services have not been initialized");
-                Assert.IsNotNull(_itemPathResolver, $"{nameof(ItemPathResolver)} has not been initialized");
-                return _itemPathResolver;
+                Assert.IsNotNull(_serializationService, $"{nameof(SerializationService)} has not been initialized");
+                return _serializationService;
             }
         }
 
@@ -95,7 +95,7 @@ namespace Sitecore.Rocks.Server.VersionSpecific
             }
 
             _jobManager = GetType<IJobManager>();
-            _itemPathResolver = GetType<IItemPathResolver>();
+            _serializationService = GetType<ISerializationService>();
         }
 
     }

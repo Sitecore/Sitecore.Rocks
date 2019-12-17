@@ -21,7 +21,7 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
             var status = 0;
             try
             {
-                var pathResolver = VersionSpecific.Services.ItemPathResolver;
+                var pathResolver = VersionSpecific.Services.SerializationService;
                 var path = pathResolver.GetPath(pipeline.Item.Uri.ToString());
 
                 if (FileUtil.FileExists(path))

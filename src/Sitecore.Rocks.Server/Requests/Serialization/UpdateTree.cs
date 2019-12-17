@@ -29,15 +29,7 @@ namespace Sitecore.Rocks.Server.Requests.Serialization
                 throw new Exception("Item not found");
             }
 
-            var options = new LoadOptions
-            {
-                ForceUpdate = ForceUpdate,
-            };
-
-            var directory = PathUtils.GetDirectoryPath(new ItemReference(item).ToString());
-
-            Manager.LoadTree(directory, options);
-
+            VersionSpecific.Services.SerializationService.UpdateTree(item.Uri.ToString(), ForceUpdate);
             return string.Empty;
         }
     }

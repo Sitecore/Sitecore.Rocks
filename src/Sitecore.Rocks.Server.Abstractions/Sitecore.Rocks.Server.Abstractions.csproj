@@ -52,7 +52,7 @@
     <Compile Include="Jobs\RunJobOptions.cs" />
     <Compile Include="Jobs\IJobManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\IItemPathResolver.cs" />
+    <Compile Include="Serialization\ISerializationService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -27,8 +27,7 @@ namespace Sitecore.Rocks.Server.Requests.Serialization
                 throw new Exception("Item not found");
             }
 
-            Manager.DumpItem(item);
-
+            VersionSpecific.Services.SerializationService.SerializeItem(item.Uri.ToString());
             return string.Empty;
         }
     }

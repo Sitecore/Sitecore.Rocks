@@ -49,7 +49,7 @@
     </Compile>
     <Compile Include="Jobs\JobManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\ItemPathResolver.cs" />
+    <Compile Include="Serialization\SerializationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Sitecore.Kernel">
