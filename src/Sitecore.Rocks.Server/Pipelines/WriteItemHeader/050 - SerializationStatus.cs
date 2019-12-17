@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.Caching;
 using Sitecore.Data.Items;
-using Sitecore.Data.Serialization;
 using Sitecore.Diagnostics;
 using Sitecore.IO;
 using Sitecore.Rocks.Server.Extensibility.Pipelines;
@@ -16,33 +15,14 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
     public class SerializationStatus : PipelineProcessor<WriteItemHeaderPipeline>
     {
         private static readonly MemoryCache Cache = new MemoryCache("serialization");
-        private static bool ShouldExecute = false;
-
-        static SerializationStatus()
-        {
-            /**
-             * No longer exists as of 9.3.
-             */
-            const string ItemReferenceClass = "Sitecore.Data.Serialization.ItemReference, Sitecore.Kernel";
-            ShouldExecute = Type.GetType(ItemReferenceClass) == null;
-        }
 
         protected override void Process(WriteItemHeaderPipeline pipeline)
-        {
-            if (!ShouldExecute)
-            {
-                return;
-            }
-            DoProcess(pipeline);
-        }
-
-        protected void DoProcess(WriteItemHeaderPipeline pipeline)
         {
             var status = 0;
             try
             {
-                var reference = new ItemReference(pipeline.Item);
-                var path = PathUtils.GetFilePath(reference.ToString());
+                var pathResolver = VersionSpecific.Services.ItemPathResolver;
+                var path = pathResolver.GetPath(pipeline.Item.Uri.ToString());
 
                 if (FileUtil.FileExists(path))
                 {

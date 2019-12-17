@@ -2,6 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks.VisualStudio", "src\Sitecore.Rocks.VisualStudio\Sitecore.Rocks.VisualStudio.csproj", "{0E1ADD98-D3D8-48AE-B0B7-34F512D3F205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sitecore.Rocks", "src\Sitecore.Rocks\Sitecore.Rocks.csproj", "{39D87FBF-43B7-4A35-8065-0FBA544AD601}"
@@ -75,15 +76,13 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CDC5C691-38E7-4A3E-909F-4F0F4B507845}
-  EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1CAE9FE8-6809-4FFA-85F8-F58502C3F36D} = {0C396997-3554-456B-95E8-FD27279140BE}
 		{AC426FEC-50F1-4250-B915-B22888A0EEE5} = {0C396997-3554-456B-95E8-FD27279140BE}
 		{D9529A09-77D1-4BDC-A17C-D2EA3DBE79EA} = {0C396997-3554-456B-95E8-FD27279140BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
 		SolutionGuid = {C6378256-B9F2-4F17-A0C5-AB107F5910C2}
 	EndGlobalSection
 EndGlobal

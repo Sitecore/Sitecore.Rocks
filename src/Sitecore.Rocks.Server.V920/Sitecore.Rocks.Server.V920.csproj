@@ -49,6 +49,7 @@
     </Compile>
     <Compile Include="Jobs\JobManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\ItemPathResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Sitecore.Kernel">
@@ -61,5 +62,6 @@
       <Name>Sitecore.Rocks.Server.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

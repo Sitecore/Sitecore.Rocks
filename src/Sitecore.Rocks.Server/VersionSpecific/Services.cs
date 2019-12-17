@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Abstractions.Jobs;
+using Sitecore.Rocks.Server.Abstractions.Serialization;
 
 
 namespace Sitecore.Rocks.Server.VersionSpecific
@@ -13,6 +14,7 @@ namespace Sitecore.Rocks.Server.VersionSpecific
         private static readonly object _lockObject = new object();
         private static bool _initialized = false;
         private static IJobManager _jobManager = null;
+        private static IItemPathResolver _itemPathResolver = null;
 
         public static IJobManager JobManager
         { 
@@ -21,6 +23,16 @@ namespace Sitecore.Rocks.Server.VersionSpecific
                 Assert.AreEqual(_initialized, true, "Services have not been initialized");
                 Assert.IsNotNull(_jobManager, $"{nameof(JobManager)} has not been initialized");
                 return _jobManager;
+            }
+        }
+
+        public static IItemPathResolver ItemPathResolver
+        {
+            get
+            {
+                Assert.AreEqual(_initialized, true, "Services have not been initialized");
+                Assert.IsNotNull(_itemPathResolver, $"{nameof(ItemPathResolver)} has not been initialized");
+                return _itemPathResolver;
             }
         }
 
@@ -66,17 +78,25 @@ namespace Sitecore.Rocks.Server.VersionSpecific
         {
             var types = assembly.GetTypes();
 
-            // This process could be further abstracted when we have more version-specific services
-            var jobRunnerType = types.FirstOrDefault(type => typeof(IJobManager).IsAssignableFrom(type));
-            if (jobRunnerType == null)
+            TService GetType<TService>() where TService : class
             {
-                throw new Exception($"Unable to find service {nameof(IJobManager)} in {assembly.FullName}");
+                var serviceType = types.FirstOrDefault(type => typeof(TService).IsAssignableFrom(type));
+                if (serviceType == null)
+                {
+                    throw new Exception($"Unable to find service {nameof(TService)} in {assembly.FullName}");
+                }
+                var service = Activator.CreateInstance(serviceType) as TService;
+                if (service == null)
+                {
+                    throw new Exception($"Unable to initialize service {serviceType.FullName}");
+                }
+
+                return service;
             }
-            _jobManager = Activator.CreateInstance(jobRunnerType) as IJobManager;
-            if (_jobManager == null)
-            {
-                throw new Exception($"Unable to initialize service {jobRunnerType.FullName}");
-            }
+
+            _jobManager = GetType<IJobManager>();
+            _itemPathResolver = GetType<IItemPathResolver>();
         }
+
     }
 }

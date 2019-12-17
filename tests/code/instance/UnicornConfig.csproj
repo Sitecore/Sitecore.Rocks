@@ -45,7 +45,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <PackageReference Include="Unicorn">
-      <Version>4.0.8</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
