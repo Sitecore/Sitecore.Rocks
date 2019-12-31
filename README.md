@@ -1,6 +1,8 @@
 
 # Sitecore Rocks
 
+[![VS Marketplace](https://img.shields.io/visual-studio-marketplace/v/JakobChristensen.SitecoreRocks?label=VS%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=JakobChristensen.SitecoreRocks)
+
 | Branch | Status |
 |-|-|
 | `develop` | [![Build Status](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_apis/build/status/Sitecore.Sitecore.Rocks?branchName=develop)](https://dev.azure.com/sitecore-devex/Sitecore%20Rocks/_build/latest?definitionId=1&branchName=develop) |
