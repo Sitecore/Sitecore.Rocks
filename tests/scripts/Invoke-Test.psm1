@@ -11,7 +11,7 @@ Function Invoke-Test {
     try {
 
         # Deploy Hard Rocks and Unicorn Config
-        & msbuild .\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj /p:Configuration=Release /p:Platform=AnyCPU /p:DeployOnBuild=true /p:PublishProfile=FilesystemPublish /p:DebugType=None /p:publishUrl="$RocksLocation" /p:DeleteExistingFiles=False /restore /v:m
+        & msbuild .\src\Sitecore.Rocks.Server\Sitecore.Rocks.Server.csproj /p:Configuration=Debug /p:Platform=AnyCPU /p:DeployOnBuild=true /p:PublishProfile=FilesystemPublish /p:DebugType=None /p:publishUrl="$RocksLocation" /p:DeleteExistingFiles=False /restore /v:m
         & msbuild .\tests\code\instance\UnicornConfig.csproj /p:Configuration=Debug /p:Platform=AnyCPU /p:DeployOnBuild=true /p:PublishProfile=FilesystemPublish /p:DebugType=None /p:publishUrl="$RocksLocation" /p:DeleteExistingFiles=False /restore /v:m
 
         # Warm up the instance

@@ -5,7 +5,6 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.Caching;
 using Sitecore.Data.Items;
-using Sitecore.Data.Serialization;
 using Sitecore.Diagnostics;
 using Sitecore.IO;
 using Sitecore.Rocks.Server.Extensibility.Pipelines;
@@ -22,8 +21,8 @@ namespace Sitecore.Rocks.Server.Pipelines.WriteItemHeader
             var status = 0;
             try
             {
-                var reference = new ItemReference(pipeline.Item);
-                var path = PathUtils.GetFilePath(reference.ToString());
+                var pathResolver = VersionSpecific.Services.SerializationService;
+                var path = pathResolver.GetPath(pipeline.Item.Uri.ToString());
 
                 if (FileUtil.FileExists(path))
                 {

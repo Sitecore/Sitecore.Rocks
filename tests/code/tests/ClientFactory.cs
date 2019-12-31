@@ -16,7 +16,7 @@ namespace Sitecore.Rocks.Server.IntegrationTests
             get
             {
                 var host = System.Environment.GetEnvironmentVariable("HardRocksHost") ??
-                           "https://rocksTest911.local";
+                           "https://rockstest930.local";
                 return $"{host}/sitecore/shell/webservice/service2.asmx";
             }
         }

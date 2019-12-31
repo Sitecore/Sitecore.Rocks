@@ -1,6 +1,7 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
+using Sitecore.Annotations;
 using Sitecore.Diagnostics;
 using Sitecore.Rocks.Server.Extensibility;
 

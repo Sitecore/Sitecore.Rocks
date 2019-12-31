@@ -98,32 +98,32 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Client">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.ContentSearch.Linq">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.ContentSearch">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Kernel">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Logging">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Sitecore.Update">
-      <Version>9.2.0</Version>
+      <Version>9.3.0</Version>
       <Private>false</Private>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

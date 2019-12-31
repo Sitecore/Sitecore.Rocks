@@ -52,6 +52,9 @@
     <Compile Include="Jobs\RunJobOptions.cs" />
     <Compile Include="Jobs\IJobManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\ISerializationService.cs" />
+    <Compile Include="Validators\ILegacyIndexingValidator.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
