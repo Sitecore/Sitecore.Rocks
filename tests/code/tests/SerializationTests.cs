@@ -180,7 +180,15 @@ namespace Sitecore.Rocks.Server.IntegrationTests
                     database
                 },
                 Properties.Credentials);
-            return response.Body.ExecuteResult;
+            var path = response.Body.ExecuteResult;
+
+            // if instance is Dockerized, need to get the mounted path
+            var mountedPath = System.Environment.GetEnvironmentVariable("SerializationMount");
+            if (string.IsNullOrEmpty(mountedPath))
+            {
+                return path;
+            }
+            return path.ToLowerInvariant().Replace("c:\\inetpub\\wwwroot\\app_data\\serialization", mountedPath);
         }
 
         private async Task SerializeItem(string itemId, string database)

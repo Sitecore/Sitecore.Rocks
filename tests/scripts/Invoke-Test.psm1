@@ -4,7 +4,8 @@ Function Invoke-Test {
         [string]$RocksLocation,
         [string]$RocksHost,
         [string]$SitecoreVersion,
-        [string]$DataFolder = "App_Data"
+        [string]$DataFolder = "App_Data",
+        [string]$SerializationMount
     )
 
     Push-Location $PSScriptRoot\..\.. 
@@ -38,6 +39,9 @@ Function Invoke-Test {
         & nuget install xunit.runner.console -Version 2.4.1 -o "$env:temp\rocks_xunit"
         $env:HardRocksHost = $RocksHost
         $env:SitecoreVersion = $SitecoreVersion
+        if ($SerializationMount) {
+            $env:SerializationMount = $SerializationMount
+        }
         Write-Host "Executing integration tests on $RocksHost..." -ForegroundColor green
         & "$env:temp\rocks_xunit\xunit.runner.console.2.4.1\tools\net472\xunit.console.exe" .\tests\code\tests\bin\Debug\Sitecore.Rocks.Server.IntegrationTests.dll -verbose
 

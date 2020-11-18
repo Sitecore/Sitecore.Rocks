@@ -1,0 +1,21 @@
+version: "2.4"
+services:
+  redis:
+    scale: 0
+
+  cd:
+    scale: 0
+
+  cm:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}
+    build:
+      context: ./cm
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cm:${SITECORE_VERSION}
+        TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
+    volumes:
+      - ./cm-deploy:C:\deploy
+      - ./serialization-data:C:\inetpub\wwwroot\App_Data\serialization
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+    environment:
+      Sitecore_AppSettings_role:define: Standalone

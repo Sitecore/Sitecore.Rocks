@@ -1,0 +1,10 @@
+/cm-deploy/*
+!/cm-deploy/.gitkeep
+/mssql-data/*
+!/mssql-data/.gitkeep
+/serialization-data/*
+!/serialization-data/.gitkeep
+/solr-data/*
+!/solr-data/.gitkeep
+/traefik/certs/*
+!/traefik/certs/.gitkeep
