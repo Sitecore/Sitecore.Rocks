@@ -1,7 +1,10 @@
 // © 2015-2016 Sitecore Corporation A/S. All rights reserved.
 
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.IO;
+using System.Reflection;
 using System.Xml;
 using Sitecore.Caching;
 using Sitecore.Caching.Generics;
@@ -61,6 +64,12 @@ namespace Sitecore.Rocks.Server.Requests.Caches
                 }
             }
 
+            //MethodInfo to gets the entry represented by key
+            //Parameter: The cache key
+            //Returns: the entry (or null)
+            //public ICacheEntry<TKey> GetEntry(TKey key)
+            var getEntryMethod = typeof(Cache<string>).GetMethod("GetEntry", new Type[] {typeof(string)});
+
             foreach (var cacheKey in cache.GetCacheKeys())
             {
                 output.WriteStartElement("key");
@@ -68,32 +77,67 @@ namespace Sitecore.Rocks.Server.Requests.Caches
                 output.WriteAttributeString("size", string.Empty);
                 output.WriteAttributeString("lastAccessed", string.Empty);
 
+                var pathValue = string.Empty;
                 if (database != null)
                 {
-                    WriteValue(output, database, cacheKey);
+                    pathValue = GetDbPathValue(database, cacheKey);
+                }
+
+                if (!String.IsNullOrEmpty(pathValue))
+                {
+                    output.WriteValue(pathValue);
+                }
+                else
+                {
+                    try
+                    {
+                        var cacheEntry = getEntryMethod.Invoke(cache, new[] {cacheKey});
+                        var cacheValue = cacheEntry.GetType().GetProperty("Data").GetValue(cacheEntry);
+                        var cacheType = cacheEntry.GetType().GetProperty("Data").GetValue(cacheEntry).GetType();
+                        if (cacheType == typeof(string))
+                        {
+                            output.WriteValue(cacheValue);
+                        }
+
+                        if (cacheType == typeof(ID))
+                        {
+                            output.WriteValue(cacheValue.ToString());
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Sitecore.Diagnostics.Log.Error("Could not get values for cache: "+ cache.Name, ex);
+                    }
                 }
 
                 output.WriteEndElement();
             }
         }
-
-        private void WriteValue([NotNull] XmlTextWriter output, [NotNull] Database database, [NotNull] object key)
+        
+        /// <summary>
+        /// Returns path if key is ID and empty string if it is not
+        /// </summary>
+        /// <param name="database">Database where item is located</param>
+        /// <param name="key">Cache key, that could be ID</param>
+        /// <returns></returns>
+        private string GetDbPathValue([NotNull] Database database, [NotNull] object key)
         {
-            Debug.ArgumentNotNull(output, nameof(output));
             Debug.ArgumentNotNull(database, nameof(database));
             Debug.ArgumentNotNull(key, nameof(key));
 
             var id = key.ToString().Left(Constants.GuidLength);
             if (!ID.IsID(id))
             {
-                return;
+                return string.Empty;
             }
 
             var item = database.GetItem(id);
             if (item != null)
             {
-                output.WriteValue(item.Paths.Path);
+                return item.Paths.Path;
             }
+
+            return string.Empty;
         }
     }
 }
